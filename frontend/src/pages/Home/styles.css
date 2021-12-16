@@ -9,6 +9,11 @@
     justify-content: space-between;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+}
+
 .home-container{
     display: flex;
 }
@@ -16,7 +21,7 @@
 
 .quadrado{
     width:70%;
-    height: 99vh;
+    height: 100vh;
     background:#333333;
     display: flex;
     align-items: center;
@@ -38,4 +43,40 @@
 .buttons{
     display: grid;
     padding-top: 10%;
+}
+
+.btn1{
+    background-color: #009e0f;
+    color: white;
+    font-weight: bold;
+    width: 343px;
+    height: 27px;
+    margin-top: 10px;
+}
+
+.btn2{
+    background-color: #009e0f;
+    color: white;
+    font-weight: bold;
+    width: 309px;
+    height: 27px;
+    margin-top: 10px;
+}
+
+.btn3{
+    background-color: #009e0f;
+    color: white;
+    font-weight: bold;
+    width: 286px;
+    height: 27px;
+    margin-top: 10px;
+}
+
+.btn4{
+    background-color: #009e0f;
+    color: white;
+    font-weight: bold;
+    width: 263px;
+    height: 27px;
+    margin-top: 10px;
 }
