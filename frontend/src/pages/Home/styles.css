@@ -1,0 +1,41 @@
+.container{
+    width: 100%;
+    max-width: 1120px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    /*flex-direction: column;*/
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-container{
+    display: flex;
+}
+
+
+.quadrado{
+    width:70%;
+    height: 99vh;
+    background:#333333;
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    margin-left: 50%;
+}
+
+.fraseImpacto{
+    margin-left: 50%;
+    color: #009e0f;
+    font-size: 24;
+    margin-top: 10%;
+    width: 50%;
+    margin-left: 10%;
+}
+
+.buttons{
+    display: grid;
+    padding-top: 10%;
+}
