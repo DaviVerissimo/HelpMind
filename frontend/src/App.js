@@ -1,4 +1,5 @@
 import Home from "./pages/Home";
+import Create from "./pages/Material/Create";
 
 import {PrimeReactCSS} from "primereact/resources/themes/saga-green/theme.css";
 import {PrimeReactMinCsss} from "primereact/resources/primereact.min.css";
@@ -7,7 +8,8 @@ import 'primeflex/primeflex.css';
 
 function App() {
   return (
-    <Home></Home>
+    //<Home></Home>
+    <Create></Create>
   );
 }
 

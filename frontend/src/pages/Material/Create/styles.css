@@ -1,0 +1,61 @@
+.coluna1{
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.titulo1{
+    color: #009e0f; /*transferir para global CSS*/
+    padding-bottom: 10px;
+}
+
+.entradaNome{
+    /*width: 100%;*/
+}
+
+h5 {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+button {
+    background-color: #009e0f;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.btnCancel{
+    background-color: darkgrey;
+    color: rgb(0, 0, 0);
+    margin-left: 1000px;
+    font-weight: normal;
+}
+
+.btnSalvar{
+    margin-left: 10px;
+}
+
+
+.btnNovaCategoria{
+    margin-left: 50px;
+    
+}
+
+.caminhoArquivo{
+    margin-left: 100px;
+    
+}
+
+.caminhoCapa{
+    margin-left: 130px;
+    
+}
+
+.tamArquivo{
+    margin-left: 550px;
+}
+
+.tamCapa{
+    margin-left: 600px;
+}
