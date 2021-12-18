@@ -1,3 +1,4 @@
+import './global.css';
 import Home from "./pages/Home";
 import Create from "./pages/Material/Create";
 import Viewer from "./pages/Material/Viewer";
@@ -10,8 +11,8 @@ import 'primeflex/primeflex.css';
 function App() {
   return (
     //<Home></Home>
-    //<Create></Create>
-    <Viewer></Viewer>
+    <Create></Create>
+    //<Viewer></Viewer>
   );
 }
 
