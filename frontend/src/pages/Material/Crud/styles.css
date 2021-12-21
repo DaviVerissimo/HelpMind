@@ -1,0 +1,30 @@
+.coluna1{
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    display: grid;
+    align-items: center;
+}
+
+h5 {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+button {
+    background-color: #009e0f;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.coluna2{
+    padding-top: 25px;
+    margin-left: 50px;
+}
+
+.coluna3{
+    margin-left: 120vh;
+
+
+}

@@ -24,6 +24,24 @@ button {
     margin-bottom: 10px;
 }
 
+.botao{
+    display: flex;
+    align-items: center;
+    margin-left: 30%;
+}
+
+.categoria{
+    display: flex;
+    align-items: center;
+}
+
+.x{
+    display: flex;
+    align-items: center;
+    
+    
+}
+
 .btnCancel{
     background-color: darkgrey;
     color: rgb(0, 0, 0);
@@ -37,12 +55,13 @@ button {
 
 
 .btnNovaCategoria{
-    margin-left: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
     
 }
 
 .caminhoArquivo{
-    margin-left: 100px;
+    
     
 }
 
@@ -56,5 +75,16 @@ button {
 }
 
 .tamCapa{
-    margin-left: 600px;
+    margin-left: 550px;
+    padding-left: 50px;
+}
+
+.btnNome{
+    display: flex;
+    align-items: center;
+    margin-right: 90%;
+}
+
+.btnCapa{
+    margin-right: 0%;
 }
