@@ -8,10 +8,6 @@
     padding-bottom: 10px;
 }
 
-.entradaNome{
-    /*width: 100%;*/
-}
-
 h5 {
     padding-bottom: 10px;
     padding-top: 10px;
@@ -24,28 +20,15 @@ button {
     margin-bottom: 10px;
 }
 
-.botao{
-    display: flex;
-    align-items: center;
-    margin-left: 30%;
-}
-
 .categoria{
     display: flex;
     align-items: center;
 }
 
-.x{
-    display: flex;
-    align-items: center;
-    
-    
-}
-
 .btnCancel{
     background-color: darkgrey;
     color: rgb(0, 0, 0);
-    margin-left: 1000px;
+    margin-left: 91%;
     font-weight: normal;
 }
 
@@ -53,38 +36,11 @@ button {
     margin-left: 10px;
 }
 
-
 .btnNovaCategoria{
     margin-top: 10px;
     margin-left: 10px;
-    
 }
 
-.caminhoArquivo{
-    
-    
-}
-
-.caminhoCapa{
-    margin-left: 130px;
-    
-}
-
-.tamArquivo{
-    margin-left: 550px;
-}
-
-.tamCapa{
-    margin-left: 550px;
-    padding-left: 50px;
-}
-
-.btnNome{
-    display: flex;
-    align-items: center;
-    margin-right: 90%;
-}
-
-.btnCapa{
-    margin-right: 0%;
+.cascata{
+    padding-bottom: 2px;
 }

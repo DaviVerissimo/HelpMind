@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { InputText } from 'primereact/inputtext';
 import { CascadeSelect } from 'primereact/cascadeselect';
+import { FileUpload } from 'primereact/fileupload';
 
 export default function Create(){
 
@@ -106,42 +107,20 @@ export default function Create(){
             <h5>CATEGORIA</h5>
             
                 <section className='categoria' >
-                <CascadeSelect  value={selectedCity} options={countries}  optionLabel={"cname"} optionGroupLabel={"name"} optionGroupChildren={['states', 'cities']}
-                style={{minWidth: '14rem'}} placeholder={"Select a City"} onChange={event => setSelectedCity1(event.value)}/>
+                <CascadeSelect  className='cascata' value={selectedCity} options={countries}  optionLabel={"cname"} optionGroupLabel={"name"} optionGroupChildren={['states', 'cities']}
+                style={{minWidth: '14rem'}} placeholder={"Selecione uma categoria"} onChange={event => setSelectedCity1(event.value)}/>
                 <button className = "btnNovaCategoria" type = "submit">NOVA CATEGORIA</button>
                 
-
-                <section>
-              
-
-
-                <section className='' >
-                
                 </section>
 
-
-                </section >
-
-                </section>
-
-        <h5>ARQUIVO</h5>
-        <button className = "btnNome" type = "submit">ESCOLHER ARQUIVO</button>
-                                <h10 className = "caminhoArquivo"  >caminho do arquivo</h10>
-                                                    <h10 className = "tamArquivo"  >tamanho do arquivo</h10>
-                                                    <h5>CAPA</h5>
-                                    <section className='x'>
-                                    <button className = "btnCapa" type = "submit">ESCOLHER CAPA</button>
-                                                    <h10 className = "caminhoCapa"  >caminho da capa</h10>
-                                                    <h10 className = "tamCapa"  >tamanho da capa</h10>
-                                    </section>
+        <h5>ARQUIVO E CAPA</h5>
+        <FileUpload name="demo" url="./upload"></FileUpload>
             
             </section>
             
         <section className='' >
 
-        <section>
 
-                                                    </section>
          </section>
         </div>
         
