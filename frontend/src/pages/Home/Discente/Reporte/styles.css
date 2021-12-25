@@ -1,0 +1,46 @@
+.linha1{
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.linha3{
+    display: flex;
+    align-items: center;
+}
+
+.linha3 section {
+    margin-right: 1%;
+}
+
+button {
+    background-color: #009e0f;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 20%;
+    margin-left: 100%;
+}
+
+.categoria{
+    display: flex;
+    align-items: center;
+}
+
+.btnCancel{
+    background-color: darkgrey;
+    color: rgb(0, 0, 0);
+    margin-left: 55%;
+    font-weight: normal;
+}
+
+.btnSalvar{
+    margin-left: 10px;
+}
+
+h5 {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
