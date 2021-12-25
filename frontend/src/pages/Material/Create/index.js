@@ -9,6 +9,13 @@ import { FileUpload } from 'primereact/fileupload';
 
 export default function Create(){
 
+    /**
+     *             <section disabled>
+            <h5>ARQUIVO E CAPA</h5>
+                <FileUpload name="Arquivo" url="./Documentos"></FileUpload>
+            </section>
+     */
+
     const cities = [
         {name: 'Depresão', code: 'NY'},
         {name: 'Ansiedade', code: 'RM'},
@@ -52,8 +59,7 @@ export default function Create(){
                 
                 </section>
 
-        <h5>ARQUIVO E CAPA</h5>
-        <FileUpload name="Arquivo" url="./Documentos"></FileUpload>
+
 
         <div>
             <form onSubmit={uploadImage} >
