@@ -91,6 +91,14 @@ export default function Create(){
         setSelectedCity1('United States');
     }
 
+    const [image,setImage] = useState('');
+
+    const uploadImage = async e => {
+        e.preventDefault();
+        console.log("upload da imagem")
+        console.log(image)
+    }
+
     return (
         //<InputText className='ccc' value={value} onChange={(e) => setValue(e.target.value)} />
         
@@ -107,14 +115,28 @@ export default function Create(){
             <h5>CATEGORIA</h5>
             
                 <section className='categoria' >
-                <CascadeSelect  className='cascata' value={selectedCity} options={countries}  optionLabel={"cname"} optionGroupLabel={"name"} optionGroupChildren={['states', 'cities']}
+                <CascadeSelect  value={selectedCity} options={countries}  optionLabel={"cname"} optionGroupLabel={"name"} optionGroupChildren={['states', 'cities']}
                 style={{minWidth: '14rem'}} placeholder={"Selecione uma categoria"} onChange={event => setSelectedCity1(event.value)}/>
                 <button className = "btnNovaCategoria" type = "submit">NOVA CATEGORIA</button>
                 
                 </section>
 
         <h5>ARQUIVO E CAPA</h5>
-        <FileUpload name="demo" url="./upload"></FileUpload>
+        <FileUpload name="Arquivo" url="./Documentos"></FileUpload>
+
+        <div>
+            <form onSubmit={uploadImage} >
+            <h5>ARQUIVO</h5>
+                <input type = "file" name='file'>
+                    
+                </input>
+                <h5>CAPA</h5>
+                <input type = "file" name='image' onChange={e => setImage(e.target.files[0])}>
+                    
+                </input>
+                <button className = "btnSalvar" type = "submit">SALVAR</button>
+            </form>
+        </div>
             
             </section>
             
