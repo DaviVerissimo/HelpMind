@@ -121,6 +121,7 @@ export default function Create(){
                 <CascadeSelect  value={selectedCity} options={countries}  optionLabel={"cname"} optionGroupLabel={"name"} optionGroupChildren={['states', 'cities']}
                 style={{minWidth: '14rem'}} placeholder={"Selecione uma categoria"} onChange={event => setSelectedCity1(event.value)}/>
                 <button className = "btnNovaCategoria" type = "submit">NOVA CATEGORIA</button>
+                {console.log(selectedCity)}
                 
                 </section>
 
