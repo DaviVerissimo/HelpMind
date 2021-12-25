@@ -99,6 +99,8 @@ export default function Create(){
         console.log(image)
     }
 
+    const [value,setValue] = useState('');
+
     return (
         //<InputText className='ccc' value={value} onChange={(e) => setValue(e.target.value)} />
         
@@ -110,7 +112,8 @@ export default function Create(){
                     <button className = "btnSalvar" type = "submit">SALVAR</button>
                 </section>
             <h5>NOME</h5>
-            <InputText className='entradaNome' ></InputText>
+            <InputText className='entradaNome' value={value} onChange={(e) => setValue(e.target.value)} />
+            {console.log(value)}
                                                     
             <h5>CATEGORIA</h5>
             
