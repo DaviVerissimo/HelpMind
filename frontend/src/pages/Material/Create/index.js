@@ -6,6 +6,7 @@ import { InputText } from 'primereact/inputtext';
 //import { CascadeSelect } from 'primereact/cascadeselect';
 import { Dropdown } from 'primereact/dropdown';
 import { FileUpload } from 'primereact/fileupload';
+import api from '../../../config/configApi';
 
 export default function Create(){
 
@@ -25,17 +26,49 @@ export default function Create(){
     ];
 
     const [city, setCity] = useState('Ansiedade');
-    
-
-    const [image,setImage] = useState('');
-
-    const uploadImage = async e => {
-        e.preventDefault();
-        console.log("upload da imagem")
-        console.log(image)
-    }
-
     const [value,setValue] = useState('');
+
+    //2ª parte upload de imagem
+
+    const [image, setImage] = useState('');  
+    const [endImg] = useState('./icone_usuario.png');
+    const [status, setStatus] = useState({
+      type: '',
+      mensagem: ''
+    });
+  
+    const uploadImage = async e => {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('image', image);
+  
+      const headers = {
+        'headers': {
+          'Content-Type': 'application/json'
+        }
+      }
+  
+      await api.post("/upload-image", formData, headers)
+      .then((response) => {
+        setStatus({
+          type: 'success',
+          mensagem: response.data.mensagem
+        });
+      }).catch((err) => {
+        if(err.response){
+          setStatus({
+            type: 'error',
+            mensagem: err.response.data.mensagem
+          });
+        }else{
+          setStatus({
+            type: 'error',
+            mensagem: "Erro: Tente mais tarde!"
+          });
+        }
+      });
+
+    }
 
     return (
         //<InputText className='ccc' value={value} onChange={(e) => setValue(e.target.value)} />
