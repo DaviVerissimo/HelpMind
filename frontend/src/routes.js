@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Create from "./pages/Material/Create";
 import Viewer from "./pages/Material/Viewer";
 import Crud from "./pages/Material/Crud";
-import Reporte from "./pages/Home/Discente/Reporte";
+import Reporte from "./pages/Discente/Reporte";
 
 export default function Routes(){
     return (

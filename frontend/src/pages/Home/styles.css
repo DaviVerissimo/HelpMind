@@ -38,6 +38,8 @@
 .buttons{
     display: grid;
     padding-top: 10%;
+    width: 10%;
+    margin-left: -45%;
 }
 
 .btn1{
