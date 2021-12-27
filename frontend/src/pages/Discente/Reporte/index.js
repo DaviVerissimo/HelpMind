@@ -4,10 +4,11 @@ import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
+import api from '../../../config/configApi';
 
 export default function Reporte(){
     //estado da entrada e texto
-    const [value,setValue] = useState('');
+    const [nome,setNome] = useState('');
 
     //dropdown
     // campus
@@ -19,10 +20,6 @@ export default function Reporte(){
         {name: 'Campina Grande', code: 'PRS'}
     ];
     const [city, setCity] = useState('Monteiro');
-    
-    function mudarEstado(){
-        setCity('');
-    }
 
     //curso
 
@@ -52,7 +49,45 @@ export default function Reporte(){
     const [suicidio, setTentouSuicidio] = useState('NÂO');
 
     //estado da entrada e texto
-    const [valueA,setValueA] = useState('');
+    const [descrisao,setDescrisao] = useState('');
+
+    const [status, setStatus] = useState({
+        type: '',
+        mensagem: ''
+      });
+      
+    
+    async function submeter(){
+        const data = {nome, city, curso, ano, suicidio, descrisao}
+        console.log(data)
+
+        const headers = {
+            'headers': {
+              'Content-Type': 'application/json'
+            }
+          }
+      
+          await api.post("/reportes-list", data, headers)
+          .then((response) => {
+            setStatus({
+              type: 'success',
+              mensagem: response.data.mensagem
+            });
+          }).catch((err) => {
+            if(err.response){
+              setStatus({
+                type: 'error',
+                mensagem: err.response.data.mensagem
+              });
+            }else{
+              setStatus({
+                type: 'error',
+                mensagem: "Erro: Tente mais tarde!"
+              });
+            }
+          });
+
+    }
 
     return(
         <div className="linha1" >
@@ -61,36 +96,36 @@ export default function Reporte(){
             <h1 className='titulo1' >REPORTAR CASO DE VULNERABILIDADE MENTAL</h1>
                 <section className='botao'>
                     <button className = "btnCancel" type = "submit">CANCEL</button>
-                    <button className = "btnSalvar" type = "submit">SALVAR</button>
+                    <button className = "btnSalvar" onClick={submeter} type = "submit">SALVAR</button>
                 </section>
                 <section className="linha2" >
                 </section>
 
                 <section>
                 <h5>DISCENTE*</h5>
-                    <InputText className='entradaNome' value={value} onChange={(e) => setValue(e.target.value)} />
-                    {console.log(value)}
+                    <InputText className='entradaNome' value={nome} onChange={(e) => setNome(e.target.value)} />
+                    
                 </section>
 
                 <section className="linha3" >
                 <section>
                     <h5>DISCENTE*</h5>
-                    <Dropdown optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.value)} placeholder="Monteiro"/>
+                    <Dropdown optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.target.value)} placeholder="Monteiro"/>
                 </section>
 
                 <section>
                     <h5>CURSO*</h5>
-                    <Dropdown optionLabel="name" value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso"/>
+                    <Dropdown optionLabel="name" value={curso} options={cursos} onChange={(e) => setCurso(e.target.value)} placeholder="Escolha um curso"/>
                 </section>
                 
                 <section>
                     <h5>ANO / PERÍODO*</h5>
-                    <Dropdown optionLabel="name" value={ano} options={anos} onChange={(e) => setAnos(e.value)} placeholder="Não se aplica"/>
+                    <Dropdown optionLabel="name" value={ano} options={anos} onChange={(e) => setAnos(e.target.value)} placeholder="Não se aplica"/>
                 </section>
 
                 <section>
                     <h5>JÁ TENTOU SUICÍDIO?</h5>
-                    <Dropdown optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setTentouSuicidio(e.value)} placeholder="Não se aplica"/>
+                    <Dropdown optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setTentouSuicidio(e.target.value)} placeholder="Não se aplica"/>
                 </section>
 
                 </section>
@@ -98,7 +133,7 @@ export default function Reporte(){
                 <section className="linha4" >
                     <section>
                     <h5>DESCRIÇÃO</h5>
-                    <InputTextarea rows={5} cols={30} value={valueA} onChange={(e) => setValueA(e.target.valueA)} />
+                    <InputTextarea rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
                     </section>
 
                 </section>
