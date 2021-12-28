@@ -16,33 +16,31 @@ export default function Home() {
 
     return (
 
-        // <div className="home-container p-grid p-justify-center p-align-center" style={{ height: '100%' }} >
+        <div className="home-container p-grid p-justify-center p-align-center" style={{ height: '100%' }} >
 
 
-        //     <div className="home-ladoEsquerdo p-col-4 " >
+            <div className="home-ladoEsquerdo p-col-4 " >
 
-        //         <img src={logoImg} alt="logo"></img>
+                <img src={logoImg} alt="logo"></img>
 
-        //     </div>
+            </div>
 
-        //     <div className="home-ladoDireito p-col-8" >
-        //         <Card title="CONHEÇA SUA NOVA FERRAMENTA DE AUXILIO"
-        //             subTitle="A SAÚDE MENTAL DOS ESTUDANTES DO IFPB" >
+            <div className="home-ladoDireito p-col-8" >
+                <Card title="CONHEÇA SUA NOVA FERRAMENTA DE AUXILIO"
+                    subTitle="A SAÚDE MENTAL DOS ESTUDANTES DO IFPB" >
 
-        //             <div className=" p-grid p-dir-col p-pl-3" >
-        //                 <Button className="p-mb-3 p-col-4" label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/material/create') }} />
-        //                 <Button className="p-mb-3 p-col-4" label="MATERIAIS DE APOIO ONLINE" />
-        //                 <Button className="p-mb-3 p-col-4" label="INVENTARIO BECK" />
-        //                 <Button className="p-mb-3 p-col-4" label="QUEM SOMOS" />
-        //             </div>
-        //         </Card>
+                    <div className=" p-grid p-dir-col p-pl-3" >
+                        <Button className="p-mb-3 p-col-4" label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/material/create') }} />
+                        <Button className="p-mb-3 p-col-4" label="MATERIAIS DE APOIO ONLINE" />
+                        <Button className="p-mb-3 p-col-4" label="INVENTARIO BECK" />
+                        <Button className="p-mb-3 p-col-4" label="QUEM SOMOS" />
+                    </div>
+                </Card>
 
 
-        //     </div>
-        // </div>
-        <div className="p-component" >
-            hfhfghfh
+            </div>
         </div>
+
 
 
 
