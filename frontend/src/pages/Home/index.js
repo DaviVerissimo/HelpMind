@@ -1,44 +1,51 @@
 import React from 'react';
 import './styles.css'
+import { Button } from 'primereact/button';
+import { Card } from 'primereact/card'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 import logoImg from '../../assets/logo.png';
 
 
-export default function Home(){
+function navegar(pagina, history){
+    history.push(pagina);
+}
+
+export default function Home() {
+    const history = useHistory();
+
     return (
-      
-        <div 
-        className = "home-container"
-        >
-        <section className='quadrado' >
-            
-            <section className = "logo">
-            <img src = {logoImg} alt = "logo"></img>
-            </section>
 
-        </section>
+        // <div className="home-container p-grid p-justify-center p-align-center" style={{ height: '100%' }} >
 
-        <section className='fraseImpacto' >
-            <h1>
-            CONHEÇA SUA NOVA FERRAMENTA DE AUXILIO
-                </h1>
-            <h1>
-            A <b>SAÚDE MENTAL</b> DOS ESTUDANTES DO IFPB
-            </h1>
 
-            <section className = "buttons" >
-                <button className = "btn1" type = "submit">SOU ESTUDANTE/SERVIDOR DO IFPB</button>
-                <button className = "btn2" type = "submit">MATERIAIS DE APOIO ONLINE</button>
-                <button className = "btn3" type = "submit">INVENTARIO BECK</button>
-                <button className = "btn4" type = "submit">QUEM SOMOS</button>
-            </section>
+        //     <div className="home-ladoEsquerdo p-col-4 " >
 
-        </section>
-    </div>
+        //         <img src={logoImg} alt="logo"></img>
 
-        
+        //     </div>
+
+        //     <div className="home-ladoDireito p-col-8" >
+        //         <Card title="CONHEÇA SUA NOVA FERRAMENTA DE AUXILIO"
+        //             subTitle="A SAÚDE MENTAL DOS ESTUDANTES DO IFPB" >
+
+        //             <div className=" p-grid p-dir-col p-pl-3" >
+        //                 <Button className="p-mb-3 p-col-4" label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/material/create') }} />
+        //                 <Button className="p-mb-3 p-col-4" label="MATERIAIS DE APOIO ONLINE" />
+        //                 <Button className="p-mb-3 p-col-4" label="INVENTARIO BECK" />
+        //                 <Button className="p-mb-3 p-col-4" label="QUEM SOMOS" />
+        //             </div>
+        //         </Card>
+
+
+        //     </div>
+        // </div>
+        <div className="p-component" >
+            hfhfghfh
+        </div>
+
 
 
     );
-        
+
 }

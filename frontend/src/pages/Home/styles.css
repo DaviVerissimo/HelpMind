@@ -9,12 +9,12 @@
     justify-content: space-between;
 }
 
-.home-container{
+/* .home-container{
     display: flex;
-}
+} */
 
 
-.quadrado{
+/**.quadrado{
     width:70%;
     height: 100vh;
     background:#333333;
@@ -76,4 +76,4 @@
     width: 263px;
     height: 27px;
     margin-top: 10px;
-}
+}**/

@@ -6,3 +6,8 @@
 .titulo1{
     color: #009e0f;
 }
+
+html, body , #root {
+    height:100vh;
+    margin: 0;
+}
