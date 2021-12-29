@@ -3,11 +3,13 @@ import React from 'react';
 import './styles.css'
 import { Button } from 'primereact/button';
 
-import logoImg from '/home/davi/WORKSPACEs/Projeto I/HelpMind/frontend/src/assets/logo.png';
+import logoImg from '../../../assets/logo.png';
+import ToobarPublica from '../ToobarPublica';
 
 export default function Login() {
     return(
         <div className="login-container p-grid p-justify-center p-align-center" style={{ height: '100%' }} >
+            <ToobarPublica></ToobarPublica>
         <div className="login-ladoEsquerdo p-col-4 " >
             <img src={logoImg} alt="logo"></img>
         </div>

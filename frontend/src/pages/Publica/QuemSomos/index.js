@@ -2,12 +2,14 @@ import { Card } from 'primereact/card';
 import React from 'react';
 import './styles.css'
 
-import logoImg from '/home/davi/WORKSPACEs/Projeto I/HelpMind/frontend/src/assets/logo.png';
+import logoImg from '../../../assets/logo.png';
+import ToobarPublica from '../ToobarPublica/index';
 
 export default function QuemSomos() {
 
     return (
         <div className="quemSomos-container p-grid p-justify-center p-align-center p-component  p-col-6 " style={{ height: '100%' }} >
+            <ToobarPublica></ToobarPublica>
             <div className="home-ladoEsquerdo p-col-4 " >
                 <img src={logoImg} alt="logo"></img>
             </div>
