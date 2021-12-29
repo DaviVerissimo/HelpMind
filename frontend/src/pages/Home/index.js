@@ -30,7 +30,7 @@ export default function Home() {
                     subTitle="A SAÚDE MENTAL DOS ESTUDANTES DO IFPB" >
 
                     <div className=" p-grid p-dir-col p-pl-3" >
-                        <Button className="p-mb-3 p-col-4" label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/material/create') }} />
+                        <Button className="p-mb-3 p-col-4" label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/publica/Login') }} />
                         <Button className="p-mb-3 p-col-4" label="MATERIAIS DE APOIO ONLINE" />
                         <Button className="p-mb-3 p-col-4" label="INVENTARIO BECK" />
                         <Button className="p-mb-3 p-col-4" label="QUEM SOMOS" onClick={() => { history.push('/publica/QuemSomos') }} />
