@@ -33,7 +33,7 @@ export default function Home() {
                         <Button className="p-mb-3 p-col-4" label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/material/create') }} />
                         <Button className="p-mb-3 p-col-4" label="MATERIAIS DE APOIO ONLINE" />
                         <Button className="p-mb-3 p-col-4" label="INVENTARIO BECK" />
-                        <Button className="p-mb-3 p-col-4" label="QUEM SOMOS" />
+                        <Button className="p-mb-3 p-col-4" label="QUEM SOMOS" onClick={() => { history.push('/publica/QuemSomos') }} />
                     </div>
                 </Card>
 

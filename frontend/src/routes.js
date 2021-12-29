@@ -7,6 +7,7 @@ import Create from "./pages/Material/Create";
 import Viewer from "./pages/Material/Viewer";
 import Crud from "./pages/Material/Crud";
 import Reporte from "./pages/Discente/Reporte";
+import QuemSomos from "./pages/Publica/QuemSomos";
 
 export default function Routes(){
     return (
@@ -17,6 +18,7 @@ export default function Routes(){
                 <Route path = "/material/Viewer" component = {Viewer} />
                 <Route path = "/material/Crud" component = {Crud} />
                 <Route path = "/discente/Reporte" component = {Reporte} />
+                <Route path = "/publica/QuemSomos" component = {QuemSomos} />
             </Switch>
         </BrowserRouter>
     );
