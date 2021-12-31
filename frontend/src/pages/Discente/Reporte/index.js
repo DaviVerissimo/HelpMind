@@ -91,55 +91,55 @@ export default function Reporte(){
 
     return(
         <div className="linha1" >
-            <section>
+            <div>
 
             <h1 className='titulo1' >REPORTAR CASO DE VULNERABILIDADE MENTAL</h1>
-                <section className='botao'>
+                <div className='botao'>
                     <button className = "btnCancel" type = "submit">CANCEL</button>
                     <button className = "btnSalvar" onClick={submeter} type = "submit">SALVAR</button>
-                </section>
-                <section className="linha2" >
-                </section>
+                </div>
+                <div className="linha2" >
+                </div>
 
-                <section>
+                <div>
                 <h5>DISCENTE*</h5>
                     <InputText className='entradaNome' value={nome} onChange={(e) => setNome(e.target.value)} />
                     
-                </section>
+                </div>
 
-                <section className="linha3" >
-                <section>
+                <div className="linha3" >
+                <div>
                     <h5>DISCENTE*</h5>
                     <Dropdown optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.target.value)} placeholder="Monteiro"/>
-                </section>
+                </div>
 
-                <section>
+                <div>
                     <h5>CURSO*</h5>
                     <Dropdown optionLabel="name" value={curso} options={cursos} onChange={(e) => setCurso(e.target.value)} placeholder="Escolha um curso"/>
-                </section>
+                </div>
                 
-                <section>
+                <div>
                     <h5>ANO / PERÍODO*</h5>
                     <Dropdown optionLabel="name" value={ano} options={anos} onChange={(e) => setAnos(e.target.value)} placeholder="Não se aplica"/>
-                </section>
+                </div>
 
-                <section>
+                <div>
                     <h5>JÁ TENTOU SUICÍDIO?</h5>
                     <Dropdown optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setTentouSuicidio(e.target.value)} placeholder="Não se aplica"/>
-                </section>
+                </div>
 
-                </section>
+                </div>
 
-                <section className="linha4" >
-                    <section>
+                <div className="linha4" >
+                    <div>
                     <h5>DESCRIÇÃO</h5>
                     <InputTextarea rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
-                    </section>
+                    </div>
 
-                </section>
+                </div>
 
 
-            </section>
+            </div>
         </div>
         
     );
