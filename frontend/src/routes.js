@@ -9,6 +9,7 @@ import Crud from "./pages/Material/Crud";
 import Reporte from "./pages/Discente/Reporte";
 import QuemSomos from "./pages/Publica/QuemSomos";
 import Login from "./pages/Publica/Login";
+import ListaDeReportes from "./pages/ADM/ListaDeReportes";
 
 export default function Routes(){
     return (
@@ -21,6 +22,7 @@ export default function Routes(){
                 <Route path = "/discente/Reporte" component = {Reporte} />
                 <Route path = "/publica/QuemSomos" component = {QuemSomos} />
                 <Route path = "/publica/Login" component = {Login} />
+                <Route path = "/ADM/ListaDeReportes" component = {ListaDeReportes} />
             </Switch>
         </BrowserRouter>
     );
