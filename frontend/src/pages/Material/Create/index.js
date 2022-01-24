@@ -6,7 +6,7 @@ import { InputText } from 'primereact/inputtext';
 //import { CascadeSelect } from 'primereact/cascadeselect';
 import { Dropdown } from 'primereact/dropdown';
 import { FileUpload } from 'primereact/fileupload';
-import api from '../../../config/configApi';
+
 
 export default function Create() {
 
@@ -47,26 +47,6 @@ export default function Create() {
         'Content-Type': 'application/json'
       }
     }
-
-    await api.post("/upload-image", formData, headers)
-      .then((response) => {
-        setStatus({
-          type: 'success',
-          mensagem: response.data.mensagem
-        });
-      }).catch((err) => {
-        if (err.response) {
-          setStatus({
-            type: 'error',
-            mensagem: err.response.data.mensagem
-          });
-        } else {
-          setStatus({
-            type: 'error',
-            mensagem: "Erro: Tente mais tarde!"
-          });
-        }
-      });
 
   }
 

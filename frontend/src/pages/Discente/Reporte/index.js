@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
-import api from '../../../config/configApi';
+import axios from "axios";
 
 export default function Reporte(){
     //estado da entrada e texto
@@ -61,33 +61,39 @@ export default function Reporte(){
         const data = {nome, city, curso, ano, suicidio, descrisao}
         console.log(data)
 
+
+        const newReporte =         {
+            "reporte" : [
+                {
+                    "discente": {nome},
+                    "curso": {curso},
+                    "campus": {city}, 
+                    "periodo": {ano},
+                    "descrisao": {descrisao},
+                    "tentativaDeSuicidio": {suicidio}
+                }
+            ]
+        }
+
+        const aux = JSON.stringify(newReporte)
+
         const headers = {
             'headers': {
               'Content-Type': 'application/json'
             }
           }
-      
-          await api.post("/reportes-list", data, headers)
-          .then((response) => {
-            setStatus({
-              type: 'success',
-              mensagem: response.data.mensagem
-            });
-          }).catch((err) => {
-            if(err.response){
-              setStatus({
-                type: 'error',
-                mensagem: err.response.data.mensagem
-              });
-            }else{
-              setStatus({
-                type: 'error',
-                mensagem: "Erro: Tente mais tarde!"
-              });
-            }
-          });
 
-    }
+        const uri = "http://localhost:8080/reporte/salvarReporte"
+
+        axios.post(uri, aux, headers)
+        .then(Response => {
+            //alert(aux)
+            console.log(Response)
+        })
+        .catch(error => console.log(error))
+
+
+     }
 
     return(
         <div className="linha1" >
