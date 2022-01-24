@@ -26,32 +26,29 @@ public class ReporteController {
 	@Autowired
 	private ReporteService reporteService;
 	
-	@GetMapping("/listaTodosReportes")
-	public ModelAndView listarTodosReportes() {
-		ModelAndView modelAndView = new ModelAndView("reporte/listaTodosReportes");
-		modelAndView.addObject("listaReportes", reporteService.retornarTodos());
-		
-		return modelAndView;
-		}
+//	@GetMapping("/listaTodosReportes")
+//	public ModelAndView listarTodosReportes() {
+//		ModelAndView modelAndView = new ModelAndView("reporte/listaTodosReportes");
+//		modelAndView.addObject("listaReportes", reporteService.retornarTodos());
+//		
+//		return modelAndView;
+//		}
 	
-	@PostMapping
+	@PostMapping("salvarReporte")
 	public ResponseEntity salvarReporte(@RequestBody Reporte reporte) throws URISyntaxException {
 		try {
 			reporteService.salvar(reporte);
-			} catch(Exception e){} // GAMBIARRA
+			} catch(Exception e){}
 		
 		return ResponseEntity.created(new URI("/reporte/" + reporte.getId())).body(reporte);	
 	}
 	
-	@GetMapping("/x")
-	public void x() {
-		reporteService.salvar(null);
-	}
-	
-	@GetMapping("/xx")
-	public List<Reporte> listarTudo(){
+	@GetMapping("/listarReportes")
+	public List<Reporte> listarReportes(){
 		
 		return reporteService.retornarTodos();
 	}
+	
+	
 
 }
