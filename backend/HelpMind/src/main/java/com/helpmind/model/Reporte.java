@@ -25,7 +25,7 @@ public class Reporte {
 	
 	private String curso;
 	
-	private int periodo;
+	private String periodo;
 	
 	private boolean tentativaDeSuicidio;
 	
@@ -63,11 +63,12 @@ public class Reporte {
 		this.curso = curso;
 	}
 
-	public int getPeriodo() {
+
+	public String getPeriodo() {
 		return periodo;
 	}
 
-	public void setPeriodo(int periodo) {
+	public void setPeriodo(String periodo) {
 		this.periodo = periodo;
 	}
 

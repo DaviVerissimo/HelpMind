@@ -4,6 +4,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,16 +28,9 @@ public class ReporteController {
 	@Autowired
 	private ReporteService reporteService;
 	
-//	@GetMapping("/listaTodosReportes")
-//	public ModelAndView listarTodosReportes() {
-//		ModelAndView modelAndView = new ModelAndView("reporte/listaTodosReportes");
-//		modelAndView.addObject("listaReportes", reporteService.retornarTodos());
-//		
-//		return modelAndView;
-//		}
-	
 	@PostMapping("salvarReporte")
 	public ResponseEntity salvarReporte(@RequestBody Reporte reporte) throws URISyntaxException {
+		
 		try {
 			reporteService.salvar(reporte);
 			} catch(Exception e){}

@@ -15,9 +15,7 @@ public class ReporteService {
 	private ReporteRepository reporteRepository;
 	
 	public void salvar (Reporte reporte){
-		Reporte r = new Reporte();
-		r.setCampus("picui");r.setCurso("Libras"); r.setDescrisao("Ele ver sinais o tempo todo!!!"); r.setDiscente("D Pedro II");r.setPeriodo(5);
-		//reporte = r;
+
 		reporteRepository.save(reporte);
 		
 	}

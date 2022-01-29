@@ -33,9 +33,9 @@ export default function Reporte(){
 
     //ano /periodo
     const anos = [
-        {name: '1º', code: 'NY'},
-        {name: '2º', code: 'RM'},
-        {name: '3º', code: 'RM'},
+        {name: '1º'},
+        {name: '2º'},
+        {name: '3º'},
     ];
 
     const [ano, setAnos] = useState('1º');
@@ -58,38 +58,49 @@ export default function Reporte(){
       
     
     async function submeter(){
-        const data = {nome, city, curso, ano, suicidio, descrisao}
-        console.log(data)
+        //const data = {nome, city, curso, ano, suicidio, descrisao}
+        //console.log(data)
 
+        var surtada = false;
 
-        const newReporte =         {
-            "reporte" : [
-                {
-                    "discente": {nome},
-                    "curso": {curso},
-                    "campus": {city}, 
-                    "periodo": {ano},
-                    "descrisao": {descrisao},
-                    "tentativaDeSuicidio": {suicidio}
-                }
-            ]
+        if (suicidio.name == "SIM"){
+            surtada = true;
         }
 
-        const aux = JSON.stringify(newReporte)
+        const newReporte =         
+            
+                {
+                    "discente": nome,
+                    "curso": curso.name,
+                    "campus": city.name, 
+                    "periodo": ano.name,
+                    "descrisao": descrisao,
+                    "tentativaDeSuicidio": surtada
+                }
+            
+        
+
+        //teste
+        //const dataJ = JSON.stringify(data)
+        //const listaCursos = cursos.map((curso) => curso + " suellen ")
+        //console.log(listaCursos)
+
+        //teste
+
+        //const aux = JSON.stringify(newReporte)
+        //console.log(aux + "  LUANA")
+        //const objeto = JSON.parse(aux)
 
         const headers = {
             'headers': {
-              'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type':'application/json'
             }
           }
 
-        const uri = "http://localhost:8080/reporte/salvarReporte"
 
-        axios.post(uri, aux, headers)
-        .then(Response => {
-            //alert(aux)
-            console.log(Response)
-        })
+        axios.post("http://localhost:8080/reporte/salvarReporte", newReporte, headers)
+        .then(Response => {})
         .catch(error => console.log(error))
 
 
@@ -115,7 +126,7 @@ export default function Reporte(){
 
                 <div className="linha3" >
                 <div>
-                    <h5>DISCENTE*</h5>
+                    <h5>CAMPUS*</h5>
                     <Dropdown optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.target.value)} placeholder="Monteiro"/>
                 </div>
 
