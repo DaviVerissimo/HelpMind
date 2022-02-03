@@ -27,7 +27,7 @@ import com.helpmind.service.ReporteService;
 public class ReporteController {
 	@Autowired
 	private ReporteService reporteService;
-	
+	//@CrossOrigin(origins = "https://dados.ifpb.edu.br/dataset/f2902132-dfc9-4fba-98ab-40346075224e/resource/47c6e782-6ef9-4942-8361-38d8aac22922/download/cursos.json")
 	@PostMapping("salvarReporte")
 	public ResponseEntity salvarReporte(@RequestBody Reporte reporte) throws URISyntaxException {
 		

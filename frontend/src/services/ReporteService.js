@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const EMPLOYEE_API_BASE_URL = 'http://localhost:8080/reporte/listarReportes' ;
+const EMPLOYEE_API_BASE_URL = 'http://localhost:8080/reporte/listarReportes';
 
-class ReporteService{
+class ReporteService {
 
-    getReporte(){
+    getReporte() {
         return axios.get(EMPLOYEE_API_BASE_URL);
     }
 }

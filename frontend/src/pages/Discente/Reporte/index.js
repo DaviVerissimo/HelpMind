@@ -4,7 +4,9 @@ import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
+import apiCursosIFPB from '../../../services/apiCursosIFPB';
 import axios from "axios";
+
 
 export default function Reporte(){
     //estado da entrada e texto
@@ -58,6 +60,10 @@ export default function Reporte(){
       
     
     async function submeter(){
+
+
+
+
         //const data = {nome, city, curso, ano, suicidio, descrisao}
         //console.log(data)
 
@@ -94,9 +100,31 @@ export default function Reporte(){
         const headers = {
             'headers': {
                 'Accept': 'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'Access-Control-Allow-Origin': '*'
             }
           }
+
+          //api do ifpb
+
+          const apiCursosIFPB = "https://dados.ifpb.edu.br/dataset/f2902132-dfc9-4fba-98ab-40346075224e/resource/47c6e782-6ef9-4942-8361-38d8aac22922/download/cursos.json";
+          console.log(apiCursosIFPB)
+          //axios.use()
+          axios.get(apiCursosIFPB, headers)
+          .then(Response => {
+              var dataCurso = Response.data;
+              console.log(dataCurso)
+          })
+          .catch(error => console.log(error))
+
+        //   apiCursosIFPB
+        //   .get("/", headers)
+        //   .then((response) => console.log((response.data)))
+        //   .catch((err) => {
+        //     console.error("ops! ocorreu um erro" + err);
+        //   });
+
+          //api do ifpb
 
 
         axios.post("http://localhost:8080/reporte/salvarReporte", newReporte, headers)

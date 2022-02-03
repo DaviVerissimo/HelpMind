@@ -54,28 +54,28 @@ export default function Create() {
     //<InputText className='ccc' value={value} onChange={(e) => setValue(e.target.value)} />
 
     <div className="p-component">
-  
-        <h1  >NOVO MATERIAL</h1>
-        <div className='botao'>
-          <button className="btnCancel" type="submit">CANCEL</button>
-          <button className="btnSalvar" type="submit">SALVAR</button>
-        </div>
-        
-        <div className="p-field "   >
-          <label htmlFor="material-nome" className="p-d-block" >
-            NOME
-          </label>
+
+      <h1  >NOVO MATERIAL</h1>
+      <div className='botao'>
+        <button className="btnCancel" type="submit">CANCEL</button>
+        <button className="btnSalvar" type="submit">SALVAR</button>
+      </div>
+
+      <div className="p-field "   >
+        <label htmlFor="material-nome" className="p-d-block" >
+          NOME
+        </label>
         <InputText className='entradaNome' value={value} onChange={(e) => setValue(e.target.value)} />
         {console.log(value)}
-        </div>
+      </div>
 
-        <h5>CATEGORIA</h5>
+      <h5>CATEGORIA</h5>
 
-        <div className='categoria' >
-          <Dropdown optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.value)} placeholder="TODAS" />
-          {console.log(city)}
+      <div className='categoria' >
+        <Dropdown optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.value)} placeholder="TODAS" />
+        {console.log(city)}
 
-        
+
 
 
 

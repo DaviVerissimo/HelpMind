@@ -1,6 +1,6 @@
 
 
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import ReporteService from '../../../services/ReporteService';
@@ -8,7 +8,7 @@ import ReporteService from '../../../services/ReporteService';
 export default function ListaDeReportes() {
 
     const [reportes, setReportes] = useState([])
-    
+
     useEffect(() => {
         getReportes()
         //console.log(reportes);
@@ -18,17 +18,17 @@ export default function ListaDeReportes() {
 
         ReporteService.getReporte().then((response) => {
             setReportes(response.data)
-           // console.log(response.data);
+            // console.log(response.data);
         });
     };
 
     {
         reportes.map((reporte, key) => {
-            console.log({reportes});
+            console.log({ reportes });
         })
     }
-    return ( 
-        <div> 
+    return (
+        <div>
             <div className="card">
                 <DataTable value={reportes} responsiveLayout="scroll">
                     <Column field="Discente" header="Discente" ></Column>
@@ -42,48 +42,48 @@ export default function ListaDeReportes() {
             </div>
 
             <div>
-            <div className = "container">
-            
-            <h1 className = "text-center"> Reporte List</h1>
+                <div className="container">
 
-            <table className = "table table-striped">
-                <thead>
-                    <tr>
-                        <th>  Id</th>
-                        <th>  Discente</th>
-                        <th>  Curso</th>
-                        <th>  Periodo</th>
-                        <th>  Campus</th>
-                        <th>  Periodo</th>
-                        <th>  Suicidio</th>
-                        <th>  Descrisão</th>
-                    </tr>
+                    <h1 className="text-center"> Reporte List</h1>
 
-                </thead>
-                <tbody>
-                    {
-                        reportes.map(
-                            reporte =>
-                                <tr key = {reporte.id}>
-                                    <td> {reporte.id }</td>
-                                    <td> {reporte.discente }</td>
-                                    <td> {reporte.curso }</td>    
-                                    <td> {reporte.periodo }</td>
-                                    <td> {reporte.campus }</td>
-                                    <td> {reporte.tentativaDeSuicidio }</td>
-                                    <td> {reporte.descrisao }</td>
+                    <table className="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>  Id</th>
+                                <th>  Discente</th>
+                                <th>  Curso</th>
+                                <th>  Periodo</th>
+                                <th>  Campus</th>
+                                <th>  Periodo</th>
+                                <th>  Suicidio</th>
+                                <th>  Descrisão</th>
+                            </tr>
 
-                                </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                reportes.map(
+                                    reporte =>
+                                        <tr key={reporte.id}>
+                                            <td> {reporte.id}</td>
+                                            <td> {reporte.discente}</td>
+                                            <td> {reporte.curso}</td>
+                                            <td> {reporte.periodo}</td>
+                                            <td> {reporte.campus}</td>
+                                            <td> {reporte.tentativaDeSuicidio}</td>
+                                            <td> {reporte.descrisao}</td>
 
-                        )
-                    }
+                                        </tr>
 
-                </tbody>
+                                )
+                            }
+
+                        </tbody>
 
 
-            </table>
+                    </table>
 
-        </div>
+                </div>
 
             </div>
 

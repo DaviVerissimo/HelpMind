@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import logoImg from '../../assets/logo.png';
 
 
-function navegar(pagina, history){
+function navegar(pagina, history) {
     history.push(pagina);
 }
 
