@@ -12,13 +12,14 @@ export default function ListaDeReportes() {
     useEffect(() => {
         getReportes()
         //console.log(reportes);
+        // n
     }, [])
 
     const getReportes = () => {
 
         ReporteService.getReporte().then((response) => {
             setReportes(response.data)
-            // console.log(response.data);
+             console.log(response.data);
         });
     };
 
@@ -31,61 +32,17 @@ export default function ListaDeReportes() {
         <div>
             <div className="card">
                 <DataTable value={reportes} responsiveLayout="scroll">
-                    <Column field="Discente" header="Discente" ></Column>
-                    <Column field="ID" header="ID"></Column>
-                    <Column field="Curso" header="Curso"></Column>
-                    <Column field="Campus" header="Campus"></Column>
-                    <Column field="Periodo" header="Periodo"></Column>
-                    <Column field="Ten de Suicidio" header="Ten de Suicidio"></Column>
-                    <Column field="Descrisão" header="Descrisão"></Column>
+                    <Column field="discente" header="Discente" ></Column>
+                    <Column field="id" header="ID"></Column>
+                    <Column field="curso" header="Curso"></Column>
+                    <Column field="campus" header="Campus"></Column>
+                    <Column field="periodo" header="Periodo"></Column>
+                    <Column field="tentativaDeSuicidio" header="Ten de Suicidio"></Column>
+                    <Column field="descrisao" header="Descrisão"></Column>
                 </DataTable>
             </div>
 
-            <div>
-                <div className="container">
 
-                    <h1 className="text-center"> Reporte List</h1>
-
-                    <table className="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>  Id</th>
-                                <th>  Discente</th>
-                                <th>  Curso</th>
-                                <th>  Periodo</th>
-                                <th>  Campus</th>
-                                <th>  Periodo</th>
-                                <th>  Suicidio</th>
-                                <th>  Descrisão</th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                            {
-                                reportes.map(
-                                    reporte =>
-                                        <tr key={reporte.id}>
-                                            <td> {reporte.id}</td>
-                                            <td> {reporte.discente}</td>
-                                            <td> {reporte.curso}</td>
-                                            <td> {reporte.periodo}</td>
-                                            <td> {reporte.campus}</td>
-                                            <td> {reporte.tentativaDeSuicidio}</td>
-                                            <td> {reporte.descrisao}</td>
-
-                                        </tr>
-
-                                )
-                            }
-
-                        </tbody>
-
-
-                    </table>
-
-                </div>
-
-            </div>
 
         </div>
     )
