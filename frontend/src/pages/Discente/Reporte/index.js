@@ -1,15 +1,33 @@
 import React from "react";
 import './styles.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
-import apiCursosIFPB from '../../../services/apiCursosIFPB';
 import { Card } from 'primereact/card';
 import axios from "axios";
 
 
 export default function Reporte() {
+
+    // async function buscarCursosIFPB() {
+    //     var lista = [];
+    //     const cursosIFPB = "http://localhost:8080/reporte/c";
+    //     axios.get(cursosIFPB) //problema esta na API do IFPB
+    //         .then(Response => {
+    //             var dataCurso = Response.data;
+    //             //console.log(dataCurso)
+    //             dataCurso.forEach(item => {
+    //                 //console.log(item.descricao);
+    //                 lista.push(item.descricao);
+    //              });
+    //              console.log(lista)
+
+    //         })
+    //         .catch(error => console.log(error))
+    //         return lista;
+    // }
+
     //estado da entrada e texto
     const [nome, setNome] = useState('');
 
@@ -22,17 +40,64 @@ export default function Reporte() {
         { name: 'Rio Tinto', code: 'IST' },
         { name: 'Campina Grande', code: 'PRS' }
     ];
-    const [city, setCity] = useState('Monteiro');
+    const [city, setCity] = useState();
+    //LEITURA DOS CAMPUS PELO BACKEND
+    // const [cities, setCities] = useState();
+    // useEffect( async () => {
+
+    //     var lista = [];
+    //     const cursosIFPB = "http://localhost:8080/reporte/c";
+    //     axios.get(cursosIFPB) //problema esta na API do IFPB
+    //         .then(Response => {
+    //             var dataCurso = Response.data;
+    //             //console.log(dataCurso)
+    //             dataCurso.forEach(item => {
+
+    //                 lista.push(item.diretoria);
+    //              });
+    //              console.log(lista)
+    //              setCities(lista);
+    //         })
+    //         .catch(error => console.log(error))
+
+
+
+    // }, []);
+
 
     //curso
 
-    const cursos = [
-        { name: 'TÉCNICO INTEGRADO EM INSTRUMENTO MUSICAL', code: 'NY' },
-        { name: 'TÉCNICO INTEGRADO EM INFORMÁTICA', code: 'RM' },
 
-    ];
 
-    const [curso, setCurso] = useState('TÉCNICO INTEGRADO EM INSTRUMENTO MUSICAL');
+    // const cursos = [
+    //     { name: 'TÉCNICO INTEGRADO EM INSTRUMENTO MUSICAL', code: 'NY' },
+    //     { name: 'TÉCNICO INTEGRADO EM INFORMÁTICA', code: 'RM' },
+
+    // ];
+
+    const [curso, setCurso] = useState([]);
+    const [cursos, setCursos] = useState([]);
+
+    useEffect(async () => {
+
+        var lista = [];
+        const cursosIFPB = "http://localhost:8080/reporte/c";
+        axios.get(cursosIFPB) //problema esta na API do IFPB
+            .then(Response => {
+                var dataCurso = Response.data;
+                //console.log(dataCurso)
+                dataCurso.forEach(item => {
+                    //console.log(item.descricao);
+                    lista.push(item.descricao);
+                });
+                console.log(lista)
+                setCursos(lista);
+            })
+            .catch(error => console.log(error))
+
+
+
+    }, []);
 
     //ano /periodo
     const anos = [
@@ -64,6 +129,15 @@ export default function Reporte() {
 
 
 
+        // const c = '';
+
+        // fetch('../../../../public/cursos.json', {
+        //     headers: {
+        //         Accept: 'application/json'
+        //     }
+        // })
+        // .then(res => res.json())
+        // .then(res => setCurso2(res.data))
 
         //const data = {nome, city, curso, ano, suicidio, descrisao}
         //console.log(data)
@@ -109,21 +183,39 @@ export default function Reporte() {
         const config = {
             'headers': {
 
-                
+
             }
         }
 
         //api do ifpb
-
-        const apiCursosIFPB = "https://dados.ifpb.edu.br/api/3/action/datastore_search_sql?sql=SELECT * from  'd6314b94-1623-4aa6-9e73-cf2cbd227ac3'";
-        console.log(apiCursosIFPB)
+        //const apiCursosIFPB = "https://dados.ifpb.edu.br/api/3/action/datastore_search_sql?sql=SELECT * from  'd6314b94-1623-4aa6-9e73-cf2cbd227ac3'";
+        //const apiAntiga = "https://dados.ifpb.edu.br/dataset/f2902132-dfc9-4fba-98ab-40346075224e/resource/47c6e782-6ef9-4942-8361-38d8aac22922/download/cursos.json";
+        //const cabraDaPeste = 'https://jsonplaceholder.typicode.com/posts'
+        // fetch(cabraDaPeste)
+        // .then((response) => response.json())
+        // .then((data) => console.log(data))
+        //console.log(apiCursosIFPB)
         //axios.use()
-        axios.get(apiCursosIFPB, config) //FAZER COM FETCH
-            .then(Response => {
-                var dataCurso = Response.data;
-                console.log(dataCurso)
-            })
-            .catch(error => console.log(error))
+
+        //CODIGO IMPORTANTE
+        // const cursosIFPB = "http://localhost:8080/reporte/c";
+        // axios.get(cursosIFPB) //problema esta na API do IFPB
+        //     .then(Response => {
+        //         var dataCurso = Response.data;
+        //         //console.log(dataCurso)
+
+        //         var lista = [];
+        //         dataCurso.forEach(item => {
+        //             //console.log(item.descricao);
+        //             lista.push(item.descricao);
+        //          });
+        //          //console.log(lista)
+
+        //     })
+        //     .catch(error => console.log(error))
+
+        //console.log(buscarCursosIFPB())
+
 
         //   apiCursosIFPB
         //   .get("/", headers)
@@ -163,7 +255,7 @@ export default function Reporte() {
                         </div>
                         <div>
                             <h5>CAMPUS*</h5>
-                            <Dropdown optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.target.value)} placeholder="Monteiro" />
+                            <Dropdown optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.target.value)} placeholder="Escolha um campus" />
                         </div>
 
                         <div>
