@@ -6,6 +6,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Card } from 'primereact/card';
 import axios from "axios";
+import { Button } from 'primereact/button';
 
 
 export default function Reporte() {
@@ -239,9 +240,13 @@ export default function Reporte() {
 
                 <Card title="REPORTAR CASO DE VULNERABILIDADE MENTAL"></Card>
                 <div className='botao'>
-                    <Card>
-                        <button className="btnCancel" type="submit">CANCEL</button>
-                        <button className="btnSalvar" onClick={submeter} type="submit">SALVAR</button>
+                    <Card className="" >
+
+                        <div className="   align-items-end "  >
+                            <Button className="p-mb-3 p-col-1 p-button-secondary " style={{ right: '10px' }} label="CANCEL" />
+
+                            <Button className="p-mb-3 p-col-1" label="SALVAR" onClick={submeter} />
+                        </div>
                     </Card>
                 </div>
 
@@ -279,10 +284,11 @@ export default function Reporte() {
                             </div>
 
                         </div>
+                        
                     </Card>
-
+                        
                 </div>
-
+                
             </div>
         </div>
 
