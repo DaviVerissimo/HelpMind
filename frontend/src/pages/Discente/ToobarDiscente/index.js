@@ -5,7 +5,7 @@ import { Button } from 'primereact/button';
 import logoImg from './assets/favicon.ico';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-export default function ToobarADM() {
+export default function ToobarDiscente() {
 
     //<Button icon= {image} className="p-mr-2" />
     const image = <img src={logoImg} alt="logo"></img>
@@ -20,10 +20,10 @@ export default function ToobarADM() {
             <Button icon="pi pi-calendar" className="p-button-success p-mr-2" />
             <Button icon="pi pi-times" className="p-button-danger" /> */}
             <div className='p-grid ' style={{ padding: '0em' }} >
-            <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Documentos' />
-                <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' />
+            <Button icon={createIcon("pi pi-file-o")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Inventario' />
+                {/* <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' /> */}
                 <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' />
-                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Admin'  />
+                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Discente'  />
             </div>
         </React.Fragment>
     );

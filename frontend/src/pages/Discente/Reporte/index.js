@@ -7,6 +7,9 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { Card } from 'primereact/card';
 import axios from "axios";
 import { Button } from 'primereact/button';
+//import ToobarPublica from '../../Publica/ToobarPublica';
+import ToobarDiscente from "../ToobarDiscente";
+
 
 
 export default function Reporte() {
@@ -235,7 +238,8 @@ export default function Reporte() {
     }
 
     return (
-        <div class="flex align-items-center justify-content-center" >
+        <div> <ToobarDiscente></ToobarDiscente>
+                    <div class="flex align-items-center justify-content-center" >
             <div >
 
                 <Card title="REPORTAR CASO DE VULNERABILIDADE MENTAL"></Card>
@@ -290,6 +294,7 @@ export default function Reporte() {
                 </div>
                 
             </div>
+        </div>
         </div>
 
     );
