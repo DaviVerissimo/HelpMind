@@ -11,12 +11,12 @@ export default function Login() {
         <div>
             <ToobarPublica />
             <div className="login-container p-grid p-justify-center p-align-center" style={{ height: '100%' }} >
-
+{/* 
                 <div className="login-ladoEsquerdo p-col-4 " >
                     <img src={logoImg} alt="logo"></img>
-                </div>
+                </div> */}
 
-                <div className="login-ladoDireito p-col-8" >
+                <div className="login-ladoDireito p-col-16" >
                     <Card title="SEJA BEM VINDO"
                         subTitle="aqui você encontra opções de ajuda" >
 
