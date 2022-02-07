@@ -3,11 +3,13 @@ import './styles.css'
 import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
 import logoImg from './assets/favicon.ico';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ToobarPublica() {
 
     //<Button icon= {image} className="p-mr-2" />
     const image = <img src={logoImg} alt="logo"></img>
+    const history = useHistory();
 
     const rightContents = (
         <React.Fragment>
@@ -28,10 +30,10 @@ export default function ToobarPublica() {
                     <img src={logoImg} alt="logo" style={{ height: '3.75em', width: 'auto' }} />
 
                 </div>
-                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' />
+                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/') }}/>
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' />
                 <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' />
-                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' />
+                <Button icon={createIcon("pi pi-sign-in")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Entrar' onClick={() => { history.push('/publica/Login') }} />
             </div>
         </React.Fragment>
     );
