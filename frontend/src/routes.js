@@ -11,6 +11,7 @@ import QuemSomos from "./pages/Publica/QuemSomos";
 import Login from "./pages/Publica/Login";
 import ListaDeReportes from "./pages/ADM/ListaDeReportes";
 import MateriaisOnline from "./pages/Publica/MateriaisOnline";
+import SimulacaoQuestionarioResultado from "./pages/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado";
 
 export default function Routes() {
     return (
@@ -24,6 +25,7 @@ export default function Routes() {
                 <Route path="/publica/QuemSomos" component={Home} />
                 <Route path="/publica/Login" component={Login} />
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
+                <Route path="/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado" component={SimulacaoQuestionarioResultado} />
                 <Route path="/ADM/ListaDeReportes" component={ListaDeReportes} />
             </Switch>
         </BrowserRouter>
