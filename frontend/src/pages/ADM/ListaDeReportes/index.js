@@ -50,10 +50,10 @@ export default function ListaDeReportes() {
                 <Card title="REPORTES" ></Card>
 
                 <Card >
-                    <Button className="p-mb-0  p-mr-3 p-col-0" label=""  icon="pi pi-search" />
+                    <Button className="p-mb-0  p-mr-3 p-col-0" label="" icon="pi pi-search" />
                     <InputText className='className="p-mb-5 p-mr-3 p-col-5 ' ></InputText>
                     {/* <InputText className='className="p-mb-5 p-col-4 ' ></InputText> */}
-                    <Dropdown  className='className="p-mb-4 p-col-1' optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.target.value)} placeholder="Ordenar por" />
+                    <Dropdown className='className="p-mb-4 p-col-1' optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.target.value)} placeholder="Ordenar por" />
                 </Card>
 
                 <Card>
@@ -67,7 +67,19 @@ export default function ListaDeReportes() {
                                 <Column field="periodo" header="Periodo"></Column>
                                 <Column field="tentativaDeSuicidio" header="Ten de Suicidio"></Column>
                                 <Column field="descrisao" header="Descrisão"></Column>
-                                <Column field="" header="Açoes"></Column>
+                                <Column field="" header="Açoes Iventario"
+                                    body={
+                                        <div>
+                                            <Card>
+                                                <div>
+                                                <Button className="p-mb-5  p-mr-3 p-col-0" label="VISUALIZAR" icon="pi pi-file" />
+                                                <Button className="p-mb-0  p-mr-3 p-col-0" label="SOLICITAR" icon="pi pi-book" />
+                                                </div>
+                                            </Card>
+                                        </div>
+
+                                    }
+                                ></Column>
                             </DataTable>
                         </div>
                     </div>
