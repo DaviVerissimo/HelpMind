@@ -32,7 +32,7 @@ export default function ToobarPublica() {
                 </div>
                 <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/') }}/>
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' onClick={() => { history.push('/publica/MateriaisOnline') }} />
-                <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' />
+                <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' onClick={() => { history.push('/Publica/SimuladorDeQuestionario/SimulacaoQuestionario') }} />
                 <Button icon={createIcon("pi pi-sign-in")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Entrar' onClick={() => { history.push('/publica/Login') }} />
             </div>
         </React.Fragment>
