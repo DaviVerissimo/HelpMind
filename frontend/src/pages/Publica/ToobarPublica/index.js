@@ -11,17 +11,21 @@ export default function ToobarPublica() {
     const image = <img src={logoImg} alt="logo"></img>
     const history = useHistory();
 
-    const rightContents = (
-        <React.Fragment>
-            <Button icon="pi pi-search" className="p-mr-2" />
-            <Button icon="pi pi-calendar" className="p-button-success p-mr-2" />
-            <Button icon="pi pi-times" className="p-button-danger" />
-        </React.Fragment>
-    );
+
 
     const createIcon = (className) => {
         return <i className={className} style={{ 'fontSize': '2em' }}></i>
     }
+
+    const rightContents = (
+        <React.Fragment className='p-col-2' >
+            {/* <Button icon="pi pi-search" className="p-mr-2" />
+            <Button icon="pi pi-calendar" className="p-button-success p-mr-2" />
+            <Button icon="pi pi-times" className="p-button-danger" /> */}
+            <Button icon={createIcon("pi pi-sign-in")} className=" p-button-lg  p-mr-3 p-col-2" label='Entrar' onClick={() => { history.push('/publica/Login') }} />
+        </React.Fragment>
+    );
+
     const leftContents = (
         <React.Fragment>
 
@@ -33,14 +37,16 @@ export default function ToobarPublica() {
                 <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/') }}/>
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' onClick={() => { history.push('/publica/MateriaisOnline') }} />
                 <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' onClick={() => { history.push('/Publica/SimuladorDeQuestionario/SimulacaoQuestionario') }} />
-                <Button icon={createIcon("pi pi-sign-in")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Entrar' onClick={() => { history.push('/publica/Login') }} />
+                {/* <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' /> */}
+                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
+                
             </div>
         </React.Fragment>
     );
 
     return (
         <div>
-            <Toolbar left={leftContents} />
+            <Toolbar left={leftContents} right={rightContents} />
         </div>
 
 

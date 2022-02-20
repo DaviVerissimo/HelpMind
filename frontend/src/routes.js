@@ -18,12 +18,12 @@ export default function Routes() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={QuemSomos} />
+                <Route path="/" exact component={Home} />
                 <Route path="/material/create" component={Create} />
                 <Route path="/material/Viewer" component={Viewer} />
                 <Route path="/material/Crud" component={Crud} />
                 <Route path="/discente/Reporte" component={Reporte} />
-                <Route path="/publica/QuemSomos" component={Home} />
+                <Route path="/publica/QuemSomos" component={QuemSomos} />
                 <Route path="/publica/Login" component={Login} />
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
                 <Route path="/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado" component={SimulacaoQuestionarioResultado} />

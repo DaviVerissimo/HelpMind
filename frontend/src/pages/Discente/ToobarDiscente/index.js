@@ -20,10 +20,11 @@ export default function ToobarDiscente() {
             <Button icon="pi pi-calendar" className="p-button-success p-mr-2" />
             <Button icon="pi pi-times" className="p-button-danger" /> */}
             <div className='p-grid ' style={{ padding: '0em' }} >
-            <Button icon={createIcon("pi pi-file-o")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Inventario' />
+                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
+                <Button icon={createIcon("pi pi-file-o")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Inventario' />
                 {/* <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' /> */}
                 <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' />
-                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Discente'  />
+                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Discente' />
             </div>
         </React.Fragment>
     );
@@ -37,7 +38,7 @@ export default function ToobarDiscente() {
                     <img src={logoImg} alt="logo" style={{ height: '3.75em', width: 'auto' }} />
 
                 </div>
-                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/') }}/>
+                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/') }} />
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' onClick={() => { history.push('/publica/MateriaisOnline') }} />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
                 <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Mensagens' />
@@ -47,11 +48,11 @@ export default function ToobarDiscente() {
     );
 
     return (
-        
-            <div>
-                <Toolbar left={leftContents} right={rightContents} /> 
-            </div>
-        
+
+        <div>
+            <Toolbar left={leftContents} right={rightContents} />
+        </div>
+
 
 
     );
