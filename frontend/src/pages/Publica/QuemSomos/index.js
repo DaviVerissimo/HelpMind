@@ -40,7 +40,7 @@ export default function QuemSomos() {
                 </div>
 
                 <div className="card-visão p-col-4" >
-                    <Card title="Sobre o HelpMind"
+                    <Card title="Sobre o PROMOÇÃO À SAÚDE MENTAL:"
                         subTitle="Uma ferramenta com intuito de ajudar alunos do IFPB, que se encontram com
                                 algum tipo de dificuldade psicológica" >
                     </Card>
