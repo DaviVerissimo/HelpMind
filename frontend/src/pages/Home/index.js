@@ -32,7 +32,7 @@ export default function Home() {
                     <div className=" p-grid p-dir-col p-pl-3" >
                         <Button className="p-mb-3 p-col-4" label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/publica/Login') }} />
                         <Button className="p-mb-3 p-col-4" label="MATERIAIS DE APOIO ONLINE"  onClick={() => { history.push('/publica/MateriaisOnline') }} />
-                        <Button className="p-mb-3 p-col-4" label="SIMULAÇÃO DOS INVENTARIOS DE BECK" onClick={() => { history.push('/Publica/SimuladorDeQuestionario/SimulacaoQuestionario') }}/>
+                        <Button className="p-mb-3 p-col-4" label="SIMULAÇÃO DOS INVENTARIOS DE BECK" onClick={() => { history.push('/Publica/SimuladorDeQuestionario/EscolherQuestionarios') }}/>
                         <Button className="p-mb-3 p-col-4" label="QUEM SOMOS" onClick={() => { history.push('/publica/QuemSomos') }} />
                     </div>
                 </Card>

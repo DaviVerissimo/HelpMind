@@ -13,6 +13,7 @@ import ListaDeReportes from "./pages/ADM/ListaDeReportes";
 import MateriaisOnline from "./pages/Publica/MateriaisOnline";
 import SimulacaoQuestionarioResultado from "./pages/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado";
 import SimuladorDeQuestionario from "./pages/Publica/SimuladorDeQuestionario/SimuladorDeQuestionario";
+import EscolherQuestionario from "./pages/Publica/SimuladorDeQuestionario/EscolherQuestionarios";
 
 export default function Routes() {
     return (
@@ -28,6 +29,7 @@ export default function Routes() {
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
                 <Route path="/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado" component={SimulacaoQuestionarioResultado} />
                 <Route path="/Publica/SimuladorDeQuestionario/SimulacaoQuestionario" component={SimuladorDeQuestionario} />
+                <Route path="/Publica/SimuladorDeQuestionario/EscolherQuestionarios" component={EscolherQuestionario} />
                 <Route path="/ADM/ListaDeReportes" component={ListaDeReportes} />
             </Switch>
         </BrowserRouter>

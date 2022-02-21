@@ -46,7 +46,7 @@ export default function SimuladorDeQuestionario() {
     return (
         <div> <ToobarPublica></ToobarPublica>
             <div>
-                <Card title='SIMULAÇÃO DE QUESTIONÁRIO' ></Card>
+                <Card title='SIMULAÇÃO DE INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)' ></Card>
             </div>
 
             <div>

@@ -11,20 +11,21 @@ export default function Login() {
         <div>
             <ToobarPublica />
             <div className="login-container p-grid p-justify-center p-align-center" style={{ height: '100%' }} >
-{/* 
-                <div className="login-ladoEsquerdo p-col-4 " >
-                    <img src={logoImg} alt="logo"></img>
-                </div> */}
 
-                <div className="login-ladoDireito p-col-16" >
-                    <Card title="SEJA BEM VINDO"
-                        subTitle="aqui você encontra opções de ajuda" >
+                <div className="login p-col-16" >
+                    <Card title="SEJA BEM VINDO ESTUDANTE E COMUNIDADE ACADÊMICA"
+                        subTitle="aqui opções de ajuda ao estudante, e auxilio aos profissionais de saúde " >
 
-                        <div className=" p-grid p-dir-col p-pl-3" >
+                        <div  >
                             <Button className="p-mb-3 p-col-4" label="ENTRAR COM E-MAIL ACADEMICO" />
                             <h3>ou</h3>
                             <Button className="p-mb-3 p-col-4 p-button-secondary" label="NÂO POSSUO E-MAIL ACADEMICO" />
                         </div>
+
+                        <Card subTitle=' • Inventário de Depressão de Beck (BDI)' ></Card>
+                        <Card subTitle=' • Inventário de Ansiedade de Beck (BAI)' ></Card>
+                        <Card subTitle=' • Questionário socioeconômico ' ></Card>
+                        <Card subTitle=' • Material de apoio a saúde mental.' ></Card>
                     </Card>
                 </div>
             </div>
