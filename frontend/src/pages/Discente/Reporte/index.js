@@ -99,9 +99,24 @@ export default function Reporte() {
             })
             .catch(error => console.log(error))
 
+            // const headers = {
+            //     'headers': {
+            //         'Accept': 'application/json',
+            //         'Content-Type': 'application/json',
+            //         'Access-Control-Allow-Origin': '*'
+            //     }
+            // }
+            
+            // axios.post("http://localhost:8080/reporte/d", lista, headers)
+            // .then(Response => { 
+            //     //console.log(" AQUI " + Response.data)
+            // })
+            // .catch(error => console.log(error))
+
 
 
     }, []);
+
 
     //ano /periodo
     const anos = [

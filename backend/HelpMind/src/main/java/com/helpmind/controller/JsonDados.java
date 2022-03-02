@@ -8,6 +8,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
+import com.helpmind.model.Curso;
+
 
 
 public class JsonDados {
@@ -29,6 +31,25 @@ public class JsonDados {
 		}
 		
 		return lista;
+	}
+	
+	public List<Curso> trasferiObjetosJSOMparaObjetosCurso() {
+		List<Curso> listaDeCursos = new ArrayList<Curso>();
+		JSONArray listaDeIFs = this.extrairDados();
+		
+	     for (int i = 0;i < listaDeIFs.size(); i++) {
+	    	 String valor = listaDeIFs.get(i).toString();
+	    	 JSONObject objeto = (JSONObject) listaDeIFs.get(i);
+	    	 String nomeCurso = (String) objeto.get("descricao");
+	    	 String campus = (String) objeto.get("diretoria");
+	    	 Curso curso = new Curso();
+	    	 curso.setNomeCurso(nomeCurso);
+	    	 curso.setCampus(campus);
+	    	 listaDeCursos.add(curso);
+	    	 System.out.println(curso.getNomeCurso() + " " + curso.getCampus());
+	     }
+		
+		return listaDeCursos;
 	}
 	
 	public List<String> carregarPorChave(String chave){
