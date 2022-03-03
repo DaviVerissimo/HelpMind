@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { ListBox } from 'primereact/listbox';
 import { Checkbox } from 'primereact/checkbox';
-
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarPublica from '../../ToobarPublica/index';
 
 export default function SimuladorDeQuestionario() {
@@ -43,6 +43,8 @@ export default function SimuladorDeQuestionario() {
     const [city, setCity] = useState();
     const [checked, setChecked] = useState();
 
+    const history = useHistory();
+
     return (
         <div> <ToobarPublica></ToobarPublica>
             <div>
@@ -50,8 +52,9 @@ export default function SimuladorDeQuestionario() {
             </div>
 
             <div>
-                <Card subTitle='Este questionário consiste em 21 grupos de afirmações. Marque a afirmação que descreve melhor a maneira que você tem se sentido na última semana, incluindo hoje. Se várias afirmações num
-grupo parecerem se aplicar igualmente bem, marque cada uma. Tome cuidado de ler todas as afirmações, em cada grupo, antes de fazer sua escolha.' >
+                <Card subTitle='Este questionário consiste em 21 grupos de afirmações. Marque a afirmação que descreve melhor a maneira que você tem se 
+                sentido na última semana, incluindo hoje. Se várias afirmações num grupo parecerem se aplicar igualmente bem, marque cada uma. Tome cuidado
+                 de ler todas as afirmações, em cada grupo, antes de fazer sua escolha.' >
                 </Card>
             </div>
             <div>
@@ -60,7 +63,7 @@ grupo parecerem se aplicar igualmente bem, marque cada uma. Tome cuidado de ler 
                     <div>
                         <Card subTitle="Se o sistema recomendar: Realize um auto reporte." >
                             <Button className="p-mb-3 p-col-1 p-button-secondary  " style={{ right: '10px' }} label="ANTERIOR" />
-                            <Button className="p-mb-3 p-col-2" label="PRÓXIMA QUESTÃO" />
+                            <Button className="p-mb-3 p-col-2" label="PRÓXIMA QUESTÃO" onClick={() => { history.push('/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado') }}/>
                         </Card>
                     </div>
 

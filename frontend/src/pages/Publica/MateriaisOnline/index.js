@@ -8,6 +8,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { RadioButton } from 'primereact/radiobutton';
 import img1 from './assets/img1.jpg';
 import img2 from './assets/img2.jpg';
 
@@ -25,15 +26,29 @@ export default function MateriaisOnline() {
 
     const history = useHistory();
 
+    const [value, setValue] = useState();
+
     return (
 
         <div> <ToobarPublica></ToobarPublica>
 
             <Card title="GERENCIA DE MATERIAIS"></Card>
             <div>
-                <Card>
+                <Card className="" >
                     <h5>CATEGORIA</h5>
-                    <Dropdown optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.value)} placeholder="TODAS" />
+                    {/* <Dropdown optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.value)} placeholder="TODAS" /> */}
+                    <RadioButton className="p-mt-3" value="val1" name="city" onChange={(e) => setValue(e.value)} checked={value === 'val1'} />
+                    <label>Depresão</label>
+                    <RadioButton className="p-ml-3" value="val1" name="city" onChange={(e) => setValue(e.value)} checked={value === 'val1'} />
+                    <label>Ansiedade</label>
+                    <RadioButton className="p-ml-3" value="val1" name="city" onChange={(e) => setValue(e.value)} checked={value === 'val1'} />
+                    <label>Suicidio</label>
+                    <RadioButton className="p-ml-3" value="val1" name="city" onChange={(e) => setValue(e.value)} checked={value === 'val1'} />
+                    <label>Outubro Rosa</label>
+                    <RadioButton className="p-ml-3" value="val1" name="city" onChange={(e) => setValue(e.value)} checked={value === 'val1'} />
+                    <label>Biporalidade</label>
+                    <RadioButton className="p-ml-3" value="val1" name="city" onChange={(e) => setValue(e.value)} checked={value === 'val1'} />
+                    <label>Bulling</label>
                 </Card>
 
                 <Card>
@@ -41,7 +56,8 @@ export default function MateriaisOnline() {
                         <div className="card">
                             <DataTable value={cities} responsiveLayout="scroll">
 
-                                <Column field="" header="Depresão"
+                                <Column field="" 
+                                // header="Depresão"
                                     body={
                                         <div>
                                             <Card>
@@ -64,7 +80,8 @@ export default function MateriaisOnline() {
                                     }
                                 ></Column>
 
-                                <Column field="" header="Açoes"
+                                <Column field="" 
+                                // header="Açoes"
                                     body={
                                         <div>
                                             <Card>
@@ -86,53 +103,8 @@ export default function MateriaisOnline() {
 
                                     }
                                 ></Column>
-                                <Column field="" header="Ansiedade"
-                                    body={
-                                        <div>
-                                            <Card>
-                                                <div>
-                                                    <Card>
-                                                        <div>
-                                                            <img src={img1} alt="logo" style={{ height: '10.75em', width: 'auto' }} />
-                                                            <h7>Meu titulo das cataratas do niagua</h7>
-                                                            <Button>VISUALIZAR</Button>
-                                                        </div>
-                                                    </Card>
-
-
-
-
-                                                </div>
-                                            </Card>
-                                        </div>
-
-                                    }
-                                ></Column>
-
-                                <Column field="" header="Suicidio"
-                                    body={
-                                        <div>
-                                            <Card>
-                                                <div>
-                                                    <Card>
-                                                        <div>
-                                                            <img src={img1} alt="logo" style={{ height: '10.75em', width: 'auto' }} />
-                                                            <h7>Meu titulo das cataratas do niagua</h7>
-                                                            <Button>VISUALIZAR</Button>
-                                                        </div>
-                                                    </Card>
-
-
-
-
-                                                </div>
-                                            </Card>
-                                        </div>
-
-                                    }
-                                ></Column>
-
-                                <Column field="" header="Outubro Rosa"
+                                <Column field="" 
+                                // header="Ansiedade"
                                     body={
                                         <div>
                                             <Card>
@@ -155,7 +127,8 @@ export default function MateriaisOnline() {
                                     }
                                 ></Column>
 
-                                <Column field="" header="Biporalidade"
+                                <Column field="" 
+                                // header="Suicidio"
                                     body={
                                         <div>
                                             <Card>
@@ -178,7 +151,8 @@ export default function MateriaisOnline() {
                                     }
                                 ></Column>
 
-                                <Column field="" header="Toxicidade social"
+                                <Column field="" 
+                                // header="Outubro Rosa"
                                     body={
                                         <div>
                                             <Card>
@@ -201,7 +175,8 @@ export default function MateriaisOnline() {
                                     }
                                 ></Column>
 
-                                <Column field="" header="Bulling"
+                                <Column field="" 
+                                // header="Biporalidade"
                                     body={
                                         <div>
                                             <Card>
@@ -224,7 +199,56 @@ export default function MateriaisOnline() {
                                     }
                                 ></Column>
 
-                                <Column field="" header="Açoes"
+                                <Column field="" 
+                                // header="Toxicidade social"
+                                    body={
+                                        <div>
+                                            <Card>
+                                                <div>
+                                                    <Card>
+                                                        <div>
+                                                            <img src={img1} alt="logo" style={{ height: '10.75em', width: 'auto' }} />
+                                                            <h7>Meu titulo das cataratas do niagua</h7>
+                                                            <Button>VISUALIZAR</Button>
+                                                        </div>
+                                                    </Card>
+
+
+
+
+                                                </div>
+                                            </Card>
+                                        </div>
+
+                                    }
+                                ></Column>
+
+                                <Column field="" 
+                                // header="Bulling"
+                                    body={
+                                        <div>
+                                            <Card>
+                                                <div>
+                                                    <Card>
+                                                        <div>
+                                                            <img src={img1} alt="logo" style={{ height: '10.75em', width: 'auto' }} />
+                                                            <h7>Meu titulo das cataratas do niagua</h7>
+                                                            <Button>VISUALIZAR</Button>
+                                                        </div>
+                                                    </Card>
+
+
+
+
+                                                </div>
+                                            </Card>
+                                        </div>
+
+                                    }
+                                ></Column>
+
+                                <Column field="" 
+                                // header="Açoes"
                                     body={
                                         <div>
                                             <Card>

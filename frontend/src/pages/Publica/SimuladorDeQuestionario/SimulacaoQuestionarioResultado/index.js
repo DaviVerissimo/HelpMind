@@ -11,44 +11,34 @@ export default function SimulacaoQuestionarioResultado() {
         <div>
             <ToobarPublica></ToobarPublica>
             <div className="quemSomos-container p-grid p-justify-center p-align-center p-component  p-dir-col " style={{ height: '100%' }} >
-                <Card title="RESULTADO!"></Card>
+                <Card title="RESULTADO"></Card>
 
+                <div className="home-ladoEsquerdo p-col-4 p-mt-3" >
+                    <Card
+                        subTitle="PONTOS" >
+                        <h1>26</h1>
+                    </Card>
+                </div>
 
+                <div className="home-ladoEsquerdo p-col-4 p-mt-3" >
+                    <Card subTitle="RESULTADO" >
+                        <h1>Depresão moderada</h1>
+                    </Card>
+                </div>
 
-                
-                    <div className="home-ladoEsquerdo p-col-4 " >
-                        <Card
-                            subTitle="PONTOS" >
-                            <h1>26</h1>
-                        </Card>
-                    </div>
-
-                    <div className="home-ladoEsquerdo p-col-4 " >
-                        <Card subTitle="RESULTADO" >
-                            <h1>Depresão moderada</h1>
-                        </Card>
-                    </div>
-                
-
-                <div className="home-ladoEsquerdo p-col-4 " >
+                <div className="home-ladoEsquerdo p-col-4 p-mt-3" >
                     <Card title="Recomendamos que realize um auto reporte!"
-                        subTitle="O iventario de beck considera todos os valores como depresão. Valores NÂO SIGNIFICÂO que vc esterja com depressão." >
+                        subTitle="O iventario de beck considera todos os valores como depresão. Valores NÂO SIGNIFICAM que vc esterja com depressão." >
+                        <div className=" " >
+                            <Card>
+                                <Button>AUTO REPORTE</Button>
+                            </Card>
+                        </div>
                     </Card>
                 </div>
 
 
 
-
-
-                <div className="home-ladoEsquerdo p-col-4 " >
-                    <Card>
-                        <Button>AUTO REPORTE</Button>
-                    </Card>
-                </div>
-                <div>
-
-
-                </div>
             </div>
 
         </div>
