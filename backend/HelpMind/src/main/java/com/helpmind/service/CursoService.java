@@ -1,5 +1,6 @@
 package com.helpmind.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,25 @@ public class CursoService {
 		List<Curso> cursosPorCampus = cursoRepository.findByCampus(campus);
 		return cursosPorCampus;
 	}
+	
+	public List<String> retornarCampus(){
+		List<Curso> cursos = cursoRepository.findAll();
+		List<String> listaComCampusRepetidos = new ArrayList<String>();
+		List<String> listaComFiltro = new ArrayList<String>();
+		
+		for (int i = 0; i < cursos.size(); i++) {
+			listaComCampusRepetidos.add(cursos.get(i).getCampus());
+		}
+		
+		for (int i = 0; i < listaComCampusRepetidos.size(); i++) {
+			if (!listaComFiltro.contains(listaComCampusRepetidos.get(i))) {
+				listaComFiltro.add(listaComCampusRepetidos.get(i));
+			}
+		}
+		
+		return listaComFiltro;
+	}
+	
 	
 	public List<Curso> updateCursos(){
 		List<Curso> cursos = null;

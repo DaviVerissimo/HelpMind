@@ -30,9 +30,6 @@ public class ReporteController {
 	@Autowired
 	private ReporteService reporteService;
 	
-	@Autowired
-	private CursoService campusService;
-	
 	@PostMapping("salvarReporte")
 	public ResponseEntity salvarReporte(@RequestBody Reporte reporte) throws URISyntaxException {
 		
@@ -64,24 +61,6 @@ public class ReporteController {
 		}
 		
 		return data;
-	}
-	
-	@PostMapping("d")
-	public ResponseEntity receberCursos(@RequestBody List<String> cursos) throws URISyntaxException {
-		
-		try {
-			
-			
-			
-			} catch(Exception e){}
-		
-		return ResponseEntity.created(new URI("/reporte/" )).body(cursos);	
-	}
-	
-	@GetMapping("cursos")
-	public List<String> getCursos(){
-		
-		return null;
 	}
 
 }
