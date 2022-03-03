@@ -9,6 +9,7 @@ import axios from "axios";
 import { Button } from 'primereact/button';
 //import ToobarPublica from '../../Publica/ToobarPublica';
 import ToobarDiscente from "../ToobarDiscente";
+import { JsonPipe } from "@angular/common";
 
 
 
@@ -37,14 +38,34 @@ export default function Reporte() {
 
     //dropdown
     // campus
-    const cities = [
-        { name: 'Monteiro', code: 'NY' },
-        { name: 'Cajazeiras', code: 'RM' },
-        { name: 'João Pessoa', code: 'LDN' },
-        { name: 'Rio Tinto', code: 'IST' },
-        { name: 'Campina Grande', code: 'PRS' }
-    ];
-    const [city, setCity] = useState();
+    //const cities = kakaroto();
+
+    // function kakaroto(){
+
+    //     var lista = [];
+    //     const campus = "http://localhost:8080/curso/listarCampus";
+    //     axios.get(campus) //problema esta na API do IFPB
+    //         .then(Response => {
+    //             var dataCampus = Response.data;
+    //             //console.log(dataCurso)
+    //             dataCampus.forEach(item => {
+    //                 //console.log(item.descricao);
+    //                 lista.push(item);
+    //             });
+    //             //console.log("campus " + lista)
+    //             setCity(lista);
+                
+    //             //console.log("campus " + lista);
+    //             console.log(lista);
+                
+    //         })
+    //         .catch(error => console.log(error))
+
+    //         return lista;
+    // }
+    
+    const [city, setCity] = useState(null);
+    const [cities, setCities] = useState();
     //LEITURA DOS CAMPUS PELO BACKEND
     // const [cities, setCities] = useState();
     // useEffect( async () => {
@@ -81,7 +102,7 @@ export default function Reporte() {
 
     const [curso, setCurso] = useState([]);
     const [cursos, setCursos] = useState([]);
-
+    //cursos
     useEffect(async () => {
 
         var lista = [];
@@ -116,6 +137,55 @@ export default function Reporte() {
 
 
     }, []);
+
+        //campus
+        useEffect(async () => {
+
+            var lista = [];
+            const campus = "http://localhost:8080/curso/listarCampus";
+            axios.get(campus) //problema esta na API do IFPB
+                .then(Response => {
+                    var dataCampus = Response.data;
+                    //console.log(dataCurso)
+                    dataCampus.forEach(item => {
+                        //console.log(item.descricao);
+                        lista.push(item);
+                    });
+                    //console.log("campus " + lista)
+                    //setCity(lista);
+                    
+                    //console.log("campus " + lista);
+                   // console.log(setCity);
+                   lista = lista.map(
+                     (elementoCampus) => {
+                         return {
+                             label:elementoCampus, 
+                              value: elementoCampus
+                            }
+                     }
+                   ).sort((a, b) => a.label.localeCompare(b.label));
+                   setCities(lista);
+                   console.log("campus " , lista)
+                })
+                .catch(error => console.log(error))
+    
+                // const headers = {
+                //     'headers': {
+                //         'Accept': 'application/json',
+                //         'Content-Type': 'application/json',
+                //         'Access-Control-Allow-Origin': '*'
+                //     }
+                // }
+                
+                // axios.post("http://localhost:8080/reporte/d", lista, headers)
+                // .then(Response => { 
+                //     //console.log(" AQUI " + Response.data)
+                // })
+                // .catch(error => console.log(error))
+    
+    
+    
+        }, []);
 
 
     //ano /periodo
@@ -272,31 +342,31 @@ export default function Reporte() {
                 <div className="linha3" >
                     <Card >
 
-                        <div>
+                        <div className="p-mb-3" >
                             <h5>DISCENTE*</h5>
                             <InputText className='entradaNome' value={nome} onChange={(e) => setNome(e.target.value)} />
 
                         </div>
-                        <div>
+                        <div className="p-mb-3" >
                             <h5>CAMPUS*</h5>
-                            <Dropdown optionLabel="name" value={city} options={cities} onChange={(e) => setCity(e.target.value)} placeholder="Escolha um campus" />
+                            <Dropdown  value={city} options={cities} onChange={(e) => setCity(e.value)} placeholder="Escolha um campus" />
                         </div>
 
-                        <div>
+                        <div className="p-mb-3" >
                             <h5>CURSO*</h5>
                             <Dropdown optionLabel="name" value={curso} options={cursos} onChange={(e) => setCurso(e.target.value)} placeholder="Escolha um curso" />
                         </div>
 
-                        <div>
+                        <div className="p-mb-3" >
                             <h5>ANO / PERÍODO*</h5>
                             <Dropdown optionLabel="name" value={ano} options={anos} onChange={(e) => setAnos(e.target.value)} placeholder="Não se aplica" />
                         </div>
 
-                        <div>
+                        <div className="p-mb-3" >
                             <h5>JÁ TENTOU SUICÍDIO?</h5>
                             <Dropdown optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setTentouSuicidio(e.target.value)} placeholder="Não se aplica" />
                         </div>
-                        <div className="linha4" >
+                        <div className="p-mb-3" >
                             <div>
                                 <h5>DESCRIÇÃO</h5>
                                 <InputTextarea rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
