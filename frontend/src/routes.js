@@ -14,6 +14,8 @@ import MateriaisOnline from "./pages/Publica/MateriaisOnline";
 import SimulacaoQuestionarioResultado from "./pages/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado";
 import SimuladorDeQuestionario from "./pages/Publica/SimuladorDeQuestionario/SimuladorDeQuestionario";
 import EscolherQuestionario from "./pages/Publica/SimuladorDeQuestionario/EscolherQuestionarios";
+import InventarioDeBeckFinalizar from "./pages/Publica/SimuladorDeQuestionario/InventarioDeBeckFinalizar";
+import EscolherQuestionariosDiscente from "./pages/Discente/EscolherQuestionariosDiscente";
 
 export default function Routes() {
     return (
@@ -31,6 +33,8 @@ export default function Routes() {
                 <Route path="/Publica/SimuladorDeQuestionario/SimulacaoQuestionario" component={SimuladorDeQuestionario} />
                 <Route path="/Publica/SimuladorDeQuestionario/EscolherQuestionarios" component={EscolherQuestionario} />
                 <Route path="/ADM/ListaDeReportes" component={ListaDeReportes} />
+                <Route path="/inventarioDeBeckFinalizar" component={InventarioDeBeckFinalizar} />
+                <Route path="/discente/EscolherQuestionariosDiscente" component={EscolherQuestionariosDiscente} />
             </Switch>
         </BrowserRouter>
     );
