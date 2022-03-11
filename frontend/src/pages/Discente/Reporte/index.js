@@ -30,18 +30,24 @@ export default function Reporte() {
     ];
 
     useEffect(async () => { //cursos
-
         var lista = [];
-        const cursosIFPB = "http://localhost:8080/reporte/c";
+        const cursosIFPB = "http://localhost:8080/curso/listarAllCursos";
         axios.get(cursosIFPB)
             .then(Response => {
                 var dataCurso = Response.data;
-
                 dataCurso.forEach(item => {
-
-                    lista.push(item.descricao);
+                    lista.push(item);
                 });
-                console.log(lista)
+
+                lista = lista.map(
+                    (elementoCurso) => {
+                        return {
+                            label: elementoCurso,
+                            value: elementoCurso
+                        }
+                    }
+                ).sort((a, b) => a.label.localeCompare(b.label));
+//                console.log(lista)
                 setCursos(lista);
             })
             .catch(error => console.log(error))
@@ -49,15 +55,12 @@ export default function Reporte() {
     }, []);
 
     useEffect(async () => { //campus
-
         var lista = [];
         const campus = "http://localhost:8080/curso/listarCampus";
         axios.get(campus)
             .then(Response => {
                 var dataCampus = Response.data;
-
                 dataCampus.forEach(item => {
-
                     lista.push(item);
                 });
 
@@ -70,11 +73,27 @@ export default function Reporte() {
                     }
                 ).sort((a, b) => a.label.localeCompare(b.label));
                 setCampi(lista);
-                console.log("campus ", lista)
+//                console.log("campus ", lista)
             })
             .catch(error => console.log(error))
 
     }, []);
+
+    useEffect(async () => { //enviar campus para o servidor
+        const headers = {
+            'headers': {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        }
+
+        axios.post("http://localhost:8080/curso/definirCampus", campus, headers)
+            .then(Response => { })
+            .catch(error => console.log(error))
+        console.log(campus + " givonaldo ")
+
+    }, [campus]);
 
     async function submeter() {
 
@@ -130,7 +149,7 @@ export default function Reporte() {
                             </div>
                             <div className="p-mb-3" >
                                 <h5>CURSO*</h5>
-                                <Dropdown optionLabel="name" value={curso} options={cursos} onChange={(e) => setCurso(e.target.value)} placeholder="Escolha um curso" />
+                                <Dropdown value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
                             </div>
                             <div className="p-mb-3" >
                                 <h5>ANO / PERÍODO*</h5>

@@ -28,12 +28,13 @@ public class CursoController {
 	}
 	
 	@GetMapping("/listarAllCursos")
-	public List<Curso> retornarListaTodosOsCursos(){
-		return cursoService.retornaAllCursos();
+	public List<String> retornarListaTodosOsCursos(){
+		return cursoService.retornaNomeDosCursos(cursoService.retornaAllCursos());
+		
 	}
 	
 	@PostMapping("/definirCampus")
-	public void salvarReporte(@RequestBody String campus) throws URISyntaxException {
+	public void definirCampus(@RequestBody String campus) throws URISyntaxException {
 		this.campus = campus;
 	}
 	
@@ -43,7 +44,7 @@ public class CursoController {
 	}
 	
 	@GetMapping("/listarCursosPorCampus")
-	public List<Curso> retornarListaDeCursosPorCampus(){
+	public List<String> retornarListaDeCursosPorCampus(){
 		return cursoService.retornarCursosPorCampus(campus);
 	}
 

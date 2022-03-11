@@ -16,16 +16,24 @@ public class CursoService {
 	@Autowired
 	private CursoRepository cursoRepository;
 	
-	
 	public Curso addCurso(Curso curso) {
 		cursoRepository.save(curso);
 		return curso;
 	}
 
-	//usar quando for ler do banco
-	public List<Curso> retornarCursosPorCampus(String campus) {
-		List<Curso> cursosPorCampus = cursoRepository.findByCampus(campus);
+	public List<String> retornarCursosPorCampus(String campus) {
+		List<Curso> cursos = cursoRepository.findByCampus(campus);
+		List<String> cursosPorCampus = this.retornaNomeDosCursos(cursos);
 		return cursosPorCampus;
+	}
+	
+	public List<String> retornaNomeDosCursos(List<Curso> listaDeCursos){
+		List<String> lista = new ArrayList<String>();
+		for (int i = 0; i < listaDeCursos.size(); i++) {
+			String nomeDoCurso = listaDeCursos.get(i).getNomeCurso();
+			lista.add(nomeDoCurso);
+		}
+		return lista;
 	}
 	
 	public List<String> retornarCampus(){
@@ -45,7 +53,6 @@ public class CursoService {
 		
 		return listaComFiltro;
 	}
-	
 	
 	public List<Curso> updateCursos(){
 		List<Curso> cursos = null;
