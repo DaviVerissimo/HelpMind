@@ -19,10 +19,11 @@ export default function ToobarADM() {
             {/* <Button icon="pi pi-search" className="p-mr-2" />
             <Button icon="pi pi-calendar" className="p-button-success p-mr-2" />
             <Button icon="pi pi-times" className="p-button-danger" /> */}
-            <div className='p-grid ' style={{ padding: '0em' }} >
+            <div className='p-grid ' style={{ padding: 'em' }} >
             <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Documentos' onClick={() => { history.push('/material/Crud') }}  />
                 <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' />
                 <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' onClick={() => { history.push('/ADM/ListaDeReportes') }} />
+                {/* <Button icon={createIcon("pi pi-cog")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Config'  /> */}
                 <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Prof de saúde'  />
             </div>
         </React.Fragment>
