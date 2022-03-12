@@ -18,7 +18,7 @@ import com.helpmind.service.CursoService;
 @RestController
 @RequestMapping("/curso")
 public class CursoController {
-	private String campus;
+	
 	@Autowired
 	private CursoService cursoService;
 	
@@ -35,7 +35,9 @@ public class CursoController {
 	
 	@PostMapping("/definirCampus")
 	public void definirCampus(@RequestBody String campus) throws URISyntaxException {
-		this.campus = campus;
+		if (!campus.equals(null) || (!campus.equals(""))) {
+			cursoService.definirCampus(campus);//
+		}
 	}
 	
 	@GetMapping("/listarCampus")
@@ -45,7 +47,14 @@ public class CursoController {
 	
 	@GetMapping("/listarCursosPorCampus")
 	public List<String> retornarListaDeCursosPorCampus(){
-		return cursoService.retornarCursosPorCampus(campus);
+		boolean bugCursosDoCampusAnterior = true;
+		if(bugCursosDoCampusAnterior) {
+			return this.retornarListaTodosOsCursos();
+		}
+		else {
+			return cursoService.retornarCursosPorCampus(cursoService.getCampus());
+		}
+		
 	}
 
 }

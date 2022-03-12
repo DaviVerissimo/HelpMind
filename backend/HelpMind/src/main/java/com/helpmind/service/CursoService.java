@@ -1,5 +1,10 @@
 package com.helpmind.service;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +20,8 @@ public class CursoService {
 	
 	@Autowired
 	private CursoRepository cursoRepository;
+	//@Autowired
+	//private CampusSessaoRepository campusSessaoRepository;
 	
 	public Curso addCurso(Curso curso) {
 		cursoRepository.save(curso);
@@ -22,10 +29,53 @@ public class CursoService {
 	}
 
 	public List<String> retornarCursosPorCampus(String campus) {
-		List<Curso> cursos = cursoRepository.findByCampus(campus);
-		List<String> cursosPorCampus = this.retornaNomeDosCursos(cursos);
+		/*EXISTE UM BUG DE SICRONIZAÇÃO. OS CURSOS MOSTRANDOS SÃO SEMPRE
+		 * DO ULTIMO ESTADO DO CAMPUS EM RELAÇÃO AO CAMPUS ATUAL.
+		 * cOMO SUGESTÃO TENTAR COM REPOSITORIO PARA CAMPUS NA ESTRUTURA DO SPRING NA JPA*/
+		
+		//List<Curso> cursos = cursoRepository.findByCampus(campus);
+		List<Curso> cursos = cursoRepository.findAll();
+		//List<Curso> lista = new ArrayList<Curso>();
+		List<String> cursosPorCampus = new ArrayList<String>();
+		for (int i = 0; i < cursos.size(); i++) {
+		String str = "\""+ cursos.get(i).getCampus() +"\"";
+			if (str.equals(campus)) {
+				String curso = cursos.get(i).getNomeCurso().toString();
+				cursosPorCampus.add(curso);
+			}
+
+		}
+
 		return cursosPorCampus;
 	}
+	
+//	public List<String> retornarCursosPorCampus3(String campus) {
+//		/*EXISTE UM BUG DE SICRONIZAÇÃO. OS CURSOS MOSTRANDOS SÃO SEMPRE
+//		 * DO ULTIMO ESTADO DO CAMPUS EM RELAÇÃO AO CAMPUS ATUAL.
+//		 * cOMO SUGESTÃO TENTAR COM REPOSITORIO PARA CAMPUS NA ESTRUTURA DO SPRING NA JPA*/
+//		//campus = "COORDENAÇÃO DE EDUCAÇÃO À DISTANCIA - CAMPUS CAJAZEIRAS";
+//		//campus = "\""+ campus +"\"";
+//		List<Curso> cursos = cursoRepository.findByCampus(campus);
+//		//List<Curso> cursos = cursoRepository.findAll();
+//		//List<Curso> lista = new ArrayList<Curso>();
+//		List<String> cursosPorCampus = new ArrayList<String>();
+//		
+//		
+//		System.out.println(campus);
+//		System.out.println(cursos.size());
+//		for (int i = 0; i < cursos.size(); i++) {
+//		String str = cursos.get(i).getCampus();
+//		str = "\""+ str +"\"";
+//		System.out.println(str);
+//			if (str.equals(campus)) {
+//				String curso = cursos.get(i).getNomeCurso();
+//				cursosPorCampus.add(curso);
+//			}
+//
+//		}
+//
+//		return cursosPorCampus;
+//	}
 	
 	public List<String> retornaNomeDosCursos(List<Curso> listaDeCursos){
 		List<String> lista = new ArrayList<String>();
@@ -82,5 +132,61 @@ public class CursoService {
 		
 		return cursoRepository.findAll();
 	}
+	
+	public void definirCampus(String campus) {//codigo temporario
+		BufferedWriter buffWrite;
+		try {
+			buffWrite = new BufferedWriter(new FileWriter("campusSessao.txt"));
+			buffWrite.append(campus + "\n");
+			buffWrite.close();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+	
+//	public void definirCampus3(String campus) {//codigo temporario
+//		campusSessaoRepository.deleteAll();
+//		CampusSessao campusSessao = new CampusSessao();
+//		campusSessao.setCampus(campus);
+//		campusSessaoRepository.save(campusSessao);
+//	}
+	
+	public String getCampus() { //codigo temporario
+		String dados = null;
+		
+		try {
+			BufferedReader buffRead = new BufferedReader(new FileReader("campusSessao.txt"));
+			String linha = "";
+			
+			while (true) {
+				if (linha != null) {
+					
+					dados = linha;
+
+				} else
+					break;
+				linha = buffRead.readLine();
+			}
+			
+			buffRead.close();
+		     
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(dados);
+        return dados;
+	}
+	
+//	public String getCampus() { //codigo temporario
+//		String dados = null;
+//		List<CampusSessao> item = campusSessaoRepository.findAll();
+//		dados = item.get(0).getCampus();
+//		
+//		
+//        return dados;
+//	}
 
 }

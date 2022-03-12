@@ -31,7 +31,7 @@ export default function Reporte() {
 
     useEffect(async () => { //cursos
         var lista = [];
-        const cursosIFPB = "http://localhost:8080/curso/listarAllCursos";
+        const cursosIFPB = "http://localhost:8080/curso/listarCursosPorCampus";
         axios.get(cursosIFPB)
             .then(Response => {
                 var dataCurso = Response.data;
@@ -52,7 +52,7 @@ export default function Reporte() {
             })
             .catch(error => console.log(error))
 
-    }, []);
+    }, [campus]);
 
     useEffect(async () => { //campus
         var lista = [];
@@ -91,7 +91,6 @@ export default function Reporte() {
         axios.post("http://localhost:8080/curso/definirCampus", campus, headers)
             .then(Response => { })
             .catch(error => console.log(error))
-        console.log(campus + " givonaldo ")
 
     }, [campus]);
 
