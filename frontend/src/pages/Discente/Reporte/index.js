@@ -47,7 +47,7 @@ export default function Reporte() {
                         }
                     }
                 ).sort((a, b) => a.label.localeCompare(b.label));
-//                console.log(lista)
+                
                 setCursos(lista);
             })
             .catch(error => console.log(error))
@@ -73,7 +73,7 @@ export default function Reporte() {
                     }
                 ).sort((a, b) => a.label.localeCompare(b.label));
                 setCampi(lista);
-//                console.log("campus ", lista)
+
             })
             .catch(error => console.log(error))
 
@@ -103,8 +103,8 @@ export default function Reporte() {
         const novoReporte =
         {
             "discente": nome,
-            "curso": curso.name,
-            "campus": campus.name,
+            "curso": curso,
+            "campus": campus,
             "periodo": periodo.name,
             "descrisao": descrisao,
             "tentativaDeSuicidio": tentativaDeSuicidio
