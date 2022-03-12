@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ToobarDiscente() {
 
-    //<Button icon= {image} className="p-mr-2" />
     const image = <img src={logoImg} alt="logo"></img>
     const history = useHistory();
     const createIcon = (className) => {
@@ -29,10 +28,8 @@ export default function ToobarDiscente() {
         </React.Fragment>
     );
 
-
     const leftContents = (
         <React.Fragment>
-
             <div className='p-grid ' style={{ padding: '1em' }}>
                 <div style={{}} className='p-col-1 p-mr-3'  >
                     <img src={logoImg} alt="logo" style={{ height: '3.75em', width: 'auto' }} />
@@ -42,7 +39,6 @@ export default function ToobarDiscente() {
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' onClick={() => { history.push('/publica/MateriaisOnline') }} />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
                 <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
-
             </div>
         </React.Fragment>
     );
@@ -52,8 +48,6 @@ export default function ToobarDiscente() {
         <div>
             <Toolbar left={leftContents} right={rightContents} />
         </div>
-
-
 
     );
 
