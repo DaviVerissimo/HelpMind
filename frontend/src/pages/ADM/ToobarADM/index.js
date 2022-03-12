@@ -7,8 +7,6 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ToobarADM() {
 
-    //<Button icon= {image} className="p-mr-2" />
-    const image = <img src={logoImg} alt="logo"></img>
     const history = useHistory();
     const createIcon = (className) => {
         return <i className={className} style={{ 'fontSize': '2em' }}></i>
@@ -20,15 +18,14 @@ export default function ToobarADM() {
             <Button icon="pi pi-calendar" className="p-button-success p-mr-2" />
             <Button icon="pi pi-times" className="p-button-danger" /> */}
             <div className='p-grid ' style={{ padding: 'em' }} >
-            <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Documentos' onClick={() => { history.push('/material/Crud') }}  />
+                <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Documentos' onClick={() => { history.push('/material/Crud') }} />
                 <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' />
                 <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' onClick={() => { history.push('/ADM/ListaDeReportes') }} />
                 {/* <Button icon={createIcon("pi pi-cog")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Config'  /> */}
-                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Prof de saúde'  />
+                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Prof de saúde' />
             </div>
         </React.Fragment>
     );
-
 
     const leftContents = (
         <React.Fragment>
@@ -38,7 +35,7 @@ export default function ToobarADM() {
                     <img src={logoImg} alt="logo" style={{ height: '3.75em', width: 'auto' }} />
 
                 </div>
-                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/') }}/>
+                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/') }} />
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' onClick={() => { history.push('/publica/MateriaisOnline') }} />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
                 <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
@@ -49,13 +46,11 @@ export default function ToobarADM() {
     );
 
     return (
-        
-            <div>
-                <Toolbar left={leftContents} right={rightContents} /> 
-            </div>
-        
 
-
+        <div>
+            <Toolbar left={leftContents} right={rightContents} />
+        </div>
+        
     );
 
 }
