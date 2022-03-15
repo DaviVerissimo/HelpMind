@@ -7,12 +7,8 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ToobarPublica() {
 
-    //<Button icon= {image} className="p-mr-2" />
     const image = <img src={logoImg} alt="logo"></img>
     const history = useHistory();
-
-
-
     const createIcon = (className) => {
         return <i className={className} style={{ 'fontSize': '2em' }}></i>
     }
@@ -29,7 +25,6 @@ export default function ToobarPublica() {
 
     const leftContents = (
         <React.Fragment>
-
             <div className='p-grid ' style={{ padding: '1em' }}>
                 <div style={{}} className='p-col-1 p-mr-3'  >
                     <img src={logoImg} alt="logo" style={{ height: '3.75em', width: 'auto' }} />
@@ -40,17 +35,15 @@ export default function ToobarPublica() {
                 <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' onClick={() => { history.push('/Publica/SimuladorDeQuestionario/EscolherQuestionarios') }} />
                 {/* <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' /> */}
                 <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
-                
             </div>
         </React.Fragment>
     );
 
     return (
+
         <div>
             <Toolbar left={leftContents} right={rightContents} />
         </div>
-
-
     );
 
 }
