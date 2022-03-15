@@ -31,15 +31,6 @@ export default function SimuladorDeQuestionario() {
 
     ];
 
-    const cities = [
-        { name: 'New York', code: 'NY' },
-        { name: 'Rome', code: 'RM' },
-        { name: 'London', code: 'LDN' },
-        { name: 'Istanbul', code: 'IST' },
-        { name: 'Paris', code: 'PRS' }
-
-    ];
-
     const [city, setCity] = useState();
     const [checked, setChecked] = useState();
 
@@ -63,7 +54,7 @@ export default function SimuladorDeQuestionario() {
                     <div>
                         <Card subTitle="Se o sistema recomendar: Realize um auto reporte." >
                             <Button className="p-mb-3 p-col-1 p-button-secondary  " style={{ right: '10px' }} label="ANTERIOR" />
-                            <Button className="p-mb-3 p-col-2" label="PRÓXIMA QUESTÃO" onClick={() => { history.push('/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado') }}/>
+                            <Button className="p-mb-3 p-col-2" label="PRÓXIMA QUESTÃO" onClick={() => { history.push('/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado') }} />
                         </Card>
                     </div>
 
@@ -85,19 +76,19 @@ export default function SimuladorDeQuestionario() {
 
                                 <Card className='card-alternativas p-col-12' >
                                     <div>
-                                        <Checkbox name='New York' name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
+                                        <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
                                         <label > Não estou especialmente desanimado quanto ao futuro </label>
                                     </div>
                                     <div>
-                                        <Checkbox name='New York' name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
+                                        <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
                                         <label> Eu me sinto desanimado quanto ao futuro </label>
                                     </div>
                                     <div>
-                                        <Checkbox name='New York' name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
+                                        <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
                                         <label>  Acho que nada tenho a esperar </label>
                                     </div>
                                     <div>
-                                        <Checkbox name='New York' name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
+                                        <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
                                         <label> Acho o futuro sem esperanças e tenho a impressão de que as coisas não podem melhorar  </label>
                                     </div>
                                 </Card>
