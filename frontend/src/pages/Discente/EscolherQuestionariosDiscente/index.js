@@ -22,7 +22,7 @@ export default function EscolherQuestionariosDiscente() {
                             <Button className="p-mb-3 p-col-3" label="INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" />
                         </div>
                         <div>
-                            <Button className="p-mb-3 p-col-3" label="QUESTIONÁRIO SOCIOECONÔMICO" />
+                            <Button className="p-mb-3 p-col-3" label="QUESTIONÁRIO SOCIOECONÔMICO"  onClick={() => {history.push('/discente/QuestionarioSocioeconomico')}} />
                         </div>
                     </Card>
 

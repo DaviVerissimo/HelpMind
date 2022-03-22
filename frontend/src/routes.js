@@ -16,6 +16,7 @@ import SimuladorDeQuestionario from "./pages/Publica/SimuladorDeQuestionario/Sim
 import EscolherQuestionario from "./pages/Publica/SimuladorDeQuestionario/EscolherQuestionarios";
 import InventarioDeBeckFinalizar from "./pages/Publica/SimuladorDeQuestionario/InventarioDeBeckFinalizar";
 import EscolherQuestionariosDiscente from "./pages/Discente/EscolherQuestionariosDiscente";
+import QuestionarioSocioeconomico from "./pages/Discente/QuestionarioSocioeconomico";
 
 export default function Routes() {
     return (
@@ -26,6 +27,8 @@ export default function Routes() {
                 <Route path="/material/Viewer" component={Viewer} />
                 <Route path="/material/Crud" component={Crud} />
                 <Route path="/discente/Reporte" component={Reporte} />
+                <Route path="/discente/QuestionarioSocioeconomico" component={QuestionarioSocioeconomico} />
+                <Route path="/discente/EscolherQuestionariosDiscente" component={EscolherQuestionariosDiscente} />
                 <Route path="/publica/QuemSomos" component={QuemSomos} />
                 <Route path="/publica/Login" component={Login} />
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
@@ -34,7 +37,6 @@ export default function Routes() {
                 <Route path="/Publica/SimuladorDeQuestionario/EscolherQuestionarios" component={EscolherQuestionario} />
                 <Route path="/ADM/ListaDeReportes" component={ListaDeReportes} />
                 <Route path="/inventarioDeBeckFinalizar" component={InventarioDeBeckFinalizar} />
-                <Route path="/discente/EscolherQuestionariosDiscente" component={EscolherQuestionariosDiscente} />
             </Switch>
         </BrowserRouter>
     );
