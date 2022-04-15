@@ -54,6 +54,15 @@ public class QuestionarioSocioeconomico implements Questionario{
 	private String familiarComDoencaGrave;
 	private String familiarDoente;
 	private String doencaFamiliar_op;
+	private String matricula;
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
 
 	public Integer getId() {
 		return id;

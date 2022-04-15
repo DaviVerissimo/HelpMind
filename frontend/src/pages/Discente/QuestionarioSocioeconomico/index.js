@@ -8,12 +8,15 @@ import { InputText } from 'primereact/inputtext';
 import axios from 'axios';
 import { Dropdown } from 'primereact/dropdown';
 import { RadioButton } from 'primereact/radiobutton';
+import { Checkbox } from 'primereact/checkbox';
 
 export default function QuestionarioSocioeconomico() {
 
     const [campus, setCampus] = useState(null); //campus = singular, campi = plural
     const [campi, setCampi] = useState();
+    const [checked, setChecked] = useState();
     const [nome, setNome] = useState('');
+    const [matricula, setMatricula] = useState();
     const [curso, setCurso] = useState([]);
     const [cursos, setCursos] = useState([]);
     const [descrisao, setDescrisao] = useState('');
@@ -158,6 +161,25 @@ export default function QuestionarioSocioeconomico() {
         { name: 'Não' },
     ];
 
+    var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
+    var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
+    var espacamento = '10px';
+    var altura = window. screen. height;
+    var largura = window. screen. width;
+    console.log(altura)
+    console.log(largura)
+    if (largura < 640){
+        configBotaoCancel = "p-mb-3 p-button-secondary "
+        configBotaoSalvar = "p-mt-3 ";
+        espacamento = '0px';
+    }
+    console.log(configBotaoCancel)
+
+    useEffect(async () => { 
+
+
+    }, []);
+
     useEffect(async () => { //cursos
         var lista = [];
         const cursosIFPB = "http://localhost:8080/curso/listarCursosPorCampus";
@@ -214,12 +236,23 @@ export default function QuestionarioSocioeconomico() {
             <div>
                 <Card className="" >
                     <div className="   align-items-end "  >
-                        <Button className="p-mb-3 p-col-1 p-button-secondary " style={{ right: '10px' }} label="CANCEL" />
-                        <Button className="p-mb-3 p-col-1" label="SALVAR" onClick={null} />
+                        <Button className={configBotaoCancel}  style={{ right: espacamento }} label="CANCEL" />
+                        <Button className={configBotaoSalvar} label="SALVAR" onClick={null} />
                     </div>
                 </Card>
+                <Card className="" >
+                        <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
+                        <label > Declaro estar ciente e concordo com o inteiro teor da aplicação deste inventário, inclusive
+                            tendo conhecimento que haverá o acesso aos resultados, interpretação e ações de promoção, prevenção e
+                            encaminhamentos pelos  profissionais de saúde do campus de origem  aos dados e diante da necessidade
+                            encaminhamento a rede externa de saúde mental. Lembrando que seus dados serão de proteção e sigilo dos
+                            profissionais de saúde do campus e psicólogo interno e externo. </label>
+                    </Card>
                 <Card subTitle='NOME' >
                     <InputText className='entradaNome' value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite seu nome" />
+                </Card>
+                <Card subTitle='MATRICULA' >
+                    <InputText className='entradaNome' value={matricula} onChange={(e) => setNome(e.target.value)} placeholder="Digite sua matricula" />
                 </Card>
                 <Card subTitle='CAMPUS' >
                     <Dropdown value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
