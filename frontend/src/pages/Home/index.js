@@ -7,6 +7,13 @@ import logoImg from '../../assets/logo.png';
 
 export default function Home() {
 
+    var configBotao = "p-mb-3 p-col-4";
+    var largura = window. screen. width;
+    
+    if (largura < 640){
+        configBotao = "p-mb-3";
+    }
+
     const history = useHistory();
 
     return (
@@ -20,10 +27,10 @@ export default function Home() {
                 <Card title="CONHEÇA SUA NOVA FERRAMENTA DE AUXILIO"
                     subTitle="A SAÚDE MENTAL DOS ESTUDANTES DO IFPB" >
                     <div className=" p-grid p-dir-col p-pl-3" >
-                        <Button className="p-mb-3 p-col-4" label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/publica/Login') }} />
-                        <Button className="p-mb-3 p-col-4" label="MATERIAIS DE APOIO ONLINE" onClick={() => { history.push('/publica/MateriaisOnline') }} />
-                        <Button className="p-mb-3 p-col-4" label="SIMULAÇÃO DOS INVENTARIOS DE BECK" onClick={() => { history.push('/Publica/SimuladorDeQuestionario/EscolherQuestionarios') }} />
-                        <Button className="p-mb-3 p-col-4" label="QUEM SOMOS" onClick={() => { history.push('/publica/QuemSomos') }} />
+                        <Button className={configBotao} label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/publica/Login') }} />
+                        <Button className={configBotao} label="MATERIAIS DE APOIO ONLINE" onClick={() => { history.push('/publica/MateriaisOnline') }} />
+                        {/* <Button className={configBotao} label="SIMULAÇÃO DOS INVENTARIOS DE BECK" onClick={() => { history.push('/Publica/SimuladorDeQuestionario/EscolherQuestionarios') }} /> */}
+                        <Button className={configBotao} label="QUEM SOMOS" onClick={() => { history.push('/publica/QuemSomos') }} />
                     </div>
                 </Card>
             </div>
