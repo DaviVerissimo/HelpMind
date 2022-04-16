@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ToobarPublica() {
 
+    var largura = window. screen. width;
     const image = <img src={logoImg} alt="logo"></img>
     const history = useHistory();
     const createIcon = (className) => {
@@ -39,11 +40,46 @@ export default function ToobarPublica() {
         </React.Fragment>
     );
 
-    return (
-
-        <div>
-            <Toolbar left={leftContents} right={rightContents} />
-        </div>
+    const leftContentsMobile = (
+        <React.Fragment>
+            <div className='' style={{ padding: '1em' }}>
+            <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/') }}/>
+                <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' onClick={() => { history.push('/publica/MateriaisOnline') }} />
+                {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' onClick={() => { history.push('/Publica/SimuladorDeQuestionario/EscolherQuestionarios') }} /> */}
+                {/* <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' /> */}
+                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
+            </div>
+        </React.Fragment>
     );
+
+    const rightContentsMobile = (
+        <React.Fragment>
+
+                <div style={{}} className='p-col-1 p-mr-3'  >
+                <img src={logoImg} alt="logo" style={{ height: '10.75em', width: 'auto' }} />
+                </div>
+        </React.Fragment>
+    );
+
+    if (largura < 640){
+        return (
+
+            <div className=''>
+                <Toolbar right={leftContentsMobile} left={rightContentsMobile} />
+                
+                
+            </div>
+    
+        );
+    }
+    else{
+        return (
+
+            <div className='p-flex'>
+                <Toolbar left={leftContents} right={rightContents} />
+            </div>
+    
+        );
+    }
 
 }
