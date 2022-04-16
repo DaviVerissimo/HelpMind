@@ -32,10 +32,7 @@ export default function Reporte() {
     var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
     var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
     var espacamento = '10px';
-    var altura = window. screen. height;
     var largura = window. screen. width;
-    console.log(altura)
-    console.log(largura)
     if (largura < 640){
         configBotaoCancel = "p-mb-3 p-button-secondary "
         configBotaoSalvar = "p-mt-3 ";

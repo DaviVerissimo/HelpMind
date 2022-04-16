@@ -4,7 +4,7 @@ import { Button } from 'primereact/button';
 
 import ToobarPublica from '../../ToobarPublica/index';
 
-export default function SimulacaoQuestionarioResultado() {
+export default function QuestionarioResultado() {
 
     return (
         <div>

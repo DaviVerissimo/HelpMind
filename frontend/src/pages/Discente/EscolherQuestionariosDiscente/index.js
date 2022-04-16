@@ -7,6 +7,12 @@ import ToobarDiscente from '../ToobarDiscente';
 
 export default function EscolherQuestionariosDiscente() {
 
+    
+    var configBotao = "p-mb-3 p-col-3";
+    var largura = window. screen. width;
+    if (largura < 640){
+        configBotao = "p-mt-3 ";
+    }
     const history = useHistory();
 
     return (
@@ -16,13 +22,13 @@ export default function EscolherQuestionariosDiscente() {
                 <Card title='ESCOLHA DO QUESTIONÁRIO ' >
                     <Card className='p-col-16' >
                         <div>
-                            <Button className="p-mb-3 p-col-3" label="INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)"  onClick={() => { history.push('/Publica/SimuladorDeQuestionario/SimulacaoQuestionario') }} />
+                            <Button className={configBotao} label="INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)"  onClick={() => { history.push('/Discente/QuestionarioDeBeck/Depressao') }} />
                         </div>
                         <div>
-                            <Button className="p-mb-3 p-col-3" label="INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" />
+                            <Button className={configBotao} label="INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" />
                         </div>
                         <div>
-                            <Button className="p-mb-3 p-col-3" label="QUESTIONÁRIO SOCIOECONÔMICO"  onClick={() => {history.push('/discente/QuestionarioSocioeconomico')}} />
+                            <Button className={configBotao} label="QUESTIONÁRIO SOCIOECONÔMICO"  onClick={() => {history.push('/discente/QuestionarioSocioeconomico')}} />
                         </div>
                     </Card>
 
