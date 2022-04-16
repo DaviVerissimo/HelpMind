@@ -11,7 +11,6 @@ export default function Login() {
     var configBotaoSecumdario = "p-mb-3 p-col-4 p-button-secondary";
     var configBotaoPrimario = "p-mb-3 p-col-4";
     var sizeCard = "login p-col-6";
-    var espacamento = '10px';
     var altura = window. screen. height;
     var largura = window. screen. width;
     console.log(altura)

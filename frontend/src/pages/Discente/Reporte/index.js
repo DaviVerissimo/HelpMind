@@ -29,6 +29,19 @@ export default function Reporte() {
         { name: 'NÂO' },
     ];
 
+    var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
+    var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
+    var espacamento = '10px';
+    var altura = window. screen. height;
+    var largura = window. screen. width;
+    console.log(altura)
+    console.log(largura)
+    if (largura < 640){
+        configBotaoCancel = "p-mb-3 p-button-secondary "
+        configBotaoSalvar = "p-mt-3 ";
+        espacamento = '0px';
+    }
+
     useEffect(async () => { //cursos
         var lista = [];
         const cursosIFPB = "http://localhost:8080/curso/listarCursosPorCampus";
@@ -129,9 +142,9 @@ export default function Reporte() {
                     <Card title="REPORTAR CASO DE VULNERABILIDADE MENTAL"></Card>
                     <div className='botao'>
                         <Card className="" >
-                            <div className="   align-items-end "  >
-                                <Button className="p-mb-3 p-col-1 p-button-secondary " style={{ right: '10px' }} label="CANCEL" />
-                                <Button className="p-mb-3 p-col-1" label="SALVAR" onClick={submeter} />
+                            <div className=""  >
+                                <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
+                                <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                             </div>
                         </Card>
                     </div>
