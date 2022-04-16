@@ -8,20 +8,30 @@ import ToobarPublica from '../ToobarPublica/index';
 export default function QuemSomos() {
 
     document.body.style.backgroundColor = '#f8f9fa';
+    var configSize = "p-col-4";
+    var cofig = "quemSomos-container p-grid p-justify-center p-align-center p-component  p-dir-col ";
+    var largura = window. screen. width;
+    var valor = '100%';
+    
+    if (largura < 640){
+        configSize = "";
+        cofig = " ";
+    }
+
     return (
 
         <div>
             <ToobarPublica></ToobarPublica>
-            <div className="quemSomos-container p-grid p-justify-center p-align-center p-component  p-dir-col " style={{ height: '100%' }} >
-                <div className="esparço-superior p-col-4 " >
+            <div className={cofig} style={{ height: valor }} >
+                <div className={configSize} >
                 </div>
-                <div className="card-visão p-col-4" >
+                <div className={configSize} >
                     <Card title="Sobre o PROMOÇÃO À SAÚDE MENTAL:"
                         subTitle="Uma ferramenta com intuito de ajudar alunos do IFPB, que se encontram com
                                 algum tipo de dificuldade psicológica" >
                     </Card>
                 </div>
-                <div className="home-ladoEsquerdo p-col-4 " >
+                <div className={configSize} >
                     <Card title="Visão"
                         subTitle="Esperamos que através da aplicabilidade do produto educacional nos setores de saúde do IFPB,
                          este recurso metodológico garanta às equipes um suporte técnico e uma maior segurança no que tange à 
@@ -29,7 +39,7 @@ export default function QuemSomos() {
                          sinais de ansiedade e depressão." >
                     </Card>
                 </div>
-                <div className="card-missão p-col-4 " >
+                <div className={configSize} >
                     <Card title="Missão" >
                         <Card
                             subTitle="Instrumentalizar os profissionais de saúde do IFPB no acolhimento e no acompanhamento
@@ -51,7 +61,7 @@ export default function QuemSomos() {
                         </Card>
                     </Card>
                 </div>
-                <div className="espaço-inferior p-col-4 " >
+                <div className={configSize} >
                 </div>
             </div>
         </div>
