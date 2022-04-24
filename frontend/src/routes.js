@@ -13,9 +13,10 @@ import ListaDeReportes from "./pages/ADM/ListaDeReportes";
 import MateriaisOnline from "./pages/Publica/MateriaisOnline";
 // import SimulacaoQuestionarioResultado from "./pages/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado";
 import QuestionarioDeDepressaoDeBeck from "./pages/Discente/QuestionarioDeDepressaoDeBeck";
-import InventarioDeBeckFinalizar from "./pages/Publica/ProfissionalDeSaude/InventarioDeBeckFinalizar";
 import EscolherQuestionariosDiscente from "./pages/Discente/EscolherQuestionariosDiscente";
 import QuestionarioSocioeconomico from "./pages/Discente/QuestionarioSocioeconomico";
+import PerfilDiscente from "./pages/Discente/PerfilDiscente";
+import Reportes from "./pages/Discente/Reportes";
 
 export default function Routes() {
     return (
@@ -25,7 +26,9 @@ export default function Routes() {
                 <Route path="/material/create" component={Create} />
                 <Route path="/material/Viewer" component={Viewer} />
                 <Route path="/material/Crud" component={Crud} />
+                <Route path="/discente/Perfil" component={PerfilDiscente} />
                 <Route path="/discente/Reporte" component={Reporte} />
+                <Route path="/discente/Reportes" component={Reportes} />
                 <Route path="/discente/QuestionarioSocioeconomico" component={QuestionarioSocioeconomico} />
                 <Route path="/discente/EscolherQuestionariosDiscente" component={EscolherQuestionariosDiscente} />
                 <Route path="/Discente/QuestionarioDeBeck/Depressao" component={QuestionarioDeDepressaoDeBeck} />
@@ -34,7 +37,6 @@ export default function Routes() {
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
                 {/* <Route path="/Discente/SimuladorDeQuestionario/SimulacaoQuestionarioResultado" component={SimulacaoQuestionarioResultado} /> */}
                 <Route path="/ADM/ListaDeReportes" component={ListaDeReportes} />
-                <Route path="/inventarioDeBeckFinalizar" component={InventarioDeBeckFinalizar} />
             </Switch>
         </BrowserRouter>
     );

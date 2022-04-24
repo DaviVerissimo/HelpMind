@@ -25,10 +25,10 @@ export default function ToobarDiscente() {
             <Button icon="pi pi-times" className="p-button-danger" /> */}
             <div className='p-grid p-col' style={{ padding: '0em' }} >
                 <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Contatos' />
-                <Button icon={createIcon("pi pi-file-o")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Inventario' />
+                <Button icon={createIcon("pi pi-file-o")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Inventario' onClick={() => { history.push('/discente/EscolherQuestionariosDiscente') }} />
                 {/* <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' /> */}
-                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' />
-                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Discente' />
+                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' onClick={() => { history.push('/discente/Reportes') }} />
+                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Discente' onClick={() => { history.push('/discente/Perfil') }} />
             </div>
         </React.Fragment>
     );
@@ -60,10 +60,10 @@ export default function ToobarDiscente() {
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
                 <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg p-mr-3 p-col " label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
                 <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3 p-col " label='Contatos' />
-                <Button icon={createIcon("pi pi-file-o")} className="p-button-outlined p-button-lg p-mr-3 p-col "  label='Inventario' />
+                <Button icon={createIcon("pi pi-file-o")} className="p-button-outlined p-button-lg p-mr-3 p-col "  label='Inventario'  onClick={() => { history.push('/discente/EscolherQuestionariosDiscente') }} />
                 {/* <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' /> */}
-                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col  " label='Reportes' />
-                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col  " label='Discente' />
+                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col  " label='Reportes' onClick={() => { history.push('/discente/Reportes') }} />
+                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col  " label='Discente' onClick={() => { history.push('/discente/Perfil') }} />
             </div>
         </React.Fragment>
     );

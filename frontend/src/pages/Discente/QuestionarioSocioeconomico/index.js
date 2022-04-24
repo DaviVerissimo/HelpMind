@@ -164,18 +164,18 @@ export default function QuestionarioSocioeconomico() {
     var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
     var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
     var espacamento = '10px';
-    var altura = window. screen. height;
-    var largura = window. screen. width;
+    var altura = window.screen.height;
+    var largura = window.screen.width;
     console.log(altura)
     console.log(largura)
-    if (largura < 640){
+    if (largura < 640) {
         configBotaoCancel = "p-mb-3 p-button-secondary "
         configBotaoSalvar = "p-mt-3 ";
         espacamento = '0px';
     }
     console.log(configBotaoCancel)
 
-    useEffect(async () => { 
+    useEffect(async () => {
 
 
     }, []);
@@ -236,18 +236,18 @@ export default function QuestionarioSocioeconomico() {
             <div>
                 <Card className="" >
                     <div className="   align-items-end "  >
-                        <Button className={configBotaoCancel}  style={{ right: espacamento }} label="CANCEL" />
+                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={null} />
                     </div>
                 </Card>
                 <Card className="" >
-                        <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
-                        <label > Declaro estar ciente e concordo com o inteiro teor da aplicação deste inventário, inclusive
-                            tendo conhecimento que haverá o acesso aos resultados, interpretação e ações de promoção, prevenção e
-                            encaminhamentos pelos  profissionais de saúde do campus de origem  aos dados e diante da necessidade
-                            encaminhamento a rede externa de saúde mental. Lembrando que seus dados serão de proteção e sigilo dos
-                            profissionais de saúde do campus e psicólogo interno e externo. </label>
-                    </Card>
+                    <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
+                    <label > Declaro estar ciente e concordo com o inteiro teor da aplicação deste inventário, inclusive
+                        tendo conhecimento que haverá o acesso aos resultados, interpretação e ações de promoção, prevenção e
+                        encaminhamentos pelos  profissionais de saúde do campus de origem  aos dados e diante da necessidade
+                        encaminhamento a rede externa de saúde mental. Lembrando que seus dados serão de proteção e sigilo dos
+                        profissionais de saúde do campus e psicólogo interno e externo. </label>
+                </Card>
                 <Card subTitle='NOME' >
                     <InputText className='entradaNome' value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite seu nome" />
                 </Card>
@@ -276,7 +276,7 @@ export default function QuestionarioSocioeconomico() {
                     </Card>
                 </Card>
                 <Card subTitle='ESTADO CIVIL' >
-                    <Dropdown optionLabel="name" value={estadoCivil} options={estadosCivis} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma idade" />
+                    <Dropdown optionLabel="name" value={estadoCivil} options={estadosCivis} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha seu estado civil" />
                 </Card>
                 <Card subTitle='COM QUEM VIVE' >
                     <Dropdown optionLabel="name" value={comQuemVive} options={comQuemVives} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha com quem vive" />
