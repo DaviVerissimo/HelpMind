@@ -2,7 +2,7 @@ import { Card } from 'primereact/card';
 import React from 'react';
 import { Button } from 'primereact/button';
 
-import ToobarPublica from '../../ToobarPublica/index';
+import ToobarPublica from '../../Publica/ToobarPublica/index';
 
 export default function QuestionarioResultado() {
 

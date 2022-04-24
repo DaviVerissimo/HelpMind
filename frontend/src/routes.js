@@ -9,7 +9,7 @@ import Crud from "./pages/Material/Crud";
 import Reporte from "./pages/Discente/Reporte";
 import QuemSomos from "./pages/Publica/QuemSomos";
 import Login from "./pages/Publica/Login";
-import ListaDeReportes from "./pages/ADM/ListaDeReportes";
+import ListaDeReportes from "./pages/ProfissionalDeSaude/ListaDeReportes";
 import MateriaisOnline from "./pages/Publica/MateriaisOnline";
 // import SimulacaoQuestionarioResultado from "./pages/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado";
 import QuestionarioDeDepressaoDeBeck from "./pages/Discente/QuestionarioDeDepressaoDeBeck";
@@ -17,6 +17,7 @@ import EscolherQuestionariosDiscente from "./pages/Discente/EscolherQuestionario
 import QuestionarioSocioeconomico from "./pages/Discente/QuestionarioSocioeconomico";
 import PerfilDiscente from "./pages/Discente/PerfilDiscente";
 import Reportes from "./pages/Discente/Reportes";
+import PerfilProfissionalDeSaude from "./pages/ProfissionalDeSaude/PerfilProfissionalDeSaude";
 
 export default function Routes() {
     return (
@@ -36,7 +37,8 @@ export default function Routes() {
                 <Route path="/publica/Login" component={Login} />
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
                 {/* <Route path="/Discente/SimuladorDeQuestionario/SimulacaoQuestionarioResultado" component={SimulacaoQuestionarioResultado} /> */}
-                <Route path="/ADM/ListaDeReportes" component={ListaDeReportes} />
+                <Route path="/profissionalDeSaude/ListaDeReportes" component={ListaDeReportes} />
+                <Route path="/profissionalDeSaude/perfil" component={PerfilProfissionalDeSaude} />
             </Switch>
         </BrowserRouter>
     );
