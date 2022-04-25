@@ -2,8 +2,7 @@ import { Card } from 'primereact/card';
 import React from 'react';
 import './styles.css'
 import { Button } from 'primereact/button';
-
-import logoImg from '../../../assets/logo.png';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarPublica from '../ToobarPublica';
 
 export default function Login() {
@@ -20,6 +19,7 @@ export default function Login() {
         configBotaoPrimario = "p-mt-3 ";
         sizeCard = "";
     }
+    const history = useHistory();
 
     return (
         <div>
@@ -31,7 +31,7 @@ export default function Login() {
                         subTitle="aqui opções de ajuda ao estudante, e auxilio aos profissionais de saúde " >
 
                         <div  >
-                            <Button className={configBotaoPrimario} label="ENTRAR COM E-MAIL ACADEMICO" />
+                            <Button className={configBotaoPrimario} label="ENTRAR COM E-MAIL ACADEMICO"  onClick={() => { history.push('/discente/Perfil') }} />
                             <h3>ou</h3>
                             <Button className={configBotaoSecumdario} label="NÂO POSSUO E-MAIL ACADEMICO" />
                         </div>

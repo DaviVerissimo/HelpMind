@@ -4,7 +4,7 @@ import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarDiscente from '../ToobarDiscente';
 
-export default function Perfil() {
+export default function PerfilDiscente() {
     
     var configBotao = "p-mb-3 p-col-3";
     var largura = window. screen. width;

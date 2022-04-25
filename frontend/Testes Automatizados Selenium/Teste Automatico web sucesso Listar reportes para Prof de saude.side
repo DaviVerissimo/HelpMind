@@ -1,0 +1,72 @@
+{
+  "id": "03937a02-5479-4ab8-8e0d-f5cf335e90f6",
+  "version": "2.0",
+  "name": "Listar reportes para Prof de saude",
+  "url": "http://localhost:3000/profissionalDeSaude/perfil",
+  "tests": [{
+    "id": "a673a39c-14bf-4151-b443-435a29dc3fab",
+    "name": "Untitled",
+    "commands": []
+  }, {
+    "id": "b16ffd0c-05f1-4a8a-b2eb-a999adae5588",
+    "name": "Listar Reportes",
+    "commands": [{
+      "id": "a58109e0-3217-4f9b-ae53-f1709fd653b7",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/profissionalDeSaude/perfil",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d8ba3613-35dd-41b4-a333-531ebd80cb02",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bb4db9df-5503-4c1e-b699-10b9c3eda1bf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pi-bell",
+      "targets": [
+        ["css=.pi-bell", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/button[2]/i", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a507c10-2be7-4569-8fd7-051b7baeebb0",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.pi-bell",
+      "targets": [
+        ["css=.pi-bell", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/button[2]/i", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5383dc27-08fa-4a65-8945-e8a26599dd5a",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.pi-bell",
+      "targets": [
+        ["css=.pi-bell", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/button[2]/i", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f2c5c3d2-5967-4983-84b9-682fb6caee24",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a673a39c-14bf-4151-b443-435a29dc3fab"]
+  }],
+  "urls": ["http://localhost:3000/profissionalDeSaude/perfil"],
+  "plugins": []
+}

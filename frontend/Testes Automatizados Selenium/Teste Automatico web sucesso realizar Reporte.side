@@ -1,0 +1,268 @@
+{
+  "id": "8388b05f-d7ac-4bfe-ba00-1e8a80932944",
+  "version": "2.0",
+  "name": "Teste Automatico web sucesso realizar Reporte",
+  "url": "http://localhost:3000/",
+  "tests": [{
+    "id": "8d7a79a5-b21f-4916-ba4c-c73717e8eb1c",
+    "name": "Untitled",
+    "commands": []
+  }, {
+    "id": "32539f59-2248-4550-8db0-2ca4ad7cfbe6",
+    "name": "realizar reporte",
+    "commands": [{
+      "id": "46b31ac3-809d-49fe-9221-f656e28a8a2e",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b411ef28-54ea-45f0-b75a-e5e2b08607c1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "63e8dc3d-ca73-42ee-a744-6bb3ce243789",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-button:nth-child(1) > .p-button-label",
+      "targets": [
+        ["css=.p-button:nth-child(1) > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[3]/div/button/span", "xpath:idRelative"],
+        ["xpath=//span", "xpath:position"],
+        ["xpath=//span[contains(.,'SOU ESTUDANTE/SERVIDOR DO IFPB')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3fdacf28-95ef-4d0e-9097-61f1ab324944",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-button:nth-child(1) > .p-button-label",
+      "targets": [
+        ["css=.p-button:nth-child(1) > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div/div[3]/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'ENTRAR COM E-MAIL ACADEMICO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e284299e-09e6-4ba0-b0cf-19f827aee3ff",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "css=.pi-bell",
+      "targets": [
+        ["css=.pi-bell", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/button[3]/i", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button[3]/i", "xpath:position"]
+      ],
+      "value": "71.5,29.5"
+    }, {
+      "id": "e91b9548-d541-4b36-9184-b84abb37d810",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "css=.pi-bell",
+      "targets": [
+        ["css=.pi-bell", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/button[3]/i", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button[3]/i", "xpath:position"]
+      ],
+      "value": "71.5,29.5"
+    }, {
+      "id": "4ae8967e-f8ef-4bf6-82d4-51a69d1b1099",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "css=.pi-bell",
+      "targets": [
+        ["css=.pi-bell", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/button[3]/i", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button[3]/i", "xpath:position"]
+      ],
+      "value": "71.5,29.5"
+    }, {
+      "id": "6d1ea361-db7d-4b22-930e-bc0698f7f648",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pi-bell",
+      "targets": [
+        ["css=.pi-bell", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/button[3]/i", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button[3]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "26de27dc-0edb-4750-998a-2a9978679462",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-mb-3:nth-child(1) > .p-button-label",
+      "targets": [
+        ["css=.p-mb-3:nth-child(1) > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[2]/div/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'NOVO REPORTE')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f1330823-b857-415e-8264-17b5318969af",
+      "comment": "",
+      "command": "click",
+      "target": "css=.entradaNome",
+      "targets": [
+        ["css=.entradaNome", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div[3]/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "46a5db7b-090c-4610-827b-44dabddaa298",
+      "comment": "",
+      "command": "type",
+      "target": "css=.entradaNome",
+      "targets": [
+        ["css=.entradaNome", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div[3]/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "cassiane Mariana"
+    }, {
+      "id": "52e4cf8c-5e71-4c20-ab1e-eb59fce7b9ae",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-mb-3:nth-child(2) .p-dropdown-label",
+      "targets": [
+        ["css=.p-mb-3:nth-child(2) .p-dropdown-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div[3]/div/div/div/div[2]/div/span", "xpath:idRelative"],
+        ["xpath=//div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Escolha um campus')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "84d216ee-2fdc-4ea6-9474-f6bfb2f742f1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-dropdown-item:nth-child(1)",
+      "targets": [
+        ["css=.p-dropdown-item:nth-child(1)", "css:finder"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'CENTRO DE REFERENCIA DE MANGABEIRA - REITORIA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f89382ce-e990-467f-82b8-c6d6ae30c50f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-mb-3:nth-child(3) .p-dropdown-label",
+      "targets": [
+        ["css=.p-mb-3:nth-child(3) .p-dropdown-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div[3]/div/div/div/div[3]/div/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Escolha um curso')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "37846798-9b4f-44a0-8e7a-e506410ecead",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-dropdown-item:nth-child(3)",
+      "targets": [
+        ["css=.p-dropdown-item:nth-child(3)", "css:finder"],
+        ["xpath=//li[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "84bd7cb9-fc16-4b26-8b0b-eba3984a7d7a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-mb-3:nth-child(4) .p-dropdown-label",
+      "targets": [
+        ["css=.p-mb-3:nth-child(4) .p-dropdown-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div[3]/div/div/div/div[4]/div/span", "xpath:idRelative"],
+        ["xpath=//div[4]/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Não se aplica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1b8463b1-bb2b-478a-9227-e7c4ce0a347d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-dropdown-item:nth-child(2)",
+      "targets": [
+        ["css=.p-dropdown-item:nth-child(2)", "css:finder"],
+        ["xpath=//li[2]", "xpath:position"],
+        ["xpath=//li[contains(.,'2º')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "208900dc-c9f4-4ad9-9b7a-ab6d3a0e7c86",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-placeholder",
+      "targets": [
+        ["css=.p-placeholder", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div[3]/div/div/div/div[5]/div/span", "xpath:idRelative"],
+        ["xpath=//div[5]/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Não se aplica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "40c20188-1f23-4cef-95f7-1a7116957140",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-dropdown-item:nth-child(1)",
+      "targets": [
+        ["css=.p-dropdown-item:nth-child(1)", "css:finder"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'SIM')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f7128a1-a7bd-4e21-86d3-baae5fdd9b6e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-inputtextarea",
+      "targets": [
+        ["css=.p-inputtextarea", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div[3]/div/div/div/div[6]/div/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "96dd1fcb-71cf-4cbe-8a10-46360bdc29de",
+      "comment": "",
+      "command": "type",
+      "target": "css=.p-inputtextarea",
+      "targets": [
+        ["css=.p-inputtextarea", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div[3]/div/div/div/div[6]/div/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "relevante casos de psweudo aterix"
+    }, {
+      "id": "d71fe539-065c-445e-a978-d853baae88e9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-mt-3 > .p-button-label",
+      "targets": [
+        ["css=.p-mt-3 > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div[2]/div/div/div/div/button[2]/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/div/button[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'SALVAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "15d48e51-4673-4e3b-a7cf-c600d1c02ba1",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8d7a79a5-b21f-4916-ba4c-c73717e8eb1c"]
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": []
+}
