@@ -9,69 +9,72 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { useStates } from 'react';
-import { Dropdown } from 'primereact/dropdown';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ListaDeReportes() {
 
-    const [ordem, setOrdem] = useState();
-    const elementosOrdem = [
-        { name: 'Alfabetica', code: 'NY' },
-        { name: 'Data', code: 'RM' },
-        { name: 'Tentativa de suicidio', code: 'LDN' }
-    ];
+    // const [pesquisa, setPesquisa] = useState('');
+    // const history = useHistory();
+    // console.log('pesquisa = ' + pesquisa);
     const [reportes, setReportes] = useState([])
-    const getReportes = () => {
+    const allReportes = () => {
         ReporteService.getReporte().then((response) => {
             setReportes(response.data)
-            console.log(response.data);
+            // console.log(response.data);
         });
     };
     {
         reportes.map((reporte, key) => {
-            console.log({ reportes });
+            // console.log({ reportes });
         })
+
     }
 
-    // implementar eventor do drop dow Ordenar: receber o parametro de ordem do estado do dropdow e atualizar a tabela com base nele.
-    // pensar no que deve acontescer ao buscar por algo no imput.
+    // implemetar atributo Date nos reportes com localDateTime e listar por data no front
     // perguntar a val se o sistema faz algum arlerta sobre se chegou o prazo de aplicar os questionarios aos discentes: ex passou 6 meses desde a ultima aplicação, o que fazer?, 
     // sistema marcar um alerta para que o prof de saude busque atualizar o preechimento dos questionarios por parte do discente?
 
     useEffect(() => {
-        getReportes()
+        allReportes()
 
     }, [])
+
+
+    // if (pesquisa == '' || pesquisa  == null ){
+    //     console.log('entrou')
+    // }
+
+    // else{
+    //     console.log('errou')
+    // }
 
     return (
         <div  > <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <div className="quemSomos-container p-grid p-justify-center p-align-center p-component  p-dir-col " style={{ height: '100%' }} >
                 <Card title="REPORTES" ></Card>
-                <Card>
-                    <Dropdown className='className="p-mb-4 ' optionLabel="name" value={ordem} options={elementosOrdem} onChange={(e) => setOrdem(e.target.value)} placeholder="Ordenar por" />
-                </Card>
-                <Card >
-                    <Button className="p-mb-0  p-mr-3 p-col-0" label="" icon="pi pi-search" />
-                    <InputText className='className="p-mb-5 p-mr-3 p-col-10 ' ></InputText>
-                </Card>
+                {/* <Card >
+                    <Button className="p-mb-0  p-mr-3 p-col-0" label="" icon="pi pi-search" onClick={() => { history.push('/discente/QuestionarioSocioeconomico')}} />
+                    <InputText className='className="p-mb-5 p-mr-3 p-col-10 '  value={pesquisa} onChange={(e) => setPesquisa(e.target.value)} placeholder="Pesquisar" ></InputText>
+                </Card> */}
 
                 <Card>
                     <div className='' style={{ height: '100%' }}  >
                         <div className="card">
                             <DataTable value={reportes} responsiveLayout="scroll">
-                                <Column field="discente" header="Discente" ></Column>
-                                <Column field="id" header="ID"></Column>
-                                <Column field="curso" header="Curso"></Column>
-                                <Column field="campus" header="Campus"></Column>
-                                <Column field="periodo" header="Periodo"></Column>
-                                <Column field="tentativaDeSuicidio" header="Ten de Suicidio"></Column>
-                                <Column field="descrisao" header="Descrisão"></Column>
-                                <Column field="" header="Açoes Iventario"
+                                <Column field="discente" header="Discente" sortable ></Column>
+                                <Column field="id" header="ID" sortable ></Column>
+                                <Column field="curso" header="Curso" sortable ></Column>
+                                <Column field="campus" header="Campus" sortable ></Column>
+                                <Column field="periodo" header="Periodo" sortable ></Column>
+                                <Column field="tentativaDeSuicidio" header="Ten de Suicidio" sortable ></Column>
+                                <Column field="descrisao" header="Descrisão" sortable ></Column>
+                                <Column field="" header=""
                                     body={
                                         <div>
                                             <Card>
                                                 <div>
                                                     <Button className="p-mb-5  p-mr-3 p-col-0" label="VISUALIZAR" icon="pi pi-file" />
-                                                    <Button className="p-mb-0  p-mr-3 p-col-0" label="SOLICITAR" icon="pi pi-book" />
+                                                    {/* <Button className="p-mb-0  p-mr-3 p-col-0" label="SOLICITAR" icon="pi pi-book" /> */}
                                                 </div>
                                             </Card>
                                         </div>
