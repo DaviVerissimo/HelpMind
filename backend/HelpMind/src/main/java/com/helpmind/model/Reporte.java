@@ -1,5 +1,7 @@
 package com.helpmind.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,6 +32,16 @@ public class Reporte {
 	private boolean tentativaDeSuicidio;
 	
 	private String descrisao;
+	
+	private LocalDateTime data;
+
+	public LocalDateTime getData() {
+		return data;
+	}
+
+	public void setData(LocalDateTime data) {
+		this.data = data;
+	}
 
 	public Integer getId() {
 		return id;

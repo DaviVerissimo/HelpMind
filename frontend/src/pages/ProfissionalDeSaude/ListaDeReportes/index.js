@@ -62,6 +62,7 @@ export default function ListaDeReportes() {
                         <div className="card">
                             <DataTable value={reportes} responsiveLayout="scroll">
                                 <Column field="discente" header="Discente" sortable ></Column>
+                                <Column field="data" header="Data" sortable ></Column>
                                 <Column field="id" header="ID" sortable ></Column>
                                 <Column field="curso" header="Curso" sortable ></Column>
                                 <Column field="campus" header="Campus" sortable ></Column>

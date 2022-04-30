@@ -2,6 +2,7 @@ package com.helpmind;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -23,11 +24,13 @@ public class ReporteTest {
 	@Test
 	void novoReporteSucesso() {
 		Reporte reporte = new Reporte();
-		reporte.setDiscente("Doroty ");
+		reporte.setDiscente("Toto ");
 		reporte.setCampus("Cansas");
-		reporte.setCurso("Terra de Oz");
+		reporte.setCurso("Terra de Az");
 		reporte.setPeriodo("1º");
 		reporte.setDescrisao("procura a estrada de Tijolos amarelos");
+		LocalDateTime data = LocalDateTime.now();
+		reporte.setData(data);
 		reporteService.salvar(reporte);
 		List<Reporte> r = reporteRepository.findByDiscente("Doroty");
 		assertNotNull(r.get(0).getDiscente());

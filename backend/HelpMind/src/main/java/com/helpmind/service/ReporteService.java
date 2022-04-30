@@ -11,6 +11,8 @@ import com.helpmind.repository.ReporteRepository;
 @Service
 public class ReporteService {
 	
+//	public String pesquisa;
+	
 	@Autowired
 	private ReporteRepository reporteRepository;
 	
@@ -24,8 +26,9 @@ public class ReporteService {
 		return reporteRepository.findAll();
 	}
 	
-	public List<Reporte> retornarDiscentePorNome(String nomeDiscente){
-		return reporteRepository.findByDiscente(nomeDiscente);
-	}
+//	public List<Reporte> retornarDiscentePorNome(){
+//		System.out.println(pesquisa);
+//		return reporteRepository.findByDiscente(this.pesquisa);
+//	}
 
 }

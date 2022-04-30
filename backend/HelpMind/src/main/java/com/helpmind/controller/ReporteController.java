@@ -3,6 +3,7 @@ package com.helpmind.controller;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -32,7 +33,8 @@ public class ReporteController {
 	
 	@PostMapping("salvarReporte")
 	public ResponseEntity salvarReporte(@RequestBody Reporte reporte) throws URISyntaxException {
-		
+		LocalDateTime data = LocalDateTime.now();
+		reporte.setData(data);
 		try {
 			reporteService.salvar(reporte);
 			} catch(Exception e){}
@@ -45,6 +47,19 @@ public class ReporteController {
 		
 		return reporteService.retornarTodos();
 	}
+	
+//	@PostMapping("/ReporteForSeach")
+//	public String forSeach(@RequestBody String pesquisa){
+//		reporteService.pesquisa = pesquisa;
+//		
+//		return reporteService.pesquisa;
+//	}
+	
+//	@GetMapping("/listarReporteForSeach")
+//	public List<Reporte> listarReportesPorNome(){
+//		
+//		return reporteService.retornarDiscentePorNome();
+//	}
 	
 
 }
