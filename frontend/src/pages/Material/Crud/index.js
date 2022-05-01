@@ -3,7 +3,7 @@ import './styles.css'
 import { useState } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import { Card } from 'primereact/card';
-import ToobarADM from "../../ADM/ToobarADM";
+import ToobarProfissionalDeSaude from "../../ProfissionalDeSaude/ToobarProfissionalDeSaude";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
@@ -21,7 +21,7 @@ export default function Crud() {
 
     return (
 
-        <div> <ToobarADM></ToobarADM>
+        <div> <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <Card title="GERENCIA DE MATERIAIS">
             </Card>
             <div>
