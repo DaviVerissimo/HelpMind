@@ -170,8 +170,7 @@ export default function QuestionarioSocioeconomico() {
     console.log(largura)
     if (largura < 640) {
         configBotaoCancel = "p-mb-3 p-button-secondary "
-        configBotaoSalvar = "p-mt-3 ";
-        espacamento = '0px';
+        configBotaoSalvar = "p-mb-3"
     }
     console.log(configBotaoCancel)
 
