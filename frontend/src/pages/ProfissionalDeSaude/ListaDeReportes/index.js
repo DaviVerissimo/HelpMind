@@ -50,13 +50,8 @@ export default function ListaDeReportes() {
 
     return (
         <div  > <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
-            <div className="quemSomos-container p-grid p-justify-center p-align-center p-component  p-dir-col " style={{ height: '100%' }} >
+            <div>
                 <Card title="REPORTES" ></Card>
-                {/* <Card >
-                    <Button className="p-mb-0  p-mr-3 p-col-0" label="" icon="pi pi-search" onClick={() => { history.push('/discente/QuestionarioSocioeconomico')}} />
-                    <InputText className='className="p-mb-5 p-mr-3 p-col-10 '  value={pesquisa} onChange={(e) => setPesquisa(e.target.value)} placeholder="Pesquisar" ></InputText>
-                </Card> */}
-
                 <Card>
                     <div className='' style={{ height: '100%' }}  >
                         <div className="card">
@@ -71,14 +66,11 @@ export default function ListaDeReportes() {
                                 <Column field="descrisao" header="Descrisão" sortable ></Column>
                                 <Column field="" header=""
                                     body={
-                                        <div>
+                                        <Card>
                                             <Card>
-                                                <div>
-                                                    <Button className="p-mb-5  p-mr-3 p-col-0" label="VISUALIZAR" icon="pi pi-file" />
-                                                    {/* <Button className="p-mb-0  p-mr-3 p-col-0" label="SOLICITAR" icon="pi pi-book" /> */}
-                                                </div>
+                                                <Button className="p-mb-5  p-mr-3 p-col-0" label="VISUALIZAR" icon="pi pi-file" />
                                             </Card>
-                                        </div>
+                                        </Card>
                                     }
                                 ></Column>
                             </DataTable>
