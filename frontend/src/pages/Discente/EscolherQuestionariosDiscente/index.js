@@ -28,7 +28,7 @@ export default function EscolherQuestionariosDiscente() {
                             <Button className={configBotao} label="INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" />
                         </div>
                         <div>
-                            <Button className={configBotao} label="QUESTIONÁRIO SOCIOECONÔMICO"  onClick={() => {history.push('/discente/QuestionarioSocioeconomico')}} />
+                            <Button className={configBotao} label="QUESTIONÁRIO SOCIOECONÔMICO (QS)"  onClick={() => {history.push('/discente/QuestionarioSocioeconomico')}} />
                         </div>
                     </Card>
 
