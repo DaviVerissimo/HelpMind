@@ -74,7 +74,7 @@ export default function MateriaisOnline() {
                                     body={
                                         <Card>
                                             <Card>
-                                                <Button onClick={download} >DOWNLOAD</Button>
+                                                <Button  className="pi pi-download" onClick={download} > DOWNLOAD </Button>
                                             </Card>
                                         </Card>
                                     }

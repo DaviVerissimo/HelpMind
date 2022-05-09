@@ -1,10 +1,8 @@
 import React from "react";
-
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Create from "./pages/Material/Create";
-import Viewer from "./pages/Material/Viewer";
 import Crud from "./pages/Material/Crud";
 import Reporte from "./pages/Discente/Reporte";
 import QuemSomos from "./pages/Publica/QuemSomos";
@@ -25,7 +23,6 @@ export default function Routes() {
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/material/create" component={Create} />
-                <Route path="/material/Viewer" component={Viewer} />
                 <Route path="/material/Crud" component={Crud} />
                 <Route path="/discente/Perfil" component={PerfilDiscente} />
                 <Route path="/discente/Reporte" component={Reporte} />

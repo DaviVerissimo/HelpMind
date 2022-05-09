@@ -1,56 +1,94 @@
 import React from "react";
 import './styles.css'
-import { useState } from 'react';
-import { Dropdown } from 'primereact/dropdown';
 import { Card } from 'primereact/card';
 import ToobarProfissionalDeSaude from "../../ProfissionalDeSaude/ToobarProfissionalDeSaude";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 
+import { useState, useEffect } from 'react';
+import MaterialService from "../../../services/MaterialService";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import axios from 'axios';
+
 export default function Crud() {
 
-    const categorias = [
-        { name: 'Depresão', code: 'NY' },
-        { name: 'Ansiedade', code: 'RM' },
-        { name: 'Suicidio', code: 'LDN' },
-        { name: 'Outubro Rosa', code: 'IST' },
-        { name: 'Biporalidade', code: 'PRS' }
-    ];
-    const [city, setCity] = useState('Ansiedade');
+    var configBotao = "pi pi-plus-circle p-mb-3 p-col-3";
+    var largura = window. screen. width;
+    if (largura < 640){
+        configBotao = "pi pi-plus-circle p-mt-3 ";
+    }
+    const history = useHistory();
+    const [materiais, setMateriais] = useState([])
+    const allMaterial = () => {
+        MaterialService.getMaterial().then((response) => {
+            setMateriais(response.data)
+        });
+    };
+    {
+        materiais.map((material, key) => {
+        })
+
+    }
+
+    useEffect(() => {
+        allMaterial()
+
+    }, [])
+
+    let nomeDoArquivo;
+    let nomeMaterial;
+    let nomeDaCapa;
+    let categoria;
+    let id;
+
+    let setDadosMaterial = (rowData) => {
+        nomeDoArquivo = rowData.nomeDoArquivo;
+        nomeMaterial = rowData.nome;
+        nomeDaCapa = rowData.nomeDaCapa;
+        categoria = rowData.categoria;
+        id = rowData.id;
+        
+        return rowData.nomeDoArquivo;
+    }
+
+    function deletar() {
+        // deletar pelo ID
+        teste();
+        // realizar post
+    }
+
+    function teste() {
+        console.log(' O nome do arquivo é: ' + nomeDoArquivo + ' nome da capa: ' + nomeDaCapa  + ' id: '  + id + ' categoria: ' + categoria + ' nome: '  + nomeMaterial);
+    }
 
     return (
 
         <div> <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
-            <Card title="GERENCIA DE MATERIAIS">
+
+            <Card title="MATERIAIS DE APOIO"></Card>
+
+            <Card>
+            <Button className={configBotao} label=" NOVO MATERIAL "  onClick={() => { history.push('/material/create') }} />
             </Card>
+
             <div>
-                <Card subTitle='CATEGORIA' >
-                    <Dropdown optionLabel="name" value={city} options={categorias} onChange={(e) => setCity(e.value)} placeholder="TODAS" />
-                </Card>
                 <Card>
-                    {/* Realizar mapeamento com map a partir de um json e popular a tabela e add as devidas colunas */}
                     <div className='' style={{ height: '100%' }}  >
                         <div className="card">
-                            <DataTable value={categorias} responsiveLayout="scroll">
-                                <Column field="discente" header="Titulo" ></Column>
-                                {/* <Column field="id" header="ID"></Column>
-                                <Column field="curso" header="Curso"></Column>
-                                <Column field="campus" header="Campus"></Column>
-                                <Column field="periodo" header="Periodo"></Column>
-                                <Column field="tentativaDeSuicidio" header="Ten de Suicidio"></Column>
-                                <Column field="descrisao" header="Descrisão"></Column> */}
-                                <Column field="" header="Açoes"
+                            <DataTable value={materiais} responsiveLayout="scroll" >
+
+                                <Column field="nome" header="Nome" sortable></Column>
+
+                                <Column field="categoria" header="Categoria" body={setDadosMaterial} sortable ></Column>
+
+                                <Column field="" header="Arquivo" 
                                     body={
-                                        <div>
+                                        <Card>
                                             <Card>
-                                                <div>
-                                                    <Button className="p-mb-5  p-mr-3 p-col-0" label="" icon="pi pi-file" />
-                                                    <Button className="p-mb-5  p-mr-3 p-col-0" label="" icon="pi pi-pencil" />
-                                                    <Button className="p-mb-0  p-mr-3 p-col-0 p-button-danger" label="" icon="pi pi-trash" />
-                                                </div>
+                                                <Button  className="p-button-danger pi pi-trash " onClick={deletar} > DELETE </Button>
                                             </Card>
-                                        </div>
+                                        </Card>
                                     }
                                 ></Column>
                             </DataTable>
@@ -58,6 +96,7 @@ export default function Crud() {
                     </div>
                 </Card>
             </div>
+
         </div>
 
     );
