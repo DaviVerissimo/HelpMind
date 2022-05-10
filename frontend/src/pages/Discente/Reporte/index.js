@@ -13,7 +13,7 @@ export default function Reporte() {
 
     const [campus, setCampus] = useState(null); //campus = singular, campi = plural
     const [campi, setCampi] = useState();
-    const [nome, setNome] = useState('');
+    const [nome, setNome] = useState();
     const [curso, setCurso] = useState([]);
     const [cursos, setCursos] = useState([]);
     const [descrisao, setDescrisao] = useState('');
@@ -37,6 +37,8 @@ export default function Reporte() {
         configBotaoCancel = "p-mb-3 p-button-secondary "
         configBotaoSalvar = "p-mb-3 ";
     }
+
+    var nomeObrigatorio = '';
 
     useEffect(async () => { //cursos
         var lista = [];
@@ -97,9 +99,18 @@ export default function Reporte() {
             }
         }
 
-        axios.post("http://localhost:8080/curso/definirCampus", campus, headers)
+        if (!nome == null){
+            axios.post("http://localhost:8080/curso/definirCampus", campus, headers)
             .then(Response => { })
             .catch(error => console.log(error))
+        }
+        if (nome == null){
+            nomeObrigatorio = 'p-invalid block';
+        }
+        
+        
+
+
 
     }, [campus]);
 
@@ -133,50 +144,38 @@ export default function Reporte() {
 
     return (
         <div> <ToobarDiscente></ToobarDiscente>
-            <div class="flex align-items-center justify-content-center" >
                 <div >
                     <Card title="REPORTAR CASO DE VULNERABILIDADE MENTAL"></Card>
-                    <div className='botao'>
+                    
                         <Card className="" >
-                            <div className=""  >
+                            <div>
                                 <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
                                 <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                             </div>
                         </Card>
-                    </div>
-
-                    <div className="" >
+                    
                         <Card >
-                            <div className="p-mb-3" >
-                                <h5>DISCENTE*</h5>
-                                <InputText className='entradaNome' value={nome} onChange={(e) => setNome(e.target.value)} />
-                            </div>
-                            <div className="p-mb-3" >
-                                <h5>CAMPUS*</h5>
+                            <Card subTitle='DISCENTE' >
+                                <InputText className={nomeObrigatorio}  value={nome} onChange={(e) => setNome(e.target.value)} />
+                            </Card>
+                            <Card subTitle='CAMPUS' >
                                 <Dropdown value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
-                            </div>
-                            <div className="p-mb-3" >
-                                <h5>CURSO*</h5>
+                            </Card>
+                            <Card subTitle='CURSO' >
                                 <Dropdown value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
-                            </div>
-                            <div className="p-mb-3" >
-                                <h5>ANO / PERÍODO*</h5>
+                            </Card>
+                            <Card subTitle='ANO / PERÍODO' >
                                 <Dropdown optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Não se aplica" />
-                            </div>
-                            <div className="p-mb-3" >
-                                <h5>JÁ TENTOU SUICÍDIO?</h5>
+                            </Card>
+                            <Card subTitle='JÁ TENTOU SUICÍDIO?' >
                                 <Dropdown optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setSuicidio(e.target.value)} placeholder="Não se aplica" />
-                            </div>
-                            <div className="p-mb-3" >
-                                <div>
-                                    <h5>DESCRIÇÃO</h5>
-                                    <InputTextarea rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
-                                </div>
-                            </div>
+                            </Card>
+                            <Card subTitle='DESCRIÇÃO' >
+                                <InputTextarea rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
+                            </Card>
                         </Card>
-                    </div>
+                    
                 </div>
-            </div>
         </div>
 
     );
