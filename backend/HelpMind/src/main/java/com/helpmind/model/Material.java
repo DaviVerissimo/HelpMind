@@ -24,8 +24,6 @@ public class Material {
 	private LocalDateTime dataCriacao;
 	private String urlDoArquivo;
 	private String nomeDoArquivo;
-	private String nomeDaCapa;
-	private String urlDaCapa;
 	public Integer getId() {
 		return id;
 	}
@@ -61,20 +59,6 @@ public class Material {
 	}
 	public void setNomeDoArquivo(String nomeDoArquivo) {
 		this.nomeDoArquivo = nomeDoArquivo;
-	}
-	public String getNomeDaCapa() {
-		return nomeDaCapa;
-	}
-	public void setNomeDaCapa(String nomeDaCapa) {
-		this.nomeDaCapa = nomeDaCapa;
-	}
-	public String getUrlDaCapa() {
-		return urlDaCapa;
-	}
-	public void setUrlDaCapa(String urlDaCapa) {
-		this.urlDaCapa = urlDaCapa;
-	}
-	
-	
+	}	
 
 }

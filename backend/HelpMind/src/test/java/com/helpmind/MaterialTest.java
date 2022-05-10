@@ -26,7 +26,6 @@ public class MaterialTest {
 		material.setNome("Totodaio");
 		material.setCategoria("Teste");
 		material.setNomeDoArquivo("doc.odt");
-		material.setNomeDaCapa("image.gif");
 		LocalDateTime data = LocalDateTime.now();
 		material.setDataCriacao(data);
 		materialService.salvar(material);

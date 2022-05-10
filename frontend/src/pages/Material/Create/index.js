@@ -13,16 +13,14 @@ export default function Create() {
 
   const categorias = [
     { name: 'Ansiedade' },
-    { name: 'Biporalidade' },
     { name: 'Depressão' },
-    { name: 'Suicidio' },
-    { name: 'Outro' },
+    { name: 'Adolescência' },
+    { name: 'Suicídio' },
 
   ];
   const [categoria, setCategoria] = useState('Ansiedade');
   const [nome, setNome] = useState('');
   const [nomeArquivo, setNomeArquivo] = useState();
-  const [nomeCapa, setNomeCapa] = useState();
 
   async function submeter() {
 
@@ -30,8 +28,7 @@ export default function Create() {
     {
         "nome": nome,
         "categoria": categoria.name,
-        "nomeDoArquivo": nomeArquivo,
-        "nomeDaCapa": nomeCapa
+        "nomeDoArquivo": nomeArquivo
     }
     const headers = {
         'headers': {
@@ -74,20 +71,12 @@ export default function Create() {
             <InputText className='entradaNome' value={nome} onChange={(e) => setNome(e.target.value)} />
           </Card>
           <Card subTitle='CATEGORIA' >
-            <Dropdown className='p-col-10 p-mr-6 ' optionLabel="name" value={categoria} options={categorias} onChange={(e) => setCategoria(e.value)} placeholder="TODAS" />
-            {/* <Button className={configBotaoSalvar} style={{ right: espacamento }} label="NOVA CATEGORIA" onClick={null} /> */}
+            <Dropdown className='p-col-10 p-mr-6 ' optionLabel="name" value={categoria} options={categorias} onChange={(e) => setCategoria(e.value)} placeholder="escolha uma categoria" />
           </Card>
           <Card subTitle='ARQUIVO' >
-            {/* <FileUpload name="file" url="/file/"  multiple accept="audio/*,video/*,image/*" maxFileSize={1024* 1024*10000000000 } ></FileUpload> */}
             <FileUpload name="file" url="/file/" ></FileUpload>
             <Card subTitle='COPIE E COLE AQUI O NOME DO ARQUIVO SELECIONADO ACIMA COM EXTENSÃO:' >
               <InputText className='' value={nomeArquivo} onChange={(e) => setNomeArquivo(e.target.value)} placeholder='nome do arquivo  (ex: meu documento.pdf)' />
-            </Card>
-          </Card>
-          <Card subTitle='CAPA' >
-            <FileUpload name="file" url="/file/" multiple accept="image/*" maxFileSize={1000000000000} ></FileUpload>
-            <Card subTitle='COPIE E COLE AQUI O NOME DA CAPA SELECIONADO COM EXTENSÃO:' placeholder='nome do capa (ex: minha imagem.jpg)' >
-              <InputText className='' value={nomeCapa} onChange={(e) => setNomeCapa(e.target.value)} />
             </Card>
           </Card>
         </Card>
