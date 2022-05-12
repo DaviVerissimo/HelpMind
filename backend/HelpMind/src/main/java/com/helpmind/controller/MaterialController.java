@@ -29,7 +29,7 @@ public class MaterialController {
 	public ResponseEntity novoMaterial(@RequestBody Material material) throws URISyntaxException {
 		LocalDateTime data = LocalDateTime.now();
 		material.setDataCriacao(data);
-		//faltar linkar url do arquivo e da capa.
+		//faltar linkar url do arquivo
 		
 		try {
 			materialService.salvar(material);
@@ -49,19 +49,5 @@ public class MaterialController {
 		
 		return materialService.remover(nome);
 	}
-	
-//	@GetMapping("/salvarMaterial")
-//	public Material teste() {
-//		Material material = new Material();
-//		material.setNome("charmander");
-//		material.setCategoria("Teste");
-//		material.setNomeDoArquivo("doc.pdf");
-//		material.setNomeDaCapa("image.png");
-//		LocalDateTime data = LocalDateTime.now();
-//		material.setDataCriacao(data);
-//		materialService.salvar(material);
-//		
-//		return material;
-//	}
 
 }

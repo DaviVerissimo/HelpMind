@@ -1,0 +1,314 @@
+{
+  "id": "5c70c9a3-9aa5-4480-ad1a-6e0f2a96cf6a",
+  "version": "2.0",
+  "name": "Teste web Novo Questionario de depressao de Beck Error",
+  "url": "http://localhost:3000/discente/Perfil",
+  "tests": [{
+    "id": "e8f5e402-944b-4117-877c-cdfada8d237b",
+    "name": "Teste2",
+    "commands": [{
+      "id": "e832abb4-a69e-4efb-a71e-1e5d8c6b094f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/discente/Perfil",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "54f85d69-1fd9-4630-bedd-b361fecfc15f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5f81ad23-67f4-4604-bd30-98e62d3827a6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-toolbar",
+      "targets": [
+        ["css=.p-toolbar", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "14b262ba-d451-435d-9561-d1f07bff312a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-toolbar-group-right .p-button:nth-child(2)",
+      "targets": [
+        ["css=.p-toolbar-group-right .p-button:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/button[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Inventario')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "81b5aa15-048e-4573-a798-dba358d64abb",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .p-mb-3 > .p-button-label",
+      "targets": [
+        ["css=div:nth-child(1) > .p-mb-3 > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[2]/div/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffc897b4-cf37-4868-ba8d-3a9021259dab",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(6) .p-card:nth-child(1) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(6) .p-card:nth-child(1) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[6]/div/div[2]/div/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[6]/div/div[2]/div/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e5e0c64-cf06-4c39-865f-090fd6bae384",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(7) .p-card:nth-child(1) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(7) .p-card:nth-child(1) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[7]/div/div[2]/div/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[7]/div/div[2]/div/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9cdb46fc-44ab-4596-bb8f-4d38174ebe6c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(8) .p-card:nth-child(2) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(8) .p-card:nth-child(2) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[8]/div/div[2]/div[2]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[8]/div/div[2]/div[2]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8518c48b-a56b-41f9-9373-47e38af582a7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(9) .p-card:nth-child(3) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(9) .p-card:nth-child(3) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[9]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[9]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7b8587b-d60f-435f-abf6-2152b9e912a7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(10) .p-card:nth-child(3) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(10) .p-card:nth-child(3) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[10]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[10]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6da72675-af52-40be-93a9-9ea165989c66",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(11) .p-card:nth-child(3) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(11) .p-card:nth-child(3) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[11]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[11]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2672a8a-d339-445d-bea4-87feff64d409",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(12) .p-card:nth-child(4) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(12) .p-card:nth-child(4) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[12]/div/div[2]/div[4]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[12]/div/div[2]/div[4]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "55f2644b-5019-48ff-9cb1-67a79cec1e4e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(14) .p-card:nth-child(2) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(14) .p-card:nth-child(2) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[14]/div/div[2]/div[2]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[14]/div/div[2]/div[2]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4216274c-a34b-4cb5-9adc-59220df5c114",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(15) .p-card:nth-child(3) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(15) .p-card:nth-child(3) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[15]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[15]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8eaa9d83-da3f-4a9d-ba7f-29fc39d06382",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(16) .p-card:nth-child(3) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(16) .p-card:nth-child(3) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[16]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[16]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3fdb1a4c-b77c-4dbb-b4ff-57ea59b75275",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(17) .p-card:nth-child(4) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(17) .p-card:nth-child(4) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[17]/div/div[2]/div[4]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[17]/div/div[2]/div[4]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b33c23f5-e637-4409-90dc-bcf8fba7f8a5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(18) .p-card:nth-child(4) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(18) .p-card:nth-child(4) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[18]/div/div[2]/div[4]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[18]/div/div[2]/div[4]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "db86fe7e-3f40-46b0-9485-68390213645c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(19) .p-card:nth-child(3) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(19) .p-card:nth-child(3) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[19]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[19]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1984988f-7595-4742-a778-18d6da94fcb1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(20) .p-card:nth-child(3) label",
+      "targets": [
+        ["css=.p-card:nth-child(20) .p-card:nth-child(3) label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[20]/div/div[2]/div[3]/div/div/label", "xpath:idRelative"],
+        ["xpath=//div[20]/div/div[2]/div[3]/div/div/label", "xpath:position"],
+        ["xpath=//label[contains(.,' 2 Tenho que me esforçar muito para fazer alguma coisa')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bea8d476-5694-4e08-873b-4089fb93fe44",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(20) .p-card:nth-child(3) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(20) .p-card:nth-child(3) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[20]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[20]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "15acf9ac-376c-432a-8b0e-53eabd831fd0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(21) .p-card:nth-child(2) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(21) .p-card:nth-child(2) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[21]/div/div[2]/div[2]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[21]/div/div[2]/div[2]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ef68b350-4214-4c78-9c2e-294e612c9890",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(22) .p-card:nth-child(2) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(22) .p-card:nth-child(2) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[22]/div/div[2]/div[2]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[22]/div/div[2]/div[2]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "44572a4f-9545-45f5-b846-2ae0efd8e036",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(23) .p-card:nth-child(3) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(23) .p-card:nth-child(3) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[23]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[23]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a1ae7708-8f8b-49d6-b6a5-8c1221df7d7f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(24) .p-card:nth-child(3) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(24) .p-card:nth-child(3) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[24]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[24]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ccf92272-dcd2-4b34-8628-73d1c15f7b50",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(25) .p-card:nth-child(3) .p-radiobutton-box",
+      "targets": [
+        ["css=.p-card:nth-child(25) .p-card:nth-child(3) .p-radiobutton-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[25]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[25]/div/div[2]/div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc1ff5a6-c082-4007-980f-1cd81da5dec0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(26) .p-card:nth-child(2) .p-radiobutton",
+      "targets": [
+        ["css=.p-card:nth-child(26) .p-card:nth-child(2) .p-radiobutton", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[26]/div/div[2]/div[2]/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[26]/div/div[2]/div[2]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa67ada8-b1d4-4cf9-bd2a-89baeaab916d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-mt-3 > .p-button-label",
+      "targets": [
+        ["css=.p-mt-3 > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[3]/div/div/div/button[2]/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/button[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'SALVAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "ca89082b-de4e-4b35-8583-7b89a88b44d0",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["e8f5e402-944b-4117-877c-cdfada8d237b"]
+  }],
+  "urls": [],
+  "plugins": []
+}
