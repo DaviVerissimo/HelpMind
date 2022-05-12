@@ -1,5 +1,6 @@
 package com.helpmind.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,6 +19,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "questionarioDeAnsiedadeDeBeck")
 public class QuestionarioDeAnsiedadeDeBeck implements Questionario{
+	
+	public QuestionarioDeAnsiedadeDeBeck() {
+		listaDeQuestoes = new ArrayList<Questao>();
+	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

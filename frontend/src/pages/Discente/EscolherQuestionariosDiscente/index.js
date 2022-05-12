@@ -25,7 +25,7 @@ export default function EscolherQuestionariosDiscente() {
                             <Button className={configBotao} label="INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)"  onClick={() => { history.push('/Discente/QuestionarioDeBeck/Depressao') }} />
                         </div>
                         <div>
-                            <Button className={configBotao} label="INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" />
+                            <Button className={configBotao} label="INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" onClick={() => { history.push('/Discente/QuestionarioDeBeck/Ansiedade') }}/>
                         </div>
                         <div>
                             <Button className={configBotao} label="QUESTIONÁRIO SOCIOECONÔMICO (QS)"  onClick={() => {history.push('/discente/QuestionarioSocioeconomico')}} />
