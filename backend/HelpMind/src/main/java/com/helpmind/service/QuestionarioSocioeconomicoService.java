@@ -1,5 +1,7 @@
 package com.helpmind.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ public class QuestionarioSocioeconomicoService {
 		questionarioSocioeconomicoRepository.save(questionarioSocioeconomico);
 	}
 	
-	
+	public List<QuestionarioSocioeconomico> retornarListaQuestionarioSocioeconomico(){
+		return questionarioSocioeconomicoRepository.findAll();
+	}
 
 }

@@ -1,5 +1,7 @@
 package com.helpmind.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -58,6 +60,14 @@ public class QuestionarioSocioeconomico implements Questionario{
 	private String possuiFamiliarComDoencaGrave;
 	private String familiarDoente;
 	private String doencaDoFamiliar_op;
+	private LocalDateTime data;
+	
+	public LocalDateTime getData() {
+		return data;
+	}
+	public void setData(LocalDateTime data) {
+		this.data = data;
+	}
 	public Integer getId() {
 		return id;
 	}

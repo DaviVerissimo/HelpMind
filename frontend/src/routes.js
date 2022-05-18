@@ -17,6 +17,7 @@ import QuestionarioSocioeconomico from "./pages/Discente/QuestionarioSocioeconom
 import PerfilDiscente from "./pages/Discente/PerfilDiscente";
 import Reportes from "./pages/Discente/Reportes";
 import PerfilProfissionalDeSaude from "./pages/ProfissionalDeSaude/PerfilProfissionalDeSaude";
+import ListaQuestionarioSocioeconomico from "./pages/ProfissionalDeSaude/ListaQuestionarioSocioeconomico";
 
 export default function Routes() {
     return (
@@ -38,6 +39,7 @@ export default function Routes() {
                 {/* <Route path="/Discente/SimuladorDeQuestionario/SimulacaoQuestionarioResultado" component={SimulacaoQuestionarioResultado} /> */}
                 <Route path="/profissionalDeSaude/ListaDeReportes" component={ListaDeReportes} />
                 <Route path="/profissionalDeSaude/perfil" component={PerfilProfissionalDeSaude} />
+                <Route path="/profissionalDeSaude/QuestionarioSocioeconomico" component={ListaQuestionarioSocioeconomico} />
             </Switch>
         </BrowserRouter>
     );
