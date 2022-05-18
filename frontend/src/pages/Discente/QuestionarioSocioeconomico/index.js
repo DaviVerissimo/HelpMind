@@ -1,5 +1,5 @@
 import { Card } from 'primereact/card';
-import React from 'react';
+import React, { useRef } from 'react';
 import { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
@@ -9,18 +9,35 @@ import axios from 'axios';
 import { Dropdown } from 'primereact/dropdown';
 import { RadioButton } from 'primereact/radiobutton';
 import { Checkbox } from 'primereact/checkbox';
+import { Toast } from 'primereact/toast';
 
 export default function QuestionarioSocioeconomico() {
-
-    const [campus, setCampus] = useState(null); //campus = singular, campi = plural
+    const toast = useRef(null);
+    const showSuccess = () => {
+        toast.current.show({
+            severity: 'success',
+            summary: 'Enviado com Sucesso!',
+            detail: 'Obrigado',
+            life: 5000
+        });
+    }
+    const showError = () => {
+        toast.current.show({
+            severity: 'error',
+            summary: 'Não foi possivel Enviar!',
+            detail: 'Verifique  se todos os campos foram preenchidos.',
+            life: 5000
+        });
+    }
+    const [email, setEmail] = useState('renatoRusso@gmail.com');
+    const [campusDoDiscente, setCampusDoDiscente] = useState(null);
     const [campi, setCampi] = useState();
     const [checked, setChecked] = useState();
     const [nome, setNome] = useState('');
     const [matricula, setMatricula] = useState();
     const [curso, setCurso] = useState([]);
     const [cursos, setCursos] = useState([]);
-    const [descrisao, setDescrisao] = useState('');
-    const [periodo, setPeriodos] = useState('1º');
+    const [periodo, setPeriodo] = useState('1º');
     const periodos = [
         { name: '1º' },
         { name: '2º' },
@@ -40,7 +57,7 @@ export default function QuestionarioSocioeconomico() {
         { name: 'Outro' },
 
     ];
-    const [value, setValue] = useState();
+    const [zonaHurbanaRural_op, setZonaHurbanaRural_op] = useState();
     const [estadoCivil, setEstadoCivil] = useState();
     const estadosCivis = [
         { name: 'Solteiro (a)' },
@@ -81,32 +98,32 @@ export default function QuestionarioSocioeconomico() {
         { name: 'não binário' },
         { name: 'outros' },
     ];
-    const [cota, setCota] = useState();
+    const [ingressantePorVagaDeCota, setIngressantePorVagaDeCota] = useState();
     const cotas = [
         { name: 'Sim' },
         { name: 'Não' },
     ];
-    const [deficiencia, setDeficiencia] = useState();
+    const [pessoaDeficiente, setPessoaDeficiente] = useState('Não');
     const deficiencias = [
         { name: 'Sim' },
         { name: 'Não' },
     ];
-    const [deficiente, setDeficiente] = useState();
-    const [bebidaAlcoolica, setBebidaAlcoolica] = useState();
+    const [deficiencia_op_tipo, setDeficiencia_op_tipo] = useState();
+    const [usoBebidaAlcoolica, setUsoBebidaAlcoolica] = useState();
     const bebidasAlcoolica = [
         { name: '02 vezes por semana/final de semana' },
         { name: '03 vezes ou mais semana' },
         { name: 'Não faço uso atualmente' },
         { name: 'Nunca bebi' },
     ];
-    const [bullyng, setBullyng] = useState();
+    const [bullyng, setBullyng] = useState('Não sofri');
     const bullyngs = [
         { name: 'Sim, já sofri' },
         { name: 'Não sofri' },
         { name: 'Sim, em outra escola' },
         { name: 'Sim, continuo sofrendo' },
     ];
-    const [residenteSofrimentoMental, setResidenteSofrimentoMental] = useState();
+    const [resideComPortadorDeProblemaMental, setResideComPortadorDeProblemaMental] = useState('Não');
     const residentesSofrimentoMental = [
         { name: 'Sim, meus pais' },
         { name: 'Sim, irmãos' },
@@ -151,15 +168,23 @@ export default function QuestionarioSocioeconomico() {
         { name: 'Financiada' },
     ];
     const [doencaDiscente, setDoencaDiscente] = useState();
-    const doencasDiscente = [
+    const DiscenteDoencas = [
         { name: 'Sim' },
         { name: 'Não' },
     ];
-    const [doencaParente, setDoencaParente] = useState();
     const doencasParente = [
         { name: 'Sim' },
         { name: 'Não' },
     ];
+    const [doencaDoFamiliar_op, setDoencaDoFamiliar_op] = useState();
+    const [problemaPsifico_op, setProblemaPsifico_op] = useState('');
+    const [outroBeneficio, setOutroBeneficio] = useState();
+    const [quantidadeComodos_op, setQuantidadeComodos_op] = useState();
+    const [temDoenca, setTemDoenca] = useState();
+    const [possuiFamiliarComDoencaGrave, setPossuiFamiliarComDoencaGrave] = useState();
+    const [familiarDoente, setFamiliarDoente] = useState();
+    const [diaguinostico_op, setDiaguinostico_op] = useState('');
+    const [cotista_op, setCotista_op] = useState();
 
     var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
     var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
@@ -202,7 +227,7 @@ export default function QuestionarioSocioeconomico() {
             })
             .catch(error => console.log(error))
 
-    }, [campus]);
+    }, [campusDoDiscente]);
 
     useEffect(async () => { //campus
         var lista = [];
@@ -229,14 +254,83 @@ export default function QuestionarioSocioeconomico() {
 
     }, []);
 
+    async function submeter() {
+
+        const novoQuestionario = {
+            "email": email,
+            "nome": nome,
+            "campusDoDiscente": campusDoDiscente,
+            "matricula": matricula,
+            "curso": curso,
+            "periodo": periodo.name,
+            "idade": idade.name,
+            "cidade": cidade.name,
+            "zonaHurbanaRural_op": zonaHurbanaRural_op,
+            "estadoCivil": estadoCivil.name,
+            "comQuemVive": comQuemVive.name,
+            "rendaFamiliar": rendaFamiliar.name,
+            "cor": cor.name,
+            "genero": genero.name,
+            "ingressantePorVagaDeCota": ingressantePorVagaDeCota.name,
+            "cotista_op": cotista_op,
+            "pessoaDeficiente": pessoaDeficiente.name,
+            "deficiencia_op_tipo": deficiencia_op_tipo,
+            "usoBebidaAlcoolica": usoBebidaAlcoolica.name,
+            "bullyng": bullyng.name,
+            "resideComPortadorDeProblemaMental": resideComPortadorDeProblemaMental.name,
+            "discenteSofrimentoMental": discenteSofrimentoMental.name,
+            "diaguinostico_op": diaguinostico_op,
+            "problemaPsifico_op": problemaPsifico_op,
+            "psicotropico": psicotropico.name,
+            "interesseAjudaPsicologica": interesseAjudaPsicologica.name,
+            "beneficio": beneficio.name,
+            "beneficio_op": outroBeneficio,
+            "domicilio": domicilio.name,
+            "quantidadeComodos_op": quantidadeComodos_op,
+            "doencaGrave": temDoenca.name,
+            "doencaGraveDiscente_op": doencaDiscente,
+            "possuiFamiliarComDoencaGrave": possuiFamiliarComDoencaGrave.name,
+            "familiarDoente": familiarDoente,
+            "doencaDoFamiliar_op": doencaDoFamiliar_op
+    
+        }
+
+        console.log(checked)
+        if (checked === true) {
+            var questoesRespondidas = [];
+
+            // for (var i in allQuestoes) {
+            //     if (allQuestoes[i] != null) {
+            //         questoesRespondidas.push(allQuestoes[i])
+            //     }
+            // }
+
+            const headers = {
+                'headers': {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            }
+
+            axios.post("http://localhost:8080/QuestionarioSocioeconomico/salvar", novoQuestionario, headers)
+                .then(Response => { })
+                .catch(error => console.log(error))
+            showSuccess();
+        }
+        else { showError() }
+
+    }
+
     return (
         <div>
             <ToobarDiscente></ToobarDiscente>
             <div>
+            <Toast ref={toast} />
                 <Card className="" >
                     <div className="   align-items-end "  >
                         <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
-                        <Button className={configBotaoSalvar} label="SALVAR" onClick={null} />
+                        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>
                 <Card className="" >
@@ -248,108 +342,108 @@ export default function QuestionarioSocioeconomico() {
                         profissionais de saúde do campus e psicólogo interno e externo. </label>
                 </Card>
                 <Card subTitle='NOME' >
-                    <InputText className='entradaNome' value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite seu nome" />
+                    <InputText className='' value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite seu nome" />
                 </Card>
                 <Card subTitle='MATRICULA' >
-                    <InputText className='entradaNome' value={matricula} onChange={(e) => setNome(e.target.value)} placeholder="Digite sua matricula" />
+                    <InputText className='' value={matricula} onChange={(e) => setMatricula(e.target.value)} placeholder="Digite sua matricula" />
                 </Card>
                 <Card subTitle='CAMPUS' >
-                    <Dropdown value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
+                    <Dropdown value={campusDoDiscente} options={campi} onChange={(e) => setCampusDoDiscente(e.value)} placeholder="Escolha um campus" />
                 </Card>
                 <Card subTitle='CURSO' >
                     <Dropdown value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
                 </Card>
                 <Card subTitle='PERIODO' >
-                    <Dropdown optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha um periodo" />
+                    <Dropdown optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodo(e.target.value)} placeholder="Escolha um periodo" />
                 </Card>
                 <Card subTitle='IDADE' >
-                    <Dropdown optionLabel="name" value={idade} options={idades} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma idade" />
+                    <Dropdown optionLabel="name" value={idade} options={idades} onChange={(e) => setIdade(e.target.value)} placeholder="Escolha uma idade" />
                 </Card>
                 <Card subTitle='CIDADE' >
-                    <Dropdown className='p-mb-3' optionLabel="name" value={cidade} options={cidades} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma cidade" />
+                    <Dropdown className='p-mb-3' optionLabel="name" value={cidade} options={cidades} onChange={(e) => setCidade(e.target.value)} placeholder="Escolha uma cidade" />
                     <Card subTitle='Escolha a zona: ' >
-                        <RadioButton className="p-ml-3" value="val1" name="city" onChange={(e) => setValue(e.value)} checked={value === 'val1'} />
+                        <RadioButton className="p-ml-3" value='Zona urbana' onChange={(e) => setZonaHurbanaRural_op(e.value)} checked={zonaHurbanaRural_op === 'Zona urbana'} />
                         <label> Zona urbana</label>
-                        <RadioButton className="p-ml-3" value="val1" name="city" onChange={(e) => setValue(e.value)} checked={value === 'val1'} />
+                        <RadioButton className="p-ml-3" value='' name="city" onChange={(e) => setZonaHurbanaRural_op(e.value)} checked={zonaHurbanaRural_op === 'Zona rural'} />
                         <label> Zona rural</label>
                     </Card>
                 </Card>
                 <Card subTitle='ESTADO CIVIL' >
-                    <Dropdown optionLabel="name" value={estadoCivil} options={estadosCivis} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha seu estado civil" />
+                    <Dropdown optionLabel="name" value={estadoCivil} options={estadosCivis} onChange={(e) => setEstadoCivil(e.target.value)} placeholder="Escolha seu estado civil" />
                 </Card>
                 <Card subTitle='COM QUEM VIVE' >
-                    <Dropdown optionLabel="name" value={comQuemVive} options={comQuemVives} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha com quem vive" />
+                    <Dropdown optionLabel="name" value={comQuemVive} options={comQuemVives} onChange={(e) => setComQuemVive(e.target.value)} placeholder="Escolha com quem vive" />
                 </Card>
                 <Card subTitle='RENDA FAMILIAR' >
-                    <Dropdown optionLabel="name" value={rendaFamiliar} options={rendasFamiliar} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma renda" />
+                    <Dropdown optionLabel="name" value={rendaFamiliar} options={rendasFamiliar} onChange={(e) => setRendaFamiliar(e.target.value)} placeholder="Escolha uma renda" />
                 </Card>
                 <Card subTitle='COR' >
-                    <Dropdown optionLabel="name" value={cor} options={cores} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha sua cor" />
+                    <Dropdown optionLabel="name" value={cor} options={cores} onChange={(e) => setCor(e.target.value)} placeholder="Escolha sua cor" />
                 </Card>
                 <Card subTitle='GÊNERO' >
-                    <Dropdown optionLabel="name" value={genero} options={generos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha seu gênero" />
+                    <Dropdown optionLabel="name" value={genero} options={generos} onChange={(e) => setGenero(e.target.value)} placeholder="Escolha seu gênero" />
                 </Card>
                 <Card subTitle='OPTANTE/ INGRESSANTE POR VAGAS DE COTAS?' >
-                    <Dropdown className='p-mb-3' optionLabel="name" value={cota} options={cotas} onChange={(e) => setPeriodos(e.target.value)} placeholder="Optou pelas cotas?" />
+                    <Dropdown className='p-mb-3' optionLabel="name" value={ingressantePorVagaDeCota} options={cotas} onChange={(e) => setIngressantePorVagaDeCota(e.target.value)} placeholder="Optou pelas cotas?" />
                     <Card subTitle='Em caso de resposta afirmativa especifique: ' >
-                        <RadioButton className="p-ml-3" value="val1" name="city" onChange={(e) => setValue(e.value)} checked={value === 'val1'} />
+                        <RadioButton className="p-ml-3" value='Ensino público' onChange={(e) => setCotista_op(e.value)} checked={cotista_op === 'Ensino público'} />
                         <label> ensino público </label>
-                        <RadioButton className="p-ml-3" value="val1" name="city" onChange={(e) => setValue(e.value)} checked={value === 'val1'} />
+                        <RadioButton className="p-ml-3" value='Cotas raciais' onChange={(e) => setCotista_op(e.value)} checked={cotista_op === 'Cotas raciais'} />
                         <label> cotas raciais </label>
                     </Card>
                 </Card>
                 <Card subTitle='É PESSOA COM DEFICIÊNCIA?'  >
-                    <Dropdown className='p-mb-3' optionLabel="name" value={deficiencia} options={deficiencias} onChange={(e) => setPeriodos(e.target.value)} placeholder="Possui algum tipo de deficiência:" />
+                    <Dropdown className='p-mb-3' optionLabel="name" value={pessoaDeficiente} options={deficiencias} onChange={(e) => setPessoaDeficiente(e.target.value)} placeholder="Possui algum tipo de deficiência:" />
                     <Card subTitle='Em caso de resposta afirmativa especifique:' >
-                        <InputText className='entradadeficiente' value={deficiente} onChange={(e) => setNome(e.target.value)} placeholder="Digite a deficiência" />
+                        <InputText className='' value={deficiencia_op_tipo} onChange={(e) => setDeficiencia_op_tipo(e.target.value)} placeholder="Digite a deficiência" />
                     </Card>
                 </Card>
                 <Card subTitle='FAZ USO DE BEBIDA ALCOÓLICA'>
-                    <Dropdown className='' optionLabel="name" value={bebidaAlcoolica} options={bebidasAlcoolica} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className='' optionLabel="name" value={usoBebidaAlcoolica} options={bebidasAlcoolica} onChange={(e) => setUsoBebidaAlcoolica(e.target.value)} placeholder="Escolha uma opção" />
                 </Card>
                 <Card subTitle='VOCÊ JÁ SOFREU OU SOFRE BULLYING NA ESCOLA?' >
-                    <Dropdown className='' optionLabel="name" value={bullyng} options={bullyngs} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className='' optionLabel="name" value={bullyng} options={bullyngs} onChange={(e) => setBullyng(e.target.value)} placeholder="Escolha uma opção" />
                 </Card>
                 <Card subTitle='ALGUÉM NA SUA RESIDÊNCIA SOFRE COM ALGUM PROBLEMA DE SAÚDE MENTAL?' >
-                    <Dropdown className='' optionLabel="name" value={residenteSofrimentoMental} options={residentesSofrimentoMental} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className='' optionLabel="name" value={resideComPortadorDeProblemaMental} options={residentesSofrimentoMental} onChange={(e) => setResideComPortadorDeProblemaMental(e.target.value)} placeholder="Escolha uma opção" />
                 </Card>
                 <Card subTitle='VOCÊ SOFRE DE ALGUM PROBLEMA DE SAÚDE MENTAL?' >
-                    <Dropdown className='p-mb-3' optionLabel="name" value={discenteSofrimentoMental} options={discenteSofrimentosMental} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className='p-mb-3' optionLabel="name" value={discenteSofrimentoMental} options={discenteSofrimentosMental} onChange={(e) => setDiscenteSofrimentoMental(e.target.value)} placeholder="Escolha uma opção" />
                     <Card subTitle='Caso tenha escolhido uma opção outro expecifique. Marque o circulo caso tenha diagnóstico:' >
-                        <RadioButton className="" value="val1" name="city" onChange={(e) => setValue(e.value)} checked={value === 'val1'} />
+                    <RadioButton className="p-ml-3" value='outro' onChange={(e) => setDiaguinostico_op(e.value)} checked={diaguinostico_op === 'outro'} />
                         <label> outro(diagnóstico) </label>
-                        <InputText className='entradaOutro p-mt-3' value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu problema" />
+                        <InputText className='' value={problemaPsifico_op} onChange={(e) => setProblemaPsifico_op(e.target.value)} placeholder="Digite o seu problema" />
                     </Card>
                 </Card>
                 <Card subTitle='JÁ FEZ USO DE PSICOTRÓPICO: ANSIEDADE OU DEPRESSÃO?' >
-                    <Dropdown className='' optionLabel="name" value={psicotropico} options={psicotropicos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className='' optionLabel="name" value={psicotropico} options={psicotropicos} onChange={(e) => setPsicotropico(e.target.value)} placeholder="Escolha uma opção" />
                 </Card>
                 <Card subTitle='EM ALGUM MOMENTO DA VIDA MANIFESTOU INTERESSE EM PROCURAR AJUDA PSICÓLOGO?' >
-                    <Dropdown className='' optionLabel="name" value={interesseAjudaPsicologica} options={interessesAjudaPsicologica} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className='' optionLabel="name" value={interesseAjudaPsicologica} options={interessesAjudaPsicologica} onChange={(e) => setInteresseAjudaPsicologica(e.target.value)} placeholder="Escolha uma opção" />
                 </Card>
                 <Card subTitle='VOCÊ É BENEFICIADO COM ALGUM BOLSA OU PROGRAMA DE ASSISTÊNCIA ESTUDANTIL IFPB' >
-                    <Dropdown className='p-mb-3' optionLabel="name" value={beneficio} options={beneficios} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className='p-mb-3' optionLabel="name" value={beneficio} options={beneficios} onChange={(e) => setBeneficio(e.target.value)} placeholder="Escolha uma opção" />
                     <Card subTitle='Caso tenha escolhido uma opção outro expecifique o beneficio:' >
-                        <InputText className='entradaOutro p-mt-3' value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite o beneficio" />
+                        <InputText className='entradaOutro p-mt-3' value={outroBeneficio} onChange={(e) => setOutroBeneficio(e.target.value)} placeholder="Digite o beneficio" />
                     </Card>
                 </Card>
                 <Card subTitle='O DOMICÍLIO DO GRUPO FAMILIAR É' >
-                    <Dropdown className='p-mb-3' optionLabel="name" value={domicilio} options={domicilios} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className='p-mb-3' optionLabel="name" value={domicilio} options={domicilios} onChange={(e) => setDomicilio(e.target.value)} placeholder="Escolha uma opção" />
                     <Card subTitle='Informe a quantidade de cômodos:' >
-                        <InputText className='entradaOutro p-col-1' value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Cômodos" />
+                        <InputText className='' value={quantidadeComodos_op} onChange={(e) => setQuantidadeComodos_op(e.target.value)} placeholder="Cômodos" />
                     </Card>
                 </Card>
                 <Card subTitle='VOCÊ APRESENTA ALGUMA DOENÇA GRAVE?' >
-                    <Dropdown className='p-mb-3' optionLabel="name" value={doencaDiscente} options={doencasDiscente} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className='p-mb-3' optionLabel="name" value={temDoenca} options={DiscenteDoencas} onChange={(e) => setTemDoenca(e.target.value)} placeholder="Escolha uma opção" />
                     <Card subTitle='Em caso de resposta afirmativa, especifique:' >
-                        <InputText className='entradaOutro ' value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Sua doença" />
+                        <InputText className='' value={doencaDiscente} onChange={(e) => setDoencaDiscente(e.target.value)} placeholder="Sua doença" />
                     </Card>
                 </Card>
                 <Card subTitle='ALGUÉM DO SEU NÚCLEO FAMILIAR APRESENTA DOENÇA GRAVE?' >
-                    <Dropdown className='p-mb-3' optionLabel="name" value={doencaParente} options={doencasParente} onChange={(e) => setPeriodos(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className='p-mb-3' optionLabel="name" value={possuiFamiliarComDoencaGrave} options={doencasParente} onChange={(e) => setPossuiFamiliarComDoencaGrave(e.target.value)} placeholder="Escolha uma opção" />
                     <Card subTitle='Em caso de resposta afirmativa, especifique:' >
-                        <InputText className='entradaOutro ' value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Seu parente" />
-                        <InputText className='entradaOutro p-mt-3' value={nome} onChange={(e) => setNome(e.target.value)} placeholder="A doença do seu parente" />
+                        <InputText className='p-mr-3' value={familiarDoente} onChange={(e) => setFamiliarDoente(e.target.value)} placeholder="Seu parente" />
+                        <InputText className=' p-mt-3' value={doencaDoFamiliar_op} onChange={(e) => setDoencaDoFamiliar_op(e.target.value)} placeholder="A doença do seu parente" />
                     </Card>
                 </Card>
             </div>
