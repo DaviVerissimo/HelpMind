@@ -18,6 +18,7 @@ import PerfilDiscente from "./pages/Discente/PerfilDiscente";
 import Reportes from "./pages/Discente/Reportes";
 import PerfilProfissionalDeSaude from "./pages/ProfissionalDeSaude/PerfilProfissionalDeSaude";
 import ListaQuestionarioSocioeconomico from "./pages/ProfissionalDeSaude/ListaQuestionarioSocioeconomico";
+import ListaQuestionarioAnsiedadeDeBeck from "./pages/ProfissionalDeSaude/ListaQuestionariosAnsiedadeDeBeck";
 
 export default function Routes() {
     return (
@@ -36,10 +37,10 @@ export default function Routes() {
                 <Route path="/publica/QuemSomos" component={QuemSomos} />
                 <Route path="/publica/Login" component={Login} />
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
-                {/* <Route path="/Discente/SimuladorDeQuestionario/SimulacaoQuestionarioResultado" component={SimulacaoQuestionarioResultado} /> */}
                 <Route path="/profissionalDeSaude/ListaDeReportes" component={ListaDeReportes} />
                 <Route path="/profissionalDeSaude/perfil" component={PerfilProfissionalDeSaude} />
                 <Route path="/profissionalDeSaude/QuestionarioSocioeconomico" component={ListaQuestionarioSocioeconomico} />
+                <Route path="/profissionalDeSaude/QuestionarioAnsiedadeDeBeck" component={ListaQuestionarioAnsiedadeDeBeck} />
             </Switch>
         </BrowserRouter>
     );

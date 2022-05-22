@@ -31,6 +31,7 @@ public class QuestionarioDeAnsiedadeDeBeckService {
 	
 	public QuestionarioDeAnsiedadeDeBeck preencherQuestionarioComResporta(List<String> questoesResportas) {
 		QuestionarioDeAnsiedadeDeBeck questionario = new QuestionarioDeAnsiedadeDeBeck();
+		
 		List<Questao> lista = new  ArrayList<Questao>();
 		//verifica que não existem questões nulas
 		for (int i = 0; i < questoesResportas.size(); i++) {
@@ -40,9 +41,11 @@ public class QuestionarioDeAnsiedadeDeBeckService {
 			else {
 				Questao questao = new Questao();
 				questao.setResporta(questoesResportas.get(i));
+				lista.add(questao);
 			}
 		}
 		questionario.setListaDeQuestoes(lista);
+		
 		return questionario;
 		
 	}
@@ -55,6 +58,12 @@ public class QuestionarioDeAnsiedadeDeBeckService {
 		else {
 			return questionarioDeAnsiedadeDeBeckRepository.save(questionario);
 		}
+	}
+
+	public List<QuestionarioDeAnsiedadeDeBeck> retornarListaQuestionarioDeAnsiedadeDeBeck() {
+		List<QuestionarioDeAnsiedadeDeBeck> lista = questionarioDeAnsiedadeDeBeckRepository.findAll();
+		
+		return lista;
 	}
 
 }

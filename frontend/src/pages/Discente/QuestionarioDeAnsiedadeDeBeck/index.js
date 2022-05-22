@@ -183,7 +183,7 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
                         <label> {escolha2} </label>
                     </Card>
                     <Card>
-                        <RadioButton value="3" onChange={(e) => setQuestao02(e.value)} checked={questao01 === '3'} />
+                        <RadioButton value="3" onChange={(e) => setQuestao02(e.value)} checked={questao02 === '3'} />
                         <label> {escolha3} </label>
                     </Card>
                 </Card>
