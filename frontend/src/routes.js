@@ -20,6 +20,8 @@ import PerfilProfissionalDeSaude from "./pages/ProfissionalDeSaude/PerfilProfiss
 import ListaQuestionarioSocioeconomico from "./pages/ProfissionalDeSaude/ListaQuestionarioSocioeconomico";
 import ListaQuestionarioAnsiedadeDeBeck from "./pages/ProfissionalDeSaude/ListaQuestionariosAnsiedadeDeBeck";
 import ListaQuestionariosDepressaoDeBeck from "./pages/ProfissionalDeSaude/ListaQuestionariosDepressaoDeBeck";
+import PerfilDiscenteDetalhado from "./pages/ProfissionalDeSaude/PerfilDiscenteDetalhado";
+import ListaDiscentes from "./pages/ProfissionalDeSaude/ListaDiscentes";
 
 export default function Routes() {
     return (
@@ -43,6 +45,8 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/QuestionarioSocioeconomico" component={ListaQuestionarioSocioeconomico} />
                 <Route path="/profissionalDeSaude/QuestionarioAnsiedadeDeBeck" component={ListaQuestionarioAnsiedadeDeBeck} />
                 <Route path="/profissionalDeSaude/QuestionarioDepressaoDeBeck" component={ListaQuestionariosDepressaoDeBeck} />
+                <Route path="/profissionalDeSaude/PerfilDiscenteDetalhado" component={PerfilDiscenteDetalhado} />
+                <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentes} />
             </Switch>
         </BrowserRouter>
     );
