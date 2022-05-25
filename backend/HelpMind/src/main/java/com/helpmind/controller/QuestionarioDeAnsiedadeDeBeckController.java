@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
-import com.helpmind.model.QuestionarioSocioeconomico;
 import com.helpmind.service.QuestionarioDeAnsiedadeDeBeckService;
 
 @CrossOrigin(origins = "http://localhost:3000")

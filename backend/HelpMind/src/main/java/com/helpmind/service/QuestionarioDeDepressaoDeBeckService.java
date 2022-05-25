@@ -22,6 +22,7 @@ public class QuestionarioDeDepressaoDeBeckService {
 		return questionario;
 	}
 
+	//atualizar este metodo
 	public QuestionarioDeDepressaoDeBeck preencherQuestionarioComQuestao(List<Questao> questoes) {
 		QuestionarioDeDepressaoDeBeck questionario = new QuestionarioDeDepressaoDeBeck();
 		//verifica que não existem questões nulas
@@ -46,6 +47,7 @@ public class QuestionarioDeDepressaoDeBeckService {
 			else {
 				Questao questao = new Questao();
 				questao.setResporta(questoesResportas.get(i));
+				lista.add(questao);
 			}
 		}
 		questionario.setListaDeQuestoes(lista);
@@ -61,6 +63,12 @@ public class QuestionarioDeDepressaoDeBeckService {
 		else {
 			return questionarioDeDepressaoDeBeckRepository.save(questionario);
 		}
+	}
+	
+	public List<QuestionarioDeDepressaoDeBeck> retornarListaQuestionarioDeAnsiedadeDeBeck() {
+		List<QuestionarioDeDepressaoDeBeck> lista = questionarioDeDepressaoDeBeckRepository.findAll();
+		
+		return lista;
 	}
 
 }

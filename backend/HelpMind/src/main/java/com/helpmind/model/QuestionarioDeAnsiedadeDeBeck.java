@@ -21,6 +21,12 @@ import javax.persistence.Table;
 @Table(name = "questionarioDeAnsiedadeDeBeck")
 public class QuestionarioDeAnsiedadeDeBeck implements Questionario{
 	
+	private LocalDateTime data;
+	
+	private int nota;
+	
+	private String status;
+	
 	public QuestionarioDeAnsiedadeDeBeck() {
 		listaDeQuestoes = new ArrayList<Questao>();
 	}
@@ -103,10 +109,6 @@ public class QuestionarioDeAnsiedadeDeBeck implements Questionario{
 		this.listaDeQuestoes = listaDeQuestoes;
 	}
 	
-	private LocalDateTime data;
-	
-	private int nota;
-	
-	private String status;
+
 
 }
