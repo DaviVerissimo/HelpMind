@@ -1,18 +1,34 @@
-import React from "react";
+
 import './styles.css'
-import { useState, useEffect } from 'react';
-import MaterialService from "../../../services/MaterialService";
+import React, { useState, useEffect, useRef } from 'react';
+import { classNames } from 'primereact/utils';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import MaterialService from '../../../services/MaterialService';
+import { Toast } from 'primereact/toast';
+import { Button } from 'primereact/button';
+import { InputText } from 'primereact/inputtext';
 import { Card } from 'primereact/card';
 import ToobarPublica from "../../Publica/ToobarPublica";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
-import { Button } from "primereact/button";
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import axios from 'axios';
 
 export default function MateriaisOnline() {
 
-    const history = useHistory();
+    var btnDownloadTexto = 'DOWNLOAD'
+    var configBtnDownload = "pi pi-download";
+    var largura = window. screen. width;
+    
+    if (largura < 640){
+        btnDownloadTexto = ''
+        configBtnDownload = "p-button-rounded pi pi-download";
+    }
+
+    let emptyMaterial = {
+        id: null,
+        nome: '',
+        categoria: null,
+        nomeDoArquivo: ''
+    };
+
     const [materiais, setMateriais] = useState([])
     const allMaterial = () => {
         MaterialService.getMaterial().then((response) => {
@@ -30,30 +46,34 @@ export default function MateriaisOnline() {
 
     }, [])
 
-    let nomeDoArquivo;
-    let nomeMaterial;
-    let nomeDaCapa;
-    let categoria;
-    let id;
+    const [material, setMaterial] = useState(emptyMaterial);
+    const [selectedMaterias, setSelectedMateriais] = useState(null);
+    const [globalFilter, setGlobalFilter] = useState(null);
+    const toast = useRef(null);
+    const dt = useRef(null);
 
-    let setDadosMaterial = (rowData) => {
-        nomeDoArquivo = rowData.nomeDoArquivo;
-        nomeMaterial = rowData.nome;
-        nomeDaCapa = rowData.nomeDaCapa;
-        categoria = rowData.categoria;
-        id = rowData.id;
-        
-        return rowData.nomeDoArquivo;
+    const download = (material) => {
+        setMaterial(material);
+        window.open('http://localhost:8080/file/files/' +  material.nomeDoArquivo);
     }
 
-    function download() {
-        
-        window.open('http://localhost:8080/file/files/' +  nomeDoArquivo);
+    const actionBodyTemplate = (rowData) => {
+        return (
+            <React.Fragment>
+                <Button className={configBtnDownload} onClick={() =>download(rowData)} > {btnDownloadTexto} </Button>
+            </React.Fragment>
+        );
     }
 
-    function teste() {
-        console.log(' O nome do arquivo é: ' + nomeDoArquivo + ' nome da capa: ' + nomeDaCapa  + ' id: '  + id + ' categoria: ' + categoria + ' nome: '  + nomeMaterial);
-    }
+    const header = (
+        <div className="table-header">
+            <h5 className="mx-0 my-1">Pesquise por materiais</h5>
+            <span className="p-input-icon-left">
+                <i className="pi pi-search" />
+                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
+            </span>
+        </div>
+    );
 
     return (
 
@@ -62,26 +82,19 @@ export default function MateriaisOnline() {
             <Card title="MATERIAIS DE APOIO"></Card>
             <div>
                 <Card>
-                    <div className='' style={{ height: '100%' }}  >
-                        <div className="card">
-                            <DataTable value={materiais} responsiveLayout="scroll" >
+                <div className="datatable-crud-demo">
+                <Toast ref={toast} />
 
-                                <Column field="nome" header="Nome" sortable></Column>
+                <div className="card">
+                    <DataTable ref={dt} value={materiais} selection={selectedMaterias} onSelectionChange={(e) => setSelectedMateriais(e.value)}
+                        dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
+                        <Column field="nome" header="Nome" sortable style={{ minWidth: '12rem' }}></Column>
+                        <Column field="categoria" header="Categoria" sortable style={{ minWidth: '12rem' }}></Column>
 
-                                <Column field="categoria" header="Categoria" body={setDadosMaterial} sortable ></Column>
-
-                                <Column field="" header="Arquivo" 
-                                    body={
-                                        <Card>
-                                            <Card>
-                                                <Button  className="pi pi-download" onClick={download} > DOWNLOAD </Button>
-                                            </Card>
-                                        </Card>
-                                    }
-                                ></Column>
-                            </DataTable>
-                        </div>
-                    </div>
+                        <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
+                    </DataTable>
+                </div>
+            </div>
                 </Card>
             </div>
 
