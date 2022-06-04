@@ -22,6 +22,7 @@ import ListaQuestionarioAnsiedadeDeBeck from "./pages/ProfissionalDeSaude/ListaQ
 import ListaQuestionariosDepressaoDeBeck from "./pages/ProfissionalDeSaude/ListaQuestionariosDepressaoDeBeck";
 import PerfilDiscenteDetalhado from "./pages/ProfissionalDeSaude/PerfilDiscenteDetalhado";
 import ListaDiscentes from "./pages/ProfissionalDeSaude/ListaDiscentes";
+import Xpto from "./pages/Publica/Xpto";
 
 export default function Routes() {
     return (
@@ -47,6 +48,7 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/QuestionarioDepressaoDeBeck" component={ListaQuestionariosDepressaoDeBeck} />
                 <Route path="/profissionalDeSaude/PerfilDiscenteDetalhado" component={PerfilDiscenteDetalhado} />
                 <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentes} />
+                <Route path="/Xpto" component={Xpto} />
             </Switch>
         </BrowserRouter>
     );
