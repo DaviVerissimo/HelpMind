@@ -22,13 +22,47 @@ public class MaterialService {
 	}
 	
 	public List<Material> listarTodosMateriais(){
+		LimpezaDeArquivos limpeza = new LimpezaDeArquivos();
+		limpeza.limparArquivosOrfaos();
 		
 		return materialRepository.findAll();
 	}
 
-	public Material remover(String nome) {
+	public void remover(Material material) {
 		
-		return materialRepository.deleteByNome(nome);
+		materialRepository.delete(material);
 	}
+	
+	public Material PesquisarPorID(Integer ID) {
+		Material material = new Material();
+		material.setId(ID);
+		List<Material> lista = this.listarTodosMateriais();
+		
+		for (int i = 0; i < this.listarTodosMateriais().size(); i++) {
+			if (lista.get(i).getId().equals(ID)) {
+				material = lista.get(i);
+			} 
+		}
+		return material;
+	}
+
+	public Material pesquisarPorNome(String nome) {
+		System.out.println(nome);
+		Material material = new Material();
+		material.setNome(nome);
+		List<Material> lista = this.listarTodosMateriais();
+		
+		for (int i = 0; i < this.listarTodosMateriais().size(); i++) {
+			if (lista.get(i).getNome().equals(nome)) {
+				material = lista.get(i);
+			} 
+		}
+		
+		System.out.println(material.getNome() + "  "  + material.getCategoria() + "  " +  material.getId() );
+		return material;
+		
+	}
+	
+	
 
 }

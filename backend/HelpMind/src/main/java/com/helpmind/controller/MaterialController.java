@@ -44,10 +44,16 @@ public class MaterialController {
 		return materialService.listarTodosMateriais();
 	}
 	
-	@PostMapping("/removerMaterial")
-	public Material removerMaterial(@RequestBody String nome) {
+	@PostMapping("removerMaterial")
+	public ResponseEntity removerMaterial(@RequestBody String id) throws URISyntaxException {
+		Integer ID = Integer.parseInt(id);
+		Material material = materialService.PesquisarPorID(ID);
+		try {
+			materialService.remover(material);
+			} catch(Exception e){}
 		
-		return materialService.remover(nome);
+		return ResponseEntity.created(new URI("/material/" + material.getId())).body(material);
 	}
+	
 
 }

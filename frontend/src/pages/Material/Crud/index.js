@@ -24,29 +24,24 @@ import axios from 'axios';
 export default function Crud() {
 
     var configBotao = "pi pi-plus-circle p-mb-3 p-col-3";
-    var largura = window. screen. width;
-    if (largura < 640){
+    var largura = window.screen.width;
+    if (largura < 640) {
         configBotao = "pi pi-plus-circle p-mt-3 ";
     }
 
     const history = useHistory();
     var btnDeleteTexto = 'DELETE'
     var configBtnDelete = "p-button-danger pi pi-trash";
-    var largura = window. screen. width;
-    
-    
-    if (largura < 640){
+    var largura = window.screen.width;
+
+
+    if (largura < 640) {
         btnDeleteTexto = ''
         configBtnDelete = "p-button-danger p-button-rounded pi pi-trash";
-        
+
     }
 
 
-
-    // function download2() {
-    //     console.log(nomeDoArquivo)
-    //     // window.open('http://localhost:8080/file/files/' +  nomeDoArquivo);
-    // }
 
     function teste() {
         console.log(' O nome do arquivo é: ' + nomeDoArquivo + ' nome da capa: ' + nomeDaCapa + ' id: ' + id + ' categoria: ' + categoria + ' nome: ' + nomeMaterial);
@@ -90,7 +85,7 @@ export default function Crud() {
     }, [])
 
     const [productDialog, setProductDialog] = useState(false);
-    const [deleteProductDialog, setDeleteProductDialog] = useState(false);
+    const [deleteMaterialDialog, setDeleteProductDialog] = useState(false);
     const [deleteProductsDialog, setDeleteProductsDialog] = useState(false);
     const [product, setProduct] = useState(emptyProduct);
     const [material, setMaterial] = useState(emptyMaterial);
@@ -166,15 +161,33 @@ export default function Crud() {
 
     const download = (material) => {
         setProduct(material);
-        window.open('http://localhost:8080/file/files/' +  material.nomeDoArquivo);
+        window.open('http://localhost:8080/file/files/' + material.nomeDoArquivo);
     }
 
-    const deleteProduct = () => {
-        let _products = products.filter(val => val.id !== product.id);
-        setProducts(_products);
+    const deleteMaterial = () => {
+        // let _products = products.filter(val => val.id !== product.id);
+        // setProducts(_products);
+        //pegar saida de sim não e deletar material. atenção a variavel booleana abaixo. pegar nome do material e add no dialog
+        
+        const headers = {
+            'headers': {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        }
+    
+        // console.log(novoMaterial);
+    
+        axios.post("http://localhost:8080/material/removerMaterial/", material.id, headers)
+            .then(Response => { })
+            .catch(error => console.log(error))
+    
+        if(true){
+            //verificar com o id do retorno da resposta. id == id
+        }
+        toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'O matérial ' +  material.nome + ' foi deletado! RECARREGUE PARA VER MUDANÇAS.', life: 5000 });
         setDeleteProductDialog(false);
-        setProduct(emptyProduct);
-        toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
     }
 
     const findIndexById = (id) => {
@@ -271,8 +284,8 @@ export default function Crud() {
     const leftToolbarTemplate = () => {
         return (
             <React.Fragment>
-                <Button label="New" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} />
-                <Button label="Delete" icon="pi pi-trash" className="p-button-danger" onClick={confirmDeleteSelected} disabled={!selectedProducts || !selectedProducts.length} />
+                {/* <Button label="New" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} /> */}
+                <Button label="Novo Matérial" icon="pi pi-plus" className="mr-2" onClick={() => { history.push('/material/create') }} />
             </React.Fragment>
         )
     }
@@ -308,7 +321,7 @@ export default function Crud() {
                 {/* <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editProduct(rowData)} /> */}
                 {/* <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => confirmDeleteProduct(rowData)} /> */}
                 {/* <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() =>download(rowData)} /> */}
-                <Button className={configBtnDelete} onClick={() =>download(rowData)} > {btnDeleteTexto} </Button>
+                <Button className={configBtnDelete} onClick={() => deletar(rowData)} > {btnDeleteTexto} </Button>
             </React.Fragment>
         );
     }
@@ -328,10 +341,10 @@ export default function Crud() {
             <Button label="Save" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
         </React.Fragment>
     );
-    const deleteProductDialogFooter = (
+    const deleteMaterialDialogFooter = (
         <React.Fragment>
             <Button label="No" icon="pi pi-times" className="p-button-text" onClick={hideDeleteProductDialog} />
-            <Button label="Yes" icon="pi pi-check" className="p-button-text" onClick={deleteProduct} />
+            <Button label="Yes" icon="pi pi-check" className="p-button-text" onClick={deleteMaterial} />
         </React.Fragment>
     );
     const deleteProductsDialogFooter = (
@@ -353,18 +366,20 @@ export default function Crud() {
         nomeDaCapa = rowData.nomeDaCapa;
         categoria = rowData.categoria;
         id = rowData.id;
-        
+
         return rowData.nomeDoArquivo;
     }
 
-    function deletar() {
-        // deletar pelo ID
-        teste();
-        // realizar post
+
+    const deletar = (material) => {
+        setMaterial(material);
+        setDeleteProductDialog(true)
+        //fazer solicitação para o backend
+        // window.open('http://localhost:8080/file/files/' +  material.nomeDoArquivo);
     }
 
     function teste() {
-        console.log(' O nome do arquivo é: ' + nomeDoArquivo + ' nome da capa: ' + nomeDaCapa  + ' id: '  + id + ' categoria: ' + categoria + ' nome: '  + nomeMaterial);
+        console.log(' O nome do arquivo é: ' + nomeDoArquivo + ' nome da capa: ' + nomeDaCapa + ' id: ' + id + ' categoria: ' + categoria + ' nome: ' + nomeMaterial);
     }
 
     return (
@@ -373,99 +388,102 @@ export default function Crud() {
 
             <Card title="MATERIAIS DE APOIO"></Card>
 
-            <Card>
+            {/* <Card>
             <Button className={configBotao} label=" NOVO MATERIAL "  onClick={() => { history.push('/material/create') }} />
-            </Card>
+            </Card> */}
 
             <div>
-            <div>
-                <Card>
-                <div className="datatable-crud-demo">
-                <Toast ref={toast} />
+                <div>
+                    <Card>
+                        <div className="datatable-crud-demo">
+                            <Toast ref={toast} />
 
-                <div className="card">
-                    <Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
+                            <div className="card">
+                                <Toolbar className="mb-4" left={leftToolbarTemplate}
+                                    // right={rightToolbarTemplate}
 
-                    <DataTable ref={dt} value={materiais} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)}
-                        dataKey="id" paginator rows={10} rowsPerPageOptions={[5, 10, 25]}
-                        paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
-                        globalFilter={globalFilter} header={header} responsiveLayout="scroll">
-                        {/* <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} exportable={false}></Column> */}
-                        <Column field="nome" header="Nome" sortable style={{ minWidth: '12rem' }}></Column>
-                        <Column field="categoria" header="Categoria" sortable style={{ minWidth: '12rem' }}></Column>
-                        {/* <Column field="name" header="Name" sortable style={{ minWidth: '16rem' }}></Column> */}
-                        {/* <Column field="image" header="Image" body={imageBodyTemplate}></Column>
+                                ></Toolbar>
+
+                                <DataTable ref={dt} value={materiais} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)} dataKey="id" 
+                                    // rowsPerPageOptions={[5, 10, 25]} paginator rows={10}
+                                    // paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                                    // currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+                                    globalFilter={globalFilter} header={header} responsiveLayout="scroll">
+                                    {/* <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} exportable={false}></Column> */}
+                                    <Column field="nome" header="Nome" sortable style={{ minWidth: '12rem' }}></Column>
+                                    <Column field="categoria" header="Categoria" sortable style={{ minWidth: '12rem' }}></Column>
+                                    {/* <Column field="name" header="Name" sortable style={{ minWidth: '16rem' }}></Column> */}
+                                    {/* <Column field="image" header="Image" body={imageBodyTemplate}></Column>
                         <Column field="price" header="Price" body={priceBodyTemplate} sortable style={{ minWidth: '8rem' }}></Column>
                         <Column field="category" header="Category" sortable style={{ minWidth: '10rem' }}></Column>
                         <Column field="rating" header="Reviews" body={ratingBodyTemplate} sortable style={{ minWidth: '12rem' }}></Column>
                         <Column field="inventoryStatus" header="Status" body={statusBodyTemplate} sortable style={{ minWidth: '12rem' }}></Column> */}
-                        <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
-                    </DataTable>
+                                    <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
+                                </DataTable>
+                            </div>
+
+                            <Dialog visible={productDialog} style={{ width: '450px' }} header="Product Details" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
+                                {product.image && <img src={`images/product/${product.image}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={product.image} className="product-image block m-auto pb-3" />}
+                                <div className="field">
+                                    <label htmlFor="name">Name</label>
+                                    <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                                    {submitted && !product.name && <small className="p-error">Name is required.</small>}
+                                </div>
+                                <div className="field">
+                                    <label htmlFor="description">Description</label>
+                                    <InputTextarea id="description" value={product.description} onChange={(e) => onInputChange(e, 'description')} required rows={3} cols={20} />
+                                </div>
+
+                                <div className="field">
+                                    <label className="mb-3">Category</label>
+                                    <div className="formgrid grid">
+                                        <div className="field-radiobutton col-6">
+                                            <RadioButton inputId="category1" name="category" value="Accessories" onChange={onCategoryChange} checked={product.category === 'Accessories'} />
+                                            <label htmlFor="category1">Accessories</label>
+                                        </div>
+                                        <div className="field-radiobutton col-6">
+                                            <RadioButton inputId="category2" name="category" value="Clothing" onChange={onCategoryChange} checked={product.category === 'Clothing'} />
+                                            <label htmlFor="category2">Clothing</label>
+                                        </div>
+                                        <div className="field-radiobutton col-6">
+                                            <RadioButton inputId="category3" name="category" value="Electronics" onChange={onCategoryChange} checked={product.category === 'Electronics'} />
+                                            <label htmlFor="category3">Electronics</label>
+                                        </div>
+                                        <div className="field-radiobutton col-6">
+                                            <RadioButton inputId="category4" name="category" value="Fitness" onChange={onCategoryChange} checked={product.category === 'Fitness'} />
+                                            <label htmlFor="category4">Fitness</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="formgrid grid">
+                                    <div className="field col">
+                                        <label htmlFor="price">Price</label>
+                                        <InputNumber id="price" value={product.price} onValueChange={(e) => onInputNumberChange(e, 'price')} mode="currency" currency="USD" locale="en-US" />
+                                    </div>
+                                    <div className="field col">
+                                        <label htmlFor="quantity">Quantity</label>
+                                        <InputNumber id="quantity" value={product.quantity} onValueChange={(e) => onInputNumberChange(e, 'quantity')} integeronly />
+                                    </div>
+                                </div>
+                            </Dialog>
+
+                            <Dialog visible={deleteMaterialDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteMaterialDialogFooter}>
+                                <div className="confirmation-content">
+                                    <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
+                                    {<span> Deseja realmente deletar esse material: {material.nome} </span>}
+                                </div>
+                            </Dialog>
+
+                            <Dialog visible={deleteProductsDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductsDialogFooter} onHide={hideDeleteProductsDialog}>
+                                <div className="confirmation-content">
+                                    <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
+                                    {product && <span>Are you sure you want to delete the selected products?</span>}
+                                </div>
+                            </Dialog>
+                        </div>
+                    </Card>
                 </div>
-
-                <Dialog visible={productDialog} style={{ width: '450px' }} header="Product Details" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
-                    {product.image && <img src={`images/product/${product.image}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={product.image} className="product-image block m-auto pb-3" />}
-                    <div className="field">
-                        <label htmlFor="name">Name</label>
-                        <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                        {submitted && !product.name && <small className="p-error">Name is required.</small>}
-                    </div>
-                    <div className="field">
-                        <label htmlFor="description">Description</label>
-                        <InputTextarea id="description" value={product.description} onChange={(e) => onInputChange(e, 'description')} required rows={3} cols={20} />
-                    </div>
-
-                    <div className="field">
-                        <label className="mb-3">Category</label>
-                        <div className="formgrid grid">
-                            <div className="field-radiobutton col-6">
-                                <RadioButton inputId="category1" name="category" value="Accessories" onChange={onCategoryChange} checked={product.category === 'Accessories'} />
-                                <label htmlFor="category1">Accessories</label>
-                            </div>
-                            <div className="field-radiobutton col-6">
-                                <RadioButton inputId="category2" name="category" value="Clothing" onChange={onCategoryChange} checked={product.category === 'Clothing'} />
-                                <label htmlFor="category2">Clothing</label>
-                            </div>
-                            <div className="field-radiobutton col-6">
-                                <RadioButton inputId="category3" name="category" value="Electronics" onChange={onCategoryChange} checked={product.category === 'Electronics'} />
-                                <label htmlFor="category3">Electronics</label>
-                            </div>
-                            <div className="field-radiobutton col-6">
-                                <RadioButton inputId="category4" name="category" value="Fitness" onChange={onCategoryChange} checked={product.category === 'Fitness'} />
-                                <label htmlFor="category4">Fitness</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="formgrid grid">
-                        <div className="field col">
-                            <label htmlFor="price">Price</label>
-                            <InputNumber id="price" value={product.price} onValueChange={(e) => onInputNumberChange(e, 'price')} mode="currency" currency="USD" locale="en-US" />
-                        </div>
-                        <div className="field col">
-                            <label htmlFor="quantity">Quantity</label>
-                            <InputNumber id="quantity" value={product.quantity} onValueChange={(e) => onInputNumberChange(e, 'quantity')} integeronly />
-                        </div>
-                    </div>
-                </Dialog>
-
-                <Dialog visible={deleteProductDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
-                    <div className="confirmation-content">
-                        <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
-                        {product && <span>Are you sure you want to delete <b>{product.name}</b>?</span>}
-                    </div>
-                </Dialog>
-
-                <Dialog visible={deleteProductsDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductsDialogFooter} onHide={hideDeleteProductsDialog}>
-                    <div className="confirmation-content">
-                        <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
-                        {product && <span>Are you sure you want to delete the selected products?</span>}
-                    </div>
-                </Dialog>
-            </div>
-                </Card>
-            </div>
             </div>
 
         </div>
