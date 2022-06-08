@@ -2,11 +2,13 @@ import { Card } from 'primereact/card';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
 
 export default function PerfilDiscenteDetalhado() {
 
+    const {name} = useParams();
+    console.log(name + ' tico tico lateram')
     const nome = 'Renato Russo';
     const email = 'renatorusso@gmail.com';
     const matricula = '0878814201728';
@@ -20,6 +22,7 @@ export default function PerfilDiscenteDetalhado() {
         configBotao = "p-mt-3 ";
     }
     const history = useHistory();
+    
 
     return (
         <div>

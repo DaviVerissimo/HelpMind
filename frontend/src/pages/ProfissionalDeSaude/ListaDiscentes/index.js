@@ -1,14 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { Toast } from 'primereact/toast';
+import { Button } from 'primereact/button';
+import { InputText } from 'primereact/inputtext';
+import { Card } from 'primereact/card';
 import DiscenteService from '../../../services/DiscenteService';
 import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
-import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
-export default function ListaDiscentes(){
+export default function ListaDiscentes() {
+
+    var btnVisualizarTexto = 'VISUALIZAR'
+    var configBtnVisualizar = "pi pi-user";
+    var largura = window.screen.width;
+
+    if (largura < 640) {
+        btnVisualizarTexto = ''
+        configBtnVisualizar = "p-button-rounded pi pi-user";
+    }
+
+    let emptyDiscente = {
+        id: null,
+        nome: '',
+        Curso: null,
+    };
+
     const history = useHistory();
+    const location = useLocation();
     const [discentes, setDiscentes] = useState([])
     const allDiscentes = () => {
         DiscenteService.getAllDiscente().then((response) => {
@@ -28,30 +47,58 @@ export default function ListaDiscentes(){
 
     }, [])
 
+    const [discente, setDiscente] = useState(emptyDiscente);
+    const [selectedDiscentes, setSelectedDiscentes] = useState(null);
+    const [globalFilter, setGlobalFilter] = useState(null);
+    const toast = useRef(null);
+    const dt = useRef(null);
+
+    const visualizarPerfil = (discente) => {
+        setDiscente(discente);
+        console.log(discente.nome);
+        history.goBack();
+        // window.open('http://localhost:8080/file/files/' + discente.nome);
+        history.push('/profissionalDeSaude/PerfilDiscenteDetalhado/' + discente.nome) 
+    }
+
+    const actionBodyTemplate = (rowData) => {
+        return (
+            <React.Fragment>
+                <Button className={configBtnVisualizar} onClick={() => visualizarPerfil(rowData)} > {btnVisualizarTexto} </Button>
+            </React.Fragment>
+        );
+    }
+
+    const header = (
+        <div className="table-header">
+            <h5 className="mx-0 my-1">Pesquise por discentes</h5>
+            <span className="p-input-icon-left">
+                <i className="pi pi-search" />
+                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
+            </span>
+        </div>
+    );
+
     return (
         <div  > <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <div>
                 <Card title="DISCENTES" ></Card>
                 <Card>
-                    <div className='' style={{ height: '100%' }}  >
-                        <div className="card">
-                            <DataTable value={discentes} responsiveLayout="scroll">
-                                <Column field="nome" header="Discente" sortable ></Column>
-                                {/* <Column field="data" header="Data" sortable ></Column>
-                                <Column field="id" header="ID" sortable ></Column>
-                                <Column field="nota" header="Nota" sortable ></Column>
-                                <Column field="status" header="Status" sortable ></Column> */}
-                                <Column field="" header=""
-                                    body={
-                                        <Card>
-                                            <Card>
-                                                <Button className="" label="VISUALIZAR" icon="pi pi-user" onClick={() => { history.push('/profissionalDeSaude/PerfilDiscenteDetalhado') }} />
-                                            </Card>
-                                        </Card>
-                                    }
-                                ></Column>
-                            </DataTable>
-                        </div>
+                    <div>
+                        <Card>
+                            <div className="datatable-crud-demo">
+                                <Toast ref={toast} />
+                                <div className="card">
+                                    <DataTable ref={dt} value={discentes} selection={selectedDiscentes} onSelectionChange={(e) => setSelectedDiscentes(e.value)}
+                                        dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
+                                        <Column field="nome" header="Discente" sortable style={{ minWidth: '12rem' }}></Column>
+                                        {/* <Column field="curso" header="Curso" sortable style={{ minWidth: '12rem' }}></Column> */}
+
+                                        <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
+                                    </DataTable>
+                                </div>
+                            </div>
+                        </Card>
                     </div>
                 </Card>
             </div>

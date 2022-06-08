@@ -46,7 +46,7 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/QuestionarioSocioeconomico" component={ListaQuestionarioSocioeconomico} />
                 <Route path="/profissionalDeSaude/QuestionarioAnsiedadeDeBeck" component={ListaQuestionarioAnsiedadeDeBeck} />
                 <Route path="/profissionalDeSaude/QuestionarioDepressaoDeBeck" component={ListaQuestionariosDepressaoDeBeck} />
-                <Route path="/profissionalDeSaude/PerfilDiscenteDetalhado" component={PerfilDiscenteDetalhado} />
+                <Route path="/profissionalDeSaude/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhado} />
                 <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentes} />
                 <Route path="/Xpto" component={Xpto} />
             </Switch>
