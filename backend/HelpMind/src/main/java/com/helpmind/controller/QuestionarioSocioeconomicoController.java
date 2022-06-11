@@ -28,17 +28,19 @@ public class QuestionarioSocioeconomicoController {
 	@Autowired
 	private QuestionarioSocioeconomicoService questionarioSocioeconomicoService;
 	
-	@PostMapping("/salvar")
-	public ResponseEntity<QuestionarioSocioeconomico> salvarQuestionarioSocioeconomico(@RequestBody QuestionarioSocioeconomico questionarioSocioeconomico) throws URISyntaxException {
-		LocalDateTime data = LocalDateTime.now();
-		try {
-			//Discente discente = discenteService.criarDiscente(questionarioSocioeconomico);
-			questionarioSocioeconomico.setData(data);
-			questionarioSocioeconomicoService.salvar(questionarioSocioeconomico);
-			} catch(Exception e){}
-		
-		return ResponseEntity.created(new URI("/QuestionarioSocioeconomico/" + questionarioSocioeconomico.getId())).body(questionarioSocioeconomico);
-	}
+//	@PostMapping("/salvar")
+//	public ResponseEntity<QuestionarioSocioeconomico> salvarQuestionarioSocioeconomico(@RequestBody QuestionarioSocioeconomico questionarioSocioeconomico) throws URISyntaxException {
+//		LocalDateTime data = LocalDateTime.now();
+//		try {
+//			//Discente discente = discenteService.criarDiscente(questionarioSocioeconomico);
+//			questionarioSocioeconomico.setData(data);
+//			questionarioSocioeconomicoService.salvar(questionarioSocioeconomico);
+//			} catch(Exception e){}
+//		
+//		return ResponseEntity.created(new URI("/QuestionarioSocioeconomico/" + questionarioSocioeconomico.getId())).body(questionarioSocioeconomico);
+//	}
+	
+	/*Todos os reportes e questionarios precisam ter um metodo para buscar o discente dono*/
 	
 	@GetMapping("ListaQuestionarioSocioeconomico")
 	public List<QuestionarioSocioeconomico> retornarListaQuestionarioSocioeconomico(){

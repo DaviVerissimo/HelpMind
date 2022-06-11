@@ -6,9 +6,9 @@ import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min
 import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
 
 export default function PerfilDiscenteDetalhado() {
-
-    const {name} = useParams();
-    console.log(name + ' tico tico lateram')
+    //realizar get no useEffects e buscar estudante por Id. 
+    const {id} = useParams();
+    console.log(id + ' id do discente selecionada')
     const nome = 'Renato Russo';
     const email = 'renatorusso@gmail.com';
     const matricula = '0878814201728';

@@ -55,10 +55,10 @@ export default function ListaDiscentes() {
 
     const visualizarPerfil = (discente) => {
         setDiscente(discente);
-        console.log(discente.nome);
+        console.log(discente.id);
         history.goBack();
         // window.open('http://localhost:8080/file/files/' + discente.nome);
-        history.push('/profissionalDeSaude/PerfilDiscenteDetalhado/' + discente.nome) 
+        history.push('/profissionalDeSaude/PerfilDiscenteDetalhado/' + discente.id) 
     }
 
     const actionBodyTemplate = (rowData) => {
@@ -92,7 +92,7 @@ export default function ListaDiscentes() {
                                     <DataTable ref={dt} value={discentes} selection={selectedDiscentes} onSelectionChange={(e) => setSelectedDiscentes(e.value)}
                                         dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
                                         <Column field="nome" header="Discente" sortable style={{ minWidth: '12rem' }}></Column>
-                                        {/* <Column field="curso" header="Curso" sortable style={{ minWidth: '12rem' }}></Column> */}
+                                        <Column field="curso" header="Curso" sortable style={{ minWidth: '12rem' }}></Column>
 
                                         <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                     </DataTable>

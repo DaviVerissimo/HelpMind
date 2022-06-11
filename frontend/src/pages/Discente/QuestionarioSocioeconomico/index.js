@@ -29,7 +29,7 @@ export default function QuestionarioSocioeconomico() {
             life: 5000
         });
     }
-    const [email, setEmail] = useState('renatoRusso@gmail.com');
+    const [email, setEmail] = useState('silviaantony@gmail.com');
     const [campusDoDiscente, setCampusDoDiscente] = useState(null);
     const [campi, setCampi] = useState();
     const [checked, setChecked] = useState();
@@ -191,13 +191,12 @@ export default function QuestionarioSocioeconomico() {
     var espacamento = '10px';
     var altura = window.screen.height;
     var largura = window.screen.width;
-    console.log(altura)
-    console.log(largura)
+    // console.log(altura)
+    // console.log(largura)
     if (largura < 640) {
         configBotaoCancel = "p-mb-3 p-button-secondary "
         configBotaoSalvar = "p-mb-3"
     }
-    console.log(configBotaoCancel)
 
     useEffect(async () => {
 
@@ -292,10 +291,10 @@ export default function QuestionarioSocioeconomico() {
             "possuiFamiliarComDoencaGrave": possuiFamiliarComDoencaGrave.name,
             "familiarDoente": familiarDoente,
             "doencaDoFamiliar_op": doencaDoFamiliar_op
-    
+
         }
 
-        console.log(checked)
+
         if (checked === true) {
             var questoesRespondidas = [];
 
@@ -313,9 +312,16 @@ export default function QuestionarioSocioeconomico() {
                 }
             }
 
-            axios.post("http://localhost:8080/QuestionarioSocioeconomico/salvar", novoQuestionario, headers)
+            // realizar um get ao servidor para saber se existe discente com esse email. 
+            // se não existe discente com este email criar novo discente. 
+            // caso exista add o questionario a lista de questionarios do discente.
+
+
+
+            axios.post("http://localhost:8080/discente/salvarDiscenteComBaseQuestionarioSoxioeconomico", novoQuestionario, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
+
             showSuccess();
         }
         else { showError() }
@@ -326,7 +332,7 @@ export default function QuestionarioSocioeconomico() {
         <div>
             <ToobarDiscente></ToobarDiscente>
             <div>
-            <Toast ref={toast} />
+                <Toast ref={toast} />
                 <Card className="" >
                     <div className="   align-items-end "  >
                         <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
@@ -410,7 +416,7 @@ export default function QuestionarioSocioeconomico() {
                 <Card subTitle='VOCÊ SOFRE DE ALGUM PROBLEMA DE SAÚDE MENTAL?' >
                     <Dropdown className='p-mb-3' optionLabel="name" value={discenteSofrimentoMental} options={discenteSofrimentosMental} onChange={(e) => setDiscenteSofrimentoMental(e.target.value)} placeholder="Escolha uma opção" />
                     <Card subTitle='Caso tenha escolhido uma opção outro expecifique. Marque o circulo caso tenha diagnóstico:' >
-                    <RadioButton className="p-ml-3" value='outro' onChange={(e) => setDiaguinostico_op(e.value)} checked={diaguinostico_op === 'outro'} />
+                        <RadioButton className="p-ml-3" value='outro' onChange={(e) => setDiaguinostico_op(e.value)} checked={diaguinostico_op === 'outro'} />
                         <label> outro(diagnóstico) </label>
                         <InputText className='' value={problemaPsifico_op} onChange={(e) => setProblemaPsifico_op(e.target.value)} placeholder="Digite o seu problema" />
                     </Card>

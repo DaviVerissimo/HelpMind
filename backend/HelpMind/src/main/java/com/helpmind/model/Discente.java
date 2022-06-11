@@ -27,6 +27,24 @@ public class Discente {
 	private Integer id;
 	private String nome;
 	private String email;
+	private String matricula;
+	private float mediaDoDiscenteQuestionariosDeAnsiedade;
+	private String StatusDoDiscenteAnsiedade;
+	private float mediaDoDiscenteQuestionariosDeDepresao;
+	private String StatusDoDiscenteDepresao;
+	
+	/*
+	 * e necessario fazer certa restruturação no codigo. atualmente
+	 * Os reportes Questionarios de depressao , questionario de ansiedade 
+	 * são gravados soltos sem um discente que lhe serja dono.
+	 * comecei a ajeitar isso em questionario socioeeconomico.
+	 * ja esta separadoa gravação de discentesa partir do primeiro questionario
+	 * e a adição de nos questionarios a discentes que ja fizeram algum questionario sociooeconomico. 
+	 * No entanto ainda falta fazer a pesquisa e retornar um booleano
+	 * 
+	 * colocar a verificação de media  e recalculo do status sempre que um novo questionario for adcionado
+	 * */
+	
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
 	private List<QuestionarioDeAnsiedadeDeBeck> listaQuestionarioDeAnsiedadeDeBeck;
 	
@@ -76,6 +94,36 @@ public class Discente {
 	}
 	public void setListaQuestionarioSocioeconomico(List<QuestionarioSocioeconomico> listaQuestionarioSocioeconomico) {
 		this.listaQuestionarioSocioeconomico = listaQuestionarioSocioeconomico;
+	}
+	public String getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+	public float getMediaDoDiscenteQuestionariosDeAnsiedade() {
+		return mediaDoDiscenteQuestionariosDeAnsiedade;
+	}
+	public void setMediaDoDiscenteQuestionariosDeAnsiedade(float mediaDoDiscenteQuestionariosDeAnsiedade) {
+		this.mediaDoDiscenteQuestionariosDeAnsiedade = mediaDoDiscenteQuestionariosDeAnsiedade;
+	}
+	public String getStatusDoDiscenteAnsiedade() {
+		return StatusDoDiscenteAnsiedade;
+	}
+	public void setStatusDoDiscenteAnsiedade(String statusDoDiscenteAnsiedade) {
+		StatusDoDiscenteAnsiedade = statusDoDiscenteAnsiedade;
+	}
+	public float getMediaDoDiscenteQuestionariosDeDepresao() {
+		return mediaDoDiscenteQuestionariosDeDepresao;
+	}
+	public void setMediaDoDiscenteQuestionariosDeDepresao(float mediaDoDiscenteQuestionariosDeDepresao) {
+		this.mediaDoDiscenteQuestionariosDeDepresao = mediaDoDiscenteQuestionariosDeDepresao;
+	}
+	public String getStatusDoDiscenteDepresao() {
+		return StatusDoDiscenteDepresao;
+	}
+	public void setStatusDoDiscenteDepresao(String statusDoDiscenteDepresao) {
+		StatusDoDiscenteDepresao = statusDoDiscenteDepresao;
 	}
 	
 }

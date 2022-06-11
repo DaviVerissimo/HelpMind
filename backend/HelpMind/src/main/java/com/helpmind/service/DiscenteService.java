@@ -21,9 +21,38 @@ public class DiscenteService {
 	private DiscenteRepository discenteRepository;
 	
 	public Discente buscarDiscentePorEmail(String email) {
-		Discente discente = discenteRepository.findByEmail(email);
+		Discente discente = null;
+		List<Discente> lista = retornaAllDiscentes();
+		for (int i = 0; i< lista.size(); i++) {
+			if (lista.get(i).getEmail().equals(email)) {
+				discente = lista.get(i);
+			}
+		}
 		
 		return discente;
+	}
+	
+	public Discente buscaDiscentePorID(Integer ID) {
+		Discente discente = null;
+		List<Discente> lista = retornaAllDiscentes();
+		for (int i = 0; i< lista.size(); i++) {
+			if (lista.get(i).getId().equals(ID)) {
+				discente = lista.get(i);
+			}
+		}
+		return discente;
+	}
+	
+	public boolean isDiscente(String email) {
+		boolean existe = false;
+		List<Discente> lista = retornaAllDiscentes();
+		for (int i = 0; i< lista.size(); i++) {
+			if (lista.get(i).getEmail().equals(email)) {
+				existe = true;
+			}
+		}
+		
+		return existe;
 	}
 	
 	public Discente addNovoQuestionarioSocioeconomico(QuestionarioSocioeconomico questionarioSocioeconomico) {
@@ -46,18 +75,19 @@ public class DiscenteService {
 		return lista;
 	}
 	
-	public QuestionarioSocioeconomico retornaUltimoQuestionarioSocioeconomico(String email) {
-		QuestionarioSocioeconomico questionario = null;
-		List<QuestionarioSocioeconomico> lista = this.retornaListaQuestionarioSocioeconomico(email);
-		questionario = lista.get(lista.size() -1);
-		
-		return questionario;
-	}
+//	public QuestionarioSocioeconomico retornaUltimoQuestionarioSocioeconomico(String email) {
+//		QuestionarioSocioeconomico questionario = null;
+//		List<QuestionarioSocioeconomico> lista = this.retornaListaQuestionarioSocioeconomico(email);
+//		questionario = lista.get(lista.size() -1);
+//		
+//		return questionario;
+//	}
 	
 	public Discente criarDiscente(QuestionarioSocioeconomico questionarioSocioeconomico) {
 		Discente discente = new Discente();
 		discente.setNome(questionarioSocioeconomico.getNome());
 		discente.setEmail(questionarioSocioeconomico.getEmail());
+		discente.setMatricula(questionarioSocioeconomico.getMatricula());
 		List<QuestionarioSocioeconomico> lista = new ArrayList<QuestionarioSocioeconomico>();
 		lista.add(questionarioSocioeconomico);
 		discente.setListaQuestionarioSocioeconomico(lista);

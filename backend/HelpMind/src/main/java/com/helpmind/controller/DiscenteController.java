@@ -2,6 +2,7 @@ package com.helpmind.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,69 +37,84 @@ public class DiscenteController {
 		return discenteService.retornaAllDiscentes();
 	}
 	
-	@PostMapping("salvarDiscente")
-	public Discente novoDiscente(@RequestBody QuestionarioSocioeconomico questionarioSocioeconomico) {
-		Discente discente = discenteService.criarDiscente(questionarioSocioeconomico);
-		
-		return discente;
-	}
+//	@PostMapping("salvarDiscente")
+//	public Discente novoDiscente(@RequestBody QuestionarioSocioeconomico questionarioSocioeconomico) {
+//		Discente discente = discenteService.criarDiscente(questionarioSocioeconomico);
+//		
+//		return discente;
+//	}
 	
-	@PostMapping("/salvar")
-	public ResponseEntity<QuestionarioSocioeconomico> salvarQuestionarioSocioeconomico(@RequestBody QuestionarioSocioeconomico questionarioSocioeconomico) throws URISyntaxException {
-		//QuestionarioDeAnsiedadeDeBeck questionario = new QuestionarioDeAnsiedadeDeBeck();
+	@PostMapping("/salvarDiscenteComBaseQuestionarioSoxioeconomico")
+	public ResponseEntity<QuestionarioSocioeconomico> criarDiscenteComBaseNoPrimeiroQuestionarioSocioeconomico(@RequestBody QuestionarioSocioeconomico questionarioSocioeconomico) throws URISyntaxException {
+		LocalDateTime data = LocalDateTime.now();
 		try {
-			Discente discente = discenteService.criarDiscente(questionarioSocioeconomico);
+			questionarioSocioeconomico.setData(data);
+			String email = questionarioSocioeconomico.getEmail();
+			if(discenteService.isDiscente(email)){
+				//addd questionario ao discente
+				discenteService.addNovoQuestionarioSocioeconomico(questionarioSocioeconomico);
+			}
+			else {
+				Discente discente = discenteService.criarDiscente(questionarioSocioeconomico);
+			}
+			
 			} catch(Exception e){}
 		
 		return ResponseEntity.created(new URI("/discente/" + questionarioSocioeconomico.getId())).body(questionarioSocioeconomico);
 	}
+	
+	@GetMapping("/isDiscente")
+	public boolean isDiscenteComCadrasto(String email) { 
+
+		return discenteService.isDiscente(email);
+	}
 
 	
-	@GetMapping("/teste1")
-	public Discente testePesquisa() { // funciona
-		 QuestionarioSocioeconomico questionarioSocioeconomico = new QuestionarioSocioeconomico();
-		 questionarioSocioeconomico.setNome("Patricia");
-		 questionarioSocioeconomico.setEmail("Patricia@gmail.com");
-//		 questionarioSocioeconomico.setIdade(28);
-		 Discente discente = discenteService.addNovoQuestionarioSocioeconomico(questionarioSocioeconomico);
-		
-		return discente;
-	}
-	
-	@GetMapping("/teste2")
-	public Discente testeIncluirNovoDiscente() { //funciona
-		 QuestionarioSocioeconomico questionarioSocioeconomico = new QuestionarioSocioeconomico();
-		 questionarioSocioeconomico.setNome("Patricia");
-		 questionarioSocioeconomico.setEmail("Patricia@gmail.com");
-//		 questionarioSocioeconomico.setIdade(28);
-		 discenteService.criarDiscente(questionarioSocioeconomico);
-		
-		return null;
-	}
-	
-	@GetMapping("/teste3")
-	public List< QuestionarioSocioeconomico > testeRetornarQuesquionariosSocioeconomico() {
-		 String email = "Patricia@gmail.com";
-		 List< QuestionarioSocioeconomico > lista =discenteService.retornaListaQuestionarioSocioeconomico(email);
-		return lista;
-	}
-
-	@GetMapping("/teste4")
-	public QuestionarioSocioeconomico testeAddNovoQuestionarioSocioeconomico() {
-		 QuestionarioSocioeconomico questionarioSocioeconomico = new QuestionarioSocioeconomico();
-		 questionarioSocioeconomico.setNome("Patricia");
-		 questionarioSocioeconomico.setEmail("Patricia@gmail.com");
-//		 questionarioSocioeconomico.setIdade(32);
-		 discenteService.addNovoQuestionarioSocioeconomico(questionarioSocioeconomico);
-		 return questionarioSocioeconomico;
-	}
-	
-	@GetMapping("/teste5")
-	public QuestionarioSocioeconomico testeRetornaUltimoQuestionario() {
-		 String email = "Patricia@gmail.com";
-		 QuestionarioSocioeconomico questionario = discenteService.retornaUltimoQuestionarioSocioeconomico(email);
-		 
-		return questionario;
-	}
+//	@GetMapping("/teste1")
+//	public Discente testePesquisa() { // funciona
+//		 QuestionarioSocioeconomico questionarioSocioeconomico = new QuestionarioSocioeconomico();
+//		 questionarioSocioeconomico.setNome("Patricia");
+//		 questionarioSocioeconomico.setEmail("Patricia@gmail.com");
+////		 questionarioSocioeconomico.setIdade(28);
+//		 Discente discente = discenteService.addNovoQuestionarioSocioeconomico(questionarioSocioeconomico);
+//		
+//		return discente;
+//	}
+//	
+//	@GetMapping("/teste2")
+//	public Discente testeIncluirNovoDiscente() { //funciona
+//		 QuestionarioSocioeconomico questionarioSocioeconomico = new QuestionarioSocioeconomico();
+//		 questionarioSocioeconomico.setNome("Patricia");
+//		 questionarioSocioeconomico.setEmail("Patricia@gmail.com");
+////		 questionarioSocioeconomico.setIdade(28);
+//		 discenteService.criarDiscente(questionarioSocioeconomico);
+//		
+//		return null;
+//	}
+//	
+//	@GetMapping("/teste3")
+//	public List< QuestionarioSocioeconomico > testeRetornarQuesquionariosSocioeconomico() {
+//		 String email = "Patricia@gmail.com";
+//		 List< QuestionarioSocioeconomico > lista =discenteService.retornaListaQuestionarioSocioeconomico(email);
+//		return lista;
+//	}
+//
+//	@GetMapping("/teste4")
+//	public QuestionarioSocioeconomico testeAddNovoQuestionarioSocioeconomico() {
+//		 QuestionarioSocioeconomico questionarioSocioeconomico = new QuestionarioSocioeconomico();
+//		 questionarioSocioeconomico.setNome("Patricia");
+//		 questionarioSocioeconomico.setEmail("Patricia@gmail.com");
+////		 questionarioSocioeconomico.setIdade(32);
+//		 discenteService.addNovoQuestionarioSocioeconomico(questionarioSocioeconomico);
+//		 return questionarioSocioeconomico;
+//	}
+//	
+//	@GetMapping("/teste5")
+//	public QuestionarioSocioeconomico testeRetornaUltimoQuestionario() {
+//		 String email = "Patricia@gmail.com";
+//		 QuestionarioSocioeconomico questionario = discenteService.retornaUltimoQuestionarioSocioeconomico(email);
+//		 
+//		return questionario;
+//	}
 
 }
