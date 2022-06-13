@@ -5,11 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.helpmind.model.Discente;
 import com.helpmind.model.QuestionarioSocioeconomico;
 import com.helpmind.repository.QuestionarioSocioeconomicoRepository;
 
 @Service
 public class QuestionarioSocioeconomicoService {
+	
+	@Autowired
+	private DiscenteService discenteService;
 	
 	@Autowired
 	private QuestionarioSocioeconomicoRepository questionarioSocioeconomicoRepository;
@@ -20,6 +24,24 @@ public class QuestionarioSocioeconomicoService {
 	
 	public List<QuestionarioSocioeconomico> retornarListaQuestionarioSocioeconomico(){
 		return questionarioSocioeconomicoRepository.findAll();
+	}
+	
+	public List<QuestionarioSocioeconomico> buscaQuestionariosPeloIdDoDiscente(Integer ID){
+		Discente discente = discenteService.buscaDiscentePorID(ID);
+		
+		return discente.getListaQuestionarioSocioeconomico();
+	}
+	
+	public QuestionarioSocioeconomico retornaQuestionarioPeloID_discente_ID_questionario(Integer IdDiscente, Integer IdQuestionario) {
+		List<QuestionarioSocioeconomico> lista = this.buscaQuestionariosPeloIdDoDiscente(IdDiscente);
+		QuestionarioSocioeconomico questionario = null;
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getId().equals(IdQuestionario)) {
+				questionario = lista.get(i);
+			}
+		}
+		
+		return questionario;
 	}
 
 }

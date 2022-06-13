@@ -2,20 +2,16 @@ import { Card } from 'primereact/card';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
-import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useParams, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
+import axios from 'axios';
+import DiscenteService from '../../../services/DiscenteService';
 
 export default function PerfilDiscenteDetalhado() {
-    //realizar get no useEffects e buscar estudante por Id. 
+    
     const {id} = useParams();
-    console.log(id + ' id do discente selecionada')
-    const nome = 'Renato Russo';
-    const email = 'renatorusso@gmail.com';
-    const matricula = '0878814201728';
-    const niveldeAnsiedade = '37';
-    const statusAnsiedade = '03 ANSIEDADE GRAVE';
-    const niveldeDepressao = '6';
-    const statusDepressao = '03 DEPRESSÃO MINIMA';
+    
+    const location = useLocation();
     var configBotao = "p-mb-3 p-col-3";
     var largura = window. screen. width;
     if (largura < 640){
@@ -23,19 +19,44 @@ export default function PerfilDiscenteDetalhado() {
     }
     const history = useHistory();
     
+    const [discente, setDiscente] = useState([])
+    const [questionariosSocioeconomicos, setQuestionarioSocioeconomicos] = useState(discente.listaQuestionarioSocioeconomico);
+    const requisitarDiscente = () => {
+        DiscenteService.getDiscenteById(id).then((response) => {
+            setDiscente(response.data)
+        });
+    };
 
+    useEffect(() => {
+        requisitarDiscente()
+    }, [])
+
+    useEffect(() => {
+        
+    }, [])
+
+    const visualizarQuestionariosSocioeconomicos = () => {
+        // setDiscente(discente);
+        // console.log(discente.id);
+        // history.goBack();
+        // window.open('http://localhost:8080/file/files/' + discente.nome);
+        // history.push('/profissionalDeSaude/QuestionarioSocioeconomico' + questionariosSocioeconomicos) 
+        history.goBack();
+        history.push('/profissionalDeSaude/QuestionarioSocioeconomico/' + id)
+    }
+    
     return (
         <div>
             <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <div>
                 <Card title='PERFIL DO DISCENTE ' >
-                    <Card subTitle='NOME: ' > <label>{nome}</label> </Card>
-                    <Card subTitle='EMAIL: ' > <label>{email}</label> </Card>
-                    <Card subTitle='MATRICULA: ' > <label>{matricula}</label> </Card>
-                    <Card subTitle='MEDIA DE ANSIEDADE' > <label>{niveldeAnsiedade}</label> </Card>
-                    <Card subTitle='STATUS DE ANSIEDADE' > <label>{statusAnsiedade}</label> </Card>
-                    <Card subTitle='MEDIA DE DEPRESSÃO' > <label>{niveldeDepressao}</label> </Card>
-                    <Card subTitle='STATUS DE DEPRESSÃO' > <label>{statusDepressao}</label> </Card>
+                    <Card subTitle='NOME: ' > <label>{discente.nome}</label> </Card>
+                    <Card subTitle='EMAIL: ' > <label>{discente.email}</label> </Card>
+                    <Card subTitle='MATRICULA: ' > <label>{discente.matricula}</label> </Card>
+                    <Card subTitle='MEDIA DE ANSIEDADE' > <label>{discente.mediaDoDiscenteQuestionariosDeAnsiedade}</label> </Card>
+                    <Card subTitle='STATUS DE ANSIEDADE' > <label>{discente.StatusDoDiscenteAnsiedade}</label> </Card>
+                    <Card subTitle='MEDIA DE DEPRESSÃO' > <label>{discente.mediaDoDiscenteQuestionariosDeDepresao}</label> </Card>
+                    <Card subTitle='STATUS DE DEPRESSÃO' > <label>{discente.StatusDoDiscenteDepresao}</label> </Card>
 
                     <Card className='p-col-16' >
                         <div>
@@ -45,7 +66,7 @@ export default function PerfilDiscenteDetalhado() {
                             <Button className={configBotao} label="LISTAR INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" onClick={() => { history.push('/profissionalDeSaude/QuestionarioAnsiedadeDeBeck') }}/>
                         </div>
                         <div>
-                            <Button className={configBotao} label="LISTAR QUESTIONÁRIO SOCIOECONÔMICO (QS)"  onClick={() => {history.push('/profissionalDeSaude/QuestionarioSocioeconomico')}} />
+                            <Button className={configBotao} label="LISTAR QUESTIONÁRIO SOCIOECONÔMICO (QS)"  onClick={() => { visualizarQuestionariosSocioeconomicos()}} />
                         </div>
                     </Card>
 

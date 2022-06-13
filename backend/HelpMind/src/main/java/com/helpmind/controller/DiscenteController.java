@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.helpmind.model.Discente;
-import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
 import com.helpmind.model.QuestionarioSocioeconomico;
 import com.helpmind.service.DiscenteService;
 
@@ -37,13 +36,6 @@ public class DiscenteController {
 		return discenteService.retornaAllDiscentes();
 	}
 	
-//	@PostMapping("salvarDiscente")
-//	public Discente novoDiscente(@RequestBody QuestionarioSocioeconomico questionarioSocioeconomico) {
-//		Discente discente = discenteService.criarDiscente(questionarioSocioeconomico);
-//		
-//		return discente;
-//	}
-	
 	@PostMapping("/salvarDiscenteComBaseQuestionarioSoxioeconomico")
 	public ResponseEntity<QuestionarioSocioeconomico> criarDiscenteComBaseNoPrimeiroQuestionarioSocioeconomico(@RequestBody QuestionarioSocioeconomico questionarioSocioeconomico) throws URISyntaxException {
 		LocalDateTime data = LocalDateTime.now();
@@ -51,7 +43,6 @@ public class DiscenteController {
 			questionarioSocioeconomico.setData(data);
 			String email = questionarioSocioeconomico.getEmail();
 			if(discenteService.isDiscente(email)){
-				//addd questionario ao discente
 				discenteService.addNovoQuestionarioSocioeconomico(questionarioSocioeconomico);
 			}
 			else {
@@ -68,53 +59,13 @@ public class DiscenteController {
 
 		return discenteService.isDiscente(email);
 	}
-
 	
-//	@GetMapping("/teste1")
-//	public Discente testePesquisa() { // funciona
-//		 QuestionarioSocioeconomico questionarioSocioeconomico = new QuestionarioSocioeconomico();
-//		 questionarioSocioeconomico.setNome("Patricia");
-//		 questionarioSocioeconomico.setEmail("Patricia@gmail.com");
-////		 questionarioSocioeconomico.setIdade(28);
-//		 Discente discente = discenteService.addNovoQuestionarioSocioeconomico(questionarioSocioeconomico);
-//		
-//		return discente;
-//	}
-//	
-//	@GetMapping("/teste2")
-//	public Discente testeIncluirNovoDiscente() { //funciona
-//		 QuestionarioSocioeconomico questionarioSocioeconomico = new QuestionarioSocioeconomico();
-//		 questionarioSocioeconomico.setNome("Patricia");
-//		 questionarioSocioeconomico.setEmail("Patricia@gmail.com");
-////		 questionarioSocioeconomico.setIdade(28);
-//		 discenteService.criarDiscente(questionarioSocioeconomico);
-//		
-//		return null;
-//	}
-//	
-//	@GetMapping("/teste3")
-//	public List< QuestionarioSocioeconomico > testeRetornarQuesquionariosSocioeconomico() {
-//		 String email = "Patricia@gmail.com";
-//		 List< QuestionarioSocioeconomico > lista =discenteService.retornaListaQuestionarioSocioeconomico(email);
-//		return lista;
-//	}
-//
-//	@GetMapping("/teste4")
-//	public QuestionarioSocioeconomico testeAddNovoQuestionarioSocioeconomico() {
-//		 QuestionarioSocioeconomico questionarioSocioeconomico = new QuestionarioSocioeconomico();
-//		 questionarioSocioeconomico.setNome("Patricia");
-//		 questionarioSocioeconomico.setEmail("Patricia@gmail.com");
-////		 questionarioSocioeconomico.setIdade(32);
-//		 discenteService.addNovoQuestionarioSocioeconomico(questionarioSocioeconomico);
-//		 return questionarioSocioeconomico;
-//	}
-//	
-//	@GetMapping("/teste5")
-//	public QuestionarioSocioeconomico testeRetornaUltimoQuestionario() {
-//		 String email = "Patricia@gmail.com";
-//		 QuestionarioSocioeconomico questionario = discenteService.retornaUltimoQuestionarioSocioeconomico(email);
-//		 
-//		return questionario;
-//	}
+	@PostMapping("/buscaDiscentePorID")
+	public Discente retornaDiscentePeloID(@RequestBody String id) {
+		Integer ID = Integer.parseInt(id);
+		Discente discente = null;
+		discente = discenteService.buscaDiscentePorID(ID);
+		return discente;
+	}
 
 }

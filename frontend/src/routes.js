@@ -43,7 +43,7 @@ export default function Routes() {
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
                 <Route path="/profissionalDeSaude/ListaDeReportes" component={ListaDeReportes} />
                 <Route path="/profissionalDeSaude/perfil" component={PerfilProfissionalDeSaude} />
-                <Route path="/profissionalDeSaude/QuestionarioSocioeconomico" component={ListaQuestionarioSocioeconomico} />
+                <Route path="/profissionalDeSaude/QuestionarioSocioeconomico/:id" component={ListaQuestionarioSocioeconomico} />
                 <Route path="/profissionalDeSaude/QuestionarioAnsiedadeDeBeck" component={ListaQuestionarioAnsiedadeDeBeck} />
                 <Route path="/profissionalDeSaude/QuestionarioDepressaoDeBeck" component={ListaQuestionariosDepressaoDeBeck} />
                 <Route path="/profissionalDeSaude/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhado} />

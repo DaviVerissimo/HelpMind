@@ -88,6 +88,7 @@ public class DiscenteService {
 		discente.setNome(questionarioSocioeconomico.getNome());
 		discente.setEmail(questionarioSocioeconomico.getEmail());
 		discente.setMatricula(questionarioSocioeconomico.getMatricula());
+		discente.setCurso(questionarioSocioeconomico.getCurso());
 		List<QuestionarioSocioeconomico> lista = new ArrayList<QuestionarioSocioeconomico>();
 		lista.add(questionarioSocioeconomico);
 		discente.setListaQuestionarioSocioeconomico(lista);

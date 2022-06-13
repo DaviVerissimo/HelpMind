@@ -1,26 +1,20 @@
 package com.helpmind.controller;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.helpmind.model.Reporte;
-import com.helpmind.service.CursoService;
 import com.helpmind.service.ReporteService;
 
 
@@ -47,19 +41,5 @@ public class ReporteController {
 		
 		return reporteService.retornarTodos();
 	}
-	
-//	@PostMapping("/ReporteForSeach")
-//	public String forSeach(@RequestBody String pesquisa){
-//		reporteService.pesquisa = pesquisa;
-//		
-//		return reporteService.pesquisa;
-//	}
-	
-//	@GetMapping("/listarReporteForSeach")
-//	public List<Reporte> listarReportesPorNome(){
-//		
-//		return reporteService.retornarDiscentePorNome();
-//	}
-	
 
 }

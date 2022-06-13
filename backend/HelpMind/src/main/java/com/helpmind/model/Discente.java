@@ -28,6 +28,7 @@ public class Discente {
 	private String nome;
 	private String email;
 	private String matricula;
+	private String curso;
 	private float mediaDoDiscenteQuestionariosDeAnsiedade;
 	private String StatusDoDiscenteAnsiedade;
 	private float mediaDoDiscenteQuestionariosDeDepresao;
@@ -124,6 +125,12 @@ public class Discente {
 	}
 	public void setStatusDoDiscenteDepresao(String statusDoDiscenteDepresao) {
 		StatusDoDiscenteDepresao = statusDoDiscenteDepresao;
+	}
+	public String getCurso() {
+		return curso;
+	}
+	public void setCurso(String curso) {
+		this.curso = curso;
 	}
 	
 }
