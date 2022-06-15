@@ -21,16 +21,16 @@ export default function ListaQuestionarioSocioeconomico(){
         configBtnVisualizar = "p-button-rounded pi pi-file";
     }
 
-    let emptyDiscente = {
+    let emptyQuestionario = {
         id: null,
-        nome: '',
-        Curso: null,
+        questao01: '',
+        questao02: '',
     };
 
     const history = useHistory();
     const location = useLocation();
 
-    const [QuestionarioSocioeconomico, setQuestionarioSocioeconomico] = useState([])
+    const [QuestionarioSocioeconomico, setQuestionarioSocioeconomico] = useState([emptyQuestionario])
     const allQuestionarioSocioeconomico = () => {
         QuestionarioService.getListaQuestionarioSocioeconomicoPorId(id).then((response) => {
             setQuestionarioSocioeconomico(response.data)
@@ -51,11 +51,12 @@ export default function ListaQuestionarioSocioeconomico(){
 
     const visualizarQuestionario = (questionario) => {
         // setQuestionarioSocioeconomico(questionario);
-        // console.log(questionario.id);
-        // history.goBack();
-        // // window.open('http://localhost:8080/file/files/' + discente.nome);
-        // // history.push('/profissionalDeSaude/PerfilDiscenteDetalhado/' + questionario.id) 
-        // console.log(questionario.id)
+        console.log(questionario.id + " ID do questionario");
+        console.log(id + " ID do discente");
+        history.goBack();
+        history.push('/profissionalDeSaude/VisualizarSocioeconomico/'+ questionario.id) 
+        
+        
     }
 
     const actionBodyTemplate = (rowData) => {
@@ -93,6 +94,7 @@ export default function ListaQuestionarioSocioeconomico(){
                                 <div className="card">
                                     <DataTable ref={dt} value={QuestionarioSocioeconomico} selection={selectedQuestionario} onSelectionChange={(e) => setSelectedQuestionario(e.value)}
                                         dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
+                                            <Column field="id" header="ID" sortable ></Column>
                                         <Column field="nome" header="Discente" sortable style={{ minWidth: '12rem' }}></Column>
                                         <Column field="curso" header="Curso" sortable style={{ minWidth: '12rem' }}></Column>
                                         <Column field="cidade" header="Cidade" sortable ></Column>

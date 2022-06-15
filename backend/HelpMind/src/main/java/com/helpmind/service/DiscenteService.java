@@ -75,14 +75,6 @@ public class DiscenteService {
 		return lista;
 	}
 	
-//	public QuestionarioSocioeconomico retornaUltimoQuestionarioSocioeconomico(String email) {
-//		QuestionarioSocioeconomico questionario = null;
-//		List<QuestionarioSocioeconomico> lista = this.retornaListaQuestionarioSocioeconomico(email);
-//		questionario = lista.get(lista.size() -1);
-//		
-//		return questionario;
-//	}
-	
 	public Discente criarDiscente(QuestionarioSocioeconomico questionarioSocioeconomico) {
 		Discente discente = new Discente();
 		discente.setNome(questionarioSocioeconomico.getNome());

@@ -1,12 +1,8 @@
 package com.helpmind.controller;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.helpmind.model.Discente;
 import com.helpmind.model.QuestionarioSocioeconomico;
 import com.helpmind.service.QuestionarioSocioeconomicoService;
 
@@ -41,16 +34,13 @@ public class QuestionarioSocioeconomicoController {
 		Integer ID = Integer.parseInt(id);
 		
 		return questionarioSocioeconomicoService.buscaQuestionariosPeloIdDoDiscente(ID);
-		
 	}
 	
 	@PostMapping("/buscaQuestionarioPeloID")
-	public QuestionarioSocioeconomico retornarQuestionarioSocioeconomicoById(@RequestBody String idDiscente, String iDQuestionario){
-		Integer ID_DISCENTE = Integer.parseInt(idDiscente);
-		Integer ID_QUESTIONARIO = Integer.parseInt(idDiscente);
+	public QuestionarioSocioeconomico retornarQuestionarioSocioeconomicoById(@RequestBody String iDQuestionario){
+		Integer ID_QUESTIONARIO = Integer.parseInt(iDQuestionario);
 		
-		return questionarioSocioeconomicoService.retornaQuestionarioPeloID_discente_ID_questionario(ID_DISCENTE, ID_QUESTIONARIO);
-		
+		return questionarioSocioeconomicoService.retornaQuestionarioPeloID(ID_QUESTIONARIO);
 	}
 
 }

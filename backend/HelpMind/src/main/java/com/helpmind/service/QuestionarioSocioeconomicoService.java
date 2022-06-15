@@ -32,8 +32,8 @@ public class QuestionarioSocioeconomicoService {
 		return discente.getListaQuestionarioSocioeconomico();
 	}
 	
-	public QuestionarioSocioeconomico retornaQuestionarioPeloID_discente_ID_questionario(Integer IdDiscente, Integer IdQuestionario) {
-		List<QuestionarioSocioeconomico> lista = this.buscaQuestionariosPeloIdDoDiscente(IdDiscente);
+	public QuestionarioSocioeconomico retornaQuestionarioPeloID(Integer IdQuestionario) {
+		List<QuestionarioSocioeconomico> lista = questionarioSocioeconomicoRepository.findAll();
 		QuestionarioSocioeconomico questionario = null;
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getId().equals(IdQuestionario)) {
