@@ -58,7 +58,7 @@ export default function ListaDiscentes() {
         console.log(discente.id);
         history.goBack();
         // window.open('http://localhost:8080/file/files/' + discente.nome);
-        history.push('/profissionalDeSaude/PerfilDiscenteDetalhado/' + discente.id) 
+        history.push('/profissionalDeSaude/PerfilDiscenteDetalhado/' + discente.id)
     }
 
     const actionBodyTemplate = (rowData) => {

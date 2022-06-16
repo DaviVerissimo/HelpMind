@@ -6,12 +6,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.helpmind.model.Discente;
 import com.helpmind.model.Questao;
 import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
 import com.helpmind.repository.QuestionarioDeAnsiedadeDeBeckRepository;
 
 @Service
 public class QuestionarioDeAnsiedadeDeBeckService {
+	
+	@Autowired
+	private DiscenteService discenteService;
 	
 	@Autowired
 	private QuestionarioDeAnsiedadeDeBeckRepository  questionarioDeAnsiedadeDeBeckRepository;
@@ -64,6 +68,19 @@ public class QuestionarioDeAnsiedadeDeBeckService {
 		List<QuestionarioDeAnsiedadeDeBeck> lista = questionarioDeAnsiedadeDeBeckRepository.findAll();
 		
 		return lista;
+	}
+	
+	public List<QuestionarioDeAnsiedadeDeBeck> buscaQuestionariosPeloIdDoDiscente(String ID){
+		List<QuestionarioDeAnsiedadeDeBeck> lista = retornarListaQuestionarioDeAnsiedadeDeBeck();
+		List<QuestionarioDeAnsiedadeDeBeck> listaDoDiscente = new ArrayList<QuestionarioDeAnsiedadeDeBeck>();
+		
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getIdDiscente().equals(ID)) {
+				listaDoDiscente.add(lista.get(i));
+			}
+		}
+		
+		return listaDoDiscente;
 	}
 
 }

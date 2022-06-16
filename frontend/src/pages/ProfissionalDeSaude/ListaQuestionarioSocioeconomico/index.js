@@ -11,7 +11,6 @@ import { useHistory, useParams, useLocation } from 'react-router-dom/cjs/react-r
 
 export default function ListaQuestionarioSocioeconomico(){
     const {id} = useParams();
-    console.log(id + " id do doscente do questionario ")
     var btnVisualizarTexto = 'VISUALIZAR'
     var configBtnVisualizar = "pi pi-file";
     var largura = window.screen.width;

@@ -36,13 +36,13 @@ export default function PerfilDiscenteDetalhado() {
     }, [])
 
     const visualizarQuestionariosSocioeconomicos = () => {
-        // setDiscente(discente);
-        // console.log(discente.id);
-        // history.goBack();
-        // window.open('http://localhost:8080/file/files/' + discente.nome);
-        // history.push('/profissionalDeSaude/QuestionarioSocioeconomico' + questionariosSocioeconomicos) 
         history.goBack();
         history.push('/profissionalDeSaude/QuestionarioSocioeconomico/' + id)
+    }
+
+    const visualizarQuestionariosAnsiedade = () => {
+        history.goBack();
+        history.push('/profissionalDeSaude/QuestionarioAnsiedadeDeBeck/' + id)
     }
     
     return (
@@ -63,7 +63,7 @@ export default function PerfilDiscenteDetalhado() {
                             <Button className={configBotao} label="LISTAR INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)"  onClick={() => { history.push('/profissionalDeSaude/QuestionarioDepressaoDeBeck') }} />
                         </div>
                         <div>
-                            <Button className={configBotao} label="LISTAR INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" onClick={() => { history.push('/profissionalDeSaude/QuestionarioAnsiedadeDeBeck') }}/>
+                            <Button className={configBotao} label="LISTAR INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" onClick={() => { visualizarQuestionariosAnsiedade()}} />
                         </div>
                         <div>
                             <Button className={configBotao} label="LISTAR QUESTIONÁRIO SOCIOECONÔMICO (QS)"  onClick={() => { visualizarQuestionariosSocioeconomicos()}} />

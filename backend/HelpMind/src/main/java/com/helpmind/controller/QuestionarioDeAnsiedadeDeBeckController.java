@@ -21,12 +21,12 @@ import com.helpmind.service.QuestionarioDeAnsiedadeDeBeckService;
 @RestController
 @RequestMapping("/QuestionarioDeAnsiedadeDeBeck")
 public class QuestionarioDeAnsiedadeDeBeckController {
-
+	
 	@Autowired
 	private QuestionarioDeAnsiedadeDeBeckService  questionarioDeAnsiedadeDeBeckService;
 	
 	@PostMapping("salvar")
-	public ResponseEntity<QuestionarioDeAnsiedadeDeBeck> salvarQuestionarioDeDepressaoDeBeck(@RequestBody List<String> questoesResportas) throws URISyntaxException {
+	public ResponseEntity<QuestionarioDeAnsiedadeDeBeck> salvarQuestionarioDeAnsiedadeDeBeck(@RequestBody List<String> questoesResportas) throws URISyntaxException {
 		LocalDateTime data = LocalDateTime.now();
 		QuestionarioDeAnsiedadeDeBeck questionario = new QuestionarioDeAnsiedadeDeBeck();
 		
@@ -45,5 +45,14 @@ public class QuestionarioDeAnsiedadeDeBeckController {
 	public List<QuestionarioDeAnsiedadeDeBeck> retornarListaQuestionarioDeAnsiedadeDeBeck(){
 		
 		return questionarioDeAnsiedadeDeBeckService.retornarListaQuestionarioDeAnsiedadeDeBeck();
+	}
+	
+	
+	@PostMapping("/buscaQuestionariosPeloID")
+	public List<QuestionarioDeAnsiedadeDeBeck> retornarListaQuestionariosAnsiedadeById(@RequestBody String id){
+//		Integer ID = Integer.parseInt(id);
+		
+		return questionarioDeAnsiedadeDeBeckService.buscaQuestionariosPeloIdDoDiscente(id);
+		
 	}
 }

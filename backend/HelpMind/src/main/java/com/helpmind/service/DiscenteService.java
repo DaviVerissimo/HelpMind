@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.helpmind.model.Discente;
+import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
 import com.helpmind.model.QuestionarioSocioeconomico;
 import com.helpmind.repository.DiscenteRepository;
 
@@ -65,6 +66,17 @@ public class DiscenteService {
 		
 		return discente;
 	}
+	
+//	public QuestionarioDeAnsiedadeDeBeck addNovoQuestionarioDeAnsiedadeDeBeck(QuestionarioDeAnsiedadeDeBeck questionario, Integer ID) {
+//		Discente discente = this.buscaDiscentePorID(ID);
+//		List<QuestionarioDeAnsiedadeDeBeck> lista = discente.getListaQuestionarioDeAnsiedadeDeBeck();
+//		lista.add(questionario);
+//		discente.setListaQuestionarioDeAnsiedadeDeBeck(lista);
+////		System.out.println(discente.toString());
+//		discenteRepository.save(discente);
+//		
+//		return questionario;
+//	}
 	
 	public List<QuestionarioSocioeconomico> retornaListaQuestionarioSocioeconomico(String email){
 		List<QuestionarioSocioeconomico> lista = null;
