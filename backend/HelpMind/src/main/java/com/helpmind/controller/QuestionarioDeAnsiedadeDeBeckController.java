@@ -3,6 +3,7 @@ package com.helpmind.controller;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.helpmind.model.Questao;
 import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
 import com.helpmind.model.QuestionarioSimples;
 import com.helpmind.service.QuestionarioDeAnsiedadeDeBeckService;
@@ -52,9 +54,21 @@ public class QuestionarioDeAnsiedadeDeBeckController {
 	
 	@PostMapping("/buscaQuestionariosPeloID")
 	public List<QuestionarioDeAnsiedadeDeBeck> retornarListaQuestionariosAnsiedadeById(@RequestBody String id){
-//		Integer ID = Integer.parseInt(id);
 		
 		return questionarioDeAnsiedadeDeBeckService.buscaQuestionariosPeloIdDoDiscente(id);
 		
+	}
+	
+	@PostMapping("/buscaQuestionarioPeloID")
+	public List<String> retornarQuestionarioSocioeconomicoById(@RequestBody String iDQuestionario){
+		Integer ID_QUESTIONARIO = Integer.parseInt(iDQuestionario);
+		
+		List<Questao> lista = questionarioDeAnsiedadeDeBeckService.retornaQuestionarioPeloID(ID_QUESTIONARIO).getListaDeQuestoes();
+		List<String> listaResporta = new ArrayList<String>();
+		for (int i = 0; i < lista.size(); i++) {
+			String resporta = lista.get(i).getResporta();
+			listaResporta.add(resporta);
+		}
+		return listaResporta;
 	}
 }

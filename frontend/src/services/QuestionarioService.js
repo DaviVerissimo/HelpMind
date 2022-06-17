@@ -14,6 +14,7 @@ const API_URL_LISTA_QUESTIONARIOSDEPRESSAOBECK = 'http://localhost:8080/Question
 const API_URL_LISTA_QUESTIONARIOSOCIOECONOMICOPORDISCENTE = 'http://localhost:8080/QuestionarioSocioeconomico/buscaQuestionariosPeloID';
 const API_URL_QUESTIONARIOSOCIOECONOMICOPORIDQUESTIONARIO = 'http://localhost:8080/QuestionarioSocioeconomico/buscaQuestionarioPeloID';
 const API_URL_LISTA_QUESTIONARIOSANSIEDADEPORDISCENTE = 'http://localhost:8080/QuestionarioDeAnsiedadeDeBeck/buscaQuestionariosPeloID';
+const API_URL_QUESTIONARIOANSIEDADEPORIDQUESTIONARIO = 'http://localhost:8080/QuestionarioDeAnsiedadeDeBeck/buscaQuestionarioPeloID';
 
 class QuestionarioService {
 
@@ -39,6 +40,10 @@ class QuestionarioService {
 
     getQuestionariosAnsiedadePorId(idQuestionario) {
         return axios.post(API_URL_LISTA_QUESTIONARIOSANSIEDADEPORDISCENTE, idQuestionario, headers);
+    }
+
+    getQuestionarioAnsiedadePorId(idQuestionario) {
+        return axios.post(API_URL_QUESTIONARIOANSIEDADEPORIDQUESTIONARIO, idQuestionario, headers);
     }
 
 }
