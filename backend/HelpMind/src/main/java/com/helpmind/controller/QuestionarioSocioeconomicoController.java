@@ -21,8 +21,6 @@ public class QuestionarioSocioeconomicoController {
 	@Autowired
 	private QuestionarioSocioeconomicoService questionarioSocioeconomicoService;
 	
-	/*Todos os reportes e questionarios precisam ter um metodo para buscar o discente dono*/
-	
 	@GetMapping("ListaQuestionarioSocioeconomico")
 	public List<QuestionarioSocioeconomico> retornarListaQuestionarioSocioeconomico(){
 		

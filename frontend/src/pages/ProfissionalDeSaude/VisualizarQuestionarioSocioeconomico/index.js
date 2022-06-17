@@ -12,7 +12,6 @@ import QuestionarioService from '../../../services/QuestionarioService';
 export default function VisualizarQuestionarioSocioeconomico() {
 
     const {id} = useParams();
-    console.log(id  + ' questionario');
     const [questionarioSocioeconomico, setQuestionarioSocioeconomico] = useState();
 
     const obterQuestionarioSocioeconomico = () => {
@@ -23,7 +22,6 @@ export default function VisualizarQuestionarioSocioeconomico() {
         });
     };
 
-    let lua = questionarioSocioeconomico
 
     const [email, setEmail] = useState();
     const [campusDoDiscente, setCampusDoDiscente] = useState(null);
@@ -61,32 +59,6 @@ export default function VisualizarQuestionarioSocioeconomico() {
     const [familiarDoente, setFamiliarDoente] = useState();
     const [diaguinostico_op, setDiaguinostico_op] = useState('');
     const [cotista_op, setCotista_op] = useState();
-
-    var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
-    var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
-    var espacamento = '10px';
-    var altura = window.screen.height;
-    var largura = window.screen.width;
-    if (largura < 640) {
-        configBotaoCancel = "p-mb-3 p-button-secondary "
-        configBotaoSalvar = "p-mb-3"
-    }
-
-    // useEffect(async () => { 
-    //     obterQuestionarioSocioeconomico();
-
-    // }, []);
-
-    
-
-    
-    // const idDiscente = params.id
-    // const idQuestionario = params.idQuestionario
-    
-    
-    console.log(questionarioSocioeconomico)
-
-
 
     useEffect(async () => {
         obterQuestionarioSocioeconomico();
@@ -282,15 +254,11 @@ export default function VisualizarQuestionarioSocioeconomico() {
         <div>
             <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <div>
-                {/* <Toast ref={toast} /> */}
                 <Card className="" >
-                    <div className="   align-items-end "  >
-                        {/* <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR" /> */}
-                        {/* <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} /> */}
-                    </div>
+
                 </Card>
                 <Card className="" >
-                    <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
+                    <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={true}></Checkbox>
                     <label > Declaro estar ciente e concordo com o inteiro teor da aplicação deste inventário, inclusive
                         tendo conhecimento que haverá o acesso aos resultados, interpretação e ações de promoção, prevenção e
                         encaminhamentos pelos  profissionais de saúde do campus de origem  aos dados e diante da necessidade
