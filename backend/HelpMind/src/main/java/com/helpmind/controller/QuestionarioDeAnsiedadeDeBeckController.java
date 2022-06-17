@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
+import com.helpmind.model.QuestionarioSimples;
 import com.helpmind.service.QuestionarioDeAnsiedadeDeBeckService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -26,13 +27,14 @@ public class QuestionarioDeAnsiedadeDeBeckController {
 	private QuestionarioDeAnsiedadeDeBeckService  questionarioDeAnsiedadeDeBeckService;
 	
 	@PostMapping("salvar")
-	public ResponseEntity<QuestionarioDeAnsiedadeDeBeck> salvarQuestionarioDeAnsiedadeDeBeck(@RequestBody List<String> questoesResportas) throws URISyntaxException {
+	public ResponseEntity<QuestionarioDeAnsiedadeDeBeck> salvarQuestionarioDeAnsiedadeDeBeck(@RequestBody QuestionarioSimples questionarioSimples) throws URISyntaxException {
 		LocalDateTime data = LocalDateTime.now();
 		QuestionarioDeAnsiedadeDeBeck questionario = new QuestionarioDeAnsiedadeDeBeck();
 		
 		try {
-			questionario = questionarioDeAnsiedadeDeBeckService.preencherQuestionarioComResporta(questoesResportas);
+			questionario = questionarioDeAnsiedadeDeBeckService.preencherQuestionarioComResporta(questionarioSimples.getLista());
 			questionario.setData(data);
+			questionario.setIdDiscente(questionarioSimples.getId());
 			questionario.calcularNota();
 			questionario.definirStatus();
 			questionarioDeAnsiedadeDeBeckService.salvar(questionario);

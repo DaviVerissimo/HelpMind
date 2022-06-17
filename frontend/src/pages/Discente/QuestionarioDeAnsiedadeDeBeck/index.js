@@ -105,6 +105,8 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
                 }
             }
 
+            var id = '23';
+
             const headers = {
                 'headers': {
                     'Accept': 'application/json',
@@ -113,7 +115,36 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
                 }
             }
 
-            axios.post("http://localhost:8080/QuestionarioDeAnsiedadeDeBeck/salvar", questoesRespondidas, headers)
+            const questionarioSimples = {
+                "id": id,
+                "lista": [
+
+                    questao01,
+                    questao02,
+                    questao03,
+                    questao04,
+                    questao05,
+                    questao06,
+                    questao07,
+                    questao08,
+                    questao09,
+                    questao10,
+                    questao11,
+                    questao12,
+                    questao13,
+                    questao14,
+                    questao15,
+                    questao16,
+                    questao17,
+                    questao18,
+                    questao19,
+                    questao20,
+                    questao21
+
+                ]
+            }
+
+            axios.post("http://localhost:8080/QuestionarioDeAnsiedadeDeBeck/salvar", questionarioSimples, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
             showSuccess();
