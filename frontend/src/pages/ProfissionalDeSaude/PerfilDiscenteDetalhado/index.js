@@ -44,6 +44,11 @@ export default function PerfilDiscenteDetalhado() {
         history.goBack();
         history.push('/profissionalDeSaude/QuestionarioAnsiedadeDeBeck/' + id)
     }
+
+    const visualizarQuestionariosDepressao = () => {
+        history.goBack();
+        history.push('/profissionalDeSaude/QuestionarioDepressaoDeBeck/' + id)
+    }
     
     return (
         <div>
@@ -60,7 +65,7 @@ export default function PerfilDiscenteDetalhado() {
 
                     <Card className='p-col-16' >
                         <div>
-                            <Button className={configBotao} label="LISTAR INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)"  onClick={() => { history.push('/profissionalDeSaude/QuestionarioDepressaoDeBeck') }} />
+                            <Button className={configBotao} label="LISTAR INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)"  onClick={() => { visualizarQuestionariosDepressao()}} />
                         </div>
                         <div>
                             <Button className={configBotao} label="LISTAR INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" onClick={() => { visualizarQuestionariosAnsiedade()}} />
