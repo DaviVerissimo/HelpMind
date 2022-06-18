@@ -53,7 +53,14 @@ public class QuestionarioDeDepressaoDeBeckController {
 	@GetMapping("ListaQuestionarioDepressaoDeBeck")
 	public List<QuestionarioDeDepressaoDeBeck> retornarListaQuestionarioDeAnsiedadeDeBeck(){
 		
-		return questionarioDeDepressaoDeBeckService.retornarListaQuestionarioDeAnsiedadeDeBeck();
+		return questionarioDeDepressaoDeBeckService.retornarListaQuestionarioDeDepressaoDeBeck();
+	}
+	
+	@PostMapping("/buscaQuestionariosPeloID")
+	public List<QuestionarioDeDepressaoDeBeck> retornarListaQuestionariosAnsiedadeById(@RequestBody String id){
+		
+		return questionarioDeDepressaoDeBeckService.buscaQuestionariosPeloIdDoDiscente(id);
+		
 	}
 
 }

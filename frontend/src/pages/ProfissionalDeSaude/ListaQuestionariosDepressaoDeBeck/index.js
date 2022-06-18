@@ -29,7 +29,7 @@ export default function ListaQuestionariosDepressaoDeBeck() {
     const location = useLocation();
     const [QuestionarioDepressaoDeBeck, setQuestionarioDepressaoDeBeck] = useState([])
     const allQuestionarioDepressaoDeBeck = () => {
-        QuestionarioService.getListaQuestionarioDepressaoBeck().then((response) => {
+        QuestionarioService.getQuestionariosDepressaoPorId(id).then((response) => {
             setQuestionarioDepressaoDeBeck(response.data)
             // console.log(response.data);
         });

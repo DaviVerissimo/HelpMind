@@ -60,7 +60,7 @@ public class QuestionarioDeAnsiedadeDeBeckController {
 	}
 	
 	@PostMapping("/buscaQuestionarioPeloID")
-	public List<String> retornarQuestionarioSocioeconomicoById(@RequestBody String iDQuestionario){
+	public List<String> retornarQuestionarioAnsiedadeById(@RequestBody String iDQuestionario){
 		Integer ID_QUESTIONARIO = Integer.parseInt(iDQuestionario);
 		
 		List<Questao> lista = questionarioDeAnsiedadeDeBeckService.retornaQuestionarioPeloID(ID_QUESTIONARIO).getListaDeQuestoes();

@@ -21,6 +21,8 @@ import javax.persistence.Table;
 @Table(name = "questionarioDeDepresaoDeBeck")
 public class QuestionarioDeDepressaoDeBeck implements Questionario{
 	
+	private String idDiscente;
+	
 	private LocalDateTime data;
 	
 	private int nota;
@@ -107,6 +109,14 @@ public class QuestionarioDeDepressaoDeBeck implements Questionario{
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getIdDiscente() {
+		return idDiscente;
+	}
+
+	public void setIdDiscente(String idDiscente) {
+		this.idDiscente = idDiscente;
 	}
 	
 }
