@@ -29,6 +29,8 @@ public class QuestionarioDeDepressaoDeBeck implements Questionario{
 	
 	private String status;
 	
+	private boolean dieta = false;
+	
 	public QuestionarioDeDepressaoDeBeck() {
 		listaDeQuestoes = new ArrayList<Questao>();
 	}
@@ -118,5 +120,15 @@ public class QuestionarioDeDepressaoDeBeck implements Questionario{
 	public void setIdDiscente(String idDiscente) {
 		this.idDiscente = idDiscente;
 	}
+
+	public boolean isDieta() {
+		return dieta;
+	}
+
+	public void setDieta(boolean dieta) {
+		this.dieta = dieta;
+	}
+	
+	
 	
 }

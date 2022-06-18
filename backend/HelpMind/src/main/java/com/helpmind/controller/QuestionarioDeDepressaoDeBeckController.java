@@ -3,6 +3,7 @@ package com.helpmind.controller;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.helpmind.model.Questao;
 import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
 import com.helpmind.model.QuestionarioDeDepressaoDeBeck;
+import com.helpmind.model.QuestionarioSimples;
 import com.helpmind.service.QuestionarioDeDepressaoDeBeckService;
 
 
@@ -36,14 +38,16 @@ public class QuestionarioDeDepressaoDeBeckController {
 	}
 	
 	@PostMapping("salvar")
-	public ResponseEntity<QuestionarioDeDepressaoDeBeck> salvarQuestionarioDeDepressaoDeBeck(@RequestBody List<String> questoesResportas) throws URISyntaxException {
+	public ResponseEntity<QuestionarioDeDepressaoDeBeck> salvarQuestionarioDeDepressaoDeBeck(@RequestBody QuestionarioSimples questionarioSimples) throws URISyntaxException {
 		LocalDateTime data = LocalDateTime.now();
 		QuestionarioDeDepressaoDeBeck questionario = new QuestionarioDeDepressaoDeBeck();
 		try {
-			questionario = questionarioDeDepressaoDeBeckService.preencherQuestionarioComResporta(questoesResportas);
+			questionario = questionarioDeDepressaoDeBeckService.preencherQuestionarioComResporta(questionarioSimples.getLista());
 			questionario.setData(data);
+			questionario.setIdDiscente(questionarioSimples.getId());
 			questionario.calcularNota();
 			questionario.definirStatus();
+			questionario.setDieta(questionarioSimples.isDieta());
 			questionarioDeDepressaoDeBeckService.salvar(questionario);
 			} catch(Exception e){}
 		
@@ -61,6 +65,23 @@ public class QuestionarioDeDepressaoDeBeckController {
 		
 		return questionarioDeDepressaoDeBeckService.buscaQuestionariosPeloIdDoDiscente(id);
 		
+	}
+	
+	@PostMapping("/buscaQuestionarioPeloID")
+	public List<String> retornarQuestionarioDepressaoById(@RequestBody String iDQuestionario){
+		Integer ID_QUESTIONARIO = Integer.parseInt(iDQuestionario);
+		
+		List<Questao> lista = questionarioDeDepressaoDeBeckService.retornaQuestionarioPeloID(ID_QUESTIONARIO).getListaDeQuestoes();
+		List<String> listaResporta = new ArrayList<String>();
+		for (int i = 0; i < lista.size(); i++) {
+			String resporta = lista.get(i).getResporta();
+			listaResporta.add(resporta);
+		}
+		//incluindo dieta
+		String dieta =  Boolean.toString(questionarioDeDepressaoDeBeckService.retornaQuestionarioPeloID(ID_QUESTIONARIO).isDieta()) ;
+		listaResporta.add(dieta);
+		
+		return listaResporta;
 	}
 
 }

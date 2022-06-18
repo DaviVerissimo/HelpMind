@@ -84,5 +84,17 @@ public class QuestionarioDeDepressaoDeBeckService {
 		
 		return listaDoDiscente;
 	}
+	
+	public QuestionarioDeDepressaoDeBeck retornaQuestionarioPeloID(Integer ID_QUESTIONARIO) {
+		List<QuestionarioDeDepressaoDeBeck> lista = questionarioDeDepressaoDeBeckRepository.findAll();
+		QuestionarioDeDepressaoDeBeck questionario = null;
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getId().equals(ID_QUESTIONARIO)) {
+				questionario = lista.get(i);
+			}
+		}
+		
+		return questionario;
+	}
 
 }

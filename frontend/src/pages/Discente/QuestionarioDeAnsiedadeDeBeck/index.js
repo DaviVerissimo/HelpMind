@@ -80,11 +80,6 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
         "questao21": questao21
     }
 
-    // usar para iniciar selecionado. acrescentar desabilitar  na visualização do prof de saude
-    // const categories = [{ name: 'Accounting', key: 'A' }, { name: 'Marketing', key: 'M' }, { name: 'Production', key: 'P' }, { name: 'Research', key: 'R' }];
-    // const [city, setCity] = useState(null);
-    // const [selectedCategory, setSelectedCategory] = useState(categories[1]);
-
     var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
     var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
     var espacamento = '10px';
@@ -117,6 +112,7 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
 
             const questionarioSimples = {
                 "id": id,
+                "dieta":false,
                 "lista": [
 
                     questao01,

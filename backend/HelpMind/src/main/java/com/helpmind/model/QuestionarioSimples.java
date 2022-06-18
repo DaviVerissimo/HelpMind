@@ -6,6 +6,8 @@ public class QuestionarioSimples {
 	
 	private String id;
 	private List<String> lista;
+	private boolean dieta = false;
+	
 	public String getId() {
 		return id;
 	}
@@ -18,6 +20,13 @@ public class QuestionarioSimples {
 	public void setLista(List<String> lista) {
 		this.lista = lista;
 	}
+	public boolean isDieta() {
+		return dieta;
+	}
+	public void setDieta(boolean dieta) {
+		this.dieta = dieta;
+	}
+	
 	
 	
 	
