@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.helpmind.model.Questao;
 import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
+import com.helpmind.model.QuestionarioSimples;
 import com.helpmind.repository.QuestionarioDeAnsiedadeDeBeckRepository;
 
 @Service
@@ -64,6 +65,14 @@ public class QuestionarioDeAnsiedadeDeBeckService {
 		List<QuestionarioDeAnsiedadeDeBeck> lista = questionarioDeAnsiedadeDeBeckRepository.findAll();
 		
 		return lista;
+	}
+	
+	public float calcularMediaDeAnsiedade(String ID){
+		
+		List<QuestionarioDeAnsiedadeDeBeck> listaDoDiscente = this.buscaQuestionariosPeloIdDoDiscente(ID);
+		float media = QuestionarioSimples.retornaCalculoDaMediadeDosQuestionariosAnsiedade(listaDoDiscente);
+		
+		return media;
 	}
 	
 	public List<QuestionarioDeAnsiedadeDeBeck> buscaQuestionariosPeloIdDoDiscente(String ID){

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.helpmind.model.Discente;
-import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
+import com.helpmind.model.QuestionarioSimples;
 import com.helpmind.model.QuestionarioSocioeconomico;
 import com.helpmind.repository.DiscenteRepository;
 
@@ -20,6 +20,12 @@ public class DiscenteService {
 	
 	@Autowired
 	private DiscenteRepository discenteRepository;
+	
+	@Autowired
+	private QuestionarioDeAnsiedadeDeBeckService questionarioDeAnsiedadeDeBeckService;
+	
+	@Autowired
+	private QuestionarioDeDepressaoDeBeckService questionarioDeDepressaoDeBeckService;
 	
 	public Discente buscarDiscentePorEmail(String email) {
 		Discente discente = null;
@@ -67,17 +73,6 @@ public class DiscenteService {
 		return discente;
 	}
 	
-//	public QuestionarioDeAnsiedadeDeBeck addNovoQuestionarioDeAnsiedadeDeBeck(QuestionarioDeAnsiedadeDeBeck questionario, Integer ID) {
-//		Discente discente = this.buscaDiscentePorID(ID);
-//		List<QuestionarioDeAnsiedadeDeBeck> lista = discente.getListaQuestionarioDeAnsiedadeDeBeck();
-//		lista.add(questionario);
-//		discente.setListaQuestionarioDeAnsiedadeDeBeck(lista);
-////		System.out.println(discente.toString());
-//		discenteRepository.save(discente);
-//		
-//		return questionario;
-//	}
-	
 	public List<QuestionarioSocioeconomico> retornaListaQuestionarioSocioeconomico(String email){
 		List<QuestionarioSocioeconomico> lista = null;
 		Discente discente = this.buscarDiscentePorEmail(email);
@@ -101,9 +96,107 @@ public class DiscenteService {
 		return discente;
 	}
 	
-	public List<Discente> retornaAllDiscentes(){
+	public List<Discente> definirMediaDeAnsiedadeDoDiscente(List<Discente> lista) {
 		
-		return discenteRepository.findAll();
+		for (int i = 0; i < lista.size(); i++) {
+			lista.get(i)
+			.setMediaDoDiscenteQuestionariosDeAnsiedade(questionarioDeAnsiedadeDeBeckService
+			.calcularMediaDeAnsiedade(Integer
+			.toString(lista.get(i)
+			.getId())));
+		}
+		
+		return lista;
+	}
+	
+	public List<Discente> definirMediaDeDepressaoDoDiscente(List<Discente> lista) {
+		
+		for (int i = 0; i < lista.size(); i++) {
+			lista.get(i)
+			.setMediaDoDiscenteQuestionariosDeDepresao(questionarioDeDepressaoDeBeckService
+			.calcularMediaDeDepressao(Integer
+			.toString(lista.get(i)
+			.getId())));
+		}
+		
+		
+		return lista;
+	}
+	
+	private String calcularAnsiedadeMedia(float nota) {
+		String status = null;
+		
+		if (nota >= 0 && nota <= 7) {
+			status = "01 Ansiedade mínima";
+		}
+		if(nota >= 8 && nota <= 15) {
+			status = "02 Ansiedade leve";
+		}
+		if(nota >= 16 && nota <= 25) {
+			status = "03 Ansiedade moderada";
+		}
+		if(nota >= 26 && nota <= 63) {
+			status = "04 Ansiedade grave";
+		}
+		
+		return status;
+	}
+	
+	public List<Discente> definirStatusDeAnsiedadeDoDiscente(List<Discente> lista) {
+
+		for (int i = 0; i < lista.size(); i++) {
+			lista.get(i)
+			.setStatusDoDiscenteAnsiedade(calcularAnsiedadeMedia(lista.get(i)
+			.getMediaDoDiscenteQuestionariosDeAnsiedade()));
+		}
+		
+		return lista;
+	}
+	
+	private String calcularDepressaoMedia(float nota) {
+		String status = null;
+		
+		if (nota >= 0 && nota <= 9) {
+			status = "01 Depressão mínima";
+		}
+		if(nota >= 10 && nota <= 18) {
+			status = "02 Depressão leve";
+		}
+		if(nota >= 19 && nota <= 29) {
+			status = "03 Depressão moderada";
+		}
+		if(nota >= 30 && nota <= 63) {
+			status = "04 Depressão grave";
+		}
+		
+		return status;
+	}
+	
+	public List<Discente> definirStatusDeDepressaoDoDiscente(List<Discente> lista) {
+
+		for (int i = 0; i < lista.size(); i++) {
+			lista.get(i)
+			.setStatusDoDiscenteDepresao(calcularDepressaoMedia(lista.get(i)
+			.getMediaDoDiscenteQuestionariosDeAnsiedade()));
+		}
+		
+		return lista;
+	}
+	
+	public List<Discente> definirMediasDeAnsiedade_depressao_e_status(List<Discente> lista) {
+		
+		lista = this.definirMediaDeAnsiedadeDoDiscente(lista);
+		lista = this.definirMediaDeDepressaoDoDiscente(lista);
+		lista = this.definirStatusDeAnsiedadeDoDiscente(lista);
+		lista = this.definirStatusDeDepressaoDoDiscente(lista);
+
+		return lista;
+	}
+	
+	public List<Discente> retornaAllDiscentes(){
+		List<Discente> lista = discenteRepository.findAll();
+		lista = this.definirMediasDeAnsiedade_depressao_e_status(lista);
+		return lista;
 	}
 
 }

@@ -59,9 +59,9 @@ export default function PerfilDiscenteDetalhado() {
                     <Card subTitle='EMAIL: ' > <label>{discente.email}</label> </Card>
                     <Card subTitle='MATRICULA: ' > <label>{discente.matricula}</label> </Card>
                     <Card subTitle='MEDIA DE ANSIEDADE' > <label>{discente.mediaDoDiscenteQuestionariosDeAnsiedade}</label> </Card>
-                    <Card subTitle='STATUS DE ANSIEDADE' > <label>{discente.StatusDoDiscenteAnsiedade}</label> </Card>
+                    <Card subTitle='STATUS DE ANSIEDADE' > <label>{discente.statusDoDiscenteAnsiedade}</label> </Card>
                     <Card subTitle='MEDIA DE DEPRESSÃO' > <label>{discente.mediaDoDiscenteQuestionariosDeDepresao}</label> </Card>
-                    <Card subTitle='STATUS DE DEPRESSÃO' > <label>{discente.StatusDoDiscenteDepresao}</label> </Card>
+                    <Card subTitle='STATUS DE DEPRESSÃO' > <label>{discente.statusDoDiscenteDepresao}</label> </Card>
 
                     <Card className='p-col-16' >
                         <div>

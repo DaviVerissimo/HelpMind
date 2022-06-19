@@ -1,5 +1,6 @@
 package com.helpmind.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionarioSimples {
@@ -25,6 +26,40 @@ public class QuestionarioSimples {
 	}
 	public void setDieta(boolean dieta) {
 		this.dieta = dieta;
+	}
+	
+	public static  List<String> converteListaDeQuestaoEmStrings(List<Questao> lista){
+	
+		List<String> listaQuestoEmEmStrings = new ArrayList<String>();
+		for (int i = 0; i < lista.size(); i++) {
+			String resporta = lista.get(i).getResporta();
+			listaQuestoEmEmStrings.add(resporta);
+		}
+		return listaQuestoEmEmStrings;
+	}
+	
+	public static float retornaCalculoDaMediadeDosQuestionariosAnsiedade(List<QuestionarioDeAnsiedadeDeBeck> lista) {
+		float media = 0;
+		
+		for (int i = 0; i < lista.size(); i++) {
+			media = media + lista.get(i).calcularNota();
+		}
+		
+		media = media / (lista.size() + 1);
+		
+		return media;
+	}
+	
+	public static float retornaCalculoDaMediadeDosQuestionariosDepressao(List<QuestionarioDeDepressaoDeBeck> lista) {
+		float media = 0;
+		
+		for (int i = 0; i < lista.size(); i++) {
+			media = media + lista.get(i).calcularNota();
+		}
+		
+		media = media / (lista.size() + 1);
+		
+		return media;
 	}
 	
 	

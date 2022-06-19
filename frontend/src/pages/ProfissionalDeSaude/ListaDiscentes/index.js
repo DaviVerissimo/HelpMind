@@ -93,6 +93,8 @@ export default function ListaDiscentes() {
                                         dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
                                         <Column field="nome" header="Discente" sortable style={{ minWidth: '12rem' }}></Column>
                                         <Column field="curso" header="Curso" sortable style={{ minWidth: '12rem' }}></Column>
+                                        <Column field="statusDoDiscenteAnsiedade" header="Ansiedade" sortable style={{ minWidth: '12rem' }}></Column>
+                                        <Column field="statusDoDiscenteDepresao" header="Depressão" sortable style={{ minWidth: '12rem' }}></Column>
 
                                         <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                     </DataTable>

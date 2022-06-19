@@ -64,6 +64,7 @@ public class QuestionarioDeAnsiedadeDeBeck implements Questionario{
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
 	List<Questao> listaDeQuestoes;
 	
+	@Override
 	public int calcularNota() {
 		
 		if (this.listaDeQuestoes.size() == 0) {

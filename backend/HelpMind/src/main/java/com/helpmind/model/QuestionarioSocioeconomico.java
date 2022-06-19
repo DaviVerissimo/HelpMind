@@ -284,6 +284,11 @@ public class QuestionarioSocioeconomico implements Questionario{
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	@Override
+	public int calcularNota() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	
 }
