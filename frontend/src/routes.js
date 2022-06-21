@@ -27,6 +27,8 @@ import VisualizarQuestionarioSocioeconomico from "./pages/ProfissionalDeSaude/Vi
 import VisualizarQuestionarioDeAnsiedadeDeBeck from "./pages/ProfissionalDeSaude/VisualizarQuestionarioDeAnsiedadeDeBeck";
 import VisualizarQuestionarioDeDepresaoDeBeck from "./pages/ProfissionalDeSaude/VisualizarQuestionarioDeDepressaoDeBeck";
 import VisualizarReporte from "./pages/ProfissionalDeSaude/VisualizarReporte";
+import ListaDeReportesDoDiscente from "./pages/Discente/ListaDeReportesDoDiscente";
+import VisualizarReporteDiscente from "./pages/Discente/VisualizarReporteDiscente";
 
 export default function Routes() {
     return (
@@ -38,6 +40,8 @@ export default function Routes() {
                 <Route path="/discente/Perfil" component={PerfilDiscente} />
                 <Route path="/discente/Reporte" component={Reporte} />
                 <Route path="/discente/Reportes" component={Reportes} />
+                <Route path="/discente/ListaReportes/:id" component={ListaDeReportesDoDiscente} />
+                <Route path="/discente/visualizarReporte/:id" component={VisualizarReporteDiscente} />
                 <Route path="/discente/QuestionarioSocioeconomico" component={QuestionarioSocioeconomico} />
                 <Route path="/discente/EscolherQuestionariosDiscente" component={EscolherQuestionariosDiscente} />
                 <Route path="/Discente/QuestionarioDeBeck/Depressao" component={QuestionarioDeDepressaoDeBeck} />

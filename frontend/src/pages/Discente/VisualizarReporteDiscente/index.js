@@ -5,11 +5,11 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { Card } from 'primereact/card';
 import axios from "axios";
 // import ToobarDiscente from "../ToobarDiscente";
-import ToobarProfissionalDeSaude from "../ToobarProfissionalDeSaude";
+import ToobarDiscente from "../ToobarDiscente";
 import { useHistory, useParams, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import ReporteService from "../../../services/ReporteService";
 
-export default function VisualizarReporte() {
+export default function VisualizarReporteDiscente() {
 
     const { id } = useParams();
     const location = useLocation();
@@ -60,7 +60,7 @@ export default function VisualizarReporte() {
 
 
     return (
-        <div> <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+        <div> <ToobarDiscente></ToobarDiscente>
             <div >
                 <Card title="REPORTE CASO DE VULNERABILIDADE MENTAL"></Card>
 
