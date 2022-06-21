@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.helpmind.model.Reporte;
+import com.helpmind.service.DiscenteService;
 import com.helpmind.service.ReporteService;
 
 
@@ -24,6 +25,9 @@ import com.helpmind.service.ReporteService;
 public class ReporteController {
 	@Autowired
 	private ReporteService reporteService;
+	
+	@Autowired
+	private DiscenteService DiscenteService;
 	
 	@PostMapping("salvarReporte")
 	public ResponseEntity salvarReporte(@RequestBody Reporte reporte) throws URISyntaxException {
@@ -40,6 +44,18 @@ public class ReporteController {
 	public List<Reporte> listarReportes(){
 		
 		return reporteService.retornarTodos();
+	}
+	
+	@PostMapping("/buscarReportePeloId")
+	public Reporte retornaReportePeloId(@RequestBody String idReporte) {
+		
+		return reporteService.buscarReportePeloId(idReporte);
+	}
+	
+	@PostMapping("/nomeReportante")
+	public String retornaNomeDoResportante(@RequestBody String idReportante) {
+		
+		return DiscenteService.buscarNomeDoReportante(idReportante);
 	}
 
 }

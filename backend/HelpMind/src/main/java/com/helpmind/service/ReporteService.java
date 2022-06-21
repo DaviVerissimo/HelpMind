@@ -11,24 +11,28 @@ import com.helpmind.repository.ReporteRepository;
 @Service
 public class ReporteService {
 	
-//	public String pesquisa;
-	
 	@Autowired
 	private ReporteRepository reporteRepository;
 	
 	public void salvar (Reporte reporte){
-
 		reporteRepository.save(reporte);
-		
 	}
 	
 	public List<Reporte> retornarTodos(){
 		return reporteRepository.findAll();
 	}
-	
-//	public List<Reporte> retornarDiscentePorNome(){
-//		System.out.println(pesquisa);
-//		return reporteRepository.findByDiscente(this.pesquisa);
-//	}
+
+	public Reporte buscarReportePeloId(String idReporte) {
+		Integer ID = Integer.parseInt(idReporte);
+		Reporte reporte = null;
+		List<Reporte> lista = retornarTodos();
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getId().equals(ID)) {
+				reporte = lista.get(i);
+			}
+		}
+		
+		return reporte;
+	}
 
 }

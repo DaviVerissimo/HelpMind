@@ -1,6 +1,5 @@
 
-
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import ReporteService from '../../../services/ReporteService';
@@ -8,19 +7,34 @@ import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { useStates } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Toast } from 'primereact/toast';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ListaDeReportes() {
 
-    // const [pesquisa, setPesquisa] = useState('');
-    // const history = useHistory();
-    // console.log('pesquisa = ' + pesquisa);
+    var btnVisualizarTexto = 'VISUALIZAR'
+    var configBtnVisualizar = "pi pi-bell";
+    var largura = window.screen.width;
+
+    if (largura < 640) {
+        btnVisualizarTexto = ''
+        configBtnVisualizar = "p-button-rounded pi pi-bell";
+    }
+
+    let emptyReporte = {
+        id: null,
+        nome: '',
+        Curso: null,
+    };
+
+    const history = useHistory();
+    const location = useLocation();
+
     const [reportes, setReportes] = useState([])
     const allReportes = () => {
         ReporteService.getReporte().then((response) => {
             setReportes(response.data)
-            // console.log(response.data);
+            console.log(response.data);
         });
     };
     {
@@ -30,51 +44,69 @@ export default function ListaDeReportes() {
 
     }
 
-    // implemetar atributo Date nos reportes com localDateTime e listar por data no front
-    // perguntar a val se o sistema faz algum arlerta sobre se chegou o prazo de aplicar os questionarios aos discentes: ex passou 6 meses desde a ultima aplicação, o que fazer?, 
-    // sistema marcar um alerta para que o prof de saude busque atualizar o preechimento dos questionarios por parte do discente?
 
     useEffect(() => {
         allReportes()
 
     }, [])
 
+    const [reporte, setReporte] = useState(emptyReporte);
+    const [selectedReportes, setSelectedReportes] = useState(null);
+    const [globalFilter, setGlobalFilter] = useState(null);
+    const toast = useRef(null);
+    const dt = useRef(null);
 
-    // if (pesquisa == '' || pesquisa  == null ){
-    //     console.log('entrou')
-    // }
+    const visualizarReporte = (reporte) => {
+        setReporte(reporte);
+        history.goBack();
+        history.push('/profissionalDeSaude/visualizarReporte/' + reporte.id)
+    }
 
-    // else{
-    //     console.log('errou')
-    // }
+    const actionBodyTemplate = (rowData) => {
+        return (
+            <React.Fragment>
+                <Button className={configBtnVisualizar} onClick={() => visualizarReporte(rowData)} > {btnVisualizarTexto} </Button>
+            </React.Fragment>
+        );
+    }
+
+    const header = (
+        <div className="table-header">
+            <h5 className="mx-0 my-1">Pesquise por discentes</h5>
+            <span className="p-input-icon-left">
+                <i className="pi pi-search" />
+                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
+            </span>
+        </div>
+    );
+
 
     return (
         <div  > <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <div>
                 <Card title="REPORTES" ></Card>
                 <Card>
-                    <div className='' style={{ height: '100%' }}  >
-                        <div className="card">
-                            <DataTable value={reportes} responsiveLayout="scroll">
-                                <Column field="discente" header="Discente" sortable ></Column>
-                                <Column field="data" header="Data" sortable ></Column>
-                                <Column field="id" header="ID" sortable ></Column>
-                                <Column field="curso" header="Curso" sortable ></Column>
-                                <Column field="campus" header="Campus" sortable ></Column>
-                                <Column field="periodo" header="Periodo" sortable ></Column>
-                                <Column field="tentativaDeSuicidio" header="Ten de Suicidio" sortable ></Column>
-                                <Column field="descrisao" header="Descrisão" sortable ></Column>
-                                <Column field="" header=""
-                                    body={
-                                        <Card>
-                                            <Card>
-                                                <Button className="p-mb-5  p-mr-3 p-col-0" label="VISUALIZAR" icon="pi pi-file" />
-                                            </Card>
-                                        </Card>
-                                    }
-                                ></Column>
-                            </DataTable>
-                        </div>
+                    <div>
+                        <Card>
+                            <div className="datatable-crud-demo">
+                                <Toast ref={toast} />
+                                <div className="card">
+                                    <DataTable ref={dt} value={reportes} selection={selectedReportes} onSelectionChange={(e) => setSelectedReportes(e.value)}
+                                        dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
+                                        {/* <Column field="nome" header="Discente" sortable style={{ minWidth: '12rem' }}></Column> */}
+                                        <Column field="data" header="Data" sortable ></Column>
+                                        <Column field="discente" header="Discente" sortable ></Column>
+                                        <Column field="curso" header="Curso" sortable ></Column>
+                                        {/* <Column field="campus" header="Campus" sortable ></Column> */}
+                                        <Column field="periodo" header="Periodo" sortable ></Column>
+                                        {/* <Column field="tentativaDeSuicidio" header="Ten de Suicidio" sortable ></Column> */}
+                                        <Column field="descrisao" header="Descrisão" sortable ></Column>
+
+                                        <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
+                                    </DataTable>
+                                </div>
+                            </div>
+                        </Card>
                     </div>
                 </Card>
             </div>

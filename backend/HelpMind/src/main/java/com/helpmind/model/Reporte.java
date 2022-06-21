@@ -34,6 +34,8 @@ public class Reporte {
 	private String descrisao;
 	
 	private LocalDateTime data;
+	
+	private String idReportante;
 
 	public LocalDateTime getData() {
 		return data;
@@ -98,6 +100,14 @@ public class Reporte {
 
 	public void setDescrisao(String descrisao) {
 		this.descrisao = descrisao;
+	}
+
+	public String getIdReportante() {
+		return idReportante;
+	}
+
+	public void setIdReportante(String idReportante) {
+		this.idReportante = idReportante;
 	}
 	
 

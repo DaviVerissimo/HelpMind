@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from 'react';
 import './styles.css'
 import { useState, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
@@ -8,8 +8,27 @@ import { Card } from 'primereact/card';
 import axios from "axios";
 import { Button } from 'primereact/button';
 import ToobarDiscente from "../ToobarDiscente";
+import { Toast } from 'primereact/toast';
 
 export default function Reporte() {
+
+    const toast = useRef(null);
+    const showSuccess = () => {
+        toast.current.show({
+            severity: 'success',
+            summary: 'Enviado com Sucesso!',
+            detail: 'Obrigado',
+            life: 5000
+        });
+    }
+    const showError = () => {
+        toast.current.show({
+            severity: 'error',
+            summary: 'Não foi possivel Enviar!',
+            detail: 'Verifique  se todos os campos foram preenchidos.',
+            life: 5000
+        });
+    }
 
     const [campus, setCampus] = useState(null); //campus = singular, campi = plural
     const [campi, setCampi] = useState();
@@ -32,8 +51,8 @@ export default function Reporte() {
     var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
     var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
     var espacamento = '10px';
-    var largura = window. screen. width;
-    if (largura < 640){
+    var largura = window.screen.width;
+    if (largura < 640) {
         configBotaoCancel = "p-mb-3 p-button-secondary "
         configBotaoSalvar = "p-mb-3 ";
     }
@@ -58,7 +77,7 @@ export default function Reporte() {
                         }
                     }
                 ).sort((a, b) => a.label.localeCompare(b.label));
-                
+
                 setCursos(lista);
             })
             .catch(error => console.log(error))
@@ -99,16 +118,16 @@ export default function Reporte() {
             }
         }
 
-        if (!nome == null){
+        if (!nome == null) {
             axios.post("http://localhost:8080/curso/definirCampus", campus, headers)
-            .then(Response => { })
-            .catch(error => console.log(error))
+                .then(Response => { })
+                .catch(error => console.log(error))
         }
-        if (nome == null){
+        if (nome == null) {
             nomeObrigatorio = 'p-invalid block';
         }
-        
-        
+
+
 
 
 
@@ -120,6 +139,9 @@ export default function Reporte() {
         if (suicidio.name == "SIM") {
             tentativaDeSuicidio = true;
         }
+
+        var idReportante = '23'
+
         const novoReporte =
         {
             "discente": nome,
@@ -127,7 +149,9 @@ export default function Reporte() {
             "campus": campus,
             "periodo": periodo.name,
             "descrisao": descrisao,
-            "tentativaDeSuicidio": tentativaDeSuicidio
+            "tentativaDeSuicidio": tentativaDeSuicidio,
+            "idReportante": idReportante
+
         }
         const headers = {
             'headers': {
@@ -140,42 +164,44 @@ export default function Reporte() {
         axios.post("http://localhost:8080/reporte/salvarReporte", novoReporte, headers)
             .then(Response => { })
             .catch(error => console.log(error))
+        showSuccess();
     }
 
     return (
         <div> <ToobarDiscente></ToobarDiscente>
-                <div >
-                    <Card title="REPORTAR CASO DE VULNERABILIDADE MENTAL"></Card>
-                    
-                        <Card className="" >
-                            <div>
-                                <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
-                                <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
-                            </div>
-                        </Card>
-                    
-                        <Card >
-                            <Card subTitle='DISCENTE' >
-                                <InputText className={nomeObrigatorio}  value={nome} onChange={(e) => setNome(e.target.value)} />
-                            </Card>
-                            <Card subTitle='CAMPUS' >
-                                <Dropdown value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
-                            </Card>
-                            <Card subTitle='CURSO' >
-                                <Dropdown value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
-                            </Card>
-                            <Card subTitle='ANO / PERÍODO' >
-                                <Dropdown optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Não se aplica" />
-                            </Card>
-                            <Card subTitle='JÁ TENTOU SUICÍDIO?' >
-                                <Dropdown optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setSuicidio(e.target.value)} placeholder="Não se aplica" />
-                            </Card>
-                            <Card subTitle='DESCRIÇÃO' >
-                                <InputTextarea rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
-                            </Card>
-                        </Card>
-                    
-                </div>
+            <Toast ref={toast} />
+            <div >
+                <Card title="REPORTAR CASO DE VULNERABILIDADE MENTAL"></Card>
+
+                <Card className="" >
+                    <div>
+                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
+                        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
+                    </div>
+                </Card>
+
+                <Card >
+                    <Card subTitle='DISCENTE' >
+                        <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
+                    </Card>
+                    <Card subTitle='CAMPUS' >
+                        <Dropdown value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
+                    </Card>
+                    <Card subTitle='CURSO' >
+                        <Dropdown value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
+                    </Card>
+                    <Card subTitle='ANO / PERÍODO' >
+                        <Dropdown optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Não se aplica" />
+                    </Card>
+                    <Card subTitle='JÁ TENTOU SUICÍDIO?' >
+                        <Dropdown optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setSuicidio(e.target.value)} placeholder="Não se aplica" />
+                    </Card>
+                    <Card subTitle='DESCRIÇÃO' >
+                        <InputTextarea rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
+                    </Card>
+                </Card>
+
+            </div>
         </div>
 
     );

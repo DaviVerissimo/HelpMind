@@ -50,6 +50,15 @@ public class DiscenteService {
 		return discente;
 	}
 	
+	public String buscarNomeDoReportante(String idReportante) {
+		String nome = null;
+		Integer ID = Integer.parseInt(idReportante);
+		Discente discente = this.buscaDiscentePorID(ID);
+		nome = discente.getNome();
+		
+		return nome;
+	}
+	
 	public boolean isDiscente(String email) {
 		boolean existe = false;
 		List<Discente> lista = retornaAllDiscentes();
@@ -67,7 +76,6 @@ public class DiscenteService {
 		List<QuestionarioSocioeconomico> lista = discente.getListaQuestionarioSocioeconomico();
 		lista.add(questionarioSocioeconomico);
 		discente.setListaQuestionarioSocioeconomico(lista);
-		System.out.println(discente.toString());
 		discenteRepository.save(discente);
 		
 		return discente;
@@ -198,5 +206,6 @@ public class DiscenteService {
 		lista = this.definirMediasDeAnsiedade_depressao_e_status(lista);
 		return lista;
 	}
+
 
 }
