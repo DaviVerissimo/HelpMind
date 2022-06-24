@@ -33,7 +33,8 @@ export default function Reporte() {
     const [campus, setCampus] = useState(null); //campus = singular, campi = plural
     const [campi, setCampi] = useState();
     const [nome, setNome] = useState();
-    const [curso, setCurso] = useState([]);
+    // const [curso, setCurso] = useState([]);
+    const [curso, setCurso] = useState();
     const [cursos, setCursos] = useState([]);
     const [descrisao, setDescrisao] = useState('');
     const [periodo, setPeriodos] = useState('1º');
@@ -57,7 +58,13 @@ export default function Reporte() {
         configBotaoSalvar = "p-mb-3 ";
     }
 
-    var nomeObrigatorio = '';
+    const [nomeObrigatorio, setNomeObrigatorio] = useState();
+    const [cursoObrigatorio, setCursoObrigatorio] = useState();
+    const [campusObrigatorio, setCampusObrigatorio] = useState();
+    const [periodoObrigatorio, setPeriodoObrigatorio] = useState();
+    const [suicidioObrigatorio, setSuicidioObrigatorio] = useState();
+    const [descrisaoObrigatoria, setDescrisaoObrigatorio] = useState();
+    const [invalid, setInvalid] = useState('p-invalid block');
 
     useEffect(async () => { //cursos
         var lista = [];
@@ -123,48 +130,84 @@ export default function Reporte() {
                 .then(Response => { })
                 .catch(error => console.log(error))
         }
-        if (nome == null) {
-            nomeObrigatorio = 'p-invalid block';
-        }
-
-
-
 
 
     }, [campus]);
 
+    function validar() {
+        var valido = true;
+
+        if (nome == null) {
+            setNomeObrigatorio(invalid);
+            valido = false;
+        }
+
+        if (curso == null) {
+            setCursoObrigatorio(invalid);
+            valido = false;
+        }
+
+        if (campus == null) {
+            setCampusObrigatorio(invalid);
+            valido = false;
+        }
+
+        if (periodo.name == null) {
+            setPeriodoObrigatorio(invalid);
+            valido = false;
+        }
+
+        if (suicidio.name == null) {
+            setSuicidioObrigatorio(invalid);
+            valido = false;
+        }
+
+        if (descrisao == '') {
+            setDescrisaoObrigatorio(invalid);
+            valido = false;
+        }
+
+        return valido;
+    }
+
     async function submeter() {
 
-        var tentativaDeSuicidio = false;
-        if (suicidio.name == "SIM") {
-            tentativaDeSuicidio = true;
-        }
-
-        var idReportante = '23'
-
-        const novoReporte =
-        {
-            "discente": nome,
-            "curso": curso,
-            "campus": campus,
-            "periodo": periodo.name,
-            "descrisao": descrisao,
-            "tentativaDeSuicidio": tentativaDeSuicidio,
-            "idReportante": idReportante
-
-        }
-        const headers = {
-            'headers': {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+        if (validar()) {
+            var tentativaDeSuicidio = false;
+            if (suicidio.name == "SIM") {
+                tentativaDeSuicidio = true;
             }
+
+            var idReportante = '23'
+
+            const novoReporte =
+            {
+                "discente": nome,
+                "curso": curso,
+                "campus": campus,
+                "periodo": periodo.name,
+                "descrisao": descrisao,
+                "tentativaDeSuicidio": tentativaDeSuicidio,
+                "idReportante": idReportante
+
+            }
+            const headers = {
+                'headers': {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            }
+
+            axios.post("http://localhost:8080/reporte/salvarReporte", novoReporte, headers)
+                .then(Response => { })
+                .catch(error => console.log(error))
+            showSuccess();
+        }
+        else {
+            showError();
         }
 
-        axios.post("http://localhost:8080/reporte/salvarReporte", novoReporte, headers)
-            .then(Response => { })
-            .catch(error => console.log(error))
-        showSuccess();
     }
 
     return (
@@ -185,19 +228,19 @@ export default function Reporte() {
                         <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
                     </Card>
                     <Card subTitle='CAMPUS' >
-                        <Dropdown value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
+                        <Dropdown className={campusObrigatorio} value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
                     </Card>
                     <Card subTitle='CURSO' >
-                        <Dropdown value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
+                        <Dropdown className={cursoObrigatorio} value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
                     </Card>
                     <Card subTitle='ANO / PERÍODO' >
-                        <Dropdown optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Não se aplica" />
+                        <Dropdown className={periodoObrigatorio} optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Não se aplica" />
                     </Card>
                     <Card subTitle='JÁ TENTOU SUICÍDIO?' >
-                        <Dropdown optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setSuicidio(e.target.value)} placeholder="Não se aplica" />
+                        <Dropdown className={suicidioObrigatorio} optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setSuicidio(e.target.value)} placeholder="Não se aplica" />
                     </Card>
                     <Card subTitle='DESCRIÇÃO' >
-                        <InputTextarea rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
+                        <InputTextarea className={descrisaoObrigatoria} rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
                     </Card>
                 </Card>
 

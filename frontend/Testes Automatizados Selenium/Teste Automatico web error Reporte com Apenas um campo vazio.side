@@ -1,0 +1,157 @@
+{
+  "id": "26b8dd6d-6eb8-48f6-b822-6189233750bb",
+  "version": "2.0",
+  "name": "Reporte apenas um campo vazio",
+  "url": "http://localhost:3000",
+  "tests": [{
+    "id": "07c5570a-86ef-4963-ae7b-ef77a24bc644",
+    "name": "reporte apenas um campo vazio",
+    "commands": [{
+      "id": "93594866-2800-4e9a-9de6-0c08ee275b51",
+      "comment": "",
+      "command": "open",
+      "target": "/discente/Reporte",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "89e0edf5-9e8a-4bb1-8401-98076c5751bf",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ab229e24-1fa5-4a41-8b43-3f876223f2c9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(2) .p-dropdown-trigger",
+      "targets": [
+        ["css=.p-card:nth-child(2) .p-dropdown-trigger", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[3]/div/div/div[2]/div/div[2]/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "23d4021e-bcca-4d95-b710-8fe7a3738289",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-dropdown-item:nth-child(8)",
+      "targets": [
+        ["css=.p-dropdown-item:nth-child(8)", "css:finder"],
+        ["xpath=//li[8]", "xpath:position"],
+        ["xpath=//li[contains(.,'DIREÇÃO GERAL - CAMPUS ESPERANÇA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3fb230a6-6eef-4812-b53d-ca86d7e537a5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(3) > .p-card-body > .p-card-content > .p-dropdown > .p-dropdown-trigger",
+      "targets": [
+        ["css=.p-card:nth-child(3) > .p-card-body > .p-card-content > .p-dropdown > .p-dropdown-trigger", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[3]/div/div/div[3]/div/div[2]/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div[2]/div/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1898ae13-f0da-4265-8e8c-9d8ab01a57a2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-dropdown-item:nth-child(5)",
+      "targets": [
+        ["css=.p-dropdown-item:nth-child(5)", "css:finder"],
+        ["xpath=//li[5]", "xpath:position"],
+        ["xpath=//li[contains(.,'Bacharelado em Engenharia Civil - Cajazeiras')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "45f30f79-5b68-460b-8548-e5678b0eb87f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(4) .p-dropdown-trigger-icon",
+      "targets": [
+        ["css=.p-card:nth-child(4) .p-dropdown-trigger-icon", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[3]/div/div/div[4]/div/div[2]/div/div[3]/span", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div[2]/div/div[3]/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f7208eb4-aa98-4017-a77d-03eb91541d47",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-dropdown-item:nth-child(2)",
+      "targets": [
+        ["css=.p-dropdown-item:nth-child(2)", "css:finder"],
+        ["xpath=//li[2]", "xpath:position"],
+        ["xpath=//li[contains(.,'2º')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "28e7b0ef-6d31-496b-8e21-245a2afd8517",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-card:nth-child(5) .p-dropdown-trigger-icon",
+      "targets": [
+        ["css=.p-card:nth-child(5) .p-dropdown-trigger-icon", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[3]/div/div/div[5]/div/div[2]/div/div[3]/span", "xpath:idRelative"],
+        ["xpath=//div[5]/div/div[2]/div/div[3]/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cb2a4ea8-3e50-4dd2-980f-bbfd842c325a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-dropdown-item:nth-child(2)",
+      "targets": [
+        ["css=.p-dropdown-item:nth-child(2)", "css:finder"],
+        ["xpath=//li[2]", "xpath:position"],
+        ["xpath=//li[contains(.,'NÂO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c585eab4-e64e-44e1-b0e0-ae320c6ae7ca",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-inputtextarea",
+      "targets": [
+        ["css=.p-inputtextarea", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[3]/div/div/div[6]/div/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffa5d432-24a5-4eca-b06c-f61f075de961",
+      "comment": "",
+      "command": "type",
+      "target": "css=.p-inputtextarea",
+      "targets": [
+        ["css=.p-inputtextarea", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[3]/div/div/div[6]/div/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "hgfhgfhgfhgh"
+    }, {
+      "id": "bf4a4f5d-6bc5-4150-95f8-7fcb07032fb8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-mt-3 > .p-button-label",
+      "targets": [
+        ["css=.p-mt-3 > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[2]/div/div/div/button[2]/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/button[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'SALVAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "c1a32edd-1b6e-4289-840f-abd472e74ea8",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["07c5570a-86ef-4963-ae7b-ef77a24bc644"]
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": []
+}

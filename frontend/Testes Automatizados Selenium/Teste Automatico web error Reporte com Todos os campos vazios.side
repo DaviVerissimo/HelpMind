@@ -1,0 +1,47 @@
+{
+  "id": "f5e38418-7299-45b2-9318-d6b81c7df8ce",
+  "version": "2.0",
+  "name": "reporte validação",
+  "url": "http://localhost:3000/discente/Reporte",
+  "tests": [{
+    "id": "d23e7020-ea7c-4f3e-9155-636981e59345",
+    "name": "Teste validação reporte Todos os campos vazios",
+    "commands": [{
+      "id": "207983ac-67da-4fe4-a14b-be2fc6e4adbe",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/discente/Reporte",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "70b98887-28e2-4814-aea0-8b16da4b811c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d0eea097-e9f8-43e8-aab2-1c3f2f22a24e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-mt-3 > .p-button-label",
+      "targets": [
+        ["css=.p-mt-3 > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[2]/div/div/div/button[2]/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/button[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'SALVAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "27e973d9-dea6-4ac8-bcc8-bcd18fe3b9c1",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d23e7020-ea7c-4f3e-9155-636981e59345"]
+  }],
+  "urls": [],
+  "plugins": []
+}
