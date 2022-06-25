@@ -1,0 +1,58 @@
+{
+  "id": "8a51db8d-14f7-4dc3-b5d1-228747b2c9db",
+  "version": "2.0",
+  "name": "nenhum campo",
+  "url": "http://localhost:3000/Discente/QuestionarioDeBeck/Ansiedade",
+  "tests": [{
+    "id": "43e1745f-5b19-4288-91b4-17092845f070",
+    "name": "nenhum campo",
+    "commands": [{
+      "id": "2830e59d-c8ed-40c4-857d-bfc6b4579c9b",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/Discente/QuestionarioDeBeck/Ansiedade",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "37abd15d-bcfe-4f36-a637-418bd2df19b0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04d28750-07c1-4d61-9312-fedadd34d1cd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-checkbox-box",
+      "targets": [
+        ["css=.p-checkbox-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[4]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7bfaa027-7620-4ad1-9a62-b74d33695d93",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-mt-3 > .p-button-label",
+      "targets": [
+        ["css=.p-mt-3 > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[3]/div/div/div/button[2]/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/button[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'SALVAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "722a4e29-378d-4adf-8a51-beb3ced54a2d",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["43e1745f-5b19-4288-91b4-17092845f070"]
+  }],
+  "urls": [],
+  "plugins": []
+}
