@@ -13,41 +13,45 @@ export default function QuestionarioDeDepresaoDeBeck() {
 
     const toast = useRef(null);
     const showSuccess = () => {
-        toast.current.show({severity:'success', 
-        summary: 'Enviado com Sucesso!', 
-        detail:'Obrigado', 
-        life: 5000});
+        toast.current.show({
+            severity: 'success',
+            summary: 'Enviado com Sucesso!',
+            detail: 'Obrigado',
+            life: 5000
+        });
     }
     const showError = () => {
-        toast.current.show({severity:'error', 
-        summary: 'Não foi possivel Enviar!', 
-        detail:'Verifique  se todos os campos foram preenchidos.', 
-        life: 5000});
+        toast.current.show({
+            severity: 'error',
+            summary: 'Não foi possivel Enviar!',
+            detail: 'Verifique  se todos os campos foram preenchidos.',
+            life: 5000
+        });
     }
     const [checked, setChecked] = useState(false);
     const history = useHistory();
-    const [questao01, setQuestao01] = useState([null]);
-    const [questao02, setQuestao02] = useState([null]);
-    const [questao03, setQuestao03] = useState([null]);
-    const [questao04, setQuestao04] = useState([null]);
-    const [questao05, setQuestao05] = useState([null]);
-    const [questao06, setQuestao06] = useState([null]);
-    const [questao07, setQuestao07] = useState([null]);
-    const [questao08, setQuestao08] = useState([null]);
-    const [questao09, setQuestao09] = useState([null]);
-    const [questao10, setQuestao10] = useState([null]);
-    const [questao11, setQuestao11] = useState([null]);
-    const [questao12, setQuestao12] = useState([null]);
-    const [questao13, setQuestao13] = useState([null]);
-    const [questao14, setQuestao14] = useState([null]);
-    const [questao15, setQuestao15] = useState([null]);
-    const [questao16, setQuestao16] = useState([null]);
-    const [questao17, setQuestao17] = useState([null]);
-    const [questao18, setQuestao18] = useState([null]);
-    const [questao19, setQuestao19] = useState([null]);
-    const [questao20, setQuestao20] = useState([null]);
-    const [questao21, setQuestao21] = useState([null]);
-    const [dieta, setDieta] = useState([null]);
+    const [questao01, setQuestao01] = useState(null);
+    const [questao02, setQuestao02] = useState(null);
+    const [questao03, setQuestao03] = useState(null);
+    const [questao04, setQuestao04] = useState(null);
+    const [questao05, setQuestao05] = useState(null);
+    const [questao06, setQuestao06] = useState(null);
+    const [questao07, setQuestao07] = useState(null);
+    const [questao08, setQuestao08] = useState(null);
+    const [questao09, setQuestao09] = useState(null);
+    const [questao10, setQuestao10] = useState(null);
+    const [questao11, setQuestao11] = useState(null);
+    const [questao12, setQuestao12] = useState(null);
+    const [questao13, setQuestao13] = useState(null);
+    const [questao14, setQuestao14] = useState(null);
+    const [questao15, setQuestao15] = useState(null);
+    const [questao16, setQuestao16] = useState(null);
+    const [questao17, setQuestao17] = useState(null);
+    const [questao18, setQuestao18] = useState(null);
+    const [questao19, setQuestao19] = useState(null);
+    const [questao20, setQuestao20] = useState(null);
+    const [questao21, setQuestao21] = useState(null);
+    const [dieta, setDieta] = useState(null);
 
 
     var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
@@ -59,14 +63,45 @@ export default function QuestionarioDeDepresaoDeBeck() {
         configBotaoSalvar = "p-mb-3"
     }
 
+    function validar() {
+        var valido = false;
+
+        if (dieta &&
+            questao01 &&
+            questao02 &&
+            questao03 &&
+            questao04 &&
+            questao05 &&
+            questao06 &&
+            questao07 &&
+            questao08 &&
+            questao09 &&
+            questao10 &&
+            questao11 &&
+            questao12 &&
+            questao13 &&
+            questao14 &&
+            questao15 &&
+            questao16 &&
+            questao17 &&
+            questao18 &&
+            questao19 &&
+            questao20 &&
+            questao21 != null) {
+            valido = true;
+        }
+
+        return valido;
+    }
+
     async function submeter() {
-        console.log(checked)
-        if (checked === true) {
+
+        if (checked === true && validar()) {
 
             var id = '23';
             const questionarioSimples = {
                 "id": id,
-                "dieta":dieta,
+                "dieta": dieta,
                 "lista": [
 
                     questao01,
@@ -93,8 +128,7 @@ export default function QuestionarioDeDepresaoDeBeck() {
 
                 ]
             }
-    
-            
+
             const headers = {
                 'headers': {
                     'Accept': 'application/json',
@@ -102,22 +136,20 @@ export default function QuestionarioDeDepresaoDeBeck() {
                     'Access-Control-Allow-Origin': '*'
                 }
             }
-    
+
             axios.post("http://localhost:8080/QuestionarioDeDepressaoDeBeck/salvar", questionarioSimples, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
-                showSuccess();
+            showSuccess();
         }
-        else{showError()}
+        else { showError() }
 
-     }
-
-
+    }
 
     return (
         <div> <ToobarDiscente></ToobarDiscente>
             <div>
-            <Toast ref={toast} />
+                <Toast ref={toast} />
                 <Card title='INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)' >
 
                 </Card>

@@ -1,0 +1,58 @@
+{
+  "id": "b738031d-5d40-4d28-970a-6d5b75c3b5a2",
+  "version": "2.0",
+  "name": "nenhum campo ",
+  "url": "http://localhost:3000/Discente/QuestionarioDeBeck/Depressao",
+  "tests": [{
+    "id": "ea896fc1-f61c-48ad-8c21-4e00a95ddd81",
+    "name": "nehum campo depressao",
+    "commands": [{
+      "id": "1b331a37-eb3a-4b9e-8715-c6d999c20b45",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/Discente/QuestionarioDeBeck/Depressao",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "92f387b7-acc8-4a96-9c66-e1b4d8133a08",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6474a2b7-f46f-448e-81c5-917c2e8ec788",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-checkbox-box",
+      "targets": [
+        ["css=.p-checkbox-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[4]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c3087594-cb57-475c-aff9-f2d325560dfa",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-mt-3 > .p-button-label",
+      "targets": [
+        ["css=.p-mt-3 > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[3]/div/div/div/button[2]/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/button[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'SALVAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "198316f7-b658-460a-9751-bb1c681b177a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["ea896fc1-f61c-48ad-8c21-4e00a95ddd81"]
+  }],
+  "urls": [],
+  "plugins": []
+}
