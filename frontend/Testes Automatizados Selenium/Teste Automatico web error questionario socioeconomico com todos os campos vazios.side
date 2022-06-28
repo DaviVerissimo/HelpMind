@@ -1,0 +1,58 @@
+{
+  "id": "1370bd61-dcb1-40bc-92c6-b80f067377ea",
+  "version": "2.0",
+  "name": "validação Questionario socioeconomico",
+  "url": "http://localhost:3000/discente/QuestionarioSocioeconomico",
+  "tests": [{
+    "id": "5fcf17b3-2b16-4e83-9763-c3c994cdfb47",
+    "name": "Untitled",
+    "commands": [{
+      "id": "2d60b960-3ab2-43cd-a10d-7cbe6714db6d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/discente/QuestionarioSocioeconomico",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f8a25898-9adb-4839-9f2f-a38421df7b0c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e8e130df-8553-45b0-a9bb-d3254e30adc8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-checkbox-box",
+      "targets": [
+        ["css=.p-checkbox-box", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e5d3b672-5524-4b65-adfc-fb2d0320d8a3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-mt-3 > .p-button-label",
+      "targets": [
+        ["css=.p-mt-3 > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div/div/button[2]/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/button[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'SALVAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "627afd2c-4b66-4546-b271-3a014e1a0fd1",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["5fcf17b3-2b16-4e83-9763-c3c994cdfb47"]
+  }],
+  "urls": [],
+  "plugins": []
+}

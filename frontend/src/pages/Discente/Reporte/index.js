@@ -137,17 +137,17 @@ export default function Reporte() {
     function validar() {
         var valido = true;
 
-        if (nome == null) {
+        if (nome == null || nome  == '') {
             setNomeObrigatorio(invalid);
             valido = false;
         }
 
-        if (curso == null) {
+        if (curso == null || curso  == '' ) {
             setCursoObrigatorio(invalid);
             valido = false;
         }
 
-        if (campus == null) {
+        if (campus == null || campus  == '') {
             setCampusObrigatorio(invalid);
             valido = false;
         }
