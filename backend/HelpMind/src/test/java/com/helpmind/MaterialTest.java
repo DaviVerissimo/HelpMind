@@ -20,17 +20,6 @@ public class MaterialTest {
 	 @Autowired
 	 private MaterialService materialService;
 
-	@Test
-	void novoMaterialSucesso() {
-		Material material = new Material();
-		material.setNome("Totodaio");
-		material.setCategoria("Teste");
-		material.setNomeDoArquivo("doc.odt");
-		LocalDateTime data = LocalDateTime.now();
-		material.setDataCriacao(data);
-		materialService.salvar(material);
-		Material r = materialRepository.findByNome("Totodaio");
-		assertNotNull(r);
-	}
+
 
 }

@@ -45,7 +45,7 @@ public class QuestionarioSimples {
 			media = media + lista.get(i).calcularNota();
 		}
 		
-		media = media / (lista.size() + 1);
+		media = media / lista.size();
 		
 		return media;
 	}
@@ -57,7 +57,7 @@ public class QuestionarioSimples {
 			media = media + lista.get(i).calcularNota();
 		}
 		
-		media = media / (lista.size() + 1);
+		media = media / lista.size();
 		
 		return media;
 	}
