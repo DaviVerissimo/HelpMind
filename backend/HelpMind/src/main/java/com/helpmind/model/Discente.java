@@ -33,18 +33,8 @@ public class Discente {
 	private String StatusDoDiscenteAnsiedade;
 	private float mediaDoDiscenteQuestionariosDeDepresao;
 	private String StatusDoDiscenteDepresao;
-	
-	/*
-	 * e necessario fazer certa restruturação no codigo. atualmente
-	 * Os reportes Questionarios de depressao , questionario de ansiedade 
-	 * são gravados soltos sem um discente que lhe serja dono.
-	 * comecei a ajeitar isso em questionario socioeeconomico.
-	 * ja esta separadoa gravação de discentesa partir do primeiro questionario
-	 * e a adição de nos questionarios a discentes que ja fizeram algum questionario sociooeconomico. 
-	 * No entanto ainda falta fazer a pesquisa e retornar um booleano
-	 * 
-	 * colocar a verificação de media  e recalculo do status sempre que um novo questionario for adcionado
-	 * */
+	private String googleId;
+	private String imagemPerfilUri;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
 	private List<QuestionarioDeAnsiedadeDeBeck> listaQuestionarioDeAnsiedadeDeBeck;
@@ -53,10 +43,6 @@ public class Discente {
 	private List<QuestionarioDeDepressaoDeBeck> listaQuestionarioDeDepresaoDeBeck;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	//@OneToMany(targetEntity=QuestionarioSocioeconomico.class, mappedBy="id", fetch=FetchType.EAGER)
-	//@ElementCollection(fetch = FetchType.EAGER)
-	//@CollectionTable(name = "questionarioSocioeconomico")
-	//@Column(name = "VALUE")
 	private List<QuestionarioSocioeconomico> listaQuestionarioSocioeconomico;
 	
 	public Integer getId() {
@@ -131,6 +117,18 @@ public class Discente {
 	}
 	public void setCurso(String curso) {
 		this.curso = curso;
+	}
+	public String getGoogleId() {
+		return googleId;
+	}
+	public void setGoogleId(String googleId) {
+		this.googleId = googleId;
+	}
+	public String getImagemPerfilUri() {
+		return imagemPerfilUri;
+	}
+	public void setImagemPerfilUri(String imagemPerfilUri) {
+		this.imagemPerfilUri = imagemPerfilUri;
 	}
 	
 }

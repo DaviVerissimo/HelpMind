@@ -29,7 +29,7 @@ export default function QuestionarioSocioeconomico() {
             life: 5000
         });
     }
-    const [email, setEmail] = useState('silviaantony@gmail.com');
+    const [email, setEmail] = useState();
     const [campusDoDiscente, setCampusDoDiscente] = useState(null);
     const [campi, setCampi] = useState(null);
     const [checked, setChecked] = useState();
@@ -212,6 +212,7 @@ export default function QuestionarioSocioeconomico() {
     const [temDoencaObrigatoria, setTemDoencaObrigatoria] = useState();
     const [possuiFamiliarComDoencaGraveObrigatoria, setPossuiFamiliarComDoencaGraveObrigatoria] = useState();
     const [invalid, setInvalid] = useState('p-invalid block');
+    const id = localStorage.getItem('id');
 
     var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
     var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
@@ -274,6 +275,21 @@ export default function QuestionarioSocioeconomico() {
 
     }, []);
 
+    useEffect(async () => { //buscando email
+        const headers = {
+            'headers': {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        }
+        axios.post("http://localhost:8080/discente/buscaDiscentePorID", id, headers)
+            .then(Response => {
+                setEmail(Response.data.email);
+            })
+            .catch(error => console.log(error))
+    }, []);
+
     function validar() {
         var valido = true;
 
@@ -287,7 +303,7 @@ export default function QuestionarioSocioeconomico() {
             valido = false;
         }
 
-        if (campusDoDiscente == null || campusDoDiscente  == '') {
+        if (campusDoDiscente == null || campusDoDiscente == '') {
             setCampusObrigatorio(invalid);
             valido = false;
         }
@@ -297,17 +313,17 @@ export default function QuestionarioSocioeconomico() {
             valido = false;
         }
 
-        if (matricula == null  || matricula  == '') {
+        if (matricula == null || matricula == '') {
             setMatriculaObrigatoria(invalid);
             valido = false;
         }
 
-        if (idade == null || idade  == '') {
+        if (idade == null || idade == '') {
             setIdadeObrigatoria(invalid);
             valido = false;
         }
 
-        if (cidade == null  || cidade  == '') {
+        if (cidade == null || cidade == '') {
             setCidadeObrigatoria(invalid);
             valido = false;
         }
@@ -397,7 +413,7 @@ export default function QuestionarioSocioeconomico() {
             valido = false;
         }
 
-        if (quantidadeComodos_op == null || quantidadeComodos_op  == '') {
+        if (quantidadeComodos_op == null || quantidadeComodos_op == '') {
             setQuantidadeComodos_opObrigatoria(invalid);
             valido = false;
         }
@@ -454,7 +470,8 @@ export default function QuestionarioSocioeconomico() {
                 "doencaGraveDiscente_op": doencaDiscente,
                 "possuiFamiliarComDoencaGrave": possuiFamiliarComDoencaGrave.name,
                 "familiarDoente": familiarDoente,
-                "doencaDoFamiliar_op": doencaDoFamiliar_op
+                "doencaDoFamiliar_op": doencaDoFamiliar_op,
+                "idDiscente": id
 
             }
 

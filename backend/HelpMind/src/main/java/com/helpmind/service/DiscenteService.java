@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.helpmind.model.Discente;
 import com.helpmind.model.QuestionarioSimples;
 import com.helpmind.model.QuestionarioSocioeconomico;
+import com.helpmind.model.Usuario;
 import com.helpmind.repository.DiscenteRepository;
 
 /**
@@ -71,35 +72,46 @@ public class DiscenteService {
 		return existe;
 	}
 	
-	public Discente addNovoQuestionarioSocioeconomico(QuestionarioSocioeconomico questionarioSocioeconomico) {
-		Discente discente = this.buscarDiscentePorEmail(questionarioSocioeconomico.getEmail());
-		List<QuestionarioSocioeconomico> lista = discente.getListaQuestionarioSocioeconomico();
-		lista.add(questionarioSocioeconomico);
-		discente.setListaQuestionarioSocioeconomico(lista);
-		discenteRepository.save(discente);
+	public boolean isDiscenteComGoogleId(String googleId) {
+		boolean existe = false;
+		List<Discente> lista = retornaAllDiscentes();
+		for (int i = 0; i< lista.size(); i++) {
+			if (lista.get(i).getGoogleId().equals(googleId)) {
+				existe = true;
+			}
+		}
 		
-		return discente;
+		return existe;
 	}
+	
+//	public Discente addNovoQuestionarioSocioeconomico(QuestionarioSocioeconomico questionarioSocioeconomico) {
+//		Discente discente = this.buscarDiscentePorEmail(questionarioSocioeconomico.getEmail());
+//		List<QuestionarioSocioeconomico> lista = discente.getListaQuestionarioSocioeconomico();
+//		lista.add(questionarioSocioeconomico);
+//		discente.setListaQuestionarioSocioeconomico(lista);
+//		discenteRepository.save(discente);
+//		
+//		return discente;
+//	}
 	
 	public List<QuestionarioSocioeconomico> retornaListaQuestionarioSocioeconomico(String email){
 		List<QuestionarioSocioeconomico> lista = null;
 		Discente discente = this.buscarDiscentePorEmail(email);
 		lista = discente.getListaQuestionarioSocioeconomico();
-		System.out.println(lista.size());
 		
 		return lista;
 	}
 	
-	public Discente criarDiscente(QuestionarioSocioeconomico questionarioSocioeconomico) {
-		Discente discente = new Discente();
+	public Discente addPrimeiroQuestionarioSocioeconomico_e_atualizarInformacoes(QuestionarioSocioeconomico questionarioSocioeconomico) {
+		Integer ID = Integer.parseInt(questionarioSocioeconomico.getIdDiscente());
+		Discente discente = this.buscaDiscentePorID(ID);
 		discente.setNome(questionarioSocioeconomico.getNome());
-		discente.setEmail(questionarioSocioeconomico.getEmail());
 		discente.setMatricula(questionarioSocioeconomico.getMatricula());
 		discente.setCurso(questionarioSocioeconomico.getCurso());
 		List<QuestionarioSocioeconomico> lista = new ArrayList<QuestionarioSocioeconomico>();
 		lista.add(questionarioSocioeconomico);
 		discente.setListaQuestionarioSocioeconomico(lista);
-		discenteRepository.save(discente);
+		discenteRepository.save(discente);//pode gerar bugs
 		
 		return discente;
 	}
@@ -205,6 +217,32 @@ public class DiscenteService {
 		List<Discente> lista = discenteRepository.findAll();
 		lista = this.definirMediasDeAnsiedade_depressao_e_status(lista);
 		return lista;
+	}
+
+	public Discente criarDiscente(Usuario usuario) {
+		Discente discente = new Discente();
+		discente.setNome(usuario.getNome());
+		discente.setEmail(usuario.getEmail());
+		discente.setGoogleId(usuario.getGoogleId());
+		discente.setImagemPerfilUri(usuario.getImagemPerfilUri());
+		discenteRepository.save(discente);
+		
+		return discente;
+	}
+
+	public Discente retornarDiscentePeloGoogleId(String googleId) {
+		Discente discente = new Discente();
+		List<Discente> lista = retornaAllDiscentes();
+		for (int i = 0; i < lista.size(); i++) {
+
+			if (lista.get(i).getGoogleId().equals(googleId)) {
+				discente = lista.get(i);
+			}
+		}
+		
+		return discente;
+		
+		
 	}
 
 

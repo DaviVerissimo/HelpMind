@@ -98,7 +98,7 @@ export default function QuestionarioDeDepresaoDeBeck() {
 
         if (checked === true && validar()) {
 
-            var id = '23';
+            const id = localStorage.getItem('id');
             const questionarioSimples = {
                 "id": id,
                 "dieta": dieta,

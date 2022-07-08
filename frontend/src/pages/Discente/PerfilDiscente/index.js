@@ -1,10 +1,13 @@
 import { Card } from 'primereact/card';
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarDiscente from '../ToobarDiscente';
+import BarraPessoal from '../../BarraPessoal';
 
 export default function PerfilDiscente() {
+
+    const id = localStorage.getItem('id');
     
     var configBotao = "p-mb-3 p-col-3";
     var largura = window. screen. width;
@@ -13,14 +16,21 @@ export default function PerfilDiscente() {
     }
     const history = useHistory();
 
+    const encerrarSessao = () => {
+                localStorage.clear();
+                history.push('/');
+    }
+
     return (
         <div>
             <ToobarDiscente></ToobarDiscente>
             <div>
+                
                 <Card title='MEU PERFIL ' >
+                <BarraPessoal idDiscente={id} ></BarraPessoal>
                     <Card className='p-col-16' >
                         <div>
-                            <Button className={configBotao} label="SAIR"  onClick={() => { history.push('/') }} />
+                            <Button className={configBotao} label="SAIR"  onClick={encerrarSessao} />
                         </div>
                     </Card>
 

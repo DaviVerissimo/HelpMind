@@ -61,6 +61,7 @@ public class QuestionarioSocioeconomico implements Questionario{
 	private String familiarDoente;
 	private String doencaDoFamiliar_op;
 	private LocalDateTime data;
+	private String idDiscente;
 	
 	public LocalDateTime getData() {
 		return data;
@@ -283,6 +284,13 @@ public class QuestionarioSocioeconomico implements Questionario{
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getIdDiscente() {
+		return idDiscente;
+	}
+	public void setIdDiscente(String idDiscente) {
+		this.idDiscente = idDiscente;
 	}
 	@Override
 	public int calcularNota() {

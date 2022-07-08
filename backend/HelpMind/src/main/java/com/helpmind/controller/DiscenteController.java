@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.helpmind.model.Discente;
 import com.helpmind.model.QuestionarioSocioeconomico;
+import com.helpmind.model.Usuario;
 import com.helpmind.service.DiscenteService;
 
 /**
@@ -36,18 +37,40 @@ public class DiscenteController {
 		return discenteService.retornaAllDiscentes();
 	}
 	
+	@PostMapping("/salvarUserDiscente")
+	public ResponseEntity<Discente> criarDiscente(@RequestBody Usuario usuario) throws URISyntaxException {
+		Discente discente = new Discente();
+
+		try {
+			discente = discenteService.criarDiscente(usuario);
+			} catch(Exception e){}
+		
+		return ResponseEntity.created(new URI("/discente/" + discente.getId())).body(discente);
+	}
+	
+	@PostMapping("/isDiscenteGoogleId")
+	public ResponseEntity<Discente> isExiste(@RequestBody String googleId) throws URISyntaxException {
+		Discente discente = new Discente();
+		try {
+			discente = discenteService.retornarDiscentePeloGoogleId(googleId);
+			} catch(Exception e){}
+		
+		return ResponseEntity.created(new URI("/discente/" + discente.getId())).body(discente);
+	}
+	
 	@PostMapping("/salvarDiscenteComBaseQuestionarioSoxioeconomico")
-	public ResponseEntity<QuestionarioSocioeconomico> criarDiscenteComBaseNoPrimeiroQuestionarioSocioeconomico(@RequestBody QuestionarioSocioeconomico questionarioSocioeconomico) throws URISyntaxException {
+	public ResponseEntity<QuestionarioSocioeconomico> addNovoQuestionarioSocioeconomico(@RequestBody QuestionarioSocioeconomico questionarioSocioeconomico) throws URISyntaxException {
 		LocalDateTime data = LocalDateTime.now();
 		try {
 			questionarioSocioeconomico.setData(data);
 			String email = questionarioSocioeconomico.getEmail();
+			discenteService.addPrimeiroQuestionarioSocioeconomico_e_atualizarInformacoes(questionarioSocioeconomico);
 			if(discenteService.isDiscente(email)){
-				discenteService.addNovoQuestionarioSocioeconomico(questionarioSocioeconomico);
+				
 			}
-			else {
-				Discente discente = discenteService.criarDiscente(questionarioSocioeconomico);
-			}
+//			else {
+////				Discente discente = discenteService.criarDiscente(questionarioSocioeconomico);
+//			}
 			
 			} catch(Exception e){}
 		

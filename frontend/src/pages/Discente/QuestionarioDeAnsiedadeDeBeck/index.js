@@ -99,7 +99,7 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
 
         if (checked === true && validar()) {
 
-            var id = '23';
+            const id = localStorage.getItem('id');
 
             const headers = {
                 'headers': {

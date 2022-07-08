@@ -178,7 +178,7 @@ export default function Reporte() {
                 tentativaDeSuicidio = true;
             }
 
-            var idReportante = '23'
+            const idReportante = localStorage.getItem('id');
 
             const novoReporte =
             {
