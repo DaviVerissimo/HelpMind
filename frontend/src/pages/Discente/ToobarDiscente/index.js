@@ -5,6 +5,8 @@ import { Button } from 'primereact/button';
 import logoImg from './assets/favicon.ico';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import FotoPerfil from '../../FotoPerfil';
+import NomePerfil from '../../NomePerfil';
+import { Card } from 'primereact/card';
 
 export default function ToobarDiscente() {
 
@@ -19,6 +21,7 @@ export default function ToobarDiscente() {
     const rightContents = (
         <React.Fragment>
             <div className='p-grid p-col' style={{ padding: '0em' }} >
+                <NomePerfil></NomePerfil>
                 <FotoPerfil></FotoPerfil>
             </div>
         </React.Fragment>
@@ -55,6 +58,7 @@ export default function ToobarDiscente() {
                 <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 " label='Reportes' onClick={() => { history.push('/discente/Reportes') }} />
                 <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-mb-3" label='Discente' onClick={() => { history.push('/discente/Perfil') }} />
                 <FotoPerfil></FotoPerfil>
+                <NomePerfil></NomePerfil>
             </div>
         </React.Fragment>
     );
@@ -63,7 +67,6 @@ export default function ToobarDiscente() {
         <React.Fragment>
             <div style={{}} className='p-col-1 p-mr-3'  >
                 <img src={logoImg} alt="logo" style={{ height: '10.75em', width: 'auto' }} />
-
             </div>
         </React.Fragment>
     );

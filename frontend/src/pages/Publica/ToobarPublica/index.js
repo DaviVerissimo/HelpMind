@@ -5,6 +5,7 @@ import { Button } from 'primereact/button';
 import logoImg from './assets/favicon.ico';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import FotoPerfil from '../../FotoPerfil';
+import NomePerfil from '../../NomePerfil';
 
 export default function ToobarPublica() {
 
@@ -18,6 +19,7 @@ export default function ToobarPublica() {
     const rightContents = (
         <React.Fragment className='p-col-2' >
             <div className='espaço-perfil' ></div>
+            <NomePerfil></NomePerfil>
             <FotoPerfil></FotoPerfil>
         </React.Fragment>
     );
@@ -43,6 +45,7 @@ export default function ToobarPublica() {
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col p-mt-3" label='Materiais online' onClick={() => { history.push('/publica/MateriaisOnline') }} />
                 <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col p-mt-3 p-mb-3" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
                 <FotoPerfil></FotoPerfil>
+                <NomePerfil></NomePerfil>
             </div>
         </React.Fragment>
     );
