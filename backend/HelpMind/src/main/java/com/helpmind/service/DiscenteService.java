@@ -84,38 +84,6 @@ public class DiscenteService {
 		return existe;
 	}
 	
-//	public Discente addNovoQuestionarioSocioeconomico(QuestionarioSocioeconomico questionarioSocioeconomico) {
-//		Discente discente = this.buscarDiscentePorEmail(questionarioSocioeconomico.getEmail());
-//		List<QuestionarioSocioeconomico> lista = discente.getListaQuestionarioSocioeconomico();
-//		lista.add(questionarioSocioeconomico);
-//		discente.setListaQuestionarioSocioeconomico(lista);
-//		discenteRepository.save(discente);
-//		
-//		return discente;
-//	}
-	
-	public List<QuestionarioSocioeconomico> retornaListaQuestionarioSocioeconomico(String email){
-		List<QuestionarioSocioeconomico> lista = null;
-		Discente discente = this.buscarDiscentePorEmail(email);
-		lista = discente.getListaQuestionarioSocioeconomico();
-		
-		return lista;
-	}
-	
-	public Discente addPrimeiroQuestionarioSocioeconomico_e_atualizarInformacoes(QuestionarioSocioeconomico questionarioSocioeconomico) {
-		Integer ID = Integer.parseInt(questionarioSocioeconomico.getIdDiscente());
-		Discente discente = this.buscaDiscentePorID(ID);
-		discente.setNome(questionarioSocioeconomico.getNome());
-		discente.setMatricula(questionarioSocioeconomico.getMatricula());
-		discente.setCurso(questionarioSocioeconomico.getCurso());
-		List<QuestionarioSocioeconomico> lista = new ArrayList<QuestionarioSocioeconomico>();
-		lista.add(questionarioSocioeconomico);
-		discente.setListaQuestionarioSocioeconomico(lista);
-		discenteRepository.save(discente);//pode gerar bugs
-		
-		return discente;
-	}
-	
 	public List<Discente> definirMediaDeAnsiedadeDoDiscente(List<Discente> lista) {
 		
 		for (int i = 0; i < lista.size(); i++) {
@@ -241,9 +209,6 @@ public class DiscenteService {
 		}
 		
 		return discente;
-		
-		
 	}
-
 
 }

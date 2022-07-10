@@ -51,7 +51,7 @@ export default function QuestionarioDeDepresaoDeBeck() {
     const [questao19, setQuestao19] = useState(null);
     const [questao20, setQuestao20] = useState(null);
     const [questao21, setQuestao21] = useState(null);
-    const [dieta, setDieta] = useState(null);
+    const [dieta, setDieta] = useState(false);
 
 
     var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
@@ -66,7 +66,7 @@ export default function QuestionarioDeDepresaoDeBeck() {
     function validar() {
         var valido = false;
 
-        if (dieta &&
+        if (
             questao01 &&
             questao02 &&
             questao03 &&
@@ -533,9 +533,9 @@ export default function QuestionarioDeDepresaoDeBeck() {
                         <label> 3 Perdi mais do que 7 quilos </label>
                     </Card>
                     <Card subTitle='Estou tentando perder peso de propósito, comendo menos' >
-                        <RadioButton value={true} onChange={(e) => setDieta(e.value)} checked={setDieta === true} />
+                        <RadioButton value={true} onChange={(e) => setDieta(e.value)} checked={dieta === true} />
                         <label> SIM </label>
-                        <RadioButton value={false} onChange={(e) => setDieta(e.value)} checked={setDieta === false} />
+                        <RadioButton value={false} onChange={(e) => setDieta(e.value)} checked={dieta === false} />
                         <label> NÂO </label>
                     </Card>
                 </Card>

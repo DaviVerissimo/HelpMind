@@ -58,25 +58,6 @@ public class DiscenteController {
 		return ResponseEntity.created(new URI("/discente/" + discente.getId())).body(discente);
 	}
 	
-	@PostMapping("/salvarDiscenteComBaseQuestionarioSoxioeconomico")
-	public ResponseEntity<QuestionarioSocioeconomico> addNovoQuestionarioSocioeconomico(@RequestBody QuestionarioSocioeconomico questionarioSocioeconomico) throws URISyntaxException {
-		LocalDateTime data = LocalDateTime.now();
-		try {
-			questionarioSocioeconomico.setData(data);
-			String email = questionarioSocioeconomico.getEmail();
-			discenteService.addPrimeiroQuestionarioSocioeconomico_e_atualizarInformacoes(questionarioSocioeconomico);
-			if(discenteService.isDiscente(email)){
-				
-			}
-//			else {
-////				Discente discente = discenteService.criarDiscente(questionarioSocioeconomico);
-//			}
-			
-			} catch(Exception e){}
-		
-		return ResponseEntity.created(new URI("/discente/" + questionarioSocioeconomico.getId())).body(questionarioSocioeconomico);
-	}
-	
 	@GetMapping("/isDiscente")
 	public boolean isDiscenteComCadrasto(String email) { 
 

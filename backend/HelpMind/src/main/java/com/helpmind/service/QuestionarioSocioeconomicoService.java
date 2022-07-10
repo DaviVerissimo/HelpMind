@@ -1,5 +1,6 @@
 package com.helpmind.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +23,22 @@ public class QuestionarioSocioeconomicoService {
 		questionarioSocioeconomicoRepository.save(questionarioSocioeconomico);
 	}
 	
-	public List<QuestionarioSocioeconomico> retornarListaQuestionarioSocioeconomico(){
+	public List<QuestionarioSocioeconomico> retornarListaAllQuestionarioSocioeconomico(){
 		return questionarioSocioeconomicoRepository.findAll();
 	}
 	
 	public List<QuestionarioSocioeconomico> buscaQuestionariosPeloIdDoDiscente(Integer ID){
-		Discente discente = discenteService.buscaDiscentePorID(ID);
 		
-		return discente.getListaQuestionarioSocioeconomico();
+		List<QuestionarioSocioeconomico> lista = retornarListaAllQuestionarioSocioeconomico();
+		List<QuestionarioSocioeconomico> listaQuestionariosDoDiscente = new ArrayList<QuestionarioSocioeconomico>();
+		
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getIdDiscente().equals(ID.toString())) {
+				listaQuestionariosDoDiscente.add(lista.get(i));
+			}
+		}
+		
+		return listaQuestionariosDoDiscente;
 	}
 	
 	public QuestionarioSocioeconomico retornaQuestionarioPeloID(Integer IdQuestionario) {
