@@ -20,6 +20,10 @@ public class QuestionarioSocioeconomicoService {
 	private QuestionarioSocioeconomicoRepository questionarioSocioeconomicoRepository;
 
 	public void salvar(QuestionarioSocioeconomico questionarioSocioeconomico) {
+		Integer ID = Integer.parseInt(questionarioSocioeconomico.getIdDiscente());
+		Discente discente = discenteService.buscaDiscentePorID(ID);
+		discente.setMatricula(questionarioSocioeconomico.getMatricula());
+		discente.setCurso(questionarioSocioeconomico.getCurso());
 		questionarioSocioeconomicoRepository.save(questionarioSocioeconomico);
 	}
 	

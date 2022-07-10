@@ -41,6 +41,8 @@ public class DiscenteService {
 	}
 	
 	public Discente buscaDiscentePorID(Integer ID) {
+		
+//		Discente discente = (Discente) discenteRepository.findById(ID);
 		Discente discente = null;
 		List<Discente> lista = retornaAllDiscentes();
 		for (int i = 0; i< lista.size(); i++) {
