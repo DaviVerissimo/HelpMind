@@ -183,6 +183,27 @@ public class DiscenteService {
 		return lista;
 	}
 	
+	public List<Discente> verificarAumentoVulnerabilidadeEmocional() {
+		List<Discente> lista = this.retornaAllDiscentes();
+		lista = definirMediasDeAnsiedade_depressao_e_status(lista);
+		List<Discente> discentesComAumento = new ArrayList<Discente>();
+		
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(lista.get(i).getStatusDoDiscenteAnsiedade() + " boitt");
+			if (lista.get(i).getStatusDoDiscenteAnsiedade().equals("03 Ansiedade moderada")
+					|| lista.get(i).getStatusDoDiscenteDepresao().equals("04 Depressão grave")
+					|| lista.get(i).getStatusDoDiscenteAnsiedade().equals("04 Ansiedade grave")
+					|| lista.get(i).getStatusDoDiscenteDepresao().equals("03 Depressão moderada")) {
+						if (questionarioDeAnsiedadeDeBeckService.verificaAumentoAnsiedade(lista.get(i).getId().toString())
+								|| questionarioDeDepressaoDeBeckService.verificaAumentoDepressao(lista.get(i).getId().toString())) {
+										discentesComAumento.add(lista.get(i));
+						}
+			}
+		}
+		
+		return discentesComAumento;
+	}
+	
 	public List<Discente> retornaAllDiscentes(){
 		List<Discente> lista = discenteRepository.findAll();
 		lista = this.definirMediasDeAnsiedade_depressao_e_status(lista);

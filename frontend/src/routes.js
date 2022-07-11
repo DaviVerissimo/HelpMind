@@ -29,6 +29,7 @@ import VisualizarQuestionarioDeDepresaoDeBeck from "./pages/ProfissionalDeSaude/
 import VisualizarReporte from "./pages/ProfissionalDeSaude/VisualizarReporte";
 import ListaDeReportesDoDiscente from "./pages/Discente/ListaDeReportesDoDiscente";
 import VisualizarReporteDiscente from "./pages/Discente/VisualizarReporteDiscente";
+import ListaDiscentesComAumento from "./pages/ProfissionalDeSaude/ListaDiscentesAumento";
 
 export default function Routes() {
     return (
@@ -59,6 +60,7 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeck} />
                 <Route path="/profissionalDeSaude/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhado} />
                 <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentes} />
+                {/* <Route path="/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumento} /> */}
                 <Route path="/profissionalDeSaude/visualizarReporte/:id" component={VisualizarReporte} />
                 <Route path="/Xpto" component={Xpto} />
             </Switch>

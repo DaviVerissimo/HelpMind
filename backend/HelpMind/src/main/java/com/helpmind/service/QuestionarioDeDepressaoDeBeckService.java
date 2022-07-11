@@ -28,7 +28,7 @@ public class QuestionarioDeDepressaoDeBeckService {
 	public QuestionarioDeDepressaoDeBeck preencherQuestionarioComQuestao(List<Questao> questoes) {
 		QuestionarioDeDepressaoDeBeck questionario = new QuestionarioDeDepressaoDeBeck();
 		//verifica que não existem questões nulas
-		for (int i = 0; i < questoes.size(); i++) {
+		for (int i = 0; i < questoes.size() - 1; i++) {
 			if (questoes.get(i).getResporta().equals(null)) {
 				return null;
 			}
@@ -92,6 +92,20 @@ public class QuestionarioDeDepressaoDeBeckService {
 		}
 		
 		return listaDoDiscente;
+	}
+	
+	public boolean verificaAumentoDepressao(String idDiscente) {
+		boolean aumento = false;
+		List<QuestionarioDeDepressaoDeBeck> lista =this.buscaQuestionariosPeloIdDoDiscente(idDiscente);
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getNota() < lista.get(i + 1).getNota()) {
+				if (lista.get(i).getNota() > 29) {
+					aumento = true;
+				}
+			}
+		}
+		
+		return aumento;
 	}
 	
 	public QuestionarioDeDepressaoDeBeck retornaQuestionarioPeloID(Integer ID_QUESTIONARIO) {

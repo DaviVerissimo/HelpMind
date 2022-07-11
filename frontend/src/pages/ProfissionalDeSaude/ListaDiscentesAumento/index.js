@@ -9,7 +9,7 @@ import DiscenteService from '../../../services/DiscenteService';
 import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
-export default function ListaDiscentes() {
+export default function ListaDiscentesComAumento() {
 
     var btnVisualizarTexto = 'VISUALIZAR'
     var configBtnVisualizar = "pi pi-user";
@@ -30,7 +30,7 @@ export default function ListaDiscentes() {
     const location = useLocation();
     const [discentes, setDiscentes] = useState([])
     const allDiscentes = () => {
-        DiscenteService.getAllDiscente().then((response) => {
+        DiscenteService.getDiscentesComAumentoVulnerabilidadeEmocional().then((response) => {
             setDiscentes(response.data)
             // console.log(response.data);
         });
@@ -42,16 +42,9 @@ export default function ListaDiscentes() {
 
     }
 
-    // const isAumento = () => {
-    //     DiscenteService.isAumento().then((response) => {
-    //         setDiscentes(response.data)
-    //         console.log(response.data);
-    //     });
-    // };
-
     useEffect(() => {
         allDiscentes()
-        // isAumento()
+
     }, [])
 
     const [discente, setDiscente] = useState(emptyDiscente);
@@ -64,7 +57,6 @@ export default function ListaDiscentes() {
         setDiscente(discente);
         console.log(discente.id);
         history.goBack();
-        // window.open('http://localhost:8080/file/files/' + discente.nome);
         history.push('/profissionalDeSaude/PerfilDiscenteDetalhado/' + discente.id)
     }
 
@@ -75,21 +67,6 @@ export default function ListaDiscentes() {
             </React.Fragment>
         );
     }
-
-    const showError = () => {
-        toast.current.show({
-            severity: 'error',
-            summary: 'Foi detectado aumento nas notas de Ansiedade ou Depressão',
-            detail: 'Verifique os questionários minuciosamente. ',
-            life: 5000
-        });
-    }
-
-    // function verificarAumento() { 
-    //     history.push('/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade')
-    // }
-    // const configBotaoAcessar = "p-button-danger p-button-rounded ";
-
 
     const header = (
         <div className="table-header">
@@ -104,10 +81,7 @@ export default function ListaDiscentes() {
     return (
         <div  > <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <div>
-                <Card title="DISCENTES" ></Card>
-                {/* <Card>
-                    <Button className={configBotaoAcessar} label="ACESSAR DISCENTES EM VULNERABILIDADE" onClick={verificarAumento} />
-                </Card> */}
+                <Card title="DISCENTES COM AUMENTO NA VULNERABILIDADE EMOCIONAL" ></Card>
                 <Card>
                     <div>
                         <Card>
