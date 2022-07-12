@@ -189,7 +189,6 @@ public class DiscenteService {
 		List<Discente> discentesComAumento = new ArrayList<Discente>();
 		
 		for (int i = 0; i < lista.size(); i++) {
-			System.out.println(lista.get(i).getStatusDoDiscenteAnsiedade() + " boitt");
 			if (lista.get(i).getStatusDoDiscenteAnsiedade().equals("03 Ansiedade moderada")
 					|| lista.get(i).getStatusDoDiscenteDepresao().equals("04 Depressão grave")
 					|| lista.get(i).getStatusDoDiscenteAnsiedade().equals("04 Ansiedade grave")

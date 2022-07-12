@@ -14,6 +14,7 @@ export default function ListaDiscentes() {
     var btnVisualizarTexto = 'VISUALIZAR'
     var configBtnVisualizar = "pi pi-user";
     var largura = window.screen.width;
+    const configBotaoAcessar = "p-button-danger p-button-rounded ";
 
     if (largura < 640) {
         btnVisualizarTexto = ''
@@ -42,17 +43,28 @@ export default function ListaDiscentes() {
 
     }
 
-    // const isAumento = () => {
-    //     DiscenteService.isAumento().then((response) => {
-    //         setDiscentes(response.data)
-    //         console.log(response.data);
-    //     });
-    // };
+    const [aumento, setAumento] = useState(false);
+    const isAumento = () => {
+        DiscenteService.isAumento().then((response) => {
+            setAumento(response.data)
+            console.log(response.data);
+        });
+    };
+    // const vulneravel = isAumento;
 
     useEffect(() => {
         allDiscentes()
-        // isAumento()
+        
     }, [])
+
+    useEffect(() => {
+        isAumento()
+        if(aumento){
+            showError();
+        }
+        
+    }, [aumento])
+
 
     const [discente, setDiscente] = useState(emptyDiscente);
     const [selectedDiscentes, setSelectedDiscentes] = useState(null);
@@ -79,16 +91,16 @@ export default function ListaDiscentes() {
     const showError = () => {
         toast.current.show({
             severity: 'error',
-            summary: 'Foi detectado aumento nas notas de Ansiedade ou Depressão',
-            detail: 'Verifique os questionários minuciosamente. ',
-            life: 5000
+            summary: 'Foi detectado discente(s) com aumento nas notas de Ansiedade ou Depressão',
+            detail: 'Verifique estes discentes pelo botão Acessar discentes em Vulnerabilidade. ',
+            life: 7000
         });
     }
 
-    // function verificarAumento() { 
-    //     history.push('/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade')
-    // }
-    // const configBotaoAcessar = "p-button-danger p-button-rounded ";
+    function verificarAumento() { 
+        history.push('/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade')
+    }
+    
 
 
     const header = (
@@ -105,9 +117,9 @@ export default function ListaDiscentes() {
         <div  > <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <div>
                 <Card title="DISCENTES" ></Card>
-                {/* <Card>
+                <Card>
                     <Button className={configBotaoAcessar} label="ACESSAR DISCENTES EM VULNERABILIDADE" onClick={verificarAumento} />
-                </Card> */}
+                </Card>
                 <Card>
                     <div>
                         <Card>

@@ -72,20 +72,20 @@ public class DiscenteController {
 		return discente;
 	}
 	
-//	@GetMapping("/discenteComAumentoVulnerabilidadeEmocional")
-//	public List<Discente> retornaDiscenteComAumentoVulnerabilidadeEmocional() {// não chamar essa rota
-//		
-//		return discenteService.verificarAumentoVulnerabilidadeEmocional();
-//	}
-//	
-//	@GetMapping("/isAumento")
-//	public boolean isAumento() {// não chamar essa rota
-//		boolean aumento = false;
-//		if(discenteService.verificarAumentoVulnerabilidadeEmocional().get(0) != null) {
-//			aumento = true;
-//		}
-//		
-//		return aumento;
-//	}
+	@GetMapping("/discenteComAumentoVulnerabilidadeEmocional")
+	public List<Discente> retornaDiscenteComAumentoVulnerabilidadeEmocional() {
+		
+		return discenteService.verificarAumentoVulnerabilidadeEmocional();
+	}
+	
+	@GetMapping("/isAumento")
+	public boolean isAumento() {
+		boolean aumento = false;
+		if(discenteService.verificarAumentoVulnerabilidadeEmocional().get(0) != null) {
+			aumento = true;
+		}
+		
+		return aumento;
+	}
 
 }

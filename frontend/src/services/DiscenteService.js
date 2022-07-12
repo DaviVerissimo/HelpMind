@@ -19,13 +19,13 @@ class DiscenteService {
         return axios.get(API_BASE_URL_LISTAR_ALL_DISCENTES);
     }
 
-    // getDiscentesComAumentoVulnerabilidadeEmocional() {
-    //     return axios.get(API_BASE_URL_LISTAR_DISCENTES_COM_AUMENTO_VULNERABILIDADE);
-    // }
+    getDiscentesComAumentoVulnerabilidadeEmocional() {
+        return axios.get(API_BASE_URL_LISTAR_DISCENTES_COM_AUMENTO_VULNERABILIDADE);
+    }
 
-    // isAumento() {
-    //     return axios.get(API_BASE_URL_IS_AUMENTO);
-    // }
+    isAumento() {
+        return axios.get(API_BASE_URL_IS_AUMENTO);
+    }
 
     getDiscenteById(id) {
         return axios.post(API_BASE_URL_DISCENTE_ID, id, headers);
