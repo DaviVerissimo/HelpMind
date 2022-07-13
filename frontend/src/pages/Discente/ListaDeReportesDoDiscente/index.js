@@ -11,8 +11,7 @@ import { Toast } from 'primereact/toast';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ListaDeReportesDoDiscente() {
-//falta criar listagem de reportes pelo ID do discente. 
-// falta criar seção valida para o discente e enviar um id
+    
     var btnVisualizarTexto = 'VISUALIZAR'
     var configBtnVisualizar = "pi pi-bell";
     var largura = window.screen.width;
@@ -30,21 +29,20 @@ export default function ListaDeReportesDoDiscente() {
 
     const history = useHistory();
     const location = useLocation();
-
+    const id = localStorage.getItem('id');
     const [reportes, setReportes] = useState([])
     const allReportes = () => {
         ReporteService.getReporte().then((response) => {
-            setReportes(response.data)
-            console.log(response.data);
+            const aux = response.data;
+            const filtro = aux.filter((value) => value.idReportante == id);
+            setReportes(filtro)
         });
+        {
+            reportes.map((reporte, key) => {
+            })
+
+        }
     };
-    {
-        reportes.map((reporte, key) => {
-            // console.log({ reportes });
-        })
-
-    }
-
 
     useEffect(() => {
         allReportes()

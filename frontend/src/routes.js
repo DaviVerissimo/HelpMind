@@ -41,7 +41,7 @@ export default function Routes() {
                 <Route path="/discente/Perfil" component={PerfilDiscente} />
                 <Route path="/discente/Reporte" component={Reporte} />
                 <Route path="/discente/Reportes" component={Reportes} />
-                <Route path="/discente/ListaReportes/:id" component={ListaDeReportesDoDiscente} />
+                <Route path="/discente/ListaReportes" component={ListaDeReportesDoDiscente} />
                 <Route path="/discente/visualizarReporte/:id" component={VisualizarReporteDiscente} />
                 <Route path="/discente/QuestionarioSocioeconomico" component={QuestionarioSocioeconomico} />
                 <Route path="/discente/EscolherQuestionariosDiscente" component={EscolherQuestionariosDiscente} />
