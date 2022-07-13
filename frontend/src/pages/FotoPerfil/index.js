@@ -3,10 +3,18 @@ import axios from 'axios';
 
 export default function FotoPerfil() {
 
+    
     const headers = {
         'headers': {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+    }
+    const headers2 = {
+        'headers': {
+            'Accept': 'image/avif,image/webp,*/*',
+            'Content-Type': 'image/jpeg',
             'Access-Control-Allow-Origin': '*'
         }
     }
@@ -17,6 +25,12 @@ export default function FotoPerfil() {
         axios.post("http://localhost:8080/discente/buscaDiscentePorID", id, headers)
             .then(Response => {
                 setFotoPerfil(Response.data.imagemPerfilUri);
+            })
+            .catch(error => console.log(error))
+
+            axios.get(fotoPerfil, id, headers2)
+            .then(Response => {
+                
             })
             .catch(error => console.log(error))
     }

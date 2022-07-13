@@ -42,6 +42,8 @@ export default function Reporte() {
         { name: '1º' },
         { name: '2º' },
         { name: '3º' },
+        { name: 'Outro' },
+        { name: 'Superior' },
     ];
     const [suicidio, setSuicidio] = useState('NÂO');
     const tentouSuicidio = [
