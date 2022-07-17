@@ -3,8 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { classNames } from 'primereact/utils';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { ProductService } from '../../../services/ProductService';
-import MaterialService from '../../../services/MaterialService';
+import { ProductService } from '../../../../services/ProductService';
+import MaterialService from '../../../../services/MaterialService';
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { FileUpload } from 'primereact/fileupload';
@@ -16,8 +16,7 @@ import { InputNumber } from 'primereact/inputnumber';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Card } from 'primereact/card';
-import ToobarProfissionalDeSaude from "../../ProfissionalDeSaude/ToobarProfissionalDeSaude";
-
+import ToobarAdmin from '../../ToobarAdmin';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 
@@ -34,17 +33,10 @@ export default function Crud() {
     var configBtnDelete = "p-button-danger pi pi-trash";
     var largura = window.screen.width;
 
-
     if (largura < 640) {
         btnDeleteTexto = ''
         configBtnDelete = "p-button-danger p-button-rounded pi pi-trash";
 
-    }
-
-
-
-    function teste() {
-        console.log(' O nome do arquivo é: ' + nomeDoArquivo + ' nome da capa: ' + nomeDaCapa + ' id: ' + id + ' categoria: ' + categoria + ' nome: ' + nomeMaterial);
     }
 
     let emptyProduct = {
@@ -89,7 +81,6 @@ export default function Crud() {
     const [deleteProductsDialog, setDeleteProductsDialog] = useState(false);
     const [product, setProduct] = useState(emptyProduct);
     const [material, setMaterial] = useState(emptyMaterial);
-
     const [selectedProducts, setSelectedProducts] = useState(null);
     const [submitted, setSubmitted] = useState(false);
     const [globalFilter, setGlobalFilter] = useState(null);
@@ -165,10 +156,7 @@ export default function Crud() {
     }
 
     const deleteMaterial = () => {
-        // let _products = products.filter(val => val.id !== product.id);
-        // setProducts(_products);
-        //pegar saida de sim não e deletar material. atenção a variavel booleana abaixo. pegar nome do material e add no dialog
-        
+
         const headers = {
             'headers': {
                 'Accept': 'application/json',
@@ -176,17 +164,12 @@ export default function Crud() {
                 'Access-Control-Allow-Origin': '*'
             }
         }
-    
-        // console.log(novoMaterial);
-    
+
         axios.post("http://localhost:8080/material/removerMaterial/", material.id, headers)
             .then(Response => { })
             .catch(error => console.log(error))
-    
-        if(true){
-            //verificar com o id do retorno da resposta. id == id
-        }
-        toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'O matérial ' +  material.nome + ' foi deletado! RECARREGUE PARA VER MUDANÇAS.', life: 5000 });
+
+        toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'O matérial ' + material.nome + ' foi deletado! RECARREGUE PARA VER MUDANÇAS.', life: 5000 });
         setDeleteProductDialog(false);
     }
 
@@ -217,8 +200,6 @@ export default function Crud() {
         reader.onload = (e) => {
             const csv = e.target.result;
             const data = csv.split('\n');
-
-            // Prepare DataTable
             const cols = data[0].replace(/['"]+/g, '').split(',');
             data.shift();
 
@@ -284,8 +265,7 @@ export default function Crud() {
     const leftToolbarTemplate = () => {
         return (
             <React.Fragment>
-                {/* <Button label="New" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} /> */}
-                <Button label="Novo Matérial" icon="pi pi-plus" className="mr-2" onClick={() => { history.push('/material/create') }} />
+                <Button label="Novo Matérial" icon="pi pi-plus" className="mr-2" onClick={() => { history.push('/Admin/material/create') }} />
             </React.Fragment>
         )
     }
@@ -318,9 +298,6 @@ export default function Crud() {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                {/* <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editProduct(rowData)} /> */}
-                {/* <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => confirmDeleteProduct(rowData)} /> */}
-                {/* <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() =>download(rowData)} /> */}
                 <Button className={configBtnDelete} onClick={() => deletar(rowData)} > {btnDeleteTexto} </Button>
             </React.Fragment>
         );
@@ -370,27 +347,16 @@ export default function Crud() {
         return rowData.nomeDoArquivo;
     }
 
-
     const deletar = (material) => {
         setMaterial(material);
         setDeleteProductDialog(true)
-        //fazer solicitação para o backend
-        // window.open('http://localhost:8080/file/files/' +  material.nomeDoArquivo);
-    }
-
-    function teste() {
-        console.log(' O nome do arquivo é: ' + nomeDoArquivo + ' nome da capa: ' + nomeDaCapa + ' id: ' + id + ' categoria: ' + categoria + ' nome: ' + nomeMaterial);
     }
 
     return (
 
-        <div> <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+        <div> <ToobarAdmin></ToobarAdmin>
 
             <Card title="MATERIAIS DE APOIO"></Card>
-
-            {/* <Card>
-            <Button className={configBotao} label=" NOVO MATERIAL "  onClick={() => { history.push('/material/create') }} />
-            </Card> */}
 
             <div>
                 <div>
@@ -400,24 +366,11 @@ export default function Crud() {
 
                             <div className="card">
                                 <Toolbar className="mb-4" left={leftToolbarTemplate}
-                                    // right={rightToolbarTemplate}
-
                                 ></Toolbar>
-
-                                <DataTable ref={dt} value={materiais} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)} dataKey="id" 
-                                    // rowsPerPageOptions={[5, 10, 25]} paginator rows={10}
-                                    // paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                                    // currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+                                <DataTable ref={dt} value={materiais} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)} dataKey="id"
                                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
-                                    {/* <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} exportable={false}></Column> */}
                                     <Column field="nome" header="Nome" sortable style={{ minWidth: '12rem' }}></Column>
                                     <Column field="categoria" header="Categoria" sortable style={{ minWidth: '12rem' }}></Column>
-                                    {/* <Column field="name" header="Name" sortable style={{ minWidth: '16rem' }}></Column> */}
-                                    {/* <Column field="image" header="Image" body={imageBodyTemplate}></Column>
-                        <Column field="price" header="Price" body={priceBodyTemplate} sortable style={{ minWidth: '8rem' }}></Column>
-                        <Column field="category" header="Category" sortable style={{ minWidth: '10rem' }}></Column>
-                        <Column field="rating" header="Reviews" body={ratingBodyTemplate} sortable style={{ minWidth: '12rem' }}></Column>
-                        <Column field="inventoryStatus" header="Status" body={statusBodyTemplate} sortable style={{ minWidth: '12rem' }}></Column> */}
                                     <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                 </DataTable>
                             </div>

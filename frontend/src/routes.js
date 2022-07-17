@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Create from "./pages/Material/Create";
-import Crud from "./pages/Material/Crud";
+import Create from "./pages/Admin/Material/Create";
+import Crud from "./pages/Admin/Material/Crud";
 import Reporte from "./pages/Discente/Reporte";
 import QuemSomos from "./pages/Publica/QuemSomos";
 import Login from "./pages/Publica/Login";
@@ -29,14 +29,14 @@ import VisualizarReporte from "./pages/ProfissionalDeSaude/VisualizarReporte";
 import ListaDeReportesDoDiscente from "./pages/Discente/ListaDeReportesDoDiscente";
 import VisualizarReporteDiscente from "./pages/Discente/VisualizarReporteDiscente";
 import ListaDiscentesComAumento from "./pages/ProfissionalDeSaude/ListaDiscentesAumento";
+import PerfilAdmin from "./pages/Admin/PerfilAdmin";
+import Configuracao from "./pages/Admin/Configuracao";
 
 export default function Routes() {
     return (
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Home} />
-                <Route path="/material/create" component={Create} />
-                <Route path="/material/Crud" component={Crud} />
                 <Route path="/discente/Perfil" component={PerfilDiscente} />
                 <Route path="/discente/Reporte" component={Reporte} />
                 <Route path="/discente/Reportes" component={Reportes} />
@@ -61,6 +61,10 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentes} />
                 <Route path="/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumento} />
                 <Route path="/profissionalDeSaude/visualizarReporte/:id" component={VisualizarReporte} />
+                <Route path="/Admin/perfil" component={PerfilAdmin} />
+                <Route path="/Admin/configuracao" component={Configuracao} />
+                <Route path="/Admin/material/create" component={Create} />
+                <Route path="/Admin/material/Crud" component={Crud} />
                 <Route path="/Xpto" component={Xpto} />
             </Switch>
         </BrowserRouter>
