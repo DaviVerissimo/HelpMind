@@ -3,7 +3,7 @@ import React, { useState,} from 'react';
 import './style.css';
 import axios from 'axios';
 
-export default function BarraPessoal({ idDiscente }) {
+export default function BarraPessoalProfSaude({ idDiscente }) {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ export default function BarraPessoal({ idDiscente }) {
             'Access-Control-Allow-Origin': '*'
         }
     }
-    axios.post("http://localhost:8080/discente/buscaDiscentePorID", idDiscente, headers)
+    axios.post("http://localhost:8080/servidor/buscarServidorPeloId", idDiscente, headers)
         .then(Response => {
             setName(Response.data.nome);
             setEmail(Response.data.email);

@@ -9,7 +9,6 @@ import QuemSomos from "./pages/Publica/QuemSomos";
 import Login from "./pages/Publica/Login";
 import ListaDeReportes from "./pages/ProfissionalDeSaude/ListaDeReportes";
 import MateriaisOnline from "./pages/Publica/MateriaisOnline";
-// import SimulacaoQuestionarioResultado from "./pages/Publica/SimuladorDeQuestionario/SimulacaoQuestionarioResultado";
 import QuestionarioDeDepressaoDeBeck from "./pages/Discente/QuestionarioDeDepressaoDeBeck";
 import QuestionarioDeAnsiedadeDeBeck from "./pages/Discente/QuestionarioDeAnsiedadeDeBeck";
 import EscolherQuestionariosDiscente from "./pages/Discente/EscolherQuestionariosDiscente";

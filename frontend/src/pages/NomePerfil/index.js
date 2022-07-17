@@ -14,7 +14,7 @@ export default function NomePerfil() {
 
     const [nomePerfil, setNomePerfil] = useState("");
     
-    function buscarFotoDiscente(id) {
+    function buscarNomeDiscente(id) {
         axios.post("http://localhost:8080/discente/buscaDiscentePorID", id, headers)
             .then(Response => {
                 setNomePerfil(Response.data.nome);
@@ -22,20 +22,20 @@ export default function NomePerfil() {
             .catch(error => console.log(error))
     }
 
-    function buscarFotoServidor() {
+    function buscarNomeServidor(id) {
+        axios.post("http://localhost:8080/servidor/buscarServidorPeloId", id, headers)
+        .then(Response => {
+            setNomePerfil(Response.data.nome);
+        })
+        .catch(error => console.log(error))
 
-        // axios.post("http://localhost:8080/discente/buscaDiscentePorID", idDiscente, headers)
-        //     .then(Response => {
-        //         setFotoPerfil(Response.data.imagemPerfilUri);
-        //     })
-        //     .catch(error => console.log(error))
     }
 
     function discenteLogado() {
         var autenticado = false;
         const id = localStorage.getItem('id');
         if (id != null && id != undefined) {
-            buscarFotoDiscente(id)
+            buscarNomeDiscente(id)
             autenticado = true;
         }
         return autenticado;
@@ -45,7 +45,7 @@ export default function NomePerfil() {
         var autenticado = false;
         const id = localStorage.getItem('idServidor');
         if (id != null && id != undefined) {
-            buscarFotoServidor()
+            buscarNomeServidor(id)
             autenticado = true;
         }
         return autenticado;
@@ -69,8 +69,7 @@ export default function NomePerfil() {
     return (
         <div>
             {discenteLogado()}
-            
-            
+            {servidorLogado()}
             
             <Card  className='p-mr-3' subTitle={nomePerfil} ></Card>
         </div>

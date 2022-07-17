@@ -3,9 +3,11 @@ import React from 'react';
 import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
+import BarraPessoalProfSaude from '../BarraPessoalProfSaude';
 
 export default function PerfilProfissionalDeSaude() {
 
+    const id = localStorage.getItem('idServidor');
     var configBotao = "p-mb-3 p-col-3";
     var largura = window.screen.width;
     if (largura < 640) {
@@ -13,14 +15,21 @@ export default function PerfilProfissionalDeSaude() {
     }
     const history = useHistory();
 
+    const encerrarSessao = () => {
+        localStorage.clear();
+        history.push('/');
+    }
+
     return (
         <div>
             <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <div>
                 <Card title='MEU PERFIL ' >
+                    
+                    <BarraPessoalProfSaude idDiscente={id} ></BarraPessoalProfSaude>
                     <Card className='p-col-16' >
                         <div>
-                            <Button className={configBotao} label="SAIR" onClick={() => { history.push('/') }} />
+                            <Button className={configBotao} label="SAIR" onClick={encerrarSessao} />
                         </div>
                     </Card>
 

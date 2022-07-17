@@ -32,7 +32,7 @@ export default function Login() {
     }
     const history = useHistory();
     const responseGoogle = (response) => {
-        
+
         const { profileObj: { name, email, imageUrl, googleId } } = response;
         const usuario =
         {
@@ -49,26 +49,60 @@ export default function Login() {
                 'Access-Control-Allow-Origin': '*'
             }
         }
-        axios.post("http://localhost:8080/discente/isDiscenteGoogleId", usuario.googleId, headers)
-            .then(Response => {
-                if (Response.data.id == null) {
-                    axios.post("http://localhost:8080/discente/salvarUserDiscente", usuario, headers)
-                        .then(Response => {
-                            localStorage.setItem( 'id', Response.data.id);
-                            history.push('/discente/Perfil');
-                        })
-                        .catch(error => console.log(error))
-                }
-                else {
-                    localStorage.setItem( 'id', Response.data.id);
-                    history.push('/discente/Perfil');
-                }
-                localStorage.setItem( 'id', Response.data.id);
-            })
-            .catch(error => console.log(error))
+        
+        // var str = email;
+        // if (str.match(/academico/)) {
+        //     chave = false 
+        // }
+
+        const chave = true;
+
+        if (chave) {
+
+            axios.post("http://localhost:8080/servidor/isServidorGoogleId", usuario.googleId, headers)
+                .then(Response => {
+                    if (Response.data.id == null) {
+                        axios.post("http://localhost:8080/servidor/salvarServidor", usuario, headers)
+                            .then(Response => {
+                                localStorage.setItem('idServidor', Response.data.id);
+                                history.push('/profissionalDeSaude/perfil');
+                            })
+                            .catch(error => console.log(error))
+                    }
+                    else {
+                        localStorage.setItem('idServidor', Response.data.id);
+                        history.push('/profissionalDeSaude/perfil');
+                    }
+                    localStorage.setItem('idServidor', Response.data.id);
+                })
+                .catch(error => console.log(error))
+        }
+
+        if (!chave) {
+
+            axios.post("http://localhost:8080/discente/isDiscenteGoogleId", usuario.googleId, headers)
+                .then(Response => {
+                    if (Response.data.id == null) {
+                        axios.post("http://localhost:8080/discente/salvarUserDiscente", usuario, headers)
+                            .then(Response => {
+                                localStorage.setItem('id', Response.data.id);
+                                history.push('/discente/Perfil');
+                            })
+                            .catch(error => console.log(error))
+                    }
+                    else {
+                        localStorage.setItem('id', Response.data.id);
+                        history.push('/discente/Perfil');
+                    }
+                    localStorage.setItem('id', Response.data.id);
+                })
+                .catch(error => console.log(error))
             // localStorage.clear();
-            
-        // criar logica para decidir entre discente e servidor pelo email. dica: usar contains e verificar se academico existe. caso exista é discente. se não é servidor
+
+            // criar logica para decidir entre discente e servidor pelo email. dica: usar contains e verificar se academico existe. caso exista é discente. se não é servidor
+        }
+
+
 
 
     }

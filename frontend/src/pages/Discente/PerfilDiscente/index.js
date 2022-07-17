@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarDiscente from '../ToobarDiscente';
-import BarraPessoal from '../../BarraPessoal';
+import BarraPessoalDiscente from '../BarraPessoalDiscente';
 
 export default function PerfilDiscente() {
 
@@ -27,7 +27,7 @@ export default function PerfilDiscente() {
             <div>
                 
                 <Card title='MEU PERFIL ' >
-                <BarraPessoal idDiscente={id} ></BarraPessoal>
+                <BarraPessoalDiscente idDiscente={id} ></BarraPessoalDiscente>
                     <Card className='p-col-16' >
                         <div>
                             <Button className={configBotao} label="SAIR"  onClick={encerrarSessao} />

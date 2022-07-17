@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export default function FotoPerfil() {
 
-    
     const headers = {
         'headers': {
             'Accept': 'application/json',
@@ -28,20 +27,26 @@ export default function FotoPerfil() {
             })
             .catch(error => console.log(error))
 
-            axios.get(fotoPerfil, id, headers2)
+        axios.get(fotoPerfil, id, headers2)
             .then(Response => {
-                
+
             })
             .catch(error => console.log(error))
     }
 
-    function buscarFotoServidor() {
+    function buscarFotoServidor(idServidor) {
+        axios.post("http://localhost:8080/servidor/buscarServidorPeloId", idServidor, headers)
+            .then(Response => {
+                setFotoPerfil(Response.data.imagemPerfilUri);
+            })
+            .catch(error => console.log(error))
 
-        // axios.post("http://localhost:8080/discente/buscaDiscentePorID", idDiscente, headers)
-        //     .then(Response => {
-        //         setFotoPerfil(Response.data.imagemPerfilUri);
-        //     })
-        //     .catch(error => console.log(error))
+        axios.get(fotoPerfil, idServidor, headers2)
+            .then(Response => {
+
+            })
+            .catch(error => console.log(error))
+
     }
 
     function discenteLogado() {
@@ -58,34 +63,20 @@ export default function FotoPerfil() {
         var autenticado = false;
         const id = localStorage.getItem('idServidor');
         if (id != null && id != undefined) {
-            buscarFotoServidor()
+            buscarFotoServidor(id)
             autenticado = true;
         }
         return autenticado;
     }
 
-    // if (discenteLogado()) {
-    //     console.log(1)
-    //     return <img src={fotoPerfil} alt='Foto do Perfil' ></img>
-
-    // }
-    // if (servidorLogado()) {
-    //     console.log(2)
-    //     return <img src={fotoPerfil} alt='Foto do Perfil' ></img>
-
-    // }
-    // if(!discenteLogado && !servidorLogado){
-    //     console.log(3)
-    //     return null;
-    // }
-
     return (
         <div>
             {discenteLogado()}
+            {servidorLogado()}
             <img src={fotoPerfil} alt='' ></img>
         </div>
-        
-        
+
+
     );
 
 }
