@@ -17,7 +17,9 @@ public class Servidor {
 	private String email;
 	private String googleId;
 	private String imagemPerfilUri;
-	private Boolean permissaoDeAcesso = false;
+	private Boolean permissaoDeAcessoProfissionalDeSaude = false;
+	private Boolean permissaoDeAcessoPsicologo = false;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -48,11 +50,17 @@ public class Servidor {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Boolean getPermissaoDeAcesso() {
-		return permissaoDeAcesso;
+	public Boolean getPermissaoDeAcessoProfissionalDeSaude() {
+		return permissaoDeAcessoProfissionalDeSaude;
 	}
-	public void setPermissaoDeAcesso(Boolean permissaoDeAcesso) {
-		this.permissaoDeAcesso = permissaoDeAcesso;
+	public void setPermissaoDeAcessoProfissionalDeSaude(Boolean permissaoDeAcesso) {
+		this.permissaoDeAcessoProfissionalDeSaude = permissaoDeAcesso;
+	}
+	public Boolean getPermissaoDeAcessoPsicologo() {
+		return permissaoDeAcessoPsicologo;
+	}
+	public void setPermissaoDeAcessoPsicologo(Boolean permissaoDeAcessoPsicologo) {
+		this.permissaoDeAcessoPsicologo = permissaoDeAcessoPsicologo;
 	}
 	
 }

@@ -21,13 +21,13 @@ export default function Configuracao() {
                 <Card title='CONFIGURAÇÃO ' >
                     <Card className='p-col-16' >
                         <div>
-                            <Button className={configBotao} label=" GERENCIA DE MATERIAIS" onClick={() => { history.push('/Admin/material/Crud') }} />
+                            <Button className={configBotao} label=" GERÊNCIA DE MATERIAIS" onClick={() => { history.push('/Admin/material/Crud') }} />
                         </div>
                         <div>
-                            <Button className={configBotao} label=" GERENCIA DE SERVIDORES" onClick={() => { history.push('/Discente/QuestionarioDeBeck/Ansiedade') }} />
+                            <Button className={configBotao} label=" GERÊNCIA DE SERVIDORES" onClick={() => { history.push('/Admin/GerenciaServidor') }} />
                         </div>
                         <div>
-                            <Button className={configBotao} label=" GERENCIA DE CONTATOS" onClick={() => { history.push('/discente/QuestionarioSocioeconomico') }} />
+                            <Button className={configBotao} label=" GERÊNCIA DE CONTATOS" onClick={() => { history.push('/Admin/GerenciaContato') }} />
                         </div>
                     </Card>
 

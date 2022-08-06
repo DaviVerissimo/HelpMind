@@ -31,6 +31,13 @@ import VisualizarReporteDiscente from "./pages/Discente/VisualizarReporteDiscent
 import ListaDiscentesComAumento from "./pages/ProfissionalDeSaude/ListaDiscentesAumento";
 import PerfilAdmin from "./pages/Admin/PerfilAdmin";
 import Configuracao from "./pages/Admin/Configuracao";
+import GerenciaServidor from "./pages/Admin/GerenciaServidor";
+import ParescerSobreDiscente from "./pages/ProfissionalDeSaude/ParescerSobreDiscente";
+import PRONTUARIOS from "./pages/ProfissionalDeSaude/Prontuarios";
+import ListarProntuarios from "./pages/ProfissionalDeSaude/ListaProntuarios";
+import VisualizarProntuario from "./pages/ProfissionalDeSaude/VisualizarProntuario";
+import GerenciaContatos from "./pages/Admin/GerenciaContatos";
+import NovoContato from "./pages/Admin/NovoContato";
 
 export default function Routes() {
     return (
@@ -61,10 +68,17 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentes} />
                 <Route path="/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumento} />
                 <Route path="/profissionalDeSaude/visualizarReporte/:id" component={VisualizarReporte} />
+                <Route path="/profissionalDeSaude/parescer" component={ParescerSobreDiscente} />
+                <Route path="/profissionalDeSaude/prontuarios" component={PRONTUARIOS} />
+                <Route path="/profissionalDeSaude/listaProntuarios" component={ListarProntuarios} />
+                <Route path="/profissionalDeSaude/visualizarProntuarios" component={VisualizarProntuario} />
                 <Route path="/Admin/perfil" component={PerfilAdmin} />
                 <Route path="/Admin/configuracao" component={Configuracao} />
                 <Route path="/Admin/material/create" component={Create} />
                 <Route path="/Admin/material/Crud" component={Crud} />
+                <Route path="/Admin/GerenciaServidor" component={GerenciaServidor} />
+                <Route path="/Admin/GerenciaContato" component={GerenciaContatos} />
+                <Route path="/Admin/NovoContato" component={NovoContato} />
                 <Route path="/Xpto" component={Xpto} />
             </Switch>
         </BrowserRouter>

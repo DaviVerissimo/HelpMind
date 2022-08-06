@@ -46,18 +46,52 @@ public class ServidorController {
 	}
 	
 	@PostMapping("updateServidor")
-
-	public ResponseEntity concederAcesso(@RequestBody String id) throws URISyntaxException {
+	public ResponseEntity concederAcessoComoProfissionalDeSaude(@RequestBody String id) throws URISyntaxException {
 
 		Integer ID = Integer.parseInt(id);
 		Servidor servidor = null;
 		try {
-			servidor = servidorService.concederAcesso(ID);
+			servidor = servidorService.concederAcessoComoProfissionalDeSaude(ID);
 			} catch(Exception e){}
 	
 		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
 	}
 	
+	@PostMapping("updateServidorForPsicologo")
+	public ResponseEntity concederAcessoComoPsicologo(@RequestBody String id) throws URISyntaxException {
+
+		Integer ID = Integer.parseInt(id);
+		Servidor servidor = null;
+		try {
+			servidor = servidorService.concederAcessoComoPsicologo(ID);
+			} catch(Exception e){}
+	
+		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
+	}
+	
+	@PostMapping("removerAcessoComoProfissionalDeSaude")
+	public ResponseEntity removerAcessoComoProfissionalDeSaude(@RequestBody String id) throws URISyntaxException {
+
+		Integer ID = Integer.parseInt(id);
+		Servidor servidor = null;
+		try {
+			servidor = servidorService.removerAcessoComoProfissionalDeSaude(ID);
+			} catch(Exception e){}
+	
+		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
+	}
+	
+	@PostMapping("removerAcessoComoPsicologo")
+	public ResponseEntity removerAcessoComoPsicologo(@RequestBody String id) throws URISyntaxException {
+
+		Integer ID = Integer.parseInt(id);
+		Servidor servidor = null;
+		try {
+			servidor = servidorService.removerAcessoComoPsicologo(ID);
+			} catch(Exception e){}
+	
+		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
+	}
 	
 	@PostMapping("/buscarServidorPeloId")
 	public ResponseEntity retornaServidorPeloId(@RequestBody String id) throws URISyntaxException {

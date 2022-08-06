@@ -43,9 +43,33 @@ public class ServidorService {
 		return servidor;
 	}
 
-	public Servidor concederAcesso(Integer iD) {
+	public Servidor concederAcessoComoProfissionalDeSaude(Integer iD) {
 		Servidor servidor = this.pesquisar(iD);
-		servidor.setPermissaoDeAcesso(true);
+		servidor.setPermissaoDeAcessoProfissionalDeSaude(true);
+		servidorRepository.save(servidor);
+		 
+		return servidor;
+	}
+	
+	public Servidor concederAcessoComoPsicologo(Integer iD) {
+		Servidor servidor = this.pesquisar(iD);
+		servidor.setPermissaoDeAcessoPsicologo(true);
+		servidorRepository.save(servidor);
+		 
+		return servidor;
+	}
+	
+	public Servidor removerAcessoComoProfissionalDeSaude(Integer iD) {
+		Servidor servidor = this.pesquisar(iD);
+		servidor.setPermissaoDeAcessoProfissionalDeSaude(false);
+		servidorRepository.save(servidor);
+		 
+		return servidor;
+	}
+	
+	public Servidor removerAcessoComoPsicologo(Integer iD) {
+		Servidor servidor = this.pesquisar(iD);
+		servidor.setPermissaoDeAcessoPsicologo(false);
 		servidorRepository.save(servidor);
 		 
 		return servidor;
