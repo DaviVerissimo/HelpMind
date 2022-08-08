@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Create from "./pages/Admin/Material/Create";
-import Crud from "./pages/Admin/Material/Crud";
+import Create from "./pages/Admin/GerenciaMaterialCentral/Create";
+import GerenciaMaterial from "./pages/Admin/GerenciaMaterialCentral/GerenciaMaterial";
 import Reporte from "./pages/Discente/Reporte";
 import QuemSomos from "./pages/Publica/QuemSomos";
 import Login from "./pages/Publica/Login";
@@ -38,6 +38,7 @@ import ListarProntuarios from "./pages/ProfissionalDeSaude/ListaProntuarios";
 import VisualizarProntuario from "./pages/ProfissionalDeSaude/VisualizarProntuario";
 import GerenciaContatos from "./pages/Admin/GerenciaContatos";
 import NovoContato from "./pages/Admin/NovoContato";
+import UpdateContato from "./pages/Admin/UpdateContato";
 
 export default function Routes() {
     return (
@@ -75,10 +76,11 @@ export default function Routes() {
                 <Route path="/Admin/perfil" component={PerfilAdmin} />
                 <Route path="/Admin/configuracao" component={Configuracao} />
                 <Route path="/Admin/material/create" component={Create} />
-                <Route path="/Admin/material/Crud" component={Crud} />
+                <Route path="/Admin/material/Crud" component={GerenciaMaterial} />
                 <Route path="/Admin/GerenciaServidor" component={GerenciaServidor} />
                 <Route path="/Admin/GerenciaContato" component={GerenciaContatos} />
                 <Route path="/Admin/NovoContato" component={NovoContato} />
+                <Route path="/Admin/updateContato/:id" component={UpdateContato} />
                 <Route path="/Xpto" component={Xpto} />
             </Switch>
         </BrowserRouter>
