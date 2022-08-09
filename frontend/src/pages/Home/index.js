@@ -26,8 +26,11 @@ export default function Home() {
             </div>
 
             <div className="home-ladoDireito p-col-8" >
-                <Card title="CONHEÇA SUA NOVA FERRAMENTA DE AUXILIO"
+                <Card 
+                title="CONHEÇA SUA NOVA FERRAMENTA DE AUXILIO"
                     subTitle="A SAÚDE MENTAL DOS ESTUDANTES DO IFPB" >
+                        <Card title='Bem-vindo(a)!' className='p-col-4'
+                        subTitle='É com muito prazer que lhe convidamos para conhecer ao software e interagir com este produto educacional' ></Card>
                     <div className=" p-grid p-dir-col p-pl-3" >
                         <Button className={configBotao} label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/publica/Login') }} />
                         <Button className={configBotao} label="MATERIAIS DE APOIO ONLINE" onClick={() => { history.push('/publica/MateriaisOnline') }} />

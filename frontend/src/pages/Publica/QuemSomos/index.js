@@ -27,8 +27,11 @@ export default function QuemSomos() {
                 </div>
                 <div className={configSize} >
                     <Card title="Sobre o PROMOÇÃO À SAÚDE MENTAL:"
-                        subTitle="Uma ferramenta com intuito de ajudar alunos do IFPB, que se encontram com
-                                algum tipo de dificuldade psicológica" >
+                        subTitle="Este Software é  resultado do produto educacional
+                         elaborado a partir dos resultados da pesquisa de mestrado intitulada 
+                         “ESTRATÉGIAS DE ACOLHIMENTO E ACOMPANHAMENTO DE DISCENTES COM QUEIXAS EM SAÚDE MENTAL NO INSTITUTO FEDERAL DA PARAÍBA”,
+                         desenvolvida durante o Mestrado Profissional em Educação Profissional e Tecnológica (PROFEPT) do Instituto Federal  da 
+                         Paraíba– Campus João Pessoa. " >
                     </Card>
                 </div>
                 <div className={configSize} >
@@ -57,8 +60,23 @@ export default function QuemSomos() {
                         </Card>
                         <Card
                             subTitle="Identificar, através do produto educacional, os estudantes que se encontram suscetíveis ao
-                             desenvolvimento de algum tipo de perturbação mental;">
+                             desenvolvimento de algum tipo de perturbação mental;
+                             Este instrumento não tem o objetivo de substituir consultas com profissionais psicólogos ou psiquiatras
+                              nem tão pouco dar diagnóstico, função esta de competência privativa de outros profissionais da saúde. 
+                             Trazemos sempre a importância do profissional psicólogo durante toda sua aplicação, levando em consideração
+                              a importância do trabalho em uma equipe multiprofissional dentro da instituição de ensino, criando uma rede de 
+                              apoio e de acolhimento junto ao estudante, respeitando os princípios da oferta da promoção e prevenção à saúde 
+                              mental do adolescente que pensamos neste instrumento intitulado SOFTWARE DE APOIO A PROMOÇÃO À SAÚDE MENTAL DO ESTUDANTE. 
+                               Esperamos que você profissional de saúde possa inserir sua aplicação na vida cotidiana em seu espaço de atuação. Estamos 
+                               todos em prol da oferta de um serviço de saúde mental de qualidade e responsável.
+                                Neste sentido, espera-se que que você profissional de saúde possa inserir este produto educacional em sua prática 
+                                diária em seu espaço de atuação, bem  como possa auxiliar os estudantes e os profissionais do IFPB no enfrentamento de dificuldades encontradas durante a experiência escolar no Ensino Médio Integrado e desta forma minimizar os problemas relacionados a saúde mental. 
+                             
+                             ">
                         </Card>
+                        <Card title='O MEDO ME SUFOCA, ME TIRA O SONO, A PAZ E O PRAZER DE VIVER! VOCÊ PODE ME AJUDAR?'
+                        subTitle='LUCIVALDO ALVES'
+                        ></Card>
                     </Card>
                 </div>
                 <div className={configSize} >
