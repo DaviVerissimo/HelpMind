@@ -20,7 +20,7 @@ import ToobarAdmin from '../../ToobarAdmin';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 
-export default function Crud() {
+export default function GerenciaMaterial() {
 
     var configBotao = "pi pi-plus-circle p-mb-3 p-col-3";
     var largura = window.screen.width;
@@ -168,6 +168,7 @@ export default function Crud() {
         axios.post("http://localhost:8080/material/removerMaterial/", material.id, headers)
             .then(Response => { })
             .catch(error => console.log(error))
+            allMaterial();
 
         toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'O matérial ' + material.nome + ' foi deletado! RECARREGUE PARA VER MUDANÇAS.', life: 5000 });
         setDeleteProductDialog(false);
