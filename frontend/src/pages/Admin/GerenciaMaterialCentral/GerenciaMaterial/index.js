@@ -306,7 +306,7 @@ export default function GerenciaMaterial() {
 
     const header = (
         <div className="table-header">
-            <h5 className="mx-0 my-1">Manage Products</h5>
+            <h5 className="mx-0 my-1">pesquisar por materiais</h5>
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
@@ -357,7 +357,7 @@ export default function GerenciaMaterial() {
 
         <div> <ToobarAdmin></ToobarAdmin>
 
-            <Card title="MATERIAIS DE APOIO"></Card>
+            <Card title="GERENCIA DE MATERIAIS DE APOIO"></Card>
 
             <div>
                 <div>
