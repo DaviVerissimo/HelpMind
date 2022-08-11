@@ -10,10 +10,12 @@ export default function Home() {
     var configBotao = "p-mb-3 p-col-4";
     var largura = window. screen. width;
     var tamanhoImagem = '';
+    var tamanhoBemVimdo = 'p-col-4 p-mb-5';
     
     if (largura < 640){
         configBotao = "p-mb-3";
         tamanhoImagem = '180'
+        tamanhoBemVimdo = 'p-col-12 p-mb-5';
     }
 
     const history = useHistory();
@@ -29,7 +31,7 @@ export default function Home() {
                 <Card 
                 title="CONHEÇA SUA NOVA FERRAMENTA DE AUXILIO"
                     subTitle="A SAÚDE MENTAL DOS ESTUDANTES DO IFPB" >
-                        <Card title='Bem-vindo(a)!' className='p-col-4'
+                        <Card title='Bem-vindo(a)!' className={tamanhoBemVimdo}
                         subTitle='É com muito prazer que lhe convidamos para conhecer ao software e interagir com este produto educacional' ></Card>
                     <div className=" p-grid p-dir-col p-pl-3" >
                         <Button className={configBotao} label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/publica/Login') }} />

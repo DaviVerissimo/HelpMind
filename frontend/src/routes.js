@@ -32,13 +32,16 @@ import ListaDiscentesComAumento from "./pages/ProfissionalDeSaude/ListaDiscentes
 import PerfilAdmin from "./pages/Admin/PerfilAdmin";
 import Configuracao from "./pages/Admin/Configuracao";
 import GerenciaServidor from "./pages/Admin/GerenciaServidor";
-import ParescerSobreDiscente from "./pages/ProfissionalDeSaude/ParescerSobreDiscente";
+import Prontuario from "./pages/ProfissionalDeSaude/Prontuario";
 import PRONTUARIOS from "./pages/ProfissionalDeSaude/Prontuarios";
 import ListarProntuarios from "./pages/ProfissionalDeSaude/ListaProntuarios";
 import VisualizarProntuario from "./pages/ProfissionalDeSaude/VisualizarProntuario";
 import GerenciaContatos from "./pages/Admin/GerenciaContatos";
 import NovoContato from "./pages/Admin/NovoContato";
 import UpdateContato from "./pages/Admin/UpdateContato";
+import ContatosAdmin from "./pages/Admin/ContatosAdmin";
+import ContatosProfissional from "./pages/ProfissionalDeSaude/ContatosProfissional";
+import ContatosDiscente from "./pages/Discente/ContatosDiscente";
 
 export default function Routes() {
     return (
@@ -54,6 +57,7 @@ export default function Routes() {
                 <Route path="/discente/EscolherQuestionariosDiscente" component={EscolherQuestionariosDiscente} />
                 <Route path="/Discente/QuestionarioDeBeck/Depressao" component={QuestionarioDeDepressaoDeBeck} />
                 <Route path="/Discente/QuestionarioDeBeck/Ansiedade" component={QuestionarioDeAnsiedadeDeBeck} />
+                <Route path="/Discente/Contatos" component={ContatosDiscente} />
                 <Route path="/publica/QuemSomos" component={QuemSomos} />
                 <Route path="/publica/Login" component={Login} />
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
@@ -69,10 +73,11 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentes} />
                 <Route path="/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumento} />
                 <Route path="/profissionalDeSaude/visualizarReporte/:id" component={VisualizarReporte} />
-                <Route path="/profissionalDeSaude/parescer" component={ParescerSobreDiscente} />
+                <Route path="/profissionalDeSaude/parescer" component={Prontuario} />
                 <Route path="/profissionalDeSaude/prontuarios" component={PRONTUARIOS} />
                 <Route path="/profissionalDeSaude/listaProntuarios" component={ListarProntuarios} />
                 <Route path="/profissionalDeSaude/visualizarProntuarios" component={VisualizarProntuario} />
+                <Route path="/profissionalDeSaude/Contatos" component={ContatosProfissional} />
                 <Route path="/Admin/perfil" component={PerfilAdmin} />
                 <Route path="/Admin/configuracao" component={Configuracao} />
                 <Route path="/Admin/material/create" component={Create} />
@@ -81,6 +86,7 @@ export default function Routes() {
                 <Route path="/Admin/GerenciaContato" component={GerenciaContatos} />
                 <Route path="/Admin/NovoContato" component={NovoContato} />
                 <Route path="/Admin/updateContato/:id" component={UpdateContato} />
+                <Route path="/Admin/Contatos" component={ContatosAdmin} />
                 <Route path="/Xpto" component={Xpto} />
             </Switch>
         </BrowserRouter>
