@@ -1,0 +1,250 @@
+{
+  "id": "b13219ca-74d2-4ef6-8f10-7d2890cb4f45",
+  "version": "2.0",
+  "name": "teste automatico sucesso web visualizar questionarios e reportes",
+  "url": "http://localhost:3000/profissionalDeSaude/perfil",
+  "tests": [{
+    "id": "32fa4249-d6a8-4286-b7af-cfffb945fe7d",
+    "name": "visualizar questionarios e reportes",
+    "commands": [{
+      "id": "abfedf33-db85-4b5e-b3ae-f5c8f3592fd1",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/profissionalDeSaude/perfil",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "de1b3660-5c65-46aa-b3e1-65b0798e3b34",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cdcfe7d3-cada-44a9-b02f-4a46de40af28",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-button:nth-child(4)",
+      "targets": [
+        ["css=.p-button:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'Discentes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b90a19ab-59a9-4d3e-9888-ecdf62c91561",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-row-odd .p-button",
+      "targets": [
+        ["css=.p-row-odd .p-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[3]/div/div/div/div/div/div/div/div[2]/div/div[2]/table/tbody/tr[2]/td[5]/button", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2f7729b9-df1b-4d6e-84df-77850bb42eb1",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .p-mb-3 > .p-button-label",
+      "targets": [
+        ["css=div:nth-child(1) > .p-mb-3 > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[2]/div[8]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[8]/div/div/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'LISTAR INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f05baacb-d977-4761-b4bf-59d6aa97caa2",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .p-button",
+      "targets": [
+        ["css=tr:nth-child(1) .p-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div/div/div/div/div/div/div/div/div[2]/table/tbody/tr/td[4]/button", "xpath:idRelative"],
+        ["xpath=//td[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,' VISUALIZAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b5e6c079-53cd-402f-b206-4b926cbfae5e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-button:nth-child(4)",
+      "targets": [
+        ["css=.p-button:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'Discentes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c273b8c8-46ab-4b4e-9aa3-c291768174ab",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.p-button:nth-child(4)",
+      "targets": [
+        ["css=.p-button:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'Discentes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1ffe7e19-17f3-4765-ad0b-3ec8de3f3507",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.p-button:nth-child(4)",
+      "targets": [
+        ["css=.p-button:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'Discentes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "88fb2517-82ea-4e40-a25f-9af67004fc64",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-row-odd .p-button",
+      "targets": [
+        ["css=.p-row-odd .p-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[3]/div/div/div/div/div/div/div/div[2]/div/div[2]/table/tbody/tr[2]/td[5]/button", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bde75861-67ee-49e7-8a3e-0ce6ad4b970e",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(2) > .p-button > .p-button-label",
+      "targets": [
+        ["css=div:nth-child(2) > .p-button > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[2]/div[8]/div/div/div[2]/button/span", "xpath:idRelative"],
+        ["xpath=//div[2]/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'LISTAR INVENTÁRIO DE ANSIEDADE DE BECK (BAI)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0ee2902-eca5-4d02-98ed-69fadaab1077",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a6bed312-a776-46af-bd4e-56c11363da59",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .p-button",
+      "targets": [
+        ["css=tr:nth-child(1) .p-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div/div/div/div/div/div/div/div/div[2]/table/tbody/tr/td[4]/button", "xpath:idRelative"],
+        ["xpath=//td[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,' VISUALIZAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "08b1aad6-f1c3-4d67-9a6c-411ce6bee8f0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-button:nth-child(4)",
+      "targets": [
+        ["css=.p-button:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'Discentes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5010f0b7-df4d-4995-af62-d529bb59378c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-row-odd .p-button",
+      "targets": [
+        ["css=.p-row-odd .p-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[3]/div/div/div/div/div/div/div/div[2]/div/div[2]/table/tbody/tr[2]/td[5]/button", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "591913e3-5f62-4759-9b40-5267d8e2554c",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(3) .p-button-label",
+      "targets": [
+        ["css=div:nth-child(3) .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[2]/div[8]/div/div/div[3]/button/span", "xpath:idRelative"],
+        ["xpath=//div[3]/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'LISTAR QUESTIONÁRIO SOCIOECONÔMICO (QS)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "81590375-b969-4b64-8ab7-70dd39c3aa95",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ce89b571-db6b-4353-87ec-20cdf7f93352",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .p-button",
+      "targets": [
+        ["css=tr:nth-child(1) .p-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div[2]/table/tbody/tr/td[6]/button", "xpath:idRelative"],
+        ["xpath=//td[6]/button", "xpath:position"],
+        ["xpath=//button[contains(.,' VISUALIZAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9c987e7-c4fc-42d6-9f31-71c1931ccecf",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(1) .p-button",
+      "targets": [
+        ["css=tr:nth-child(1) .p-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div[2]/table/tbody/tr/td[6]/button", "xpath:idRelative"],
+        ["xpath=//td[6]/button", "xpath:position"],
+        ["xpath=//button[contains(.,' VISUALIZAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "160412f3-77af-43ec-a8f2-10a961730a13",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-button:nth-child(6) > .p-button-label",
+      "targets": [
+        ["css=.p-button:nth-child(6) > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/button[5]/span", "xpath:idRelative"],
+        ["xpath=//button[5]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Reportes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8798569d-602e-465d-b68c-7a53c060b887",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .p-button",
+      "targets": [
+        ["css=tr:nth-child(1) .p-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div[2]/table/tbody/tr/td[6]/button", "xpath:idRelative"],
+        ["xpath=//td[6]/button", "xpath:position"],
+        ["xpath=//button[contains(.,' VISUALIZAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "3c9b801d-5b1a-42b7-aa54-39fdcd091cff",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["32fa4249-d6a8-4286-b7af-cfffb945fe7d"]
+  }],
+  "urls": ["http://localhost:3000/profissionalDeSaude/perfil"],
+  "plugins": []
+}

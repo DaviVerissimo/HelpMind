@@ -1,0 +1,59 @@
+{
+  "id": "192cddaf-8100-44cb-ae79-3f94a84eb5bc",
+  "version": "2.0",
+  "name": "teste automatico sucesso web listar e exibir reporte individualmente",
+  "url": "http://localhost:3000/profissionalDeSaude/perfil",
+  "tests": [{
+    "id": "1812d806-b3d4-41e1-a803-e86096ad31a9",
+    "name": "reportes",
+    "commands": [{
+      "id": "928be5c8-a9d6-488d-991d-e9079f324461",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/profissionalDeSaude/perfil",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c1f161d-887f-41a5-a6dd-c2d95ca52ff3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b7f54b5b-f8ee-4f06-9df3-99cc933697b2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.p-button:nth-child(6) > .p-button-label",
+      "targets": [
+        ["css=.p-button:nth-child(6) > .p-button-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/button[5]/span", "xpath:idRelative"],
+        ["xpath=//button[5]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Reportes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e399a869-1727-4fc6-8b04-6621b0859b81",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .p-button",
+      "targets": [
+        ["css=tr:nth-child(1) .p-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div[2]/table/tbody/tr/td[6]/button", "xpath:idRelative"],
+        ["xpath=//td[6]/button", "xpath:position"],
+        ["xpath=//button[contains(.,' VISUALIZAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "5f8fb267-a0bf-4123-87d4-f432e65f9082",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["1812d806-b3d4-41e1-a803-e86096ad31a9"]
+  }],
+  "urls": [],
+  "plugins": []
+}
