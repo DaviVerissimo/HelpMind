@@ -49,6 +49,11 @@ export default function PerfilDiscenteDetalhado() {
         history.goBack();
         history.push('/profissionalDeSaude/QuestionarioDepressaoDeBeck/' + id)
     }
+
+    const prontuarios = () => {
+        history.goBack();
+        history.push('/profissionalDeSaude/prontuarios' + id)
+    }
     
     return (
         <div>
@@ -73,9 +78,10 @@ export default function PerfilDiscenteDetalhado() {
                         <div>
                             <Button className={configBotao} label="LISTAR QUESTIONÁRIO SOCIOECONÔMICO (QS)"  onClick={() => { visualizarQuestionariosSocioeconomicos()}} />
                         </div>
+                        <div>
+                            {/* <Button className={configBotao} label="PRONTUÁRIOS"  onClick={() => {prontuarios()}} /> */}
+                        </div>
                     </Card>
-
-                    
 
                 </Card>
             </div>
