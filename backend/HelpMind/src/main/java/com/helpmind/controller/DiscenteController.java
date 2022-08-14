@@ -2,7 +2,6 @@ package com.helpmind.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.helpmind.model.Discente;
-import com.helpmind.model.QuestionarioSocioeconomico;
 import com.helpmind.model.Usuario;
 import com.helpmind.service.DiscenteService;
 

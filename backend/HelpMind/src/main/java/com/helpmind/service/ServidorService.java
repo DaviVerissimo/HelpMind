@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.helpmind.model.Discente;
 import com.helpmind.model.Servidor;
 import com.helpmind.model.Usuario;
 import com.helpmind.repository.ServidorRepository;

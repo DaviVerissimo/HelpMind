@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.helpmind.model.Questao;
-import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
 import com.helpmind.model.QuestionarioDeDepressaoDeBeck;
 import com.helpmind.model.QuestionarioSimples;
 import com.helpmind.repository.QuestionarioDeDepressaoDeBeckRepository;

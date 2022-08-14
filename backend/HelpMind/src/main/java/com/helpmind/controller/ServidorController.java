@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.helpmind.model.Discente;
-import com.helpmind.model.Reporte;
 import com.helpmind.model.Servidor;
 import com.helpmind.model.Usuario;
-import com.helpmind.repository.ServidorRepository;
 import com.helpmind.service.ServidorService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -114,7 +111,5 @@ public class ServidorController {
 		
 		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
 	}
-	
-	
 
 }

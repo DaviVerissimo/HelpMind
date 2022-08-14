@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.helpmind.model.Discente;
-import com.helpmind.model.QuestionarioSimples;
-import com.helpmind.model.QuestionarioSocioeconomico;
 import com.helpmind.model.Usuario;
 import com.helpmind.repository.DiscenteRepository;
 
