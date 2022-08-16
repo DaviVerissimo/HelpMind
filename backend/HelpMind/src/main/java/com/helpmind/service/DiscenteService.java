@@ -230,5 +230,25 @@ public class DiscenteService {
 		
 		return discente;
 	}
+	
+	public List<String> retornaAllNomesDiscentes(){
+		List<Discente> listaDeDiscentes = discenteRepository.findAll();
+		List<String> lista = new ArrayList<String>();
+		for (int i = 0; i < listaDeDiscentes.size(); i++) {
+			lista.add(listaDeDiscentes.get(i).getNome());
+		}
+		
+		return lista;
+	}
+	
+	public List<String> retornaAllEmailDiscentes(){
+		List<Discente> listaDeDiscentes = discenteRepository.findAll();
+		List<String> lista = new ArrayList<String>();
+		for (int i = 0; i < listaDeDiscentes.size(); i++) {
+			lista.add(listaDeDiscentes.get(i).getEmail());
+		}
+		
+		return lista;
+	}
 
 }

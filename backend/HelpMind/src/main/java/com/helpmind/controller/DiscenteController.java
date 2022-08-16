@@ -85,5 +85,17 @@ public class DiscenteController {
 		
 		return aumento;
 	}
+	
+	@GetMapping("/listarAllNomesDiscentes")
+	public List<String> retornaTodosNomesDiscentes() {
+		
+		return discenteService.retornaAllNomesDiscentes();
+	}
+	
+	@GetMapping("/listarAllEmailDiscentes")
+	public List<String> retornaTodosEmailDiscentes() {
+		
+		return discenteService.retornaAllEmailDiscentes();
+	}
 
 }
