@@ -42,6 +42,7 @@ import UpdateContato from "./pages/Admin/UpdateContato";
 import ContatosAdmin from "./pages/Admin/ContatosAdmin";
 import ContatosProfissional from "./pages/ProfissionalDeSaude/ContatosProfissional";
 import ContatosDiscente from "./pages/Discente/ContatosDiscente";
+import ParecerPsicologico from "./pages/ProfissionalDeSaude/ParecerPsicologico";
 
 export default function Routes() {
     return (
@@ -87,6 +88,7 @@ export default function Routes() {
                 <Route path="/Admin/NovoContato" component={NovoContato} />
                 <Route path="/Admin/updateContato/:id" component={UpdateContato} />
                 <Route path="/Admin/Contatos" component={ContatosAdmin} />
+                <Route path="/psicologo/parecer" component={ParecerPsicologico} />
                 <Route path="/Xpto" component={Xpto} />
             </Switch>
         </BrowserRouter>
