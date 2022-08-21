@@ -42,7 +42,20 @@ import UpdateContato from "./pages/Admin/UpdateContato";
 import ContatosAdmin from "./pages/Admin/ContatosAdmin";
 import ContatosProfissional from "./pages/ProfissionalDeSaude/ContatosProfissional";
 import ContatosDiscente from "./pages/Discente/ContatosDiscente";
-import ParecerPsicologico from "./pages/ProfissionalDeSaude/ParecerPsicologico";
+import ParecerPsicologico from "./pages/Psicologo/ParecerPsicologico";
+import ConsultarEstatisticasProfSaude from "./pages/ProfissionalDeSaude/ConsultarEstatisticasProfSaude";
+import ListarEstatisticasProfSaude from "./pages/ProfissionalDeSaude/ListarEstatisticasProfSaude";
+import PerfilPsicologo from "./pages/Psicologo/PerfilPsicologo";
+import ConsultarEstatisticasPsicologo from "./pages/Psicologo/ConsultarEstatisticasPsicologo";
+import ContatosPsicologo from "./pages/Psicologo/ContatosPsicologo";
+import ListarEstatisticasPsicologo from "./pages/Psicologo/ListarEstatisticasProfPsicologo";
+import ListarEstatisticasAdmin from "./pages/Admin/ListarEstatisticasAdmin";
+import PareceresPsicologico from "./pages/Psicologo/PareceresPsicologico";
+import ConsultarEstatisticasAdmin from "./pages/Admin/ConsultarEstatisticasAdmin";
+import ListarPareceresPsicologicorPisicologo from "./pages/Psicologo/ListarPareceresPsicologicorPisicologo";
+import ListarPareceresPsicologicorProfSaude from "./pages/ProfissionalDeSaude/ListarPareceresPsicologicorProfSaude";
+import ListarPareceresPsicologicoraAdmin from "./pages/Admin/ListarPareceresPsicologicoraAdmin";
+import ListaProntuariosAdmin from "./pages/Admin/ListaProntuariosAdmin";
 
 export default function Routes() {
     return (
@@ -78,7 +91,10 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/prontuarios" component={PRONTUARIOS} />
                 <Route path="/profissionalDeSaude/listaProntuarios" component={ListarProntuarios} />
                 <Route path="/profissionalDeSaude/visualizarProntuarios" component={VisualizarProntuario} />
+                <Route path="/profissionalDeSaude/consultarEstatisticas" component={ConsultarEstatisticasProfSaude} />
+                <Route path="/profissionalDeSaude/listarEstatisticas" component={ListarEstatisticasProfSaude} />
                 <Route path="/profissionalDeSaude/Contatos" component={ContatosProfissional} />
+                <Route path="/profissionalDeSaude/listarParescerPsicologico" component={ListarPareceresPsicologicorProfSaude} />
                 <Route path="/Admin/perfil" component={PerfilAdmin} />
                 <Route path="/Admin/configuracao" component={Configuracao} />
                 <Route path="/Admin/material/create" component={Create} />
@@ -88,7 +104,17 @@ export default function Routes() {
                 <Route path="/Admin/NovoContato" component={NovoContato} />
                 <Route path="/Admin/updateContato/:id" component={UpdateContato} />
                 <Route path="/Admin/Contatos" component={ContatosAdmin} />
+                <Route path="/Admin/listarEstatisticas" component={ListarEstatisticasAdmin} />
+                <Route path="/Admin/consultarEstatisticas" component={ConsultarEstatisticasAdmin} />
+                <Route path="/Admin/listarpareceresPsicologico" component={ListarPareceresPsicologicoraAdmin} />
+                <Route path="/Admin/listarProntuarios" component={ListaProntuariosAdmin} />
+                <Route path="/psicologo/perfil" component={PerfilPsicologo} />
                 <Route path="/psicologo/parecer" component={ParecerPsicologico} />
+                <Route path="/psicologo/parecereres" component={PareceresPsicologico} />
+                <Route path="/psicologo/consultarEstatisticas" component={ConsultarEstatisticasPsicologo} />
+                <Route path="/psicologo/Contatos" component={ContatosPsicologo} />
+                <Route path="/psicologo/listarEstatisticas" component={ListarEstatisticasPsicologo} />
+                <Route path="/psicologo/listarParecerPsicologico" component={ListarPareceresPsicologicorPisicologo} />
                 <Route path="/Xpto" component={Xpto} />
             </Switch>
         </BrowserRouter>

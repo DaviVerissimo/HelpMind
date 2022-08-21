@@ -4,6 +4,7 @@ import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarAdmin from '../ToobarAdmin';
 import BarraPessoalAdmin from '../BarraPessoalAdmin';
+import AcessoRapido from '../../../Components/AcessoRapido';
 
 export default function PerfilAdmin() {
 
@@ -37,6 +38,7 @@ export default function PerfilAdmin() {
                             <Button className={configBotao} label="SAIR" onClick={encerrarSessao} />
                         </div>
                     </Card>
+                    <AcessoRapido></AcessoRapido>
                     {/* <Card>
                         <div>
                             <Button className={configBotaoAcessar} label=" ACESSAR CONFIGURAÇÃO" onClick={verificarAumento} />

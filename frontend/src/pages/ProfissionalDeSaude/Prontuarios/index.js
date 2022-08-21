@@ -27,6 +27,16 @@ export default function PRONTUARIOS() {
                     </Card>
 
                 </Card>
+
+                <Card title='PARECER PSICÓLOGICO ' >
+                    <Card className='p-col-16' >
+                        <div>
+                            {/* <Button className={configBotao} style={{ right: espacamento }} label="NOVO PRONTUÁRIO" onClick={() => { history.push('/profissionalDeSaude/parescer') }} /> */}
+                            <Button className={configBotao} label="LISTAR PARECERES PSICÓLOGICOS" onClick={() => { history.push('/profissionalDeSaude/listarParescerPsicologico') }} />
+                        </div>
+                    </Card>
+
+                </Card>
             </div>
         </div>
     );

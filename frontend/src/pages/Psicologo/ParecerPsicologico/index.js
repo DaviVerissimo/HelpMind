@@ -6,7 +6,7 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { Card } from 'primereact/card';
 import axios from "axios";
 import { Button } from 'primereact/button';
-import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
+import ToobarPsicologo from '../ToobarPsicologo';
 import { Toast } from 'primereact/toast';
 import Cursos from '../../../Components/Cursos';
 import Campus from '../../../Components/Campus';
@@ -81,7 +81,7 @@ export default function ParecerPsicologico() {
             setDescrisaoObrigatorio(invalid);
             valido = false;
         }
-        console.log(nome + " " + email + " " + parescer + " " + valido)
+        // console.log(nome + " " + email + " " + parescer + " " + valido)
 
         return valido;
     }
@@ -93,7 +93,7 @@ export default function ParecerPsicologico() {
             const novoParecerPsicologico =
             {
                 "discente": nome,
-                "emai": email,
+                "email": email,
                 // "curso": curso,
                 "parescerPsicologico": parescer,
 
@@ -108,11 +108,14 @@ export default function ParecerPsicologico() {
                 }
             }
 
-            axios.post("http://localhost:8080/parescerPsicologico/salvarParecerPsicologico", novoParecerPsicologico, headers)
+            axios.post("http://localhost:8080/parecerPsicologico/salvarParecerPsicologico", novoParecerPsicologico, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
             showSuccess();
+            localStorage.removeItem("errorNomeComponente");
+            localStorage.removeItem("errorEmailComponente");
         }
+
         else {
             showError();
         }
@@ -120,10 +123,10 @@ export default function ParecerPsicologico() {
     }
 
     return (
-        <div> <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+        <div> <ToobarPsicologo></ToobarPsicologo>
             <Toast ref={toast} />
             <div >
-                <Card title="PARESCER DO PSICOLOGO"></Card>
+                <Card title="PARESCER DO PSICÓLOGO"></Card>
 
                 <Card className="" >
                     <div>
