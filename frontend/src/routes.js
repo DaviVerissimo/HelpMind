@@ -56,6 +56,10 @@ import ListarPareceresPsicologicorPisicologo from "./pages/Psicologo/ListarParec
 import ListarPareceresPsicologicorProfSaude from "./pages/ProfissionalDeSaude/ListarPareceresPsicologicorProfSaude";
 import ListarPareceresPsicologicoraAdmin from "./pages/Admin/ListarPareceresPsicologicoraAdmin";
 import ListaProntuariosAdmin from "./pages/Admin/ListaProntuariosAdmin";
+import MateriaMateriaisOnlineAdminisOnline from "./pages/Admin/MateriaisOnlineAdmin";
+import MateriaisOnlineProfSaude from "./pages/ProfissionalDeSaude/MateriaisOnlineProfSaude";
+import MateriaisOnlinePsicologo from "./pages/Psicologo/MateriaisOnlinePsicologo";
+import MateriaisOnlineDiscente from "./pages/Discente/MateriaisOnlineDiscente";
 
 export default function Routes() {
     return (
@@ -72,6 +76,7 @@ export default function Routes() {
                 <Route path="/Discente/QuestionarioDeBeck/Depressao" component={QuestionarioDeDepressaoDeBeck} />
                 <Route path="/Discente/QuestionarioDeBeck/Ansiedade" component={QuestionarioDeAnsiedadeDeBeck} />
                 <Route path="/Discente/Contatos" component={ContatosDiscente} />
+                <Route path="/Discente/MateriaisOnline" component={MateriaisOnlineDiscente} />
                 <Route path="/publica/QuemSomos" component={QuemSomos} />
                 <Route path="/publica/Login" component={Login} />
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
@@ -95,6 +100,7 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/listarEstatisticas" component={ListarEstatisticasProfSaude} />
                 <Route path="/profissionalDeSaude/Contatos" component={ContatosProfissional} />
                 <Route path="/profissionalDeSaude/listarParescerPsicologico" component={ListarPareceresPsicologicorProfSaude} />
+                <Route path="/profissionalDeSaude/materiaisOnline" component={MateriaisOnlineProfSaude} />
                 <Route path="/Admin/perfil" component={PerfilAdmin} />
                 <Route path="/Admin/configuracao" component={Configuracao} />
                 <Route path="/Admin/material/create" component={Create} />
@@ -108,6 +114,7 @@ export default function Routes() {
                 <Route path="/Admin/consultarEstatisticas" component={ConsultarEstatisticasAdmin} />
                 <Route path="/Admin/listarpareceresPsicologico" component={ListarPareceresPsicologicoraAdmin} />
                 <Route path="/Admin/listarProntuarios" component={ListaProntuariosAdmin} />
+                <Route path="/Admin/materiaisOnline" component={MateriaMateriaisOnlineAdminisOnline} />
                 <Route path="/psicologo/perfil" component={PerfilPsicologo} />
                 <Route path="/psicologo/parecer" component={ParecerPsicologico} />
                 <Route path="/psicologo/parecereres" component={PareceresPsicologico} />
@@ -115,6 +122,7 @@ export default function Routes() {
                 <Route path="/psicologo/Contatos" component={ContatosPsicologo} />
                 <Route path="/psicologo/listarEstatisticas" component={ListarEstatisticasPsicologo} />
                 <Route path="/psicologo/listarParecerPsicologico" component={ListarPareceresPsicologicorPisicologo} />
+                <Route path="/psicologo/materiaisOnline" component={MateriaisOnlinePsicologo} />
                 <Route path="/Xpto" component={Xpto} />
             </Switch>
         </BrowserRouter>

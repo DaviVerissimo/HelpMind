@@ -1,14 +1,14 @@
 import './styles.css'
 import React from 'react';
-import ToobarPublica from "../../Publica/ToobarPublica";
+import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
 import Materiais from '../../../Components/Materiais';
 
-export default function MateriaisOnline() {
+export default function MateriaisOnlineProfSaude() {
 
     return (
 
         <div> 
-            <ToobarPublica></ToobarPublica>
+            <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <Materiais></Materiais>
         </div>
 
