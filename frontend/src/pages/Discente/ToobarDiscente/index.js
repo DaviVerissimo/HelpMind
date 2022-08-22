@@ -34,7 +34,7 @@ export default function ToobarDiscente() {
                     <img src={logoImg} alt="logo" style={{ height: '3.75em', width: 'auto' }} />
 
                 </div>
-                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/') }} />
+                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/Discente/home') }} />
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' onClick={() => { history.push('/Discente/MateriaisOnline') }} />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
                 <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
@@ -49,7 +49,7 @@ export default function ToobarDiscente() {
     const leftContentsMobile = (
         <React.Fragment>
             <div>
-                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3" label='Home' onClick={() => { history.push('/') }} />
+                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3" label='Home' onClick={() => { history.push('/Discente/home') }} />
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg p-mr-3  p-mt-3 " label='Materiais online' onClick={() => { history.push('/Discente/MateriaisOnline') }} />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
                 <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
