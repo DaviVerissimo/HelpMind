@@ -37,7 +37,7 @@ export default function ToobarDiscente() {
                 <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/Discente/home') }} />
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' onClick={() => { history.push('/Discente/MateriaisOnline') }} />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
-                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
+                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' onClick={() => { history.push('/Discente/quemSomos') }} />
                 <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Contatos' onClick={() => { history.push('/Discente/Contatos') }}/>
                 <Button icon={createIcon("pi pi-file-o")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Inventario' onClick={() => { history.push('/discente/EscolherQuestionariosDiscente') }} />
                 <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' onClick={() => { history.push('/discente/Reportes') }} />
@@ -52,7 +52,7 @@ export default function ToobarDiscente() {
                 <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3" label='Home' onClick={() => { history.push('/Discente/home') }} />
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg p-mr-3  p-mt-3 " label='Materiais online' onClick={() => { history.push('/Discente/MateriaisOnline') }} />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
-                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
+                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3" label='Quem Somos' onClick={() => { history.push('/Discente/quemSomos') }} />
                 <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3  p-mt-3 p-col" label='Contatos' onClick={() => { history.push('/Discente/Contatos') }}/>
                 <Button icon={createIcon("pi pi-file-o")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3" label='Inventario' onClick={() => { history.push('/discente/EscolherQuestionariosDiscente') }} />
                 <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 " label='Reportes' onClick={() => { history.push('/discente/Reportes') }} />

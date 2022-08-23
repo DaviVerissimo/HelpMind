@@ -1,13 +1,13 @@
 import React from 'react';
-import ToobarPublica from '../ToobarPublica/index';
+import ToobarAdmin from '../ToobarAdmin';
 import QuemSomosComponente from '../../../Components/QuemSomosComponente';
 
-export default function QuemSomos() {
+export default function AdminQuemSomos() {
 
     return (
 
         <div>
-            <ToobarPublica></ToobarPublica>
+            <ToobarAdmin></ToobarAdmin>
             <QuemSomosComponente></QuemSomosComponente>
         </div>
     );

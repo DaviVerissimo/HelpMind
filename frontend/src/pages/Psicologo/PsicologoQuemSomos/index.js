@@ -1,13 +1,13 @@
 import React from 'react';
-import ToobarPublica from '../ToobarPublica/index';
+import ToobarPsicologo from '../ToobarPsicologo';
 import QuemSomosComponente from '../../../Components/QuemSomosComponente';
 
-export default function QuemSomos() {
+export default function PsicologoQuemSomos() {
 
     return (
 
         <div>
-            <ToobarPublica></ToobarPublica>
+            <ToobarPsicologo></ToobarPsicologo>
             <QuemSomosComponente></QuemSomosComponente>
         </div>
     );

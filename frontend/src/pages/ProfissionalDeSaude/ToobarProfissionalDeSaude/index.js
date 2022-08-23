@@ -36,7 +36,6 @@ export default function ToobarProfissionalDeSaude() {
                 </div>
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' onClick={() => { history.push('/profissionalDeSaude/materiaisOnline') }} />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
-                {/* <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} /> */}
                 <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Contatos' onClick={() => { history.push('/profissionalDeSaude/Contatos') }} />
                 <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' onClick={() => { history.push('/profissionalDeSaude/ListaDiscentes') }} />
                 <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Prontuarios' onClick={() => { history.push('/profissionalDeSaude/prontuarios') }} />
@@ -54,7 +53,7 @@ export default function ToobarProfissionalDeSaude() {
                 <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Home' onClick={() => { history.push('/profissionalDeSaude/home') }} />
                 <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col" label='Materiais online' onClick={() => { history.push('/profissionalDeSaude/materiaisOnline') }} />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
-                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col" label='Quem Somos' onClick={() => { history.push('/publica/QuemSomos') }} />
+                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col" label='Quem Somos' onClick={() => { history.push('/profissionalDeSaude/quemSomos') }} />
                 <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3  p-mt-3 p-col" label='Contatos' onClick={() => { history.push('/profissionalDeSaude/Contatos') }} />
                 <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Discentes' onClick={() => { history.push('/profissionalDeSaude/ListaDiscentes') }} />
                 <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Prontuarios' onClick={() => { history.push('/profissionalDeSaude/prontuarios') }} />
