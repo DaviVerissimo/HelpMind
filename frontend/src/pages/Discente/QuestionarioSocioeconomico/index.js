@@ -12,6 +12,7 @@ import { Checkbox } from 'primereact/checkbox';
 import { Toast } from 'primereact/toast';
 
 export default function QuestionarioSocioeconomico() {
+    const history = useHistory();
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -719,6 +720,11 @@ export default function QuestionarioSocioeconomico() {
 
     }
 
+    const voltar = () => {
+        history.goBack();
+        history.push('/discente/EscolherQuestionariosDiscente')
+    }
+
     return (
         <div>
             <ToobarDiscente></ToobarDiscente>
@@ -726,7 +732,7 @@ export default function QuestionarioSocioeconomico() {
                 <Toast ref={toast} />
                 <Card className="" >
                     <div className="   align-items-end "  >
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
+                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR"  onClick={voltar} />
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>

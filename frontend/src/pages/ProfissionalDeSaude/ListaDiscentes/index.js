@@ -74,9 +74,7 @@ export default function ListaDiscentes() {
 
     const visualizarPerfil = (discente) => {
         setDiscente(discente);
-        console.log(discente.id);
         history.goBack();
-        // window.open('http://localhost:8080/file/files/' + discente.nome);
         history.push('/profissionalDeSaude/PerfilDiscenteDetalhado/' + discente.id)
     }
 

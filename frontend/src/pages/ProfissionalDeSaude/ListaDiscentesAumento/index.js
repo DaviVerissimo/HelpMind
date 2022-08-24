@@ -55,7 +55,6 @@ export default function ListaDiscentesComAumento() {
 
     const visualizarPerfil = (discente) => {
         setDiscente(discente);
-        console.log(discente.id);
         history.goBack();
         history.push('/profissionalDeSaude/PerfilDiscenteDetalhado/' + discente.id)
     }

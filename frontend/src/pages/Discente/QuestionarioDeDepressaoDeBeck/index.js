@@ -1,6 +1,5 @@
 import { Card } from 'primereact/card';
-import React, { useRef } from 'react';
-import { useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from 'primereact/button';
 import { Checkbox } from 'primereact/checkbox';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
@@ -146,6 +145,11 @@ export default function QuestionarioDeDepresaoDeBeck() {
 
     }
 
+    const voltar = () => {
+        history.goBack();
+        history.push('/discente/EscolherQuestionariosDiscente')
+    }
+
     return (
         <div> <ToobarDiscente></ToobarDiscente>
             <div>
@@ -155,7 +159,7 @@ export default function QuestionarioDeDepresaoDeBeck() {
                 </Card>
                 <Card className="" >
                     <div className=" align-items-end "  >
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
+                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR"  onClick={voltar}/>
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>

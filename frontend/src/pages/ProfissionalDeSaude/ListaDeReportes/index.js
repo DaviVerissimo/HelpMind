@@ -59,6 +59,9 @@ export default function ListaDeReportes() {
     const visualizarReporte = (reporte) => {
         setReporte(reporte);
         history.goBack();
+        // transformar em componete , passar props como parametro no construtor e setar a rota a partir dele. 
+        // criar arquivo com constantes para admin servidor etc para ser usado como props., 
+        // criar paginas para prof de saude e Admin aproveitando o componente.
         history.push('/profissionalDeSaude/visualizarReporte/' + reporte.id)
     }
 

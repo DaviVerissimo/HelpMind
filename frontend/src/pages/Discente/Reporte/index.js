@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './styles.css'
-import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
@@ -11,7 +11,7 @@ import ToobarDiscente from "../ToobarDiscente";
 import { Toast } from 'primereact/toast';
 
 export default function Reporte() {
-
+    const history = useHistory();
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -212,6 +212,11 @@ export default function Reporte() {
 
     }
 
+    const voltar = () => {
+        history.goBack();
+        history.push('/discente/Reportes')
+    }
+
     return (
         <div> <ToobarDiscente></ToobarDiscente>
             <Toast ref={toast} />
@@ -220,7 +225,7 @@ export default function Reporte() {
 
                 <Card className="" >
                     <div>
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
+                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR"  onClick={voltar} />
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>

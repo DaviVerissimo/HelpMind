@@ -148,6 +148,11 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
 
     }
 
+    const voltar = () => {
+        history.goBack();
+        history.push('/discente/EscolherQuestionariosDiscente')
+    }
+
     return (
         <div> <ToobarDiscente></ToobarDiscente>
             <div>
@@ -157,7 +162,7 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
                 </Card>
                 <Card className="" >
                     <div className=" align-items-end "  >
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
+                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR"  onClick={voltar} />
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>
