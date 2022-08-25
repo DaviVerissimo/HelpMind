@@ -1,16 +1,14 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import ReporteService from '../../../services/ReporteService';
-import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
+import ReporteService from '../../services/ReporteService';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
-export default function ListaDeReportes() {
+export default function ListaDeReportesComponente(props) {
 
     var btnVisualizarTexto = 'VISUALIZAR'
     var configBtnVisualizar = "pi pi-bell";
@@ -34,7 +32,6 @@ export default function ListaDeReportes() {
     const allReportes = () => {
         ReporteService.getReporte().then((response) => {
             setReportes(response.data)
-            console.log(response.data);
         });
     };
     {
@@ -43,7 +40,6 @@ export default function ListaDeReportes() {
         })
 
     }
-
 
     useEffect(() => {
         allReportes()
@@ -59,10 +55,8 @@ export default function ListaDeReportes() {
     const visualizarReporte = (reporte) => {
         setReporte(reporte);
         history.goBack();
-        // transformar em componete , passar props como parametro no construtor e setar a rota a partir dele. 
-        // criar arquivo com constantes para admin servidor etc para ser usado como props., 
-        // criar paginas para prof de saude e Admin aproveitando o componente.
-        history.push('/profissionalDeSaude/visualizarReporte/' + reporte.id)
+        const usuario = props.data;
+        history.push('/' + usuario + '/visualizarReporte/' + reporte.id)
     }
 
     const actionBodyTemplate = (rowData) => {
@@ -75,7 +69,7 @@ export default function ListaDeReportes() {
 
     const header = (
         <div className="table-header">
-            <h5 className="mx-0 my-1">Pesquise por discentes</h5>
+            <h5 className="mx-0 my-1">Pesquise por reportes</h5>
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
@@ -83,9 +77,8 @@ export default function ListaDeReportes() {
         </div>
     );
 
-
     return (
-        <div  > <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+        <div>
             <div>
                 <Card title="REPORTES" ></Card>
                 <Card>
@@ -96,13 +89,10 @@ export default function ListaDeReportes() {
                                 <div className="card">
                                     <DataTable ref={dt} value={reportes} selection={selectedReportes} onSelectionChange={(e) => setSelectedReportes(e.value)}
                                         dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
-                                        {/* <Column field="nome" header="Discente" sortable style={{ minWidth: '12rem' }}></Column> */}
                                         <Column field="data" header="Data" sortable ></Column>
                                         <Column field="discente" header="Discente" sortable ></Column>
                                         <Column field="curso" header="Curso" sortable ></Column>
-                                        {/* <Column field="campus" header="Campus" sortable ></Column> */}
                                         <Column field="periodo" header="Periodo" sortable ></Column>
-                                        {/* <Column field="tentativaDeSuicidio" header="Ten de Suicidio" sortable ></Column> */}
                                         <Column field="descrisao" header="Descrisão" sortable ></Column>
 
                                         <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>

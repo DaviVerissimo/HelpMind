@@ -34,13 +34,13 @@ export default function ToobarPsicologo() {
                     <img src={logoImg} alt="logo" style={{ height: '3.75em', width: 'auto' }} />
 
                 </div>
-                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/psicologo/home') }} />
-                <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' onClick={() => { history.push('/psicologo/materiaisOnline') }} />
+                {/* <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Home' onClick={() => { history.push('/psicologo/home') }} /> */}
+                <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais' onClick={() => { history.push('/psicologo/materiaisOnline') }} />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
                 <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Contatos' onClick={() => { history.push('/psicologo/Contatos') }} />
-                {/* <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' onClick={() => { history.push('/profissionalDeSaude/ListaDiscentes') }} /> */}
+                <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' onClick={() => { history.push('') }} />
                 <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Parescer psicológico' onClick={() => { history.push('/psicologo/parecereres') }} />
-                {/* <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' onClick={() => { history.push('/profissionalDeSaude/ListaDeReportes') }} /> */}
+                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' onClick={() => { history.push('/psicologo/listaReportes') }} />
                 <Button icon={createIcon("pi pi-chart-line")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Estatísticas' onClick={() => { history.push('/psicologo/consultarEstatisticas') }}/>
                 <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Psicólogo' onClick={() => { history.push('/psicologo/perfil') }} />
             </div>
@@ -56,9 +56,9 @@ export default function ToobarPsicologo() {
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
                 <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col" label='Quem Somos' onClick={() => { history.push('/psicologo/quemSomos') }} />
                 <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3  p-mt-3 p-col" label='Contatos' onClick={() => { history.push('/psicologo/Contatos') }} />
-                {/* <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Discentes' onClick={() => { history.push('/profissionalDeSaude/ListaDiscentes') }} /> */}
+                <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Discentes' onClick={() => { history.push('') }} />
                 <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Parescer psicológico' onClick={() => { history.push('/psicologo/parecereres') }} />
-                {/* <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Reportes' onClick={() => { history.push('/profissionalDeSaude/ListaDeReportes') }} /> */}
+                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Reportes' onClick={() => { history.push('/psicologo/listaReportes') }} />
                 <Button icon={createIcon("pi pi-chart-line")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Estatísticas' onClick={() => { history.push('/psicologo/consultarEstatisticas') }}/>
                 <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Psicólogo' onClick={() => { history.push('/psicologo/perfil') }} />
                 <FotoPerfil></FotoPerfil>

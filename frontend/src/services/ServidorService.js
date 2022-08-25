@@ -6,7 +6,6 @@ const API_BASE_URL_REMOVER_ACESSO_PROF_SAUDE = 'http://localhost:8080/servidor/r
 const API_BASE_URL_CONCEDER_ACESSO_PSICOLOGO = 'http://localhost:8080/servidor/updateServidorForPsicologo';
 const API_BASE_URL_REMOVER_ACESSO_PSICOLOGO = 'http://localhost:8080/servidor/removerAcessoComoPsicologo';
 
-
 const headers = {
     'headers': {
         'Accept': 'application/json',

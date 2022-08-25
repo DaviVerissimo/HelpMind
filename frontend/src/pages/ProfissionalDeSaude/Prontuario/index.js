@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect  } from 'react';
 import './styles.css'
-import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
@@ -11,7 +11,7 @@ import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
 import { Toast } from 'primereact/toast';
 
 export default function Prontuario() {
-
+    const history = useHistory();
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -204,6 +204,10 @@ export default function Prontuario() {
         }
 
     }
+    const voltar = () => {
+        history.goBack();
+        history.push('/profissionalDeSaude/prontuarios')
+    }
 
     return (
         <div> <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
@@ -213,7 +217,7 @@ export default function Prontuario() {
 
                 <Card className="" >
                     <div>
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
+                        <Button className={configBotaoCancel} style={{ right: espacamento }}  label="VOLTAR"  onClick={voltar} />
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>

@@ -1,15 +1,12 @@
-import React from "react";
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Card } from 'primereact/card';
 import axios from "axios";
-// import ToobarDiscente from "../ToobarDiscente";
-import ToobarProfissionalDeSaude from "../ToobarProfissionalDeSaude";
 import { useHistory, useParams, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import ReporteService from "../../../services/ReporteService";
+import ReporteService from '../../services/ReporteService';
 
-export default function VisualizarReporte() {
+export default function VisualizarReporteComponente() {
 
     const { id } = useParams();
     const location = useLocation();
@@ -29,7 +26,6 @@ export default function VisualizarReporte() {
     const [periodo, setPeriodos] = useState();
     const [suicidio, setSuicidio] = useState();
     const [NomeReportante, setNomeReportante] = useState();
-
 
     useEffect(async () => {
         if (reporte == null) {
@@ -58,9 +54,8 @@ export default function VisualizarReporte() {
 
     }, [reporte]);
 
-
     return (
-        <div> <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+        <div>
             <div >
                 <Card title="REPORTE CASO DE VULNERABILIDADE MENTAL"></Card>
 
