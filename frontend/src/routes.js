@@ -19,7 +19,7 @@ import PerfilProfissionalDeSaude from "./pages/ProfissionalDeSaude/PerfilProfiss
 import ListaQuestionarioSocioeconomico from "./pages/ProfissionalDeSaude/ListaQuestionarioSocioeconomico";
 import ListaQuestionarioAnsiedadeDeBeck from "./pages/ProfissionalDeSaude/ListaQuestionariosAnsiedadeDeBeck";
 import ListaQuestionariosDepressaoDeBeck from "./pages/ProfissionalDeSaude/ListaQuestionariosDepressaoDeBeck";
-import PerfilDiscenteDetalhado from "./pages/ProfissionalDeSaude/PerfilDiscenteDetalhado";
+import PerfilDiscenteDetalhadoProfSaude from "./pages/ProfissionalDeSaude/PerfilDiscenteDetalhadoProfSaude";
 import ListaDiscentesProfSaude from "./pages/ProfissionalDeSaude/ListaDiscentesProfSaude";
 import Xpto from "./pages/Publica/Xpto";
 import VisualizarQuestionarioSocioeconomico from "./pages/ProfissionalDeSaude/VisualizarQuestionarioSocioeconomico";
@@ -76,6 +76,8 @@ import ListaDiscentesPsicologo from "./pages/Psicologo/ListaDiscentesPsicologo";
 import ListaDiscentesAdmin from "./pages/Admin/ListaDiscentesAdmin";
 import ListaDiscentesComAumentoPsicologo from "./pages/Psicologo/ListaDiscentesComAumentoPsicologo";
 import ListaDiscentesComAumentoAdmin from "./pages/Admin/ListaDiscentesComAumentoAdmin";
+import PerfilDiscenteDetalhadoPsicologo from "./pages/Psicologo/PerfilDiscenteDetalhadoPsicologo";
+import PerfilDiscenteDetalhadoAdmin from "./pages/Admin/PerfilDiscenteDetalhadoAdmin";
 
 export default function Routes() {
     return (
@@ -106,7 +108,7 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeck} />
                 <Route path="/profissionalDeSaude/QuestionarioAnsiedadeDeBeck/:id" component={ListaQuestionarioAnsiedadeDeBeck} />
                 <Route path="/profissionalDeSaude/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeck} />
-                <Route path="/profissionalDeSaude/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhado} />
+                <Route path="/profissionalDeSaude/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoProfSaude} />
                 <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentesProfSaude} />
                 <Route path="/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoProfSaude} />
                 <Route path="/profissionalDeSaude/visualizarReporte/:id" component={VisualizarReporteProfSaude} />
@@ -141,6 +143,7 @@ export default function Routes() {
                 <Route path="/Admin/visualizarReporte/:id" component={VisualizarReporteAdmin} />
                 <Route path="/Admin/ListaDiscentes" component={ListaDiscentesAdmin} />
                 <Route path="/Admin/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoAdmin} />
+                <Route path="/Admin/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoAdmin} />
                 <Route path="/psicologo/perfil" component={PerfilPsicologo} />
                 <Route path="/psicologo/parecer" component={ParecerPsicologico} />
                 <Route path="/psicologo/parecereres" component={PareceresPsicologico} />
@@ -155,6 +158,7 @@ export default function Routes() {
                 <Route path="/psicologo/visualizarReporte/:id" component={VisualizarReportePsicologo} />
                 <Route path="/psicologo/ListaDiscentes" component={ListaDiscentesPsicologo} />
                 <Route path="/psicologo/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoPsicologo} />
+                <Route path="/psicologo/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoPsicologo} />
                 {/* <Route path="/Xpto" component={Xpto} /> */}
             </Switch>
         </BrowserRouter>

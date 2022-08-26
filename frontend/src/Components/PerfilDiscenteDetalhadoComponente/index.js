@@ -1,24 +1,22 @@
 import { Card } from 'primereact/card';
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { useHistory, useParams, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
-import axios from 'axios';
-import DiscenteService from '../../../services/DiscenteService';
+import DiscenteService from '../../services/DiscenteService';
+import BotaoVoltar from '../BotaoVoltar';
 
-export default function PerfilDiscenteDetalhado() {
-    
-    const {id} = useParams();
-    
+export default function PerfilDiscenteDetalhadoComponente(props) {
+
+    const { id } = useParams();
+
     const location = useLocation();
     var configBotao = "p-mb-3 p-col-3";
-    var largura = window. screen. width;
-    if (largura < 640){
+    var largura = window.screen.width;
+    if (largura < 640) {
         configBotao = "p-mt-3 ";
     }
     const history = useHistory();
-    
+
     const [discente, setDiscente] = useState([])
     const [questionariosSocioeconomicos, setQuestionarioSocioeconomicos] = useState(discente.listaQuestionarioSocioeconomico);
     const requisitarDiscente = () => {
@@ -32,34 +30,39 @@ export default function PerfilDiscenteDetalhado() {
     }, [])
 
     useEffect(() => {
-        
+
     }, [])
 
     const visualizarQuestionariosSocioeconomicos = () => {
         history.goBack();
-        history.push('/profissionalDeSaude/QuestionarioSocioeconomico/' + id)
+        const usuario = props.data;
+        history.push('/' + usuario + '/QuestionarioSocioeconomico/' + id)
     }
 
     const visualizarQuestionariosAnsiedade = () => {
         history.goBack();
-        history.push('/profissionalDeSaude/QuestionarioAnsiedadeDeBeck/' + id)
+        const usuario = props.data;
+        history.push('/' + usuario + '/QuestionarioAnsiedadeDeBeck/' + id)
     }
 
     const visualizarQuestionariosDepressao = () => {
         history.goBack();
-        history.push('/profissionalDeSaude/QuestionarioDepressaoDeBeck/' + id)
+        const usuario = props.data;
+        history.push('/' + usuario + '/QuestionarioDepressaoDeBeck/' + id)
     }
 
-    const prontuarios = () => {
-        history.goBack();
-        history.push('/profissionalDeSaude/prontuarios' + id)
-    }
-    
+    // const prontuarios = () => {
+    //     history.goBack();
+    //     history.push('/profissionalDeSaude/prontuarios' + id)
+    // }
+
     return (
         <div>
-            <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <div>
                 <Card title='PERFIL DO DISCENTE ' >
+                    <Card>
+                        <BotaoVoltar></BotaoVoltar>
+                    </Card>
                     <Card subTitle='NOME: ' > <label>{discente.nome}</label> </Card>
                     <Card subTitle='EMAIL: ' > <label>{discente.email}</label> </Card>
                     <Card subTitle='MATRICULA: ' > <label>{discente.matricula}</label> </Card>
@@ -70,13 +73,13 @@ export default function PerfilDiscenteDetalhado() {
 
                     <Card className='p-col-16' >
                         <div>
-                            <Button className={configBotao} label="LISTAR INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)"  onClick={() => { visualizarQuestionariosDepressao()}} />
+                            <Button className={configBotao} label="LISTAR INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)" onClick={() => { visualizarQuestionariosDepressao() }} />
                         </div>
                         <div>
-                            <Button className={configBotao} label="LISTAR INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" onClick={() => { visualizarQuestionariosAnsiedade()}} />
+                            <Button className={configBotao} label="LISTAR INVENTÁRIO DE ANSIEDADE DE BECK (BAI)" onClick={() => { visualizarQuestionariosAnsiedade() }} />
                         </div>
                         <div>
-                            <Button className={configBotao} label="LISTAR QUESTIONÁRIO SOCIOECONÔMICO (QS)"  onClick={() => { visualizarQuestionariosSocioeconomicos()}} />
+                            <Button className={configBotao} label="LISTAR QUESTIONÁRIO SOCIOECONÔMICO (QS)" onClick={() => { visualizarQuestionariosSocioeconomicos() }} />
                         </div>
                         <div>
                             {/* <Button className={configBotao} label="PRONTUÁRIOS"  onClick={() => {prontuarios()}} /> */}
