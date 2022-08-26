@@ -7,6 +7,7 @@ import { InputText } from 'primereact/inputtext';
 import { Card } from 'primereact/card';
 import DiscenteService from '../../services/DiscenteService';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import BotaoVoltar from '../BotaoVoltar';
 
 export default function ListaDiscentesAumentoComponente(props) {
 
@@ -82,6 +83,9 @@ export default function ListaDiscentesAumentoComponente(props) {
             <div>
                 <Card title="DISCENTES COM AUMENTO NA VULNERABILIDADE EMOCIONAL" ></Card>
                 <Card>
+                    <Card>
+                        <BotaoVoltar></BotaoVoltar>
+                    </Card>
                     <div>
                         <Card>
                             <div className="datatable-crud-demo">

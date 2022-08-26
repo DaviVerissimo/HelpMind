@@ -6,9 +6,11 @@ import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { FileUpload } from 'primereact/fileupload';
 import { Button } from 'primereact/button';
+import { Toolbar } from 'primereact/toolbar';
 import axios from 'axios';
 import ToobarAdmin from '../../ToobarAdmin';
 import { Toast } from 'primereact/toast';
+import BotaoVoltar from '../../../../Components/BotaoVoltar';
 
 export default function Create() {
 
@@ -94,14 +96,16 @@ export default function Create() {
 
   }
 
-  var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
-  var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
-  var espacamento = '10px';
-  var largura = window.screen.width;
-  if (largura < 640) {
-    configBotaoCancel = "p-mb-3 p-button-secondary "
-    configBotaoSalvar = "p-mt-3 ";
-    espacamento = '0px';
+  var configBotaoSalvar = "p-mb-3";
+  // var configBotaoSalvar = "mr-2  p-ml-3 ";
+  const leftToolbarTemplate = () => {
+    return (
+      // alinhar botoes namesma linha com toobar
+      <React.Fragment>
+        <BotaoVoltar></BotaoVoltar>
+        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
+      </React.Fragment>
+    )
   }
 
   return (
@@ -111,10 +115,9 @@ export default function Create() {
       <div>
         <Card title='NOVO MATERIAL' >
           <Card>
-            <div className=""  >
-              <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
-              <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
-            </div>
+            {/* <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar> */}
+            <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
+            <BotaoVoltar></BotaoVoltar>
           </Card>
           <Card subTitle='NOME' >
             <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />

@@ -7,8 +7,10 @@ import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Card } from 'primereact/card';
+import { Toolbar } from 'primereact/toolbar';
 import ServidorService from '../../../services/ServidorService';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import BotaoVoltar from '../../../Components/BotaoVoltar';
 
 export default function GerenciaServidor() {
 
@@ -61,13 +63,13 @@ export default function GerenciaServidor() {
 
     const definirAcessoProfSaude = (servidor) => {
         setServidor(servidor);
-        
-        if (servidor.permissaoDeAcessoProfissionalDeSaude == true){
+
+        if (servidor.permissaoDeAcessoProfissionalDeSaude == true) {
             ServidorService.getRemoverAcessoProfSaude(servidor.id)
             showError();
             allServidores();
         }
-        if (servidor.permissaoDeAcessoProfissionalDeSaude == false){
+        if (servidor.permissaoDeAcessoProfissionalDeSaude == false) {
             ServidorService.getConcederAcessoProfSaude(servidor.id)
             showSuccess();
             allServidores();
@@ -78,12 +80,12 @@ export default function GerenciaServidor() {
     const definirAcessoPsicologo = (servidor) => {
         setServidor(servidor);
 
-        if (servidor.permissaoDeAcessoPsicologo == true){
+        if (servidor.permissaoDeAcessoPsicologo == true) {
             ServidorService.getRemoverAcessoPsicologo(servidor.id)
             showError();
             allServidores();
         }
-        if (servidor.permissaoDeAcessoPsicologo == false){
+        if (servidor.permissaoDeAcessoPsicologo == false) {
             ServidorService.getConcederAcessoPsicologo(servidor.id)
             showSuccess();
             allServidores();
@@ -92,14 +94,14 @@ export default function GerenciaServidor() {
     }
 
     const actionBodyTemplate1 = (rowData) => {
-        var  estado;
+        var estado;
         var texto;
-        if (rowData.permissaoDeAcessoProfissionalDeSaude == true){
+        if (rowData.permissaoDeAcessoProfissionalDeSaude == true) {
             estado = estadoNegativo;
             texto = btnTextoRemoverpermissaoProfSaude;
-            
+
         }
-        if (rowData.permissaoDeAcessoProfissionalDeSaude == false){
+        if (rowData.permissaoDeAcessoProfissionalDeSaude == false) {
             estado = estadoPositivo;
             texto = btnTextoAddpermissaoProfSaude;
         }
@@ -112,14 +114,14 @@ export default function GerenciaServidor() {
     }
 
     const actionBodyTemplate2 = (rowData) => {
-        var  estado;
+        var estado;
         var texto;
 
-        if (rowData.permissaoDeAcessoPsicologo == true){
+        if (rowData.permissaoDeAcessoPsicologo == true) {
             estado = estadoNegativo;
             texto = btnTextoRemoverpermissaoPsicologo;
         }
-        if (rowData.permissaoDeAcessoPsicologo == false){
+        if (rowData.permissaoDeAcessoPsicologo == false) {
             estado = estadoPositivo;
             texto = btnTextoAddpermissaoPsicologo;
         }
@@ -149,8 +151,17 @@ export default function GerenciaServidor() {
         });
     }
 
+    const leftToolbarTemplate = () => {
+        return (
+            <React.Fragment>
+                <BotaoVoltar></BotaoVoltar>
+            </React.Fragment>
+        )
+    }
+
     const header = (
         <div className="table-header">
+
             <h5 className="mx-0 my-1">Pesquise por servidores</h5>
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
@@ -169,6 +180,7 @@ export default function GerenciaServidor() {
                             <div className="datatable-crud-demo">
                                 <Toast ref={toast} />
                                 <div className="card">
+                                    <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
                                     <DataTable ref={dt} value={servidores} selection={selectedServidores} onSelectionChange={(e) => setSelectedServidores(e.value)}
                                         dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
                                         <Column field="nome" header="Servidor" sortable style={{ minWidth: '12rem' }}></Column>

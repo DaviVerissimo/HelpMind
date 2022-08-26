@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Card } from 'primereact/card';
-import axios from "axios";
 import { useHistory, useParams, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import ReporteService from '../../services/ReporteService';
+import BotaoVoltar from '../BotaoVoltar';
 
 export default function VisualizarReporteComponente() {
 
@@ -47,7 +47,7 @@ export default function VisualizarReporteComponente() {
 
             ReporteService.getReportanteById(reporte.idReportante).then((response) => {
                 setNomeReportante(response.data)
-    
+
             });
 
         }
@@ -58,12 +58,13 @@ export default function VisualizarReporteComponente() {
         <div>
             <div >
                 <Card title="REPORTE CASO DE VULNERABILIDADE MENTAL"></Card>
-
-                <Card subTitle='REPORTADOR POR' >
-                    <InputText value={NomeReportante} disabled onChange={(e) => setNome(e.target.value)} />
-                </Card>
-
                 <Card >
+                    <Card>
+                        <BotaoVoltar></BotaoVoltar>
+                    </Card>
+                    <Card subTitle='REPORTADOR POR' >
+                        <InputText value={NomeReportante} disabled onChange={(e) => setNomeReportante(e.target.value)} />
+                    </Card>
                     <Card subTitle='DISCENTE' >
                         <InputText value={nome} disabled onChange={(e) => setNome(e.target.value)} />
                     </Card>

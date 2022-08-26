@@ -19,6 +19,7 @@ import { Card } from 'primereact/card';
 import ToobarAdmin from '../../ToobarAdmin';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
+import BotaoVoltar from '../../../../Components/BotaoVoltar';
 
 export default function GerenciaMaterial() {
 
@@ -168,7 +169,7 @@ export default function GerenciaMaterial() {
         axios.post("http://localhost:8080/material/removerMaterial/", material.id, headers)
             .then(Response => { })
             .catch(error => console.log(error))
-            allMaterial();
+        allMaterial();
 
         toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'O matérial ' + material.nome + ' foi deletado! RECARREGUE PARA VER MUDANÇAS.', life: 5000 });
         setDeleteProductDialog(false);
@@ -266,7 +267,8 @@ export default function GerenciaMaterial() {
     const leftToolbarTemplate = () => {
         return (
             <React.Fragment>
-                <Button label="Novo Matérial" icon="pi pi-plus" className="mr-2" onClick={() => { history.push('/Admin/material/create') }} />
+                <BotaoVoltar></BotaoVoltar>
+                <Button label="Novo Matérial" icon="pi pi-plus" className="mr-2  p-ml-3" onClick={() => { history.push('/Admin/material/create') }} />
             </React.Fragment>
         )
     }

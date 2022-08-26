@@ -10,7 +10,8 @@ import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Card } from 'primereact/card';
 import ToobarAdmin from '../ToobarAdmin';
-import { useHistory, useParams, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import BotaoVoltar from '../../../Components/BotaoVoltar';
 
 export default function GerenciaContatos() {
 
@@ -79,7 +80,8 @@ export default function GerenciaContatos() {
     const leftToolbarTemplate = () => {
         return (
             <React.Fragment>
-                <Button label="Novo Contato" icon="pi pi-plus" className="mr-2" onClick={() => { history.push('/Admin/NovoContato') }} />
+                <BotaoVoltar></BotaoVoltar>
+                <Button label="Novo Contato" icon="pi pi-plus" className="mr-2 p-ml-3" onClick={() => { history.push('/Admin/NovoContato') }} />
             </React.Fragment>
         )
     }
@@ -129,6 +131,7 @@ export default function GerenciaContatos() {
                             <Toast ref={toast} />
 
                             <div className="card">
+
                                 <Toolbar className="mb-4" left={leftToolbarTemplate}
                                 ></Toolbar>
                                 <DataTable ref={dt} value={contatos} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)} dataKey="id"
