@@ -20,7 +20,7 @@ import ListaQuestionarioSocioeconomico from "./pages/ProfissionalDeSaude/ListaQu
 import ListaQuestionarioAnsiedadeDeBeck from "./pages/ProfissionalDeSaude/ListaQuestionariosAnsiedadeDeBeck";
 import ListaQuestionariosDepressaoDeBeck from "./pages/ProfissionalDeSaude/ListaQuestionariosDepressaoDeBeck";
 import PerfilDiscenteDetalhado from "./pages/ProfissionalDeSaude/PerfilDiscenteDetalhado";
-import ListaDiscentes from "./pages/ProfissionalDeSaude/ListaDiscentes";
+import ListaDiscentesProfSaude from "./pages/ProfissionalDeSaude/ListaDiscentesProfSaude";
 import Xpto from "./pages/Publica/Xpto";
 import VisualizarQuestionarioSocioeconomico from "./pages/ProfissionalDeSaude/VisualizarQuestionarioSocioeconomico";
 import VisualizarQuestionarioDeAnsiedadeDeBeck from "./pages/ProfissionalDeSaude/VisualizarQuestionarioDeAnsiedadeDeBeck";
@@ -28,7 +28,7 @@ import VisualizarQuestionarioDeDepresaoDeBeck from "./pages/ProfissionalDeSaude/
 import VisualizarReporteProfSaude from "./pages/ProfissionalDeSaude/VisualizarReporteProfSaude";
 import ListaDeReportesDoDiscente from "./pages/Discente/ListaDeReportesDoDiscente";
 import VisualizarReporteDiscente from "./pages/Discente/VisualizarReporteDiscente";
-import ListaDiscentesComAumento from "./pages/ProfissionalDeSaude/ListaDiscentesAumento";
+import ListaDiscentesComAumentoProfSaude from "./pages/ProfissionalDeSaude/ListaDiscentesAumento";
 import PerfilAdmin from "./pages/Admin/PerfilAdmin";
 import Configuracao from "./pages/Admin/Configuracao";
 import GerenciaServidor from "./pages/Admin/GerenciaServidor";
@@ -72,6 +72,10 @@ import ListaDeReportesPsicologo from "./pages/Psicologo/ListaDeReportesPsicologo
 import ListaDeReportesAdmin from "./pages/Admin/ListaDeReportesAdmin";
 import VisualizarReportePsicologo from "./pages/Psicologo/VisualizarReportePsicologo";
 import VisualizarReporteAdmin from "./pages/Admin/VisualizarReporteAdmin";
+import ListaDiscentesPsicologo from "./pages/Psicologo/ListaDiscentesPsicologo";
+import ListaDiscentesAdmin from "./pages/Admin/ListaDiscentesAdmin";
+import ListaDiscentesComAumentoPsicologo from "./pages/Psicologo/ListaDiscentesComAumentoPsicologo";
+import ListaDiscentesComAumentoAdmin from "./pages/Admin/ListaDiscentesComAumentoAdmin";
 
 export default function Routes() {
     return (
@@ -103,8 +107,8 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/QuestionarioAnsiedadeDeBeck/:id" component={ListaQuestionarioAnsiedadeDeBeck} />
                 <Route path="/profissionalDeSaude/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeck} />
                 <Route path="/profissionalDeSaude/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhado} />
-                <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentes} />
-                <Route path="/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumento} />
+                <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentesProfSaude} />
+                <Route path="/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoProfSaude} />
                 <Route path="/profissionalDeSaude/visualizarReporte/:id" component={VisualizarReporteProfSaude} />
                 <Route path="/profissionalDeSaude/parescer" component={Prontuario} />
                 <Route path="/profissionalDeSaude/prontuarios" component={PRONTUARIOS} />
@@ -134,7 +138,9 @@ export default function Routes() {
                 <Route path="/Admin/home" component={AdminHome} />
                 <Route path="/Admin/quemSomos" component={AdminQuemSomos} />
                 <Route path="/Admin/listaReportes" component={ListaDeReportesAdmin} />
-                <Route path="/Admin/visualizarReporte/:id" component={VisualizarReportePsicologo} />
+                <Route path="/Admin/visualizarReporte/:id" component={VisualizarReporteAdmin} />
+                <Route path="/Admin/ListaDiscentes" component={ListaDiscentesAdmin} />
+                <Route path="/Admin/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoAdmin} />
                 <Route path="/psicologo/perfil" component={PerfilPsicologo} />
                 <Route path="/psicologo/parecer" component={ParecerPsicologico} />
                 <Route path="/psicologo/parecereres" component={PareceresPsicologico} />
@@ -147,6 +153,8 @@ export default function Routes() {
                 <Route path="/psicologo/quemSomos" component={PsicologoQuemSomos} />
                 <Route path="/psicologo/listaReportes" component={ListaDeReportesPsicologo} />
                 <Route path="/psicologo/visualizarReporte/:id" component={VisualizarReportePsicologo} />
+                <Route path="/psicologo/ListaDiscentes" component={ListaDiscentesPsicologo} />
+                <Route path="/psicologo/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoPsicologo} />
                 {/* <Route path="/Xpto" component={Xpto} /> */}
             </Switch>
         </BrowserRouter>

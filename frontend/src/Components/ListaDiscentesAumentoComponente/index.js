@@ -5,16 +5,14 @@ import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Card } from 'primereact/card';
-import DiscenteService from '../../../services/DiscenteService';
-import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
+import DiscenteService from '../../services/DiscenteService';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
-export default function ListaDiscentes() {
+export default function ListaDiscentesAumentoComponente(props) {
 
     var btnVisualizarTexto = 'VISUALIZAR'
     var configBtnVisualizar = "pi pi-user";
     var largura = window.screen.width;
-    const configBotaoAcessar = "p-button-danger p-button-rounded ";
 
     if (largura < 640) {
         btnVisualizarTexto = ''
@@ -31,7 +29,7 @@ export default function ListaDiscentes() {
     const location = useLocation();
     const [discentes, setDiscentes] = useState([])
     const allDiscentes = () => {
-        DiscenteService.getAllDiscente().then((response) => {
+        DiscenteService.getDiscentesComAumentoVulnerabilidadeEmocional().then((response) => {
             setDiscentes(response.data)
             // console.log(response.data);
         });
@@ -43,28 +41,10 @@ export default function ListaDiscentes() {
 
     }
 
-    const [aumento, setAumento] = useState(false);
-    const isAumento = () => {
-        DiscenteService.isAumento().then((response) => {
-            setAumento(response.data)
-            console.log(response.data);
-        });
-    };
-    // const vulneravel = isAumento;
-
     useEffect(() => {
         allDiscentes()
-        
+
     }, [])
-
-    useEffect(() => {
-        isAumento()
-        if(aumento){
-            showError();
-        }
-        
-    }, [aumento])
-
 
     const [discente, setDiscente] = useState(emptyDiscente);
     const [selectedDiscentes, setSelectedDiscentes] = useState(null);
@@ -75,7 +55,8 @@ export default function ListaDiscentes() {
     const visualizarPerfil = (discente) => {
         setDiscente(discente);
         history.goBack();
-        history.push('/profissionalDeSaude/PerfilDiscenteDetalhado/' + discente.id)
+        const usuario = props.data;
+        history.push('/' + usuario + '/PerfilDiscenteDetalhado/' + discente.id)
     }
 
     const actionBodyTemplate = (rowData) => {
@@ -85,21 +66,6 @@ export default function ListaDiscentes() {
             </React.Fragment>
         );
     }
-
-    const showError = () => {
-        toast.current.show({
-            severity: 'error',
-            summary: 'Foi detectado discente(s) com aumento nas notas de Ansiedade ou Depressão',
-            detail: 'Verifique estes discentes pelo botão Acessar discentes em Vulnerabilidade. ',
-            life: 7000
-        });
-    }
-
-    function verificarAumento() { 
-        history.push('/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade')
-    }
-    
-
 
     const header = (
         <div className="table-header">
@@ -112,12 +78,9 @@ export default function ListaDiscentes() {
     );
 
     return (
-        <div  > <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+        <div>
             <div>
-                <Card title="DISCENTES" ></Card>
-                <Card>
-                    <Button className={configBotaoAcessar} label="ACESSAR DISCENTES EM VULNERABILIDADE" onClick={verificarAumento} />
-                </Card>
+                <Card title="DISCENTES COM AUMENTO NA VULNERABILIDADE EMOCIONAL" ></Card>
                 <Card>
                     <div>
                         <Card>
