@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import QuestionarioService from '../../../services/QuestionarioService';
-import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
+import QuestionarioService from '../../services/QuestionarioService';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { useHistory, useParams, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import BotaoVoltar from '../BotaoVoltar';
 
-export default function ListaQuestionariosDepressaoDeBeck() {
+export default function ListaQuestionariosDepressaoDeBeckComponente(props) {
     const { id } = useParams();
     var btnVisualizarTexto = 'VISUALIZAR'
     var configBtnVisualizar = "pi pi-file";
@@ -49,14 +49,13 @@ export default function ListaQuestionariosDepressaoDeBeck() {
     const [questionario, setQuestionario] = useState(emptyQuestionario);
     const [selectedQuestionarios, setSelectedQuestionarios] = useState(null);
     const [globalFilter, setGlobalFilter] = useState(null);
-    const toast = useRef(null);
     const dt = useRef(null);
 
     const visualizarQuestionario = (questionario) => {
         setQuestionario(questionario);
-        console.log(questionario.id);
         history.goBack();
-        history.push('/profissionalDeSaude/VisualizarQuestionarioDeDepresaoDeBeck/' + questionario.id)
+        const usuario = props.data;
+        history.push('/' + usuario + '/VisualizarQuestionarioDeDepresaoDeBeck/' + questionario.id)
     }
 
     const actionBodyTemplate = (rowData) => {
@@ -79,14 +78,16 @@ export default function ListaQuestionariosDepressaoDeBeck() {
 
 
     return (
-        <div  > <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+        <div> 
             <div>
                 <Card title="QUESTIONÁRIOS DEPRESSÃO DE BECK" ></Card>
                 <Card>
+                    <Card>
+                        <BotaoVoltar></BotaoVoltar>
+                    </Card>
                     <div>
                         <Card>
                             <div className="datatable-crud-demo">
-                                {/* <Toast ref={toast} /> */}
                                 <div className="card">
                                     <DataTable ref={dt} value={QuestionarioDepressaoDeBeck} selection={selectedQuestionarios} onSelectionChange={(e) => setSelectedQuestionarios(e.value)}
                                         dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">

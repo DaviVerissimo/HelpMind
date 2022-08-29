@@ -12,7 +12,7 @@ export default function AcessoRapido() {
     if (largura < 640) {
         configBotao = "p-mt-3 p-mr-3" ;
         configBotao2 = "p-mt-3 ";
-        // espacamento = '';
+        
     }
     const history = useHistory();
 

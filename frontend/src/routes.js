@@ -18,13 +18,13 @@ import Reportes from "./pages/Discente/Reportes";
 import PerfilProfissionalDeSaude from "./pages/ProfissionalDeSaude/PerfilProfissionalDeSaude";
 import ListaQuestionarioSocioeconomico from "./pages/ProfissionalDeSaude/ListaQuestionarioSocioeconomico";
 import ListaQuestionarioAnsiedadeDeBeckProfSaude from "./pages/ProfissionalDeSaude/ListaQuestionarioAnsiedadeDeBeckProfSaude";
-import ListaQuestionariosDepressaoDeBeck from "./pages/ProfissionalDeSaude/ListaQuestionariosDepressaoDeBeck";
+import ListaQuestionariosDepressaoDeBeckProfSaude from "./pages/ProfissionalDeSaude/ListaQuestionariosDepressaoDeBeckProfSaude";
 import PerfilDiscenteDetalhadoProfSaude from "./pages/ProfissionalDeSaude/PerfilDiscenteDetalhadoProfSaude";
 import ListaDiscentesProfSaude from "./pages/ProfissionalDeSaude/ListaDiscentesProfSaude";
 import Xpto from "./pages/Publica/Xpto";
 import VisualizarQuestionarioSocioeconomico from "./pages/ProfissionalDeSaude/VisualizarQuestionarioSocioeconomico";
 import VisualizarQuestionarioDeAnsiedadeDeBeckProfSaude from "./pages/ProfissionalDeSaude/VisualizarQuestionarioDeAnsiedadeDeBeckProfSaude";
-import VisualizarQuestionarioDeDepresaoDeBeck from "./pages/ProfissionalDeSaude/VisualizarQuestionarioDeDepressaoDeBeck";
+import VisualizarQuestionarioDeDepresaoDeBeckProfSaude from "./pages/ProfissionalDeSaude/VisualizarQuestionarioDeDepresaoDeBeckProfSaude";
 import VisualizarReporteProfSaude from "./pages/ProfissionalDeSaude/VisualizarReporteProfSaude";
 import ListaDeReportesDoDiscente from "./pages/Discente/ListaDeReportesDoDiscente";
 import VisualizarReporteDiscente from "./pages/Discente/VisualizarReporteDiscente";
@@ -82,12 +82,20 @@ import ListaQuestionarioAnsiedadeDeBeckPsicologo from "./pages/Psicologo/ListaQu
 import ListaQuestionarioAnsiedadeDeBeckAdmin from "./pages/Admin/ListaQuestionarioAnsiedadeDeBeckAdmin";
 import VisualizarQuestionarioDeAnsiedadeDeBeckPsicologo from "./pages/Psicologo/VisualizarQuestionarioDeAnsiedadeDeBeckPsicologo";
 import VisualizarQuestionarioDeAnsiedadeDeBeckAdmin from "./pages/Admin/VisualizarQuestionarioDeAnsiedadeDeBeckAdmin";
+import ListaQuestionariosDepressaoDeBeckPsicologo from "./pages/Psicologo/ListaQuestionariosDepressaoDeBeckPsicologo";
+import ListaQuestionariosDepressaoDeBeckAdmin from "./pages/Admin/ListaQuestionariosDepressaoDeBeckAdmin";
+import VisualizarQuestionarioDeDepresaoDeBeckPsicologo from "./pages/Psicologo/VisualizarQuestionarioDeDepresaoDeBeckPsicologo";
+import VisualizarQuestionarioDeDepresaoDeBeckAdmin from "./pages/Admin/VisualizarQuestionarioDeDepresaoDeBeckAdmin";
 
 export default function Routes() {
     return (
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Home} />
+                <Route path="/publica/QuemSomos" component={QuemSomos} />
+                <Route path="/publica/Login" component={Login} />
+                <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
+
                 <Route path="/discente/Perfil" component={PerfilDiscente} />
                 <Route path="/discente/Reporte" component={Reporte} />
                 <Route path="/discente/Reportes" component={Reportes} />
@@ -101,17 +109,15 @@ export default function Routes() {
                 <Route path="/Discente/MateriaisOnline" component={MateriaisOnlineDiscente} />
                 <Route path="/Discente/home" component={DiscenteHome} />
                 <Route path="/Discente/quemSomos" component={DiscenteQuemSomos} />
-                <Route path="/publica/QuemSomos" component={QuemSomos} />
-                <Route path="/publica/Login" component={Login} />
-                <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
+
                 <Route path="/profissionalDeSaude/ListaDeReportes" component={ListaDeReportesProfSaude} />
                 <Route path="/profissionalDeSaude/perfil" component={PerfilProfissionalDeSaude} />
                 <Route path="/profissionalDeSaude/QuestionarioSocioeconomico/:id" component={ListaQuestionarioSocioeconomico} />
                 <Route path="/profissionalDeSaude/VisualizarSocioeconomico/:id" component={VisualizarQuestionarioSocioeconomico} />
                 <Route path="/profissionalDeSaude/VisualizarQuestionarioDeAnsiedadeDeBeck/:id" component={VisualizarQuestionarioDeAnsiedadeDeBeckProfSaude} />
-                <Route path="/profissionalDeSaude/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeck} />
+                <Route path="/profissionalDeSaude/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeckProfSaude} />
                 <Route path="/profissionalDeSaude/QuestionarioAnsiedadeDeBeck/:id" component={ListaQuestionarioAnsiedadeDeBeckProfSaude} />
-                <Route path="/profissionalDeSaude/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeck} />
+                <Route path="/profissionalDeSaude/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeckProfSaude} />
                 <Route path="/profissionalDeSaude/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoProfSaude} />
                 <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentesProfSaude} />
                 <Route path="/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoProfSaude} />
@@ -127,6 +133,7 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/materiaisOnline" component={MateriaisOnlineProfSaude} />
                 <Route path="/profissionalDeSaude/home" component={ProfSaudeHome} />
                 <Route path="/profissionalDeSaude/quemSomos" component={ProfSaudeQuemSomos} />
+
                 <Route path="/Admin/perfil" component={PerfilAdmin} />
                 <Route path="/Admin/configuracao" component={Configuracao} />
                 <Route path="/Admin/material/create" component={Create} />
@@ -150,6 +157,9 @@ export default function Routes() {
                 <Route path="/Admin/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoAdmin} />
                 <Route path="/Admin/QuestionarioAnsiedadeDeBeck/:id" component={ListaQuestionarioAnsiedadeDeBeckAdmin} />
                 <Route path="/Admin/VisualizarQuestionarioDeAnsiedadeDeBeck/:id" component={VisualizarQuestionarioDeAnsiedadeDeBeckAdmin} />
+                <Route path="/Admin/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeckAdmin} />
+                <Route path="/Admin/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeckAdmin} />
+                
                 <Route path="/psicologo/perfil" component={PerfilPsicologo} />
                 <Route path="/psicologo/parecer" component={ParecerPsicologico} />
                 <Route path="/psicologo/parecereres" component={PareceresPsicologico} />
@@ -167,6 +177,8 @@ export default function Routes() {
                 <Route path="/psicologo/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoPsicologo} />
                 <Route path="/psicologo/QuestionarioAnsiedadeDeBeck/:id" component={ListaQuestionarioAnsiedadeDeBeckPsicologo} />
                 <Route path="/psicologo/VisualizarQuestionarioDeAnsiedadeDeBeck/:id" component={VisualizarQuestionarioDeAnsiedadeDeBeckPsicologo} />
+                <Route path="/psicologo/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeckPsicologo} />
+                <Route path="/psicologo/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeckPsicologo} />
                 {/* <Route path="/Xpto" component={Xpto} /> */}
             </Switch>
         </BrowserRouter>

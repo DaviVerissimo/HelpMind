@@ -1,15 +1,12 @@
 import { Card } from 'primereact/card';
-import React, { useRef } from 'react';
-import { useState, useEffect } from 'react';
-import { Button } from 'primereact/button';
+import React, { useState, useEffect } from 'react';
 import { Checkbox } from 'primereact/checkbox';
-import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
-import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
-import axios from "axios";
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { RadioButton } from 'primereact/radiobutton';
-import QuestionarioService from '../../../services/QuestionarioService';
+import QuestionarioService from '../../services/QuestionarioService';
+import BotaoVoltar from '../BotaoVoltar';
 
-export default function VisualizarQuestionarioDeDepresaoDeBeck() {
+export default function VisualizarQuestionarioDeDepressaoDeBeckComponente() {
 
     const { id } = useParams();
     const [questionario, setQuestionario] = useState();
@@ -72,24 +69,22 @@ export default function VisualizarQuestionarioDeDepresaoDeBeck() {
             setQuestao19(questionario[18]);
             setQuestao20(questionario[19]);
             setQuestao21(questionario[20]);
-            console.log(questionario[21])
-            if(questionario[21] == 'true'){
+
+            if (questionario[21] == 'true') {
                 setDieta('Sim');
             }
-            
+
 
         }
 
     }, [questionario]);
 
     return (
-        <div> <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+        <div>
             <div>
-                <Card title='INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)' >
-
-                </Card>
-                <Card className="" >
-
+                <Card title='INVENTÁRIO DE DEPRESSÃO DE BECK (BDI)' ></Card>
+                <Card>
+                    <BotaoVoltar></BotaoVoltar>
                 </Card>
                 <Card className="" >
                     <Checkbox name="checagem" value="aceito" onChange={e => setChecked(e.checked)} checked={true}></Checkbox>
