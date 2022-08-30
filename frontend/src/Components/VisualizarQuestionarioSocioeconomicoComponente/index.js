@@ -1,27 +1,24 @@
 import { Card } from 'primereact/card';
-import React, { useRef } from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
-import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
-import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { InputText } from 'primereact/inputtext';
 import { RadioButton } from 'primereact/radiobutton';
 import { Checkbox } from 'primereact/checkbox';
-import QuestionarioService from '../../../services/QuestionarioService';
+import QuestionarioService from '../../services/QuestionarioService';
+import BotaoVoltar from '../BotaoVoltar';
 
-export default function VisualizarQuestionarioSocioeconomico() {
+export default function VisualizarQuestionarioSocioeconomicoComponente() {
 
-    const {id} = useParams();
+    const { id } = useParams();
     const [questionarioSocioeconomico, setQuestionarioSocioeconomico] = useState();
 
     const obterQuestionarioSocioeconomico = () => {
         QuestionarioService.getQuestionarioSocioeconomicoPorId(id).then((response) => {
             setQuestionarioSocioeconomico(response.data)
-            // console.log(response.data);
-            
+
         });
     };
-
 
     const [email, setEmail] = useState();
     const [campusDoDiscente, setCampusDoDiscente] = useState(null);
@@ -63,199 +60,162 @@ export default function VisualizarQuestionarioSocioeconomico() {
     useEffect(async () => {
         obterQuestionarioSocioeconomico();
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setEmail(questionarioSocioeconomico.email);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setNome(questionarioSocioeconomico.nome);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setCampusDoDiscente(questionarioSocioeconomico.campusDoDiscente);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setMatricula(questionarioSocioeconomico.matricula);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setCurso(questionarioSocioeconomico.curso);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setPeriodo(questionarioSocioeconomico.periodo);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setIdade(questionarioSocioeconomico.idade);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setCidade(questionarioSocioeconomico.cidade);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setZonaHurbanaRural_op(questionarioSocioeconomico.zonaHurbanaRural_op);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setEstadoCivil(questionarioSocioeconomico.estadoCivil);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setComQuemVive(questionarioSocioeconomico.comQuemVive);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setRendaFamiliar(questionarioSocioeconomico.rendaFamiliar);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setCor(questionarioSocioeconomico.cor);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setGenero(questionarioSocioeconomico.genero);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setIngressantePorVagaDeCota(questionarioSocioeconomico.ingressantePorVagaDeCota);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setCotista_op(questionarioSocioeconomico, cotista_op);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setPessoaDeficiente(questionarioSocioeconomico.pessoaDeficiente);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setDeficiencia_op_tipo(questionarioSocioeconomico.deficiencia_op_tipo);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setUsoBebidaAlcoolica(questionarioSocioeconomico.usoBebidaAlcoolica);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setBullyng(questionarioSocioeconomico.bullyng);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setResideComPortadorDeProblemaMental(questionarioSocioeconomico.resideComPortadorDeProblemaMental);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setDiscenteSofrimentoMental(questionarioSocioeconomico.discenteSofrimentoMental);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setDiaguinostico_op(questionarioSocioeconomico.diaguinostico_op);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setProblemaPsifico_op(questionarioSocioeconomico.problemaPsifico_op);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setPsicotropico(questionarioSocioeconomico.psicotropico);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setInteresseAjudaPsicologica(questionarioSocioeconomico.interesseAjudaPsicologica);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setInteresseAjudaPsicologica(questionarioSocioeconomico.interesseAjudaPsicologica);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setBeneficio(questionarioSocioeconomico.beneficio);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setOutroBeneficio(questionarioSocioeconomico.outroBeneficio);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setDomicilio(questionarioSocioeconomico.domicilio);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setQuantidadeComodos_op(questionarioSocioeconomico.quantidadeComodos_op);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setTemDoenca(questionarioSocioeconomico.doencaGrave);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setDoencaDiscente(questionarioSocioeconomico.doencaGraveDiscente_op);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setPossuiFamiliarComDoencaGrave(questionarioSocioeconomico.possuiFamiliarComDoencaGrave);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setFamiliarDoente(questionarioSocioeconomico.familiarDoente);
         }
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
             setDoencaDoFamiliar_op(questionarioSocioeconomico.doencaDoFamiliar_op);
         }
 
 
-        if(questionarioSocioeconomico != undefined){
+        if (questionarioSocioeconomico != undefined) {
 
-        // setEmail(questionarioSocioeconomico.email);
-        // setNome(questionarioSocioeconomico.nome);
-        // setCampusDoDiscente(questionarioSocioeconomico.campusDoDiscente);
-        // setMatricula(questionarioSocioeconomico.matricula);
-        // setCurso(questionarioSocioeconomico.curso);
-        // setPeriodo(questionarioSocioeconomico.periodo);
-        // setIdade(questionarioSocioeconomico.idade);
-        // setCidade(questionarioSocioeconomico.cidade);
-        // setZonaHurbanaRural_op(questionarioSocioeconomico.zonaHurbanaRural_op);
-        // setEstadoCivil(questionarioSocioeconomico.estadoCivil);
-        // setComQuemVive(questionarioSocioeconomico.comQuemVive);
-        // setRendaFamiliar(questionarioSocioeconomico.rendaFamiliar);
-        // setCor(questionarioSocioeconomico.cor);
-        // setGenero(questionarioSocioeconomico.genero);
-        // setIngressantePorVagaDeCota(questionarioSocioeconomico.ingressantePorVagaDeCota);
-        // setCotista_op(questionarioSocioeconomico, cotista_op);
-        // setPessoaDeficiente(questionarioSocioeconomico.pessoaDeficiente);
-        // setDeficiencia_op_tipo(questionarioSocioeconomico.deficiencia_op_tipo);
-        // setUsoBebidaAlcoolica(questionarioSocioeconomico.usoBebidaAlcoolica);
-        // setBullyng(questionarioSocioeconomico.bullyng);
-        // setResideComPortadorDeProblemaMental(questionarioSocioeconomico.resideComPortadorDeProblemaMental);
-        // setDiscenteSofrimentoMental(questionarioSocioeconomico.discenteSofrimentoMental);
-        // setDiaguinostico_op(questionarioSocioeconomico.diaguinostico_op);
-        // setProblemaPsifico_op(questionarioSocioeconomico.problemaPsifico_op);
-        // setPsicotropico(questionarioSocioeconomico.psicotropico);
-        // setInteresseAjudaPsicologica(questionarioSocioeconomico.interesseAjudaPsicologica);
-        // setBeneficio(questionarioSocioeconomico.beneficio);
-        // setOutroBeneficio(questionarioSocioeconomico.outroBeneficio);
-        // setDomicilio(questionarioSocioeconomico.domicilio);
-        // setQuantidadeComodos_op(questionarioSocioeconomico.quantidadeComodos_op);
-        // setTemDoenca(questionarioSocioeconomico.doencaGrave);
-        // setDoencaDiscente(questionarioSocioeconomico.doencaGraveDiscente_op);
-        // setPossuiFamiliarComDoencaGrave(questionarioSocioeconomico.possuiFamiliarComDoencaGrave);
-        // setFamiliarDoente(questionarioSocioeconomico.familiarDoente);
-        // setDoencaDoFamiliar_op(questionarioSocioeconomico.doencaDoFamiliar_op);
         }
-
 
     }, [questionarioSocioeconomico]);
 
     return (
         <div>
-            <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
             <div>
-                <Card className="" >
-
+                <Card>
+                    <BotaoVoltar></BotaoVoltar>
                 </Card>
                 <Card className="" >
                     <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={true}></Checkbox>

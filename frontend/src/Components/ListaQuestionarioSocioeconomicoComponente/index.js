@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Card } from 'primereact/card';
-import QuestionarioService from '../../../services/QuestionarioService';
-import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
+import QuestionarioService from '../../services/QuestionarioService';
 import { useHistory, useParams, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import BotaoVoltar from '../BotaoVoltar';
 
-export default function ListaQuestionarioSocioeconomico(){
-    const {id} = useParams();
+export default function ListaQuestionarioSocioeconomicoComponente(props) {
+    const { id } = useParams();
     var btnVisualizarTexto = 'VISUALIZAR'
     var configBtnVisualizar = "pi pi-file";
     var largura = window.screen.width;
@@ -49,13 +48,11 @@ export default function ListaQuestionarioSocioeconomico(){
     const dt = useRef(null);
 
     const visualizarQuestionario = (questionario) => {
-        // setQuestionarioSocioeconomico(questionario);
-        console.log(questionario.id + " ID do questionario");
-        console.log(id + " ID do discente");
         history.goBack();
-        history.push('/profissionalDeSaude/VisualizarSocioeconomico/'+ questionario.id) 
-        
-        
+        const usuario = props.data;
+        history.push('/' + usuario + '/VisualizarSocioeconomico/' + questionario.id)
+
+
     }
 
     const actionBodyTemplate = (rowData) => {
@@ -82,18 +79,20 @@ export default function ListaQuestionarioSocioeconomico(){
     );
 
     return (
-        <div  > <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+        <div>
             <div>
                 <Card title="QUESTIONÁRIOS SOCIOECONÔMICOS" ></Card>
                 <Card>
-                <div>
+                    <Card>
+                        <BotaoVoltar></BotaoVoltar>
+                    </Card>
+                    <div>
                         <Card>
                             <div className="datatable-crud-demo">
-                                <Toast ref={toast} />
                                 <div className="card">
                                     <DataTable ref={dt} value={QuestionarioSocioeconomico} selection={selectedQuestionario} onSelectionChange={(e) => setSelectedQuestionario(e.value)}
                                         dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
-                                            <Column field="id" header="ID" sortable ></Column>
+                                        <Column field="id" header="ID" sortable ></Column>
                                         <Column field="nome" header="Discente" sortable style={{ minWidth: '12rem' }}></Column>
                                         <Column field="curso" header="Curso" sortable style={{ minWidth: '12rem' }}></Column>
                                         <Column field="cidade" header="Cidade" sortable ></Column>
