@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Card } from 'primereact/card';
-import axios from "axios";
-// import ToobarDiscente from "../ToobarDiscente";
 import ToobarDiscente from "../ToobarDiscente";
 import { useHistory, useParams, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import ReporteService from "../../../services/ReporteService";
+import BotaoVoltar from "../../../Components/BotaoVoltar";
 
 export default function VisualizarReporteDiscente() {
 
@@ -30,7 +29,6 @@ export default function VisualizarReporteDiscente() {
     const [suicidio, setSuicidio] = useState();
     const [NomeReportante, setNomeReportante] = useState();
 
-
     useEffect(async () => {
         if (reporte == null) {
             obterReporte();
@@ -51,24 +49,24 @@ export default function VisualizarReporteDiscente() {
 
             ReporteService.getReportanteById(reporte.idReportante).then((response) => {
                 setNomeReportante(response.data)
-    
+
             });
 
         }
 
     }, [reporte]);
 
-
     return (
         <div> <ToobarDiscente></ToobarDiscente>
             <div >
                 <Card title="REPORTE CASO DE VULNERABILIDADE MENTAL"></Card>
-
-                <Card subTitle='REPORTADOR POR' >
-                    <InputText value={NomeReportante} disabled onChange={(e) => setNome(e.target.value)} />
+                <Card>
+                    <BotaoVoltar></BotaoVoltar>
                 </Card>
-
                 <Card >
+                    <Card subTitle='REPORTADOR POR' >
+                        <InputText value={NomeReportante} disabled onChange={(e) => setNome(e.target.value)} />
+                    </Card>
                     <Card subTitle='DISCENTE' >
                         <InputText value={nome} disabled onChange={(e) => setNome(e.target.value)} />
                     </Card>

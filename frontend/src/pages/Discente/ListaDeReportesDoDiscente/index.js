@@ -9,9 +9,10 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import BotaoVoltar from '../../../Components/BotaoVoltar';
 
 export default function ListaDeReportesDoDiscente() {
-    
+
     var btnVisualizarTexto = 'VISUALIZAR'
     var configBtnVisualizar = "pi pi-bell";
     var largura = window.screen.width;
@@ -84,6 +85,9 @@ export default function ListaDeReportesDoDiscente() {
         <div  > <ToobarDiscente></ToobarDiscente>
             <div>
                 <Card title="REPORTES REALIZADOS" ></Card>
+                <Card>
+                    <BotaoVoltar></BotaoVoltar>
+                </Card>
                 <Card>
                     <div>
                         <Card>
