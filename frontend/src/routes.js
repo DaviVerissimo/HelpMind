@@ -90,6 +90,7 @@ import ListaQuestionarioSocioeconomicoAdmin from "./pages/Admin/ListaQuestionari
 import VisualizarQuestionarioSocioeconomicoProfSaude from "./pages/ProfissionalDeSaude/VisualizarQuestionarioSocioeconomicoProfSaude";
 import VisualizarQuestionarioSocioeconomicoPsicologo from "./pages/Psicologo/VisualizarQuestionarioSocioeconomicoPsicologo";
 import VisualizarQuestionarioSocioeconomicoAdmin from "./pages/Admin/VisualizarQuestionarioSocioeconomicoAdmin";
+import PerfilSemAcesso from "./pages/Publica/ServidorPublico/PerfilSemAcesso";
 
 export default function Routes() {
     return (
@@ -99,6 +100,7 @@ export default function Routes() {
                 <Route path="/publica/QuemSomos" component={QuemSomos} />
                 <Route path="/publica/Login" component={Login} />
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
+                <Route path="/servidor/perfil" component={PerfilSemAcesso} />
 
                 <Route path="/discente/Perfil" component={PerfilDiscente} />
                 <Route path="/discente/Reporte" component={Reporte} />

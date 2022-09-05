@@ -111,5 +111,23 @@ public class ServidorController {
 		
 		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
 	}
+	
+	@PostMapping("/isServidorPermissaoProfSaude")
+	public boolean retornaPermissaoProfSaude(@RequestBody String googleId){
+		
+		return servidorService.retornaPermissaoProfSaude(googleId);
+	}
+	
+	@PostMapping("/isServidorPermissaoPsicologo")
+	public boolean retornaPermissaoPsicologo(@RequestBody String googleId){
+		
+		return servidorService.retornaPermissaoPsicologo(googleId);
+	}
+	
+	@PostMapping("/isServidorPermissaoAdmin")
+	public boolean retornaPermissaoAdmin(@RequestBody String googleId){
+		
+		return servidorService.retornaPermissaoAdmin(googleId);
+	}
 
 }
