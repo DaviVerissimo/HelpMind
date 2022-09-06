@@ -111,7 +111,7 @@ public class DiscenteService {
 		return lista;
 	}
 	
-	private String calcularAnsiedadeMedia(float nota) {
+	public String calcularAnsiedadeMedia(float nota) {
 		String status = null;
 		
 		if (nota >= 0 && nota <= 7) {
@@ -123,7 +123,7 @@ public class DiscenteService {
 		if(nota >= 16 && nota <= 25) {
 			status = "03 Ansiedade moderada";
 		}
-		if(nota >= 26 && nota <= 63) {
+		if(nota >= 26 ) {
 			status = "04 Ansiedade grave";
 		}
 		
@@ -141,7 +141,7 @@ public class DiscenteService {
 		return lista;
 	}
 	
-	private String calcularDepressaoMedia(float nota) {
+	public String calcularDepressaoMedia(float nota) {
 		String status = null;
 		
 		if (nota >= 0 && nota <= 9) {
@@ -153,7 +153,7 @@ public class DiscenteService {
 		if(nota >= 19 && nota <= 29) {
 			status = "03 Depressão moderada";
 		}
-		if(nota >= 30 && nota <= 63) {
+		if(nota >= 30 ) {
 			status = "04 Depressão grave";
 		}
 		
@@ -247,6 +247,49 @@ public class DiscenteService {
 		for (int i = 0; i < listaDeDiscentes.size(); i++) {
 			lista.add(listaDeDiscentes.get(i).getEmail());
 		}
+		
+		return lista;
+	}
+	
+	public List<Discente> retornaDiscenteByCurso(String curso){
+		
+		List<Discente> listaAll = this.retornaAllDiscentes();
+		List<Discente> lista = new ArrayList<Discente>();
+		for (int i = 0; i < listaAll.size(); i++){
+			String aux = " \"" + listaAll.get(i).getCurso() + "\" ";
+			if (aux.contains(curso)) {
+				
+				lista.add(listaAll.get(i));
+			}
+		}
+		
+		return lista;
+	}
+	
+	public List<Discente> retornaDiscenteByPeriodo(String periodo){
+		//cuidado ao chamar esse metodo. só deve se chamado apos definirMediasDeAnsiedade_depressao_e_status
+		List<Discente> listaAll = this.retornaAllDiscentes();
+		List<Discente> lista = new ArrayList<Discente>();
+		for (int i = 0; i < listaAll.size(); i++){
+//			String periodoDiscente = listaAll.get(i)
+//					.getListaQuestionarioSocioeconomico()
+//					.get(0)
+//					.getPeriodo();
+//			System.out.println(listaAll.get(i)
+//				.getListaQuestionarioSocioeconomico().size() + " tamanho ");
+//			if (
+//					periodoDiscente.equals(periodo)) {
+//				lista.add(listaAll.get(i));
+//			}
+		}
+		
+		return lista;
+	}
+	
+	public List<Discente> retornaDiscenteByCursoAndPeriodo(String curso, String periodo){
+		// o mesmo cuidado de retornaDiscenteByPeriodo
+		List<Discente> lista = this.retornaDiscenteByCurso(curso);
+		lista = this.retornaDiscenteByPeriodo(periodo);
 		
 		return lista;
 	}

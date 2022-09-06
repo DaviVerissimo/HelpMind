@@ -58,7 +58,7 @@ public class QuestionarioSimples {
 		}
 		
 		media = media / lista.size();
-		
+
 		return media;
 	}
 	

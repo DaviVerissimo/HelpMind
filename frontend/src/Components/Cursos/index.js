@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import axios from "axios";
 
-export default function Cursos(childToParent) {
-    // aviso: falta ressolver como será passada a validação
+export default function Cursos() {
 
     const [cursos, setCursos] = useState([]);
-    const [curso, setCurso] = useState([]);
+    const [curso, setCurso] = useState('');
     const [cursoObrigatorio, setCursoObrigatorio] = useState('');
 
     useEffect(async () => { //cursos
