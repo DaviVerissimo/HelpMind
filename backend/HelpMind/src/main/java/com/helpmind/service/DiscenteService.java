@@ -266,30 +266,16 @@ public class DiscenteService {
 		return lista;
 	}
 	
-	public List<Discente> retornaDiscenteByPeriodo(String periodo){
-		//cuidado ao chamar esse metodo. só deve se chamado apos definirMediasDeAnsiedade_depressao_e_status
-		List<Discente> listaAll = this.retornaAllDiscentes();
-		List<Discente> lista = new ArrayList<Discente>();
-		for (int i = 0; i < listaAll.size(); i++){
-//			String periodoDiscente = listaAll.get(i)
-//					.getListaQuestionarioSocioeconomico()
-//					.get(0)
-//					.getPeriodo();
-//			System.out.println(listaAll.get(i)
-//				.getListaQuestionarioSocioeconomico().size() + " tamanho ");
-//			if (
-//					periodoDiscente.equals(periodo)) {
-//				lista.add(listaAll.get(i));
-//			}
-		}
+	public List<Discente> retornaDiscenteByCursoForListaDeDiscentes( List<Discente> listaDeDiscentes, String curso){
 		
-		return lista;
-	}
-	
-	public List<Discente> retornaDiscenteByCursoAndPeriodo(String curso, String periodo){
-		// o mesmo cuidado de retornaDiscenteByPeriodo
-		List<Discente> lista = this.retornaDiscenteByCurso(curso);
-		lista = this.retornaDiscenteByPeriodo(periodo);
+		List<Discente> lista = new ArrayList<Discente>();
+		for (int i = 0; i < listaDeDiscentes.size(); i++){
+			String aux = " \"" + listaDeDiscentes.get(i).getCurso() + "\" ";
+			if (aux.contains(curso)) {
+				
+				lista.add(listaDeDiscentes.get(i));
+			}
+		}
 		
 		return lista;
 	}

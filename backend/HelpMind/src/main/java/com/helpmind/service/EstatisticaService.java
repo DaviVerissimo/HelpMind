@@ -1,5 +1,6 @@
 package com.helpmind.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.helpmind.model.Discente;
 import com.helpmind.model.Estatistica;
+import com.helpmind.model.QuestionarioSocioeconomico;
 
 @Service
 public class EstatisticaService {
 	
 	@Autowired
 	private DiscenteService discenteService;
+	@Autowired
+	private QuestionarioSocioeconomicoService questionarioSocioeconomicoService;
 	
 	public Estatistica retornaEstatisticaAllDiscente() {
 		List<Discente> lista = discenteService.retornaAllDiscentes();
@@ -29,16 +33,22 @@ public class EstatisticaService {
 	}
 	
 	public Estatistica retornaEstatisticaByPeriodo(String periodo) {
-		List<Discente> lista = discenteService.retornaDiscenteByPeriodo(periodo);
+		
+		List<String> listaEmail = retornarEmailByPeriodo(periodo);
+		List<Discente> lista = retornaDiscentesByListaEmail(listaEmail);
 		
 		return this.gerarEstatistica(lista);
 		
 	}
 	
 	public Estatistica retornaEstatisticaByCursoAndPeriodo(String curso ,String periodo) {
-		List<Discente> lista = discenteService.retornaDiscenteByCursoAndPeriodo(curso, periodo);
+		String cursoAux = "\"" + curso + "\"";
+		String periodoAux = "\"" + periodo + "\"";
+		List<String> listaEmail = retornarEmailByPeriodo(periodoAux);
+		List<Discente> lista = retornaDiscentesByListaEmail(listaEmail);
+		List<Discente> listaByCurso = discenteService.retornaDiscenteByCursoForListaDeDiscentes(lista, cursoAux);
 		
-		return this.gerarEstatistica(lista);
+		return this.gerarEstatistica(listaByCurso);
 		
 	}
 	
@@ -128,6 +138,35 @@ public class EstatisticaService {
 		
 		return estatistica;
 		
+	}
+	
+	public List<String> retornarEmailByPeriodo(String periodo){
+		List<String> listaDeEmail = new ArrayList<String>();
+		List<QuestionarioSocioeconomico> listaDeQuestionarios = questionarioSocioeconomicoService.retornarListaAllQuestionarioSocioeconomico();
+		
+		for (int i = 0; i < listaDeQuestionarios.size(); i++) {
+			String aux = "\"" + listaDeQuestionarios.get(i).getPeriodo() + "\"";
+			if (aux.equals(periodo)) {
+				String email = listaDeQuestionarios.get(i).getEmail();
+				listaDeEmail.add(email);
+			}
+		}
+		
+		return listaDeEmail;
+	}
+	
+	public List<Discente> retornaDiscentesByListaEmail(List<String> listaDeEmail){
+		List<Discente> listaDeDiscentes = new ArrayList<Discente>();
+		List<Discente> allDiscente = discenteService.retornaAllDiscentes();
+		for (int i = 0; i < allDiscente.size(); i++) {
+			for (int j = 0;j < listaDeEmail.size();j++) {
+				if (listaDeEmail.get(i).equals(allDiscente.get(j).getEmail())) {
+					listaDeDiscentes.add(allDiscente.get(j));
+				}
+			}
+		}
+		
+		return listaDeDiscentes;
 	}
 
 }

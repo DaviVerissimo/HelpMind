@@ -32,9 +32,9 @@ export default function ConsultarEstatisticas(props) {
                     <Card subTitle='CURSO'>
                         <Cursos></Cursos>
                     </Card>
-                    {/* <Card subTitle='PERIODO'>
+                    <Card subTitle='PERIODO'>
                         <Periodo></Periodo>
-                    </Card> */}
+                    </Card>
                 </Card>
             </div>
         </div>
