@@ -217,6 +217,8 @@ export default function Prontuario() {
 
                 <Card className="" >
                     <div>
+                        {/* transformar o conteudo dessa div em componente a usar em toda a aplicaçãp */}
+                        {/* transformar essa tela em componente e criar novo prontuario para aAdmin */}
                         <Button className={configBotaoCancel} style={{ right: espacamento }}  label="VOLTAR"  onClick={voltar} />
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>

@@ -33,8 +33,8 @@ import Configuracao from "./pages/Admin/Configuracao";
 import GerenciaServidor from "./pages/Admin/GerenciaServidor";
 import Prontuario from "./pages/ProfissionalDeSaude/Prontuario";
 import PRONTUARIOS from "./pages/ProfissionalDeSaude/Prontuarios";
-import ListarProntuarios from "./pages/ProfissionalDeSaude/ListaProntuarios";
-import VisualizarProntuario from "./pages/ProfissionalDeSaude/VisualizarProntuario";
+import ListarProntuariosProfSaude from "./pages/ProfissionalDeSaude/ListarProntuariosProfSaude";
+import VisualizarProntuarioProfSaude from "./pages/ProfissionalDeSaude/VisualizarProntuarioProfSaude";
 import GerenciaContatos from "./pages/Admin/GerenciaContatos";
 import NovoContato from "./pages/Admin/NovoContato";
 import UpdateContato from "./pages/Admin/UpdateContato";
@@ -91,6 +91,7 @@ import VisualizarQuestionarioSocioeconomicoProfSaude from "./pages/ProfissionalD
 import VisualizarQuestionarioSocioeconomicoPsicologo from "./pages/Psicologo/VisualizarQuestionarioSocioeconomicoPsicologo";
 import VisualizarQuestionarioSocioeconomicoAdmin from "./pages/Admin/VisualizarQuestionarioSocioeconomicoAdmin";
 import PerfilSemAcesso from "./pages/Publica/ServidorPublico/PerfilSemAcesso";
+import VisualizarProntuarioAdmin from "./pages/Admin/VisualizarProntuarioAdmin";
 
 export default function Routes() {
     return (
@@ -130,8 +131,8 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/visualizarReporte/:id" component={VisualizarReporteProfSaude} />
                 <Route path="/profissionalDeSaude/parescer" component={Prontuario} />
                 <Route path="/profissionalDeSaude/prontuarios" component={PRONTUARIOS} />
-                <Route path="/profissionalDeSaude/listaProntuarios" component={ListarProntuarios} />
-                <Route path="/profissionalDeSaude/visualizarProntuarios" component={VisualizarProntuario} />
+                <Route path="/profissionalDeSaude/listaProntuarios" component={ListarProntuariosProfSaude} />
+                <Route path="/profissionalDeSaude/visualizarProntuarios/:id" component={VisualizarProntuarioProfSaude} />
                 <Route path="/profissionalDeSaude/consultarEstatisticas" component={ConsultarEstatisticasProfSaude} />
                 <Route path="/profissionalDeSaude/listarEstatisticas" component={ListarEstatisticasProfSaude} />
                 <Route path="/profissionalDeSaude/Contatos" component={ContatosProfissional} />
@@ -153,6 +154,7 @@ export default function Routes() {
                 <Route path="/Admin/consultarEstatisticas" component={ConsultarEstatisticasAdmin} />
                 <Route path="/Admin/listarpareceresPsicologico" component={ListarPareceresPsicologicoraAdmin} />
                 <Route path="/Admin/listarProntuarios" component={ListaProntuariosAdmin} />
+                <Route path="/Admin/visualizarProntuarios/:id" component={VisualizarProntuarioAdmin} />
                 <Route path="/Admin/materiaisOnline" component={MateriaMateriaisOnlineAdminisOnline} />
                 <Route path="/Admin/home" component={AdminHome} />
                 <Route path="/Admin/quemSomos" component={AdminQuemSomos} />

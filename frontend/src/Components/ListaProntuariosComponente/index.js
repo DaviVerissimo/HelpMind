@@ -2,24 +2,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import ReporteService from '../../../services/ReporteService';
-import ProntuarioService from '../../../services/ProntuarioService';
+import ProntuarioService from '../../services/ProntuarioService';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
+import BotaoVoltar from '../BotaoVoltar';
 
-export default function ListarProntuarios() {
-    
+export default function ListaProntuariosComponente(props) {
+
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "pi pi-bell";
+    var configBtnVisualizar = "pi pi-doc";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-bell";
+        configBtnVisualizar = "p-button-rounded pi pi-doc";
     }
 
     let emptyProntuario = {
@@ -34,9 +33,6 @@ export default function ListarProntuarios() {
     const [prontuarios, setProntuarios] = useState([])
     const allProntuarios = () => {
         ProntuarioService.getAllProntuarios().then((response) => {
-            // const aux = response.data;
-            // const filtro = aux.filter((value) => value.idReportante == id);
-            // setProntuarios(filtro)
             setProntuarios(response.data)
         });
         {
@@ -60,7 +56,8 @@ export default function ListarProntuarios() {
     const visualizarProntuario = (prontuario) => {
         setProntuario(prontuario);
         history.goBack();
-        // history.push('/discente/visualizarReporte/' + prontuario.id)
+        const usuario = props.data;
+        history.push('/' + usuario + '/visualizarProntuarios/' + prontuario.id);
     }
 
     const actionBodyTemplate = (rowData) => {
@@ -83,10 +80,13 @@ export default function ListarProntuarios() {
 
 
     return (
-        <div  > <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+        <div>
             <div>
                 <Card title="LISTA DE PRONTUÁRIOS" ></Card>
                 <Card>
+                    <Card>
+                        <BotaoVoltar></BotaoVoltar>
+                    </Card>
                     <div>
                         <Card>
                             <div className="datatable-crud-demo">
@@ -98,12 +98,11 @@ export default function ListarProntuarios() {
                                         <Column field="discente" header="Discente" sortable ></Column>
                                         <Column field="acaoRealizada" header="Ação realizada" sortable ></Column>
                                         <Column field="curso" header="Curso" sortable ></Column>
-                                        <Column field="periodo" header="Periodo" sortable ></Column>
-                                        <Column field="campus" header="Campus" sortable ></Column>
-                                        <Column field="parescerProfissionalSaude" header="Parescer profissional de saúde" sortable ></Column>
-                                        
+                                        {/* <Column field="periodo" header="Periodo" sortable ></Column> */}
+                                        {/* <Column field="campus" header="Campus" sortable ></Column> */}
+                                        {/* <Column field="parescerProfissionalSaude" header="Parescer profissional de saúde" sortable ></Column> */}
 
-                                        {/* <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column> */}
+                                        <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                     </DataTable>
                                 </div>
                             </div>
