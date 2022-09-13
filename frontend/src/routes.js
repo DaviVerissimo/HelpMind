@@ -92,6 +92,9 @@ import VisualizarQuestionarioSocioeconomicoPsicologo from "./pages/Psicologo/Vis
 import VisualizarQuestionarioSocioeconomicoAdmin from "./pages/Admin/VisualizarQuestionarioSocioeconomicoAdmin";
 import PerfilSemAcesso from "./pages/Publica/ServidorPublico/PerfilSemAcesso";
 import VisualizarProntuarioAdmin from "./pages/Admin/VisualizarProntuarioAdmin";
+import VisualizarParescerAdmin from "./pages/Admin/VisualizarParescerAdmin";
+import VisualizarParescerProfsaude from "./pages/ProfissionalDeSaude/VisualizarParescerProfsaude";
+import VisualizarParescerPsicologo from "./pages/Psicologo/VisualizarParescerPsicologo";
 
 export default function Routes() {
     return (
@@ -140,6 +143,7 @@ export default function Routes() {
                 <Route path="/profissionalDeSaude/materiaisOnline" component={MateriaisOnlineProfSaude} />
                 <Route path="/profissionalDeSaude/home" component={ProfSaudeHome} />
                 <Route path="/profissionalDeSaude/quemSomos" component={ProfSaudeQuemSomos} />
+                <Route path="/profissionalDeSaude/visualizarParescer/:id" component={VisualizarParescerProfsaude} />
 
                 <Route path="/Admin/perfil" component={PerfilAdmin} />
                 <Route path="/Admin/configuracao" component={Configuracao} />
@@ -169,6 +173,7 @@ export default function Routes() {
                 <Route path="/Admin/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeckAdmin} />
                 <Route path="/Admin/QuestionarioSocioeconomico/:id" component={ListaQuestionarioSocioeconomicoAdmin} />
                 <Route path="/Admin/VisualizarSocioeconomico/:id" component={VisualizarQuestionarioSocioeconomicoAdmin} />
+                <Route path="/Admin/visualizarParescer/:id" component={VisualizarParescerAdmin} />
                 
                 <Route path="/psicologo/perfil" component={PerfilPsicologo} />
                 <Route path="/psicologo/parecer" component={ParecerPsicologico} />
@@ -191,6 +196,7 @@ export default function Routes() {
                 <Route path="/psicologo/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeckPsicologo} />
                 <Route path="/psicologo/QuestionarioSocioeconomico/:id" component={ListaQuestionarioSocioeconomicoPsicologo} />
                 <Route path="/psicologo/VisualizarSocioeconomico/:id" component={VisualizarQuestionarioSocioeconomicoPsicologo} />
+                <Route path="/psicologo/visualizarParescer/:id" component={VisualizarParescerPsicologo} />
                 {/* <Route path="/Xpto" component={Xpto} /> */}
             </Switch>
         </BrowserRouter>

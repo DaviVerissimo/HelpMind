@@ -11,6 +11,7 @@ export default function PareceresPsicologico() {
     var espacamento = '10px';
     if (largura < 640) {
         configBotao = "p-mt-3 ";
+        espacamento = '0px';
     }
     const history = useHistory();
 

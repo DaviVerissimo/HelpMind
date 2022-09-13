@@ -8,16 +8,17 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import BotaoVoltar from '../BotaoVoltar';
 
-export default function ListaPareceres() {
-    
+export default function ListaPareceres(props) {
+
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "pi pi-bell";
+    var configBtnVisualizar = "pi pi-file";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-bell";
+        configBtnVisualizar = "p-button-rounded pi pi-file";
     }
 
     let emptyParescer = {
@@ -32,9 +33,7 @@ export default function ListaPareceres() {
     const [pareceres, setPareceres] = useState([])
     const allPareceres = () => {
         ParescerPsicologicoService.getAllPareceresPsicologico().then((response) => {
-            // const aux = response.data;
-            // const filtro = aux.filter((value) => value.idReportante == id);
-            // setProntuarios(filtro)
+
             setPareceres(response.data)
         });
         {
@@ -58,7 +57,8 @@ export default function ListaPareceres() {
     const visualizarPareceres = (parecer) => {
         setParecer(parecer);
         history.goBack();
-        // history.push('/discente/visualizarReporte/' + prontuario.id)
+        const usuario = props.data;
+        history.push('/' + usuario + '/visualizarParescer/' + parecer.id);
     }
 
     const actionBodyTemplate = (rowData) => {
@@ -81,10 +81,13 @@ export default function ListaPareceres() {
 
 
     return (
-        <div  > 
+        <div  >
             <div>
                 <Card title="LISTA DE PARECERES PSICÓLOGICOS" ></Card>
                 <Card>
+                    <Card>
+                        <BotaoVoltar></BotaoVoltar>
+                    </Card>
                     <div>
                         <Card>
                             <div className="datatable-crud-demo">
@@ -97,10 +100,9 @@ export default function ListaPareceres() {
                                         <Column field="email" header="Email" sortable ></Column>
                                         {/* <Column field="periodo" header="Periodo" sortable ></Column>
                                         <Column field="campus" header="Campus" sortable ></Column> */}
-                                        <Column field="parescerPsicologico" header="Parescer do psicólogo" sortable ></Column>
-                                        
+                                        {/* <Column field="parescerPsicologico" header="Parescer do psicólogo" sortable ></Column> */}
 
-                                        {/* <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column> */}
+                                        <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                     </DataTable>
                                 </div>
                             </div>

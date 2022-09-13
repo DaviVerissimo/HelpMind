@@ -13,12 +13,12 @@ import BotaoVoltar from '../BotaoVoltar';
 export default function ListaProntuariosComponente(props) {
 
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "pi pi-doc";
+    var configBtnVisualizar = "pi pi-file";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-doc";
+        configBtnVisualizar = "p-button-rounded pi pi-file";
     }
 
     let emptyProntuario = {

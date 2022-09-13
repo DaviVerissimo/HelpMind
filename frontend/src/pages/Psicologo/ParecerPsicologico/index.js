@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
@@ -15,6 +15,7 @@ import DiscenteNome from '../../../Components/DiscenteNome';
 
 export default function ParecerPsicologico() {
 
+    const history = useHistory();
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -49,9 +50,6 @@ export default function ParecerPsicologico() {
     const [parecerObrigatoria, setDescrisaoObrigatorio] = useState();
     const [invalid, setInvalid] = useState('p-invalid block');
 
-
-
-
     const nomeData = localStorage.getItem('nomeComponente')
     useEffect(async () => {
         setNome(nomeData);
@@ -81,23 +79,22 @@ export default function ParecerPsicologico() {
             setDescrisaoObrigatorio(invalid);
             valido = false;
         }
-        // console.log(nome + " " + email + " " + parescer + " " + valido)
 
         return valido;
+    }
+
+    const voltar = () => {
+        history.goBack();
     }
 
     async function submeter() {
 
         if (validar()) {
-            // const idReportante = localStorage.getItem('id');
             const novoParecerPsicologico =
             {
                 "discente": nome,
                 "email": email,
-                // "curso": curso,
                 "parescerPsicologico": parescer,
-
-                // "idReportante": idReportante
 
             }
             const headers = {
@@ -130,7 +127,7 @@ export default function ParecerPsicologico() {
 
                 <Card className="" >
                     <div>
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
+                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR" onClick={voltar} />
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>
