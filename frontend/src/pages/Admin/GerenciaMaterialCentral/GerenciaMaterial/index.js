@@ -268,7 +268,7 @@ export default function GerenciaMaterial() {
         return (
             <React.Fragment>
                 <BotaoVoltar></BotaoVoltar>
-                <Button label="Novo Matérial" icon="pi pi-plus" className="mr-2  p-ml-3" onClick={() => { history.push('/Admin/material/create') }} />
+                <Button label="NOVO MATERIAL" icon="pi pi-plus" className="mr-2  p-ml-3" onClick={() => { history.push('/Admin/material/create') }} />
             </React.Fragment>
         )
     }

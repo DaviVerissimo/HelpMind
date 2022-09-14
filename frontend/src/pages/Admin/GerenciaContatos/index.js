@@ -81,7 +81,7 @@ export default function GerenciaContatos() {
         return (
             <React.Fragment>
                 <BotaoVoltar></BotaoVoltar>
-                <Button label="Novo Contato" icon="pi pi-plus" className="mr-2 p-ml-3" onClick={() => { history.push('/Admin/NovoContato') }} />
+                <Button label="NOVO CONTATO" icon="pi pi-plus" className="mr-2 p-ml-3" onClick={() => { history.push('/Admin/NovoContato') }} />
             </React.Fragment>
         )
     }

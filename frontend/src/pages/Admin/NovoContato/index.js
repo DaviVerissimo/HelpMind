@@ -7,9 +7,10 @@ import axios from "axios";
 import { Button } from 'primereact/button';
 import ToobarAdmin from '../ToobarAdmin';
 import { Toast } from 'primereact/toast';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function NovoContato() {
-
+    const hystory = useHistory();
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -40,6 +41,10 @@ export default function NovoContato() {
         configBotaoCancel = "p-mb-3 p-button-secondary "
         configBotaoSalvar = "p-mb-3 ";
     }
+
+    function volta(){
+        hystory.goBack();
+      }
 
     function validar() {
         var valido = true;
@@ -90,7 +95,7 @@ export default function NovoContato() {
 
                 <Card className="" >
                     <div>
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
+                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR"  onClick={volta} />
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>

@@ -11,9 +11,11 @@ import axios from 'axios';
 import ToobarAdmin from '../../ToobarAdmin';
 import { Toast } from 'primereact/toast';
 import BotaoVoltar from '../../../../Components/BotaoVoltar';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function Create() {
 
+  const hystory = useHistory();
   const toast = useRef(null);
   const showSuccess = () => {
     toast.current.show({
@@ -46,6 +48,10 @@ export default function Create() {
   const [nomeObrigatorio, setNomeObrigatorio] = useState();
   const [categoriaObrigatorio, setCategoriaObrigatorio] = useState();
   const [nomeArquivoObrigatorio, setNomeArquivoObrigatorio] = useState();
+
+  function volta(){
+    hystory.goBack();
+  }
 
   function validar() {
     var valido = true;
@@ -96,13 +102,15 @@ export default function Create() {
 
   }
 
-  var configBotaoSalvar = "p-mb-3";
+  var configBotaoSalvar = "";
+  var configBotaovoltar = "p-mr-2 p-button-secondary";
   // var configBotaoSalvar = "mr-2  p-ml-3 ";
   const leftToolbarTemplate = () => {
     return (
       // alinhar botoes namesma linha com toobar
       <React.Fragment>
-        <BotaoVoltar></BotaoVoltar>
+        {/* <BotaoVoltar></BotaoVoltar> */}
+        <Button className={configBotaovoltar} label="VOLTAR" onClick={volta} />
         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
       </React.Fragment>
     )
@@ -115,9 +123,9 @@ export default function Create() {
       <div>
         <Card title='NOVO MATERIAL' >
           <Card>
-            {/* <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar> */}
-            <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
-            <BotaoVoltar></BotaoVoltar>
+            <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
+            {/* <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} /> */}
+            {/* <BotaoVoltar></BotaoVoltar> */}
           </Card>
           <Card subTitle='NOME' >
             <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
