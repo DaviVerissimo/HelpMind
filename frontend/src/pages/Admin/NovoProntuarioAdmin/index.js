@@ -1,12 +1,12 @@
 import React from 'react';
-import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
+import ToobarAdmin from '../ToobarAdmin';
 import NovoProntuarioComponente from '../../../Components/NovoProntuarioComponente';
 
-export default function Prontuario() {
+export default function NovoProntuarioAdmin() {
 
     return (
         <div>
-            <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+            <ToobarAdmin></ToobarAdmin>
             <NovoProntuarioComponente></NovoProntuarioComponente>
         </div>
 

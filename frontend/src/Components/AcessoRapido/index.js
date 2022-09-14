@@ -22,7 +22,7 @@ export default function AcessoRapido() {
                 <Card title='ACESSO RAPIDO ' >
                     <Card className='p-col-16' >
                         <div>
-                        <Button className={configBotao} label="NOVO PRONTUÁRIO" onClick={() => { history.push('') }} />
+                        <Button className={configBotao} label="NOVO PRONTUÁRIO" onClick={() => { history.push('/Admin/novoProntuario') }} />
                             <Button className={configBotao} label="LISTAR PRONTUÁRIOS" onClick={() => { history.push('/Admin/listarProntuarios') }} />
                             <Button className={configBotao2} label="  LISTAR PARESCER PSIÓLOGICO" onClick={() => { history.push('/Admin/listarpareceresPsicologico') }} />
                         </div>
