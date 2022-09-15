@@ -37,13 +37,13 @@ public class ParecerPsicologicoController {
 	}
 	
 	@GetMapping("listarAllParescerPsicologico")
-	public List<ParescerPsicologico> retornaAllContatos(){
+	public List<ParescerPsicologico> retornaAllPareceres(){
 		
 		return parescerPsicologicoService.retornaAllProntuarios();
 	}
 	
 	@PostMapping("removerParescerPsicologico")
-	public ResponseEntity removerProntuario(@RequestBody Integer ID) throws URISyntaxException {
+	public ResponseEntity removerParecer(@RequestBody Integer ID) throws URISyntaxException {
 		ParescerPsicologico parescerPsicologico = null;
 		try {
 			parescerPsicologico = parescerPsicologicoService.remover(ID);
@@ -53,7 +53,7 @@ public class ParecerPsicologicoController {
 	}
 	
 	@PostMapping("updateParescerPsicologico")
-	public ResponseEntity updateProntuario(@RequestBody ParescerPsicologico parescerPsicologico) throws URISyntaxException {
+	public ResponseEntity updateParescer(@RequestBody ParescerPsicologico parescerPsicologico) throws URISyntaxException {
 		
 		try {
 			parescerPsicologicoService.update(parescerPsicologico);
@@ -63,7 +63,7 @@ public class ParecerPsicologicoController {
 	}
 	
 	@PostMapping("pesquisarParescerPsicologico")
-	public ResponseEntity pesquisarProntuario(@RequestBody Integer ID) throws URISyntaxException {
+	public ResponseEntity pesquisarParecer(@RequestBody Integer ID) throws URISyntaxException {
 		ParescerPsicologico parescerPsicologico = null;
 		try {
 			parescerPsicologico = parescerPsicologicoService.pesquisar(ID);

@@ -29,6 +29,12 @@ export default function Configuracao() {
                         <div>
                             <Button className={configBotao} label=" GERÊNCIA DE CONTATOS" onClick={() => { history.push('/Admin/GerenciaContato') }} />
                         </div>
+                        <div>
+                            <Button className={configBotao} label=" GERÊNCIA DE PRONTUARIOS" onClick={() => { history.push('/Admin/gerenciaProntuario') }} />
+                        </div>
+                        <div>
+                            <Button className={configBotao} label=" GERÊNCIA DE PARESCER PSICÓLOGICO" onClick={() => { history.push('/Admin/gerenciaParescerPsicologico') }} />
+                        </div>
                     </Card>
 
                 </Card>

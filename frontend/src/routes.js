@@ -96,6 +96,8 @@ import VisualizarParescerAdmin from "./pages/Admin/VisualizarParescerAdmin";
 import VisualizarParescerProfsaude from "./pages/ProfissionalDeSaude/VisualizarParescerProfsaude";
 import VisualizarParescerPsicologo from "./pages/Psicologo/VisualizarParescerPsicologo";
 import NovoProntuarioAdmin from "./pages/Admin/NovoProntuarioAdmin";
+import GerenciaProntuariosAdmin from "./pages/Admin/GerenciaProntuariosAdmin";
+import GerenciaPareceresAdmin from "./pages/Admin/GerenciaPareceresAdmin";
 
 export default function Routes() {
     return (
@@ -176,6 +178,8 @@ export default function Routes() {
                 <Route path="/Admin/VisualizarSocioeconomico/:id" component={VisualizarQuestionarioSocioeconomicoAdmin} />
                 <Route path="/Admin/visualizarParescer/:id" component={VisualizarParescerAdmin} />
                 <Route path="/Admin/novoProntuario" component={NovoProntuarioAdmin} />
+                <Route path="/Admin/gerenciaProntuario" component={GerenciaProntuariosAdmin} />
+                <Route path="/Admin/gerenciaParescerPsicologico" component={GerenciaPareceresAdmin} />
                 
                 <Route path="/psicologo/perfil" component={PerfilPsicologo} />
                 <Route path="/psicologo/parecer" component={ParecerPsicologico} />

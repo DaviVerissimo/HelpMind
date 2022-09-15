@@ -173,6 +173,7 @@ export default function GerenciaMaterial() {
 
         toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'O matérial ' + material.nome + ' foi deletado! RECARREGUE PARA VER MUDANÇAS.', life: 5000 });
         setDeleteProductDialog(false);
+        allMaterial();
     }
 
     const findIndexById = (id) => {
