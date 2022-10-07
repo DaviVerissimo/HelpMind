@@ -34,11 +34,14 @@ public class ServidorService {
 	}
 	
 	private boolean isAdmin() {
-		boolean existe = true;
-		List<Administrador> admin = administradorRepository.findAll();
-		if(admin.get(0).equals(null)) {
-			existe = false;
-		}
+		boolean existe = false;
+//		List<Administrador> admin = administradorRepository.findAll();
+//		System.out.println(admin.equals(null));
+//		System.out.println("gilo ");
+//		if(admin.get(0).equals(null)) {
+//			System.out.println("carrapeta");
+//			existe = false;
+//		}
 		
 		return existe;
 	}

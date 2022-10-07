@@ -52,13 +52,13 @@ export default function Login() {
 
         var chave = true;
 
-        // var currentUrl = usuario.email;
-        // if (!currentUrl.includes("academico.ifpb.edu.br")) {
-        //     chave = true;
-        // }
-        // else {
-        //     chave = false;
-        // }
+        var currentUrl = usuario.email;
+        if (!currentUrl.includes("academico.ifpb.edu.br")) {
+            chave = true;
+        }
+        else {
+            chave = false;
+        }
 
         if (chave) {
 
@@ -180,6 +180,11 @@ export default function Login() {
         showError();
     }
 
+    function infoEmail(){
+        window.location.replace('https://www.ifpb.edu.br/ti/redes/servicos/e-mail-academico')
+        
+    }
+
     return (
         <div>
             <ToobarPublica />
@@ -199,7 +204,7 @@ export default function Login() {
                             // cookiePolicy={'single_host_origin'}
                             ></GoogleLogin>
                             <h3>ou</h3>
-                            <Button className={configBotaoSecumdario} label="NÂO POSSUO E-MAIL ACADEMICO" />
+                            <Button className={configBotaoSecumdario} label="NÂO POSSUO E-MAIL ACADEMICO" onClick={infoEmail}/>
                         </div>
 
                         <Card subTitle='Realize login para acessar todas as opções: ' ></Card>

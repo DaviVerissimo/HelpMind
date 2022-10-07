@@ -21,25 +21,54 @@ public class ReporteTest {
 	 @Autowired
 	 private ReporteService reporteService;
 
-//	@Test
-//	void novoReporteSucesso() {
-//		Reporte reporte = new Reporte();
-//		reporte.setDiscente("Toto ");
-//		reporte.setCampus("Cansas");
-//		reporte.setCurso("Terra de Az");
-//		reporte.setPeriodo("1º");
-//		reporte.setDescrisao("procura a estrada de Tijolos amarelos");
-//		LocalDateTime data = LocalDateTime.now();
-//		reporte.setData(data);
-//		reporteService.salvar(reporte);
-//		List<Reporte> r = reporteRepository.findByDiscente("Doroty");
-//		assertNotNull(r.get(0).getDiscente());
-//	}
+	@Test
+	void novoReporteSucesso() {
+		Reporte reporte = new Reporte();
+		reporte.setDiscente("Toto ");
+		reporte.setCampus("Cansas");
+		reporte.setCurso("Terra de Az");
+		reporte.setPeriodo("1º");
+		reporte.setDescrisao("procura a estrada de Tijolos amarelos");
+		LocalDateTime data = LocalDateTime.now();
+		reporte.setData(data);
+		Reporte r = reporteService.salvar(reporte);
+		reporteRepository.delete(r);
+		
+		assertNotNull(r);
+	}
 	
 	@Test
-	void retornaListaDeReportesParaProfsaudeSucesso() {
-		List<Reporte> r = reporteService.retornarTodos();
-		assertNotNull(r);
+	void retornaTodosReportes() {
+		Reporte reporte = new Reporte();
+		reporte.setDiscente("Toto ");
+		reporte.setCampus("Cansas");
+		reporte.setCurso("Terra de Az");
+		reporte.setPeriodo("1º");
+		reporte.setDescrisao("procura a estrada de Tijolos amarelos");
+		LocalDateTime data = LocalDateTime.now();
+		reporte.setData(data);
+		Reporte r = reporteService.salvar(reporte);
+		List<Reporte> l = reporteService.retornarTodos();
+		reporteRepository.delete(r);
+		
+		assertNotNull(l);
+	}
+	
+	@Test
+	void retornaTodosReportesByDiscente() {
+		Reporte reporte = new Reporte();
+		reporte.setDiscente("Doroty ");
+		reporte.setCampus("Cansas");
+		reporte.setCurso("Terra de Az");
+		reporte.setPeriodo("1º");
+		reporte.setDescrisao("procura a estrada de Tijolos amarelos");
+		LocalDateTime data = LocalDateTime.now();
+		reporte.setData(data);
+		Reporte r = reporteService.salvar(reporte);
+		List<Reporte> l = reporteRepository.findByDiscente("Doroty");
+		reporteRepository.delete(r);
+		
+		assertNotNull(l);
 	}
 
 }

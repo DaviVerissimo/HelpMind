@@ -14,8 +14,10 @@ public class ReporteService {
 	@Autowired
 	private ReporteRepository reporteRepository;
 	
-	public void salvar (Reporte reporte){
+	public Reporte salvar (Reporte reporte){
 		reporteRepository.save(reporte);
+		
+		return reporte;
 	}
 	
 	public List<Reporte> retornarTodos(){
