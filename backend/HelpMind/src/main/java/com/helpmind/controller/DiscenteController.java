@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.helpmind.model.Constantes;
 import com.helpmind.model.Discente;
 import com.helpmind.model.Usuario;
 import com.helpmind.service.DiscenteService;
@@ -21,7 +22,7 @@ import com.helpmind.service.DiscenteService;
  * @author davi
  *
  */
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = Constantes.URI)
 @RestController
 @RequestMapping("/discente")
 public class DiscenteController {

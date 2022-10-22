@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Card } from 'primereact/card';
+import URL from '../../services/URL';
 
 export default function NomePerfil() {
 
@@ -15,7 +16,7 @@ export default function NomePerfil() {
     const [nomePerfil, setNomePerfil] = useState("");
     
     function buscarNomeDiscente(id) {
-        axios.post("http://localhost:8080/discente/buscaDiscentePorID", id, headers)
+        axios.post(URL.getDominio() + "/discente/buscaDiscentePorID", id, headers)
             .then(Response => {
                 setNomePerfil(Response.data.nome);
             })
@@ -23,7 +24,7 @@ export default function NomePerfil() {
     }
 
     function buscarNomeServidor(id) {
-        axios.post("http://localhost:8080/servidor/buscarServidorPeloId", id, headers)
+        axios.post(URL.getDominio() + "/servidor/buscarServidorPeloId", id, headers)
         .then(Response => {
             setNomePerfil(Response.data.nome);
         })

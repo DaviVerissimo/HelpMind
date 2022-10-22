@@ -10,6 +10,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { RadioButton } from 'primereact/radiobutton';
 import { Checkbox } from 'primereact/checkbox';
 import { Toast } from 'primereact/toast';
+import URL from '../../../services/URL';
 
 export default function QuestionarioSocioeconomico() {
     const history = useHistory();
@@ -454,7 +455,7 @@ export default function QuestionarioSocioeconomico() {
 
     useEffect(async () => { //cursos
         var lista = [];
-        const cursosIFPB = "http://localhost:8080/curso/listarCursosPorCampus";
+        const cursosIFPB = URL.getDominio() + "/curso/listarCursosPorCampus";
         axios.get(cursosIFPB)
             .then(Response => {
                 var dataCurso = Response.data;
@@ -479,7 +480,7 @@ export default function QuestionarioSocioeconomico() {
 
     useEffect(async () => { //campus
         var lista = [];
-        const campus = "http://localhost:8080/curso/listarCampus";
+        const campus = URL.getDominio() + "/curso/listarCampus";
         axios.get(campus)
             .then(Response => {
                 var dataCampus = Response.data;
@@ -510,7 +511,7 @@ export default function QuestionarioSocioeconomico() {
                 'Access-Control-Allow-Origin': '*'
             }
         }
-        axios.post("http://localhost:8080/discente/buscaDiscentePorID", id, headers)
+        axios.post(URL.getDominio() + "/discente/buscaDiscentePorID", id, headers)
             .then(Response => {
                 setEmail(Response.data.email);
             })
@@ -710,7 +711,7 @@ export default function QuestionarioSocioeconomico() {
                 }
             }
 
-            axios.post("http://localhost:8080/QuestionarioSocioeconomico/salvar", novoQuestionario, headers)
+            axios.post(URL.getDominio() + "/QuestionarioSocioeconomico/salvar", novoQuestionario, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
 

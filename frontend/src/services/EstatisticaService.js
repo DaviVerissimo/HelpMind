@@ -1,9 +1,10 @@
 import axios from 'axios';
+import URL from './URL';
 
-const API_BASE_URL_ESTATISTICAS_TODOS_DISCENTE = 'http://localhost:8080/estatistica/all';
-const API_BASE_URL_ESTATISTICAS_CURSO = 'http://localhost:8080/estatistica/byCurso';
-const API_BASE_URL_ESTATISTICAS_PERIODO = 'http://localhost:8080/estatistica/byPeriodo';
-const API_BASE_URL_ESTATISTICAS_CURSO_PERIODO = 'http://localhost:8080/estatistica/byCursoAndPeriodo';
+const API_BASE_URL_ESTATISTICAS_TODOS_DISCENTE = URL.getDominio() + '/estatistica/all';
+const API_BASE_URL_ESTATISTICAS_CURSO = URL.getDominio() + '/estatistica/byCurso';
+const API_BASE_URL_ESTATISTICAS_PERIODO = URL.getDominio() + '/estatistica/byPeriodo';
+const API_BASE_URL_ESTATISTICAS_CURSO_PERIODO = URL.getDominio() + '/estatistica/byCursoAndPeriodo';
 
 const headers = {
     'headers': {
@@ -18,8 +19,6 @@ class EstatisticaService {
     getAllEstatistica() {
         return axios.get(API_BASE_URL_ESTATISTICAS_TODOS_DISCENTE);
     }
-
-
 
     getByCurso(curso) {
         return axios.post(API_BASE_URL_ESTATISTICAS_CURSO, curso, headers);

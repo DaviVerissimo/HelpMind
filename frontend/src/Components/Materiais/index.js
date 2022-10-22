@@ -8,6 +8,7 @@ import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Card } from 'primereact/card';
+import URL from '../../services/URL';
 
 export default function Materiais() {
 
@@ -52,7 +53,7 @@ export default function Materiais() {
 
     const download = (material) => {
         setMaterial(material);
-        window.open('http://localhost:8080/file/files/' + material.nomeDoArquivo);
+        window.open(URL.getDominio() + '/file/files/' + material.nomeDoArquivo);
     }
 
     const actionBodyTemplate = (rowData) => {

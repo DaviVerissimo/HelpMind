@@ -8,6 +8,7 @@ import { Card } from 'primereact/card';
 import axios from "axios";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
+import URL from '../../services/URL';
 
 export default function NovoProntuarioComponente() {
     const history = useHistory();
@@ -68,7 +69,7 @@ export default function NovoProntuarioComponente() {
 
     useEffect(async () => { //cursos
         var lista = [];
-        const cursosIFPB = "http://localhost:8080/curso/listarCursosPorCampus";
+        const cursosIFPB = URL.getDominio() + "/curso/listarCursosPorCampus";
         axios.get(cursosIFPB)
             .then(Response => {
                 var dataCurso = Response.data;
@@ -93,7 +94,7 @@ export default function NovoProntuarioComponente() {
 
     useEffect(async () => { //campus
         var lista = [];
-        const campus = "http://localhost:8080/curso/listarCampus";
+        const campus = URL.getDominio() + "/curso/listarCampus";
         axios.get(campus)
             .then(Response => {
                 var dataCampus = Response.data;
@@ -126,7 +127,7 @@ export default function NovoProntuarioComponente() {
         }
 
         if (!nome == null) {
-            axios.post("http://localhost:8080/curso/definirCampus", campus, headers)
+            axios.post(URL.getDominio() + "/curso/definirCampus", campus, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
         }
@@ -193,7 +194,7 @@ export default function NovoProntuarioComponente() {
                 }
             }
 
-            axios.post("http://localhost:8080/prontuario/salvarProntuario", novoProntuario, headers)
+            axios.post(URL.getDominio() + "/prontuario/salvarProntuario", novoProntuario, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
             showSuccess();

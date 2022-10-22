@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import axios from "axios";
+import URL from '../../services/URL';
 
 export default function Cursos() {
 
@@ -11,7 +12,7 @@ export default function Cursos() {
 
     useEffect(async () => { //cursos
         var lista = [];
-        const cursosIFPB = "http://localhost:8080/curso/listarCursosPorCampus";
+        const cursosIFPB = URL.getDominio() + "/curso/listarCursosPorCampus";
         axios.get(cursosIFPB)
             .then(Response => {
                 var dataCurso = Response.data;

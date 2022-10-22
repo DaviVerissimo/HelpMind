@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import axios from "axios";
+import URL from '../../services/URL';
 
 export default function DiscenteNome() {
 
@@ -11,7 +12,7 @@ export default function DiscenteNome() {
 
     useEffect(async () => { //nome discente
         var lista = [];
-        const discentesIFPB = "http://localhost:8080/discente/listarAllNomesDiscentes";
+        const discentesIFPB = URL.getDominio() + "/discente/listarAllNomesDiscentes";
         axios.get(discentesIFPB)
             .then(Response => {
                 var dataNomeDiscente = Response.data;

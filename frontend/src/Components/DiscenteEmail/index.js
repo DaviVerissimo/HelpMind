@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import axios from "axios";
+import URL from '../../services/URL';
 
 export default function DiscenteEmail() {
     // aviso: falta ressolver como será passada a validação
@@ -12,7 +13,7 @@ export default function DiscenteEmail() {
 
     useEffect(async () => { //email
         var lista = [];
-        const discentesIFPB = "http://localhost:8080/discente/listarAllEmailDiscentes";
+        const discentesIFPB = URL.getDominio() + "/discente/listarAllEmailDiscentes";
         axios.get(discentesIFPB)
             .then(Response => {
                 var dataEmailDiscente = Response.data;

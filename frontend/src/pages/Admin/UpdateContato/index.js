@@ -7,6 +7,7 @@ import { Button } from 'primereact/button';
 import ToobarAdmin from '../ToobarAdmin';
 import { Toast } from 'primereact/toast';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import URL from '../../../services/URL';
 
 export default function UpdateContato() {
 
@@ -106,7 +107,7 @@ export default function UpdateContato() {
                 }
             }
             //criar rota para novo contato
-            axios.post("http://localhost:8080/contato/updateContato", updateContato, headers)
+            axios.post(URL.getDominio() + "/contato/updateContato", updateContato, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
             showSuccess();

@@ -12,6 +12,7 @@ import Cursos from '../../../Components/Cursos';
 import Campus from '../../../Components/Campus';
 import DiscenteEmail from '../../../Components/DiscenteEmail';
 import DiscenteNome from '../../../Components/DiscenteNome';
+import URL from '../../../services/URL';
 
 export default function ParecerPsicologico() {
 
@@ -105,7 +106,7 @@ export default function ParecerPsicologico() {
                 }
             }
 
-            axios.post("http://localhost:8080/parecerPsicologico/salvarParecerPsicologico", novoParecerPsicologico, headers)
+            axios.post(URL.getDominio() + "/parecerPsicologico/salvarParecerPsicologico", novoParecerPsicologico, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
             showSuccess();

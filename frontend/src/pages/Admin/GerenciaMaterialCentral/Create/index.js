@@ -12,6 +12,7 @@ import ToobarAdmin from '../../ToobarAdmin';
 import { Toast } from 'primereact/toast';
 import BotaoVoltar from '../../../../Components/BotaoVoltar';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import URL from '../../../../services/URL';
 
 export default function Create() {
 
@@ -91,7 +92,7 @@ export default function Create() {
         }
       }
 
-      axios.post("http://localhost:8080/material/salvarMaterial", novoMaterial, headers)
+      axios.post(URL.getDominio() + "/material/salvarMaterial", novoMaterial, headers)
         .then(Response => { })
         .catch(error => console.log(error))
       showSuccess();

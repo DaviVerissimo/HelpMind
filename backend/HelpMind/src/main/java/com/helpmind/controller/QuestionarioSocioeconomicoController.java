@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.helpmind.model.Constantes;
 import com.helpmind.model.QuestionarioSocioeconomico;
 import com.helpmind.service.QuestionarioSocioeconomicoService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = Constantes.URI)
 @RestController
 @RequestMapping("/QuestionarioSocioeconomico")
 public class QuestionarioSocioeconomicoController {

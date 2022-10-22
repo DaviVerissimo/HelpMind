@@ -20,6 +20,7 @@ import ToobarAdmin from '../../ToobarAdmin';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 import BotaoVoltar from '../../../../Components/BotaoVoltar';
+import URL from '../../../../services/URL';
 
 export default function GerenciaMaterial() {
 
@@ -153,7 +154,7 @@ export default function GerenciaMaterial() {
 
     const download = (material) => {
         setProduct(material);
-        window.open('http://localhost:8080/file/files/' + material.nomeDoArquivo);
+        window.open(URL.getDominio() + '/file/files/' + material.nomeDoArquivo);
     }
 
     const deleteMaterial = () => {
@@ -166,7 +167,7 @@ export default function GerenciaMaterial() {
             }
         }
 
-        axios.post("http://localhost:8080/material/removerMaterial/", material.id, headers)
+        axios.post(URL.getDominio() + "/material/removerMaterial/", material.id, headers)
             .then(Response => { })
             .catch(error => console.log(error))
         allMaterial();

@@ -7,6 +7,7 @@ import ToobarPublica from '../ToobarPublica';
 import GoogleLogin from 'react-google-login';
 import { Toast } from 'primereact/toast';
 import axios from 'axios';
+import URL from '../../../services/URL';
 
 export default function Login() {
 
@@ -52,27 +53,27 @@ export default function Login() {
 
         var chave = true;
 
-        var currentUrl = usuario.email;
-        if (!currentUrl.includes("academico.ifpb.edu.br")) {
-            chave = true;
-        }
-        else {
-            chave = false;
-        }
+        // var currentUrl = usuario.email;
+        // if (!currentUrl.includes("academico.ifpb.edu.br")) {
+        //     chave = true;
+        // }
+        // else {
+        //     chave = false;
+        // }
 
         if (chave) {
 
-            axios.post("http://localhost:8080/servidor/isServidorGoogleId", usuario.googleId, headers)
+            axios.post(URL.getDominio() + "/servidor/isServidorGoogleId", usuario.googleId, headers)
                 .then(Response => {
                     if (Response.data.id == null) {
-                        axios.post("http://localhost:8080/servidor/salvarServidor", usuario, headers)
+                        axios.post(URL.getDominio() + "/servidor/salvarServidor", usuario, headers)
                             .then(Response => {
                                 localStorage.setItem('idServidor', Response.data.id);
                                 // history.push('/profissionalDeSaude/perfil');
                                 var permissionProfSaude = false;
                                 var permissionPsicolo = false;
 
-                                axios.post("http://localhost:8080/servidor/isServidorPermissaoAdmin", usuario.googleId, headers)
+                                axios.post(URL.getDominio() + "/servidor/isServidorPermissaoAdmin", usuario.googleId, headers)
                                 .then(Response => {
 
                                     if (Response.data) {
@@ -82,7 +83,7 @@ export default function Login() {
                                 })
                                 .catch(error => console.log(error))
 
-                                axios.post("http://localhost:8080/servidor/isServidorPermissaoProfSaude", usuario.googleId, headers)
+                                axios.post(URL.getDominio() + "/servidor/isServidorPermissaoProfSaude", usuario.googleId, headers)
                                     .then(Response => {
 
                                         if (Response.data) {
@@ -92,7 +93,7 @@ export default function Login() {
                                     })
                                     .catch(error => console.log(error))
 
-                                axios.post("http://localhost:8080/servidor/isServidorPermissaoPsicologo", usuario.googleId, headers)
+                                axios.post(URL.getDominio() + "/servidor/isServidorPermissaoPsicologo", usuario.googleId, headers)
                                     .then(Response => {
 
                                         if (Response.data) {
@@ -116,7 +117,7 @@ export default function Login() {
                     var permissionProfSaude = false;
                     var permissionPsicolo = false;
 
-                    axios.post("http://localhost:8080/servidor/isServidorPermissaoAdmin", usuario.googleId, headers)
+                    axios.post(URL.getDominio() + "/servidor/isServidorPermissaoAdmin", usuario.googleId, headers)
                     .then(Response => {
 
                         if (Response.data) {
@@ -126,7 +127,7 @@ export default function Login() {
                     })
                     .catch(error => console.log(error))
 
-                    axios.post("http://localhost:8080/servidor/isServidorPermissaoProfSaude", usuario.googleId, headers)
+                    axios.post(URL.getDominio() + "/servidor/isServidorPermissaoProfSaude", usuario.googleId, headers)
                         .then(Response => {
 
                             if (Response.data) {
@@ -136,7 +137,7 @@ export default function Login() {
                         })
                         .catch(error => console.log(error))
 
-                    axios.post("http://localhost:8080/servidor/isServidorPermissaoPsicologo", usuario.googleId, headers)
+                    axios.post(URL.getDominio() + "/servidor/isServidorPermissaoPsicologo", usuario.googleId, headers)
                         .then(Response => {
 
                             if (Response.data) {
@@ -155,10 +156,10 @@ export default function Login() {
 
         if (!chave) {
 
-            axios.post("http://localhost:8080/discente/isDiscenteGoogleId", usuario.googleId, headers)
+            axios.post(URL.getDominio() + "/discente/isDiscenteGoogleId", usuario.googleId, headers)
                 .then(Response => {
                     if (Response.data.id == null) {
-                        axios.post("http://localhost:8080/discente/salvarUserDiscente", usuario, headers)
+                        axios.post(URL.getDominio() + "/discente/salvarUserDiscente", usuario, headers)
                             .then(Response => {
                                 localStorage.setItem('id', Response.data.id);
                                 history.push('/discente/Perfil');
@@ -179,7 +180,7 @@ export default function Login() {
     const errorLogin = () => {
         showError();
     }
-
+    
     function infoEmail(){
         window.location.replace('https://www.ifpb.edu.br/ti/redes/servicos/e-mail-academico')
         

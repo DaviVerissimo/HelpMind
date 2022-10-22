@@ -9,6 +9,7 @@ import axios from "axios";
 import { Button } from 'primereact/button';
 import ToobarDiscente from "../ToobarDiscente";
 import { Toast } from 'primereact/toast';
+import URL from '../../../services/URL';
 
 export default function Reporte() {
     const history = useHistory();
@@ -70,7 +71,7 @@ export default function Reporte() {
 
     useEffect(async () => { //cursos
         var lista = [];
-        const cursosIFPB = "http://localhost:8080/curso/listarCursosPorCampus";
+        const cursosIFPB = URL.getDominio() + "/curso/listarCursosPorCampus";
         axios.get(cursosIFPB)
             .then(Response => {
                 var dataCurso = Response.data;
@@ -95,7 +96,7 @@ export default function Reporte() {
 
     useEffect(async () => { //campus
         var lista = [];
-        const campus = "http://localhost:8080/curso/listarCampus";
+        const campus = URL.getDominio() + "/curso/listarCampus";
         axios.get(campus)
             .then(Response => {
                 var dataCampus = Response.data;
@@ -128,7 +129,7 @@ export default function Reporte() {
         }
 
         if (!nome == null) {
-            axios.post("http://localhost:8080/curso/definirCampus", campus, headers)
+            axios.post(URL.getDominio() + "/curso/definirCampus", campus, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
         }
@@ -201,7 +202,7 @@ export default function Reporte() {
                 }
             }
 
-            axios.post("http://localhost:8080/reporte/salvarReporte", novoReporte, headers)
+            axios.post(URL.getDominio() + "/reporte/salvarReporte", novoReporte, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
             showSuccess();

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import URL from './URL';
 
 const headers = {
     'headers': {
@@ -8,9 +9,9 @@ const headers = {
     }
 }
 
-const API_BASE_URL_RETORNAR_ALL_REPORTES = 'http://localhost:8080/reporte/listarReportes';
-const API_BASE_URL_RETORNAR_REPORTE_BY_ID = 'http://localhost:8080/reporte/buscarReportePeloId';
-const API_BASE_URL_RETORNAR_REPORTANTE = 'http://localhost:8080/reporte/nomeReportante';
+const API_BASE_URL_RETORNAR_ALL_REPORTES = URL.getDominio() + '/reporte/listarReportes';
+const API_BASE_URL_RETORNAR_REPORTE_BY_ID = URL.getDominio() + '/reporte/buscarReportePeloId';
+const API_BASE_URL_RETORNAR_REPORTANTE = URL.getDominio() + '/reporte/nomeReportante';
 
 class ReporteService {
 

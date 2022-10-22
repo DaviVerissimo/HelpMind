@@ -1,9 +1,10 @@
 import axios from 'axios';
+import URL from './URL';
 
-const API_BASE_URL_LISTAR_ALL_DISCENTES = 'http://localhost:8080/discente/allDiscentes';
-const API_BASE_URL_LISTAR_DISCENTES_COM_AUMENTO_VULNERABILIDADE = 'http://localhost:8080/discente/discenteComAumentoVulnerabilidadeEmocional';
-const API_BASE_URL_DISCENTE_ID = 'http://localhost:8080/discente/buscaDiscentePorID';
-const API_BASE_URL_IS_AUMENTO = 'http://localhost:8080/discente/isAumento';
+const API_BASE_URL_LISTAR_ALL_DISCENTES = URL.getDominio() + '/discente/allDiscentes';
+const API_BASE_URL_LISTAR_DISCENTES_COM_AUMENTO_VULNERABILIDADE = URL.getDominio() + '/discente/discenteComAumentoVulnerabilidadeEmocional';
+const API_BASE_URL_DISCENTE_ID = URL.getDominio() + '/discente/buscaDiscentePorID';
+const API_BASE_URL_IS_AUMENTO = URL.getDominio() + '/discente/isAumento';
 
 const headers = {
     'headers': {

@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.helpmind.model.Constantes;
 import com.helpmind.model.Contato;
 import com.helpmind.service.ContatoService;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = Constantes.URI)
 @RestController
 @RequestMapping("/contato")
 public class ContatoController {

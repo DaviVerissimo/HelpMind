@@ -8,6 +8,7 @@ import ToobarDiscente from '../ToobarDiscente';
 import axios from "axios";
 import { RadioButton } from 'primereact/radiobutton';
 import { Toast } from 'primereact/toast';
+import URL from '../../../services/URL';
 
 export default function QuestionarioDeAnsiedadeDeBeck() {
 
@@ -139,7 +140,7 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
                 ]
             }
 
-            axios.post("http://localhost:8080/QuestionarioDeAnsiedadeDeBeck/salvar", questionarioSimples, headers)
+            axios.post(URL.getDominio() + "/QuestionarioDeAnsiedadeDeBeck/salvar", questionarioSimples, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
             showSuccess();

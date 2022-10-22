@@ -1,10 +1,11 @@
 import axios from 'axios';
+import URL from './URL';
 
-const API_BASE_URL_LISTAR_ALL_DISCENTES = 'http://localhost:8080/servidor/listarAllServidores';
-const API_BASE_URL_CONCEDER_ACESSO_PROF_SAUDE = 'http://localhost:8080/servidor/updateServidor';
-const API_BASE_URL_REMOVER_ACESSO_PROF_SAUDE = 'http://localhost:8080/servidor/removerAcessoComoProfissionalDeSaude';
-const API_BASE_URL_CONCEDER_ACESSO_PSICOLOGO = 'http://localhost:8080/servidor/updateServidorForPsicologo';
-const API_BASE_URL_REMOVER_ACESSO_PSICOLOGO = 'http://localhost:8080/servidor/removerAcessoComoPsicologo';
+const API_BASE_URL_LISTAR_ALL_DISCENTES = URL.getDominio() + '/servidor/listarAllServidores';
+const API_BASE_URL_CONCEDER_ACESSO_PROF_SAUDE = URL.getDominio() + '/servidor/updateServidor';
+const API_BASE_URL_REMOVER_ACESSO_PROF_SAUDE = URL.getDominio() + '/servidor/removerAcessoComoProfissionalDeSaude';
+const API_BASE_URL_CONCEDER_ACESSO_PSICOLOGO = URL.getDominio() + '/servidor/updateServidorForPsicologo';
+const API_BASE_URL_REMOVER_ACESSO_PSICOLOGO = URL.getDominio() + '/servidor/removerAcessoComoPsicologo';
 
 const headers = {
     'headers': {

@@ -52,8 +52,6 @@ export default function PerfilSemAcesso() {
 ' ></Card>
                         </Card>
 
-
-
                     </Card>
 
                 </Card>

@@ -1,8 +1,9 @@
 import axios from 'axios';
+import URL from './URL';
 
-const API_BASE_URL_LISTAR_ALL_PARECER_PSICOLOGICO = 'http://localhost:8080/parecerPsicologico/listarAllParescerPsicologico';
-const API_BASE_URL_DELETAR_PARECER_PSICOLOGICO = 'http://localhost:8080/parecerPsicologico/removerParescerPsicologico';
-const API_BASE_URL_BUSCAR_PARECER_PSICOLOGICO = 'http://localhost:8080/parecerPsicologico/pesquisarParescerPsicologico';
+const API_BASE_URL_LISTAR_ALL_PARECER_PSICOLOGICO = URL.getDominio() + '/parecerPsicologico/listarAllParescerPsicologico';
+const API_BASE_URL_DELETAR_PARECER_PSICOLOGICO = URL.getDominio() + '/parecerPsicologico/removerParescerPsicologico';
+const API_BASE_URL_BUSCAR_PARECER_PSICOLOGICO = URL.getDominio() + '/parecerPsicologico/pesquisarParescerPsicologico';
 
 const headers = {
     'headers': {

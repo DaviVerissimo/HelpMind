@@ -1,8 +1,9 @@
 import axios from 'axios';
+import URL from './URL';
 
-const API_BASE_URL_LISTAR_ALL_CONTATOS = 'http://localhost:8080/contato/listarAllContatos';
-const API_BASE_URL_DELETAR_CONTATO = 'http://localhost:8080/contato/removerContato';
-const API_BASE_URL_BUSCAR_CONTATO = 'http://localhost:8080/contato/pesquisarContato';
+const API_BASE_URL_LISTAR_ALL_CONTATOS = URL.getDominio() + '/contato/listarAllContatos';
+const API_BASE_URL_DELETAR_CONTATO = URL.getDominio() + '/contato/removerContato';
+const API_BASE_URL_BUSCAR_CONTATO = URL.getDominio() + '/contato/pesquisarContato';
 
 const headers = {
     'headers': {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import URL from '../../services/URL';
 
 export default function FotoPerfil() {
 
@@ -21,7 +22,7 @@ export default function FotoPerfil() {
     const [fotoPerfil, setFotoPerfil] = useState("");
 
     function buscarFotoDiscente(id) {
-        axios.post("http://localhost:8080/discente/buscaDiscentePorID", id, headers)
+        axios.post(URL.getDominio() + "/discente/buscaDiscentePorID", id, headers)
             .then(Response => {
                 setFotoPerfil(Response.data.imagemPerfilUri);
             })
@@ -35,7 +36,7 @@ export default function FotoPerfil() {
     }
 
     function buscarFotoServidor(idServidor) {
-        axios.post("http://localhost:8080/servidor/buscarServidorPeloId", idServidor, headers)
+        axios.post(URL.getDominio() + "/servidor/buscarServidorPeloId", idServidor, headers)
             .then(Response => {
                 setFotoPerfil(Response.data.imagemPerfilUri);
             })

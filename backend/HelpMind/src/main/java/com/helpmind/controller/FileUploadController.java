@@ -21,10 +21,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.helpmind.model.Constantes;
 import com.helpmind.storage.StorageFileNotFoundException;
 import com.helpmind.storage.StorageService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = Constantes.URI)
 @RestController
 @RequestMapping("/file")
 public class FileUploadController {

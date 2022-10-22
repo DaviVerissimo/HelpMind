@@ -8,6 +8,7 @@ import { Button } from 'primereact/button';
 import ToobarAdmin from '../ToobarAdmin';
 import { Toast } from 'primereact/toast';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import URL from '../../../services/URL';
 
 export default function NovoContato() {
     const hystory = useHistory();
@@ -76,7 +77,7 @@ export default function NovoContato() {
                 }
             }
             //criar rota para novo contato
-            axios.post("http://localhost:8080/contato/salvarContato", novoContato, headers)
+            axios.post(URL.getDominio() + "/contato/salvarContato", novoContato, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
             showSuccess();

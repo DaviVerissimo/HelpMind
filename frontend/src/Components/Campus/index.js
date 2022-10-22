@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import axios from "axios";
+import URL from '../../services/URL';
 
 export default function Campus(childToParent) {
     // aviso: falta ressolver como será passada a validação
@@ -12,7 +13,7 @@ export default function Campus(childToParent) {
 
     useEffect(async () => { //campus
         var lista = [];
-        const campus = "http://localhost:8080/curso/listarCampus";
+        const campus = URL.getDominio() + "/curso/listarCampus";
         axios.get(campus)
             .then(Response => {
                 var dataCampus = Response.data;

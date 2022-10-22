@@ -1,6 +1,7 @@
 import axios from 'axios';
+import URL from './URL';
 
-const EMPLOYEE_API_BASE_URL = 'http://localhost:8080/material/allMaterial';
+const EMPLOYEE_API_BASE_URL = URL.getDominio() + '/material/allMaterial';
 
 class MaterialService {
 

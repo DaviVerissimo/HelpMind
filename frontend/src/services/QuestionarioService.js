@@ -1,4 +1,5 @@
 import axios from 'axios';
+import URL from './URL';
 
 const headers = {
     'headers': {
@@ -8,15 +9,15 @@ const headers = {
     }
 }
 
-const API_URL_LISTA_QUESTIONARIOSOCIOECONOMICO = 'http://localhost:8080/QuestionarioSocioeconomico/ListaQuestionarioSocioeconomico';
-const API_URL_LISTA_QUESTIONARIOSANSIEDADEBECK = 'http://localhost:8080/QuestionarioDeAnsiedadeDeBeck/ListaQuestionarioDeAnsiedadeDeBeck';
-const API_URL_LISTA_QUESTIONARIOSDEPRESSAOBECK = 'http://localhost:8080/QuestionarioDeDepressaoDeBeck/ListaQuestionarioDepressaoDeBeck';
-const API_URL_LISTA_QUESTIONARIOSOCIOECONOMICOPORDISCENTE = 'http://localhost:8080/QuestionarioSocioeconomico/buscaQuestionariosPeloID';
-const API_URL_QUESTIONARIOSOCIOECONOMICOPORIDQUESTIONARIO = 'http://localhost:8080/QuestionarioSocioeconomico/buscaQuestionarioPeloID';
-const API_URL_LISTA_QUESTIONARIOSANSIEDADEPORDISCENTE = 'http://localhost:8080/QuestionarioDeAnsiedadeDeBeck/buscaQuestionariosPeloID';
-const API_URL_QUESTIONARIOANSIEDADEPORIDQUESTIONARIO = 'http://localhost:8080/QuestionarioDeAnsiedadeDeBeck/buscaQuestionarioPeloID';
-const API_URL_LISTA_QUESTIONARIOSDEPRESSAOPORDISCENTE = 'http://localhost:8080/QuestionarioDeDepressaoDeBeck/buscaQuestionariosPeloID';
-const API_URL_QUESTIONARIODEPRESSAOPORIDQUESTIONARIO = 'http://localhost:8080/QuestionarioDeDepressaoDeBeck/buscaQuestionarioPeloID';
+const API_URL_LISTA_QUESTIONARIOSOCIOECONOMICO = URL.getDominio() + '/QuestionarioSocioeconomico/ListaQuestionarioSocioeconomico';
+const API_URL_LISTA_QUESTIONARIOSANSIEDADEBECK = URL.getDominio() + '/QuestionarioDeAnsiedadeDeBeck/ListaQuestionarioDeAnsiedadeDeBeck';
+const API_URL_LISTA_QUESTIONARIOSDEPRESSAOBECK = URL.getDominio() + '/QuestionarioDeDepressaoDeBeck/ListaQuestionarioDepressaoDeBeck';
+const API_URL_LISTA_QUESTIONARIOSOCIOECONOMICOPORDISCENTE = URL.getDominio() + '/QuestionarioSocioeconomico/buscaQuestionariosPeloID';
+const API_URL_QUESTIONARIOSOCIOECONOMICOPORIDQUESTIONARIO = URL.getDominio() + '/QuestionarioSocioeconomico/buscaQuestionarioPeloID';
+const API_URL_LISTA_QUESTIONARIOSANSIEDADEPORDISCENTE = URL.getDominio() + '/QuestionarioDeAnsiedadeDeBeck/buscaQuestionariosPeloID';
+const API_URL_QUESTIONARIOANSIEDADEPORIDQUESTIONARIO = URL.getDominio() + '/QuestionarioDeAnsiedadeDeBeck/buscaQuestionarioPeloID';
+const API_URL_LISTA_QUESTIONARIOSDEPRESSAOPORDISCENTE = URL.getDominio() + '/QuestionarioDeDepressaoDeBeck/buscaQuestionariosPeloID';
+const API_URL_QUESTIONARIODEPRESSAOPORIDQUESTIONARIO = URL.getDominio() + '/QuestionarioDeDepressaoDeBeck/buscaQuestionarioPeloID';
 
 class QuestionarioService {
 

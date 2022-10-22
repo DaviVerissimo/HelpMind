@@ -2,6 +2,7 @@ import { Card } from 'primereact/card';
 import React, { useState,} from 'react';
 import './style.css';
 import axios from 'axios';
+import URL from '../../../services/URL';
 
 export default function BarraPessoalAdmin({ idDiscente }) {
 
@@ -15,7 +16,7 @@ export default function BarraPessoalAdmin({ idDiscente }) {
             'Access-Control-Allow-Origin': '*'
         }
     }
-    axios.post("http://localhost:8080/servidor/buscarServidorPeloId", idDiscente, headers)
+    axios.post(URL.getDominio() + "/servidor/buscarServidorPeloId", idDiscente, headers)
         .then(Response => {
             setName(Response.data.nome);
             setEmail(Response.data.email);
