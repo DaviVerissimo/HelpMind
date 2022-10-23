@@ -126,9 +126,10 @@ public class ServidorController {
 	}
 	
 	@PostMapping("/isServidorPermissaoAdmin")
-	public boolean retornaPermissaoAdmin(@RequestBody String googleId){
-		
-		return servidorService.retornaPermissaoAdmin(googleId);
+	public boolean retornaPermissaoAdmin(@RequestBody String email){
+		email = email.substring(1, email.length() - 1);
+		  
+		return servidorService.retornaPermissaoAdmin(email);
 	}
 
 }
