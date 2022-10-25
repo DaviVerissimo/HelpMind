@@ -8,7 +8,7 @@ export default function ConsultarEstatisticasPsicologo() {
     return (
         <div>
             <ToobarPsicologo></ToobarPsicologo>
-            <ConsultarEstatisticas logado={Usuario.get_PSICOLOGO} ></ConsultarEstatisticas>
+            <ConsultarEstatisticas logado={Usuario.get_PSICOLOGO()} ></ConsultarEstatisticas>
         </div>
     
     );

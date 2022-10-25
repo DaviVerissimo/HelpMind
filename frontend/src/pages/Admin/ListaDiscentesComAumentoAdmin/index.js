@@ -8,7 +8,7 @@ export default function ListaDiscentesComAumentoAdmin() {
     return (
         <div> 
             <ToobarAdmin></ToobarAdmin>
-            <ListaDiscentesAumentoComponente data={Usuario.get_PSICOLOGO()} ></ListaDiscentesAumentoComponente>
+            <ListaDiscentesAumentoComponente data={Usuario.get_ADMIN()} ></ListaDiscentesAumentoComponente>
         </div>
     )
 }

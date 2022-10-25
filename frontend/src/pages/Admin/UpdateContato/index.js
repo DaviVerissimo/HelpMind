@@ -6,7 +6,7 @@ import axios from "axios";
 import { Button } from 'primereact/button';
 import ToobarAdmin from '../ToobarAdmin';
 import { Toast } from 'primereact/toast';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useParams, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import URL from '../../../services/URL';
 
 export default function UpdateContato() {
@@ -29,6 +29,7 @@ export default function UpdateContato() {
             life: 5000
         });
     }
+    const hystory = useHistory();
 
     const contatoAux =
     {
@@ -87,6 +88,10 @@ export default function UpdateContato() {
         return valido;
     }
 
+    function volta(){
+        hystory.goBack();
+      }
+
     async function submeter() {
 
         if (validar()) {
@@ -126,7 +131,7 @@ export default function UpdateContato() {
 
                 <Card className="" >
                     <div>
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" />
+                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" onClick={volta}/>
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>
