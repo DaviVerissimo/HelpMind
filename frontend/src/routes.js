@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Create from "./pages/Admin/GerenciaMaterialCentral/Create";
@@ -47,7 +47,7 @@ import ListarEstatisticasProfSaude from "./pages/ProfissionalDeSaude/ListarEstat
 import PerfilPsicologo from "./pages/Psicologo/PerfilPsicologo";
 import ConsultarEstatisticasPsicologo from "./pages/Psicologo/ConsultarEstatisticasPsicologo";
 import ContatosPsicologo from "./pages/Psicologo/ContatosPsicologo";
-import ListarEstatisticasPsicologo from "./pages/Psicologo/ListarEstatisticasProfPsicologo";
+import ListarEstatisticasPsicologo from "./pages/Psicologo/ListarEstatisticasPsicologo";
 import ListarEstatisticasAdmin from "./pages/Admin/ListarEstatisticasAdmin";
 import PareceresPsicologico from "./pages/Psicologo/PareceresPsicologico";
 import ConsultarEstatisticasAdmin from "./pages/Admin/ConsultarEstatisticasAdmin";
@@ -98,6 +98,59 @@ import VisualizarParescerPsicologo from "./pages/Psicologo/VisualizarParescerPsi
 import NovoProntuarioAdmin from "./pages/Admin/NovoProntuarioAdmin";
 import GerenciaProntuariosAdmin from "./pages/Admin/GerenciaProntuariosAdmin";
 import GerenciaPareceresAdmin from "./pages/Admin/GerenciaPareceresAdmin";
+import { isAuthenticatedAdmin, isAuthenticatedDiscente, isAuthenticatedProfSaude, isAuthenticatedPsicologo } from "./auth";
+
+const PrivateRouteAdmin = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={props =>
+        isAuthenticatedAdmin() ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+        )
+      }
+    />
+  );
+
+  const PrivateRouteProfSaude = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={props =>
+        isAuthenticatedProfSaude() ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+        )
+      }
+    />
+  );
+
+  const PrivateRoutePsicologo = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={props =>
+        isAuthenticatedPsicologo() ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+        )
+      }
+    />
+  );
+
+  const PrivateRouteDiscente = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={props =>
+        isAuthenticatedDiscente() ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+        )
+      }
+    />
+  );
 
 export default function Routes() {
     return (
@@ -109,100 +162,100 @@ export default function Routes() {
                 <Route path="/publica/MateriaisOnline" component={MateriaisOnline} />
                 <Route path="/servidor/perfil" component={PerfilSemAcesso} />
 
-                <Route path="/discente/Perfil" component={PerfilDiscente} />
-                <Route path="/discente/Reporte" component={Reporte} />
-                <Route path="/discente/Reportes" component={Reportes} />
-                <Route path="/discente/ListaReportes" component={ListaDeReportesDoDiscente} />
-                <Route path="/discente/visualizarReporte/:id" component={VisualizarReporteDiscente} />
-                <Route path="/discente/QuestionarioSocioeconomico" component={QuestionarioSocioeconomico} />
-                <Route path="/discente/EscolherQuestionariosDiscente" component={EscolherQuestionariosDiscente} />
-                <Route path="/Discente/QuestionarioDeBeck/Depressao" component={QuestionarioDeDepressaoDeBeck} />
-                <Route path="/Discente/QuestionarioDeBeck/Ansiedade" component={QuestionarioDeAnsiedadeDeBeck} />
-                <Route path="/Discente/Contatos" component={ContatosDiscente} />
-                <Route path="/Discente/MateriaisOnline" component={MateriaisOnlineDiscente} />
-                <Route path="/Discente/home" component={DiscenteHome} />
-                <Route path="/Discente/quemSomos" component={DiscenteQuemSomos} />
+                <PrivateRouteDiscente path="/discente/Perfil" component={PerfilDiscente} />
+                <PrivateRouteDiscente path="/discente/Reporte" component={Reporte} />
+                <PrivateRouteDiscente path="/discente/Reportes" component={Reportes} />
+                <PrivateRouteDiscente path="/discente/ListaReportes" component={ListaDeReportesDoDiscente} />
+                <PrivateRouteDiscente path="/discente/visualizarReporte/:id" component={VisualizarReporteDiscente} />
+                <PrivateRouteDiscente path="/discente/QuestionarioSocioeconomico" component={QuestionarioSocioeconomico} />
+                <PrivateRouteDiscente path="/discente/EscolherQuestionariosDiscente" component={EscolherQuestionariosDiscente} />
+                <PrivateRouteDiscente path="/Discente/QuestionarioDeBeck/Depressao" component={QuestionarioDeDepressaoDeBeck} />
+                <PrivateRouteDiscente path="/Discente/QuestionarioDeBeck/Ansiedade" component={QuestionarioDeAnsiedadeDeBeck} />
+                <PrivateRouteDiscente path="/Discente/Contatos" component={ContatosDiscente} />
+                <PrivateRouteDiscente path="/Discente/MateriaisOnline" component={MateriaisOnlineDiscente} />
+                <PrivateRouteDiscente path="/Discente/home" component={DiscenteHome} />
+                <PrivateRouteDiscente path="/Discente/quemSomos" component={DiscenteQuemSomos} />
 
-                <Route path="/profissionalDeSaude/ListaDeReportes" component={ListaDeReportesProfSaude} />
-                <Route path="/profissionalDeSaude/perfil" component={PerfilProfissionalDeSaude} />
-                <Route path="/profissionalDeSaude/QuestionarioSocioeconomico/:id" component={ListaQuestionarioSocioeconomicoProfSaude} />
-                <Route path="/profissionalDeSaude/VisualizarSocioeconomico/:id" component={VisualizarQuestionarioSocioeconomicoProfSaude} />
-                <Route path="/profissionalDeSaude/VisualizarQuestionarioDeAnsiedadeDeBeck/:id" component={VisualizarQuestionarioDeAnsiedadeDeBeckProfSaude} />
-                <Route path="/profissionalDeSaude/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeckProfSaude} />
-                <Route path="/profissionalDeSaude/QuestionarioAnsiedadeDeBeck/:id" component={ListaQuestionarioAnsiedadeDeBeckProfSaude} />
-                <Route path="/profissionalDeSaude/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeckProfSaude} />
-                <Route path="/profissionalDeSaude/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoProfSaude} />
-                <Route path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentesProfSaude} />
-                <Route path="/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoProfSaude} />
-                <Route path="/profissionalDeSaude/visualizarReporte/:id" component={VisualizarReporteProfSaude} />
-                <Route path="/profissionalDeSaude/parescer" component={Prontuario} />
-                <Route path="/profissionalDeSaude/prontuarios" component={PRONTUARIOS} />
-                <Route path="/profissionalDeSaude/listaProntuarios" component={ListarProntuariosProfSaude} />
-                <Route path="/profissionalDeSaude/visualizarProntuarios/:id" component={VisualizarProntuarioProfSaude} />
-                <Route path="/profissionalDeSaude/consultarEstatisticas" component={ConsultarEstatisticasProfSaude} />
-                <Route path="/profissionalDeSaude/listarEstatisticas" component={ListarEstatisticasProfSaude} />
-                <Route path="/profissionalDeSaude/Contatos" component={ContatosProfissional} />
-                <Route path="/profissionalDeSaude/listarParescerPsicologico" component={ListarPareceresPsicologicorProfSaude} />
-                <Route path="/profissionalDeSaude/materiaisOnline" component={MateriaisOnlineProfSaude} />
-                <Route path="/profissionalDeSaude/home" component={ProfSaudeHome} />
-                <Route path="/profissionalDeSaude/quemSomos" component={ProfSaudeQuemSomos} />
-                <Route path="/profissionalDeSaude/visualizarParescer/:id" component={VisualizarParescerProfsaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/ListaDeReportes" component={ListaDeReportesProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/perfil" component={PerfilProfissionalDeSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/QuestionarioSocioeconomico/:id" component={ListaQuestionarioSocioeconomicoProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/VisualizarSocioeconomico/:id" component={VisualizarQuestionarioSocioeconomicoProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/VisualizarQuestionarioDeAnsiedadeDeBeck/:id" component={VisualizarQuestionarioDeAnsiedadeDeBeckProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeckProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/QuestionarioAnsiedadeDeBeck/:id" component={ListaQuestionarioAnsiedadeDeBeckProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeckProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/ListaDiscentes" component={ListaDiscentesProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/visualizarReporte/:id" component={VisualizarReporteProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/parescer" component={Prontuario} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/prontuarios" component={PRONTUARIOS} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/listaProntuarios" component={ListarProntuariosProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/visualizarProntuarios/:id" component={VisualizarProntuarioProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/consultarEstatisticas" component={ConsultarEstatisticasProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/listarEstatisticas" component={ListarEstatisticasProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/Contatos" component={ContatosProfissional} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/listarParescerPsicologico" component={ListarPareceresPsicologicorProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/materiaisOnline" component={MateriaisOnlineProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/home" component={ProfSaudeHome} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/quemSomos" component={ProfSaudeQuemSomos} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/visualizarParescer/:id" component={VisualizarParescerProfsaude} />
 
-                <Route path="/Admin/perfil" component={PerfilAdmin} />
-                <Route path="/Admin/configuracao" component={Configuracao} />
-                <Route path="/Admin/material/create" component={Create} />
-                <Route path="/Admin/material/Crud" component={GerenciaMaterial} />
-                <Route path="/Admin/GerenciaServidor" component={GerenciaServidor} />
-                <Route path="/Admin/GerenciaContato" component={GerenciaContatos} />
-                <Route path="/Admin/NovoContato" component={NovoContato} />
-                <Route path="/Admin/updateContato/:id" component={UpdateContato} />
-                <Route path="/Admin/Contatos" component={ContatosAdmin} />
-                <Route path="/Admin/listarEstatisticas" component={ListarEstatisticasAdmin} />
-                <Route path="/Admin/consultarEstatisticas" component={ConsultarEstatisticasAdmin} />
-                <Route path="/Admin/listarpareceresPsicologico" component={ListarPareceresPsicologicoraAdmin} />
-                <Route path="/Admin/listarProntuarios" component={ListaProntuariosAdmin} />
-                <Route path="/Admin/visualizarProntuarios/:id" component={VisualizarProntuarioAdmin} />
-                <Route path="/Admin/materiaisOnline" component={MateriaMateriaisOnlineAdminisOnline} />
-                <Route path="/Admin/home" component={AdminHome} />
-                <Route path="/Admin/quemSomos" component={AdminQuemSomos} />
-                <Route path="/Admin/listaReportes" component={ListaDeReportesAdmin} />
-                <Route path="/Admin/visualizarReporte/:id" component={VisualizarReporteAdmin} />
-                <Route path="/Admin/ListaDiscentes" component={ListaDiscentesAdmin} />
-                <Route path="/Admin/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoAdmin} />
-                <Route path="/Admin/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoAdmin} />
-                <Route path="/Admin/QuestionarioAnsiedadeDeBeck/:id" component={ListaQuestionarioAnsiedadeDeBeckAdmin} />
-                <Route path="/Admin/VisualizarQuestionarioDeAnsiedadeDeBeck/:id" component={VisualizarQuestionarioDeAnsiedadeDeBeckAdmin} />
-                <Route path="/Admin/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeckAdmin} />
-                <Route path="/Admin/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeckAdmin} />
-                <Route path="/Admin/QuestionarioSocioeconomico/:id" component={ListaQuestionarioSocioeconomicoAdmin} />
-                <Route path="/Admin/VisualizarSocioeconomico/:id" component={VisualizarQuestionarioSocioeconomicoAdmin} />
-                <Route path="/Admin/visualizarParescer/:id" component={VisualizarParescerAdmin} />
-                <Route path="/Admin/novoProntuario" component={NovoProntuarioAdmin} />
-                <Route path="/Admin/gerenciaProntuario" component={GerenciaProntuariosAdmin} />
-                <Route path="/Admin/gerenciaParescerPsicologico" component={GerenciaPareceresAdmin} />
+                <PrivateRouteAdmin path="/Admin/perfil" component={PerfilAdmin} />
+                <PrivateRouteAdmin path="/Admin/configuracao" component={Configuracao} />
+                <PrivateRouteAdmin path="/Admin/material/create" component={Create} />
+                <PrivateRouteAdmin path="/Admin/material/Crud" component={GerenciaMaterial} />
+                <PrivateRouteAdmin path="/Admin/GerenciaServidor" component={GerenciaServidor} />
+                <PrivateRouteAdmin path="/Admin/GerenciaContato" component={GerenciaContatos} />
+                <PrivateRouteAdmin path="/Admin/NovoContato" component={NovoContato} />
+                <PrivateRouteAdmin path="/Admin/updateContato/:id" component={UpdateContato} />
+                <PrivateRouteAdmin path="/Admin/Contatos" component={ContatosAdmin} />
+                <PrivateRouteAdmin path="/Admin/listarEstatisticas" component={ListarEstatisticasAdmin} />
+                <PrivateRouteAdmin path="/Admin/consultarEstatisticas" component={ConsultarEstatisticasAdmin} />
+                <PrivateRouteAdmin path="/Admin/listarpareceresPsicologico" component={ListarPareceresPsicologicoraAdmin} />
+                <PrivateRouteAdmin path="/Admin/listarProntuarios" component={ListaProntuariosAdmin} />
+                <PrivateRouteAdmin path="/Admin/visualizarProntuarios/:id" component={VisualizarProntuarioAdmin} />
+                <PrivateRouteAdmin path="/Admin/materiaisOnline" component={MateriaMateriaisOnlineAdminisOnline} />
+                <PrivateRouteAdmin path="/Admin/home" component={AdminHome} />
+                <PrivateRouteAdmin path="/Admin/quemSomos" component={AdminQuemSomos} />
+                <PrivateRouteAdmin path="/Admin/listaReportes" component={ListaDeReportesAdmin} />
+                <PrivateRouteAdmin path="/Admin/visualizarReporte/:id" component={VisualizarReporteAdmin} />
+                <PrivateRouteAdmin path="/Admin/ListaDiscentes" component={ListaDiscentesAdmin} />
+                <PrivateRouteAdmin path="/Admin/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoAdmin} />
+                <PrivateRouteAdmin path="/Admin/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoAdmin} />
+                <PrivateRouteAdmin path="/Admin/QuestionarioAnsiedadeDeBeck/:id" component={ListaQuestionarioAnsiedadeDeBeckAdmin} />
+                <PrivateRouteAdmin path="/Admin/VisualizarQuestionarioDeAnsiedadeDeBeck/:id" component={VisualizarQuestionarioDeAnsiedadeDeBeckAdmin} />
+                <PrivateRouteAdmin path="/Admin/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeckAdmin} />
+                <PrivateRouteAdmin path="/Admin/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeckAdmin} />
+                <PrivateRouteAdmin path="/Admin/QuestionarioSocioeconomico/:id" component={ListaQuestionarioSocioeconomicoAdmin} />
+                <PrivateRouteAdmin path="/Admin/VisualizarSocioeconomico/:id" component={VisualizarQuestionarioSocioeconomicoAdmin} />
+                <PrivateRouteAdmin path="/Admin/visualizarParescer/:id" component={VisualizarParescerAdmin} />
+                <PrivateRouteAdmin path="/Admin/novoProntuario" component={NovoProntuarioAdmin} />
+                <PrivateRouteAdmin path="/Admin/gerenciaProntuario" component={GerenciaProntuariosAdmin} />
+                <PrivateRouteAdmin path="/Admin/gerenciaParescerPsicologico" component={GerenciaPareceresAdmin} />
                 
-                <Route path="/psicologo/perfil" component={PerfilPsicologo} />
-                <Route path="/psicologo/parecer" component={ParecerPsicologico} />
-                <Route path="/psicologo/parecereres" component={PareceresPsicologico} />
-                <Route path="/psicologo/consultarEstatisticas" component={ConsultarEstatisticasPsicologo} />
-                <Route path="/psicologo/Contatos" component={ContatosPsicologo} />
-                <Route path="/psicologo/listarEstatisticas" component={ListarEstatisticasPsicologo} />
-                <Route path="/psicologo/listarParecerPsicologico" component={ListarPareceresPsicologicorPisicologo} />
-                <Route path="/psicologo/materiaisOnline" component={MateriaisOnlinePsicologo} />
-                <Route path="/psicologo/home" component={PsicologoHome} />
-                <Route path="/psicologo/quemSomos" component={PsicologoQuemSomos} />
-                <Route path="/psicologo/listaReportes" component={ListaDeReportesPsicologo} />
-                <Route path="/psicologo/visualizarReporte/:id" component={VisualizarReportePsicologo} />
-                <Route path="/psicologo/ListaDiscentes" component={ListaDiscentesPsicologo} />
-                <Route path="/psicologo/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoPsicologo} />
-                <Route path="/psicologo/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoPsicologo} />
-                <Route path="/psicologo/QuestionarioAnsiedadeDeBeck/:id" component={ListaQuestionarioAnsiedadeDeBeckPsicologo} />
-                <Route path="/psicologo/VisualizarQuestionarioDeAnsiedadeDeBeck/:id" component={VisualizarQuestionarioDeAnsiedadeDeBeckPsicologo} />
-                <Route path="/psicologo/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeckPsicologo} />
-                <Route path="/psicologo/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeckPsicologo} />
-                <Route path="/psicologo/QuestionarioSocioeconomico/:id" component={ListaQuestionarioSocioeconomicoPsicologo} />
-                <Route path="/psicologo/VisualizarSocioeconomico/:id" component={VisualizarQuestionarioSocioeconomicoPsicologo} />
-                <Route path="/psicologo/visualizarParescer/:id" component={VisualizarParescerPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/perfil" component={PerfilPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/parecer" component={ParecerPsicologico} />
+                <PrivateRoutePsicologo path="/psicologo/parecereres" component={PareceresPsicologico} />
+                <PrivateRoutePsicologo path="/psicologo/consultarEstatisticas" component={ConsultarEstatisticasPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/Contatos" component={ContatosPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/listarEstatisticas" component={ListarEstatisticasPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/listarParecerPsicologico" component={ListarPareceresPsicologicorPisicologo} />
+                <PrivateRoutePsicologo path="/psicologo/materiaisOnline" component={MateriaisOnlinePsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/home" component={PsicologoHome} />
+                <PrivateRoutePsicologo path="/psicologo/quemSomos" component={PsicologoQuemSomos} />
+                <PrivateRoutePsicologo path="/psicologo/listaReportes" component={ListaDeReportesPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/visualizarReporte/:id" component={VisualizarReportePsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/ListaDiscentes" component={ListaDiscentesPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/ListaDiscentesComAumentoVulnerabilidade" component={ListaDiscentesComAumentoPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/PerfilDiscenteDetalhado/:id" component={PerfilDiscenteDetalhadoPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/QuestionarioAnsiedadeDeBeck/:id" component={ListaQuestionarioAnsiedadeDeBeckPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/VisualizarQuestionarioDeAnsiedadeDeBeck/:id" component={VisualizarQuestionarioDeAnsiedadeDeBeckPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/QuestionarioDepressaoDeBeck/:id" component={ListaQuestionariosDepressaoDeBeckPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/VisualizarQuestionarioDeDepresaoDeBeck/:id" component={VisualizarQuestionarioDeDepresaoDeBeckPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/QuestionarioSocioeconomico/:id" component={ListaQuestionarioSocioeconomicoPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/VisualizarSocioeconomico/:id" component={VisualizarQuestionarioSocioeconomicoPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/visualizarParescer/:id" component={VisualizarParescerPsicologo} />
                 {/* <Route path="/Xpto" component={Xpto} /> */}
             </Switch>
         </BrowserRouter>
