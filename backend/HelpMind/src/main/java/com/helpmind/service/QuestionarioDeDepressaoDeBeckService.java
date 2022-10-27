@@ -96,7 +96,7 @@ public class QuestionarioDeDepressaoDeBeckService {
 	public boolean verificaAumentoDepressao(String idDiscente) {
 		boolean aumento = false;
 		List<QuestionarioDeDepressaoDeBeck> lista =this.buscaQuestionariosPeloIdDoDiscente(idDiscente);
-		for (int i = 0; i < lista.size(); i++) {
+		for (int i = 0; i < lista.size() - 1; i++) {
 			if (lista.get(i).getNota() < lista.get(i + 1).getNota()) {
 				if (lista.get(i).getNota() > 29) {
 					aumento = true;

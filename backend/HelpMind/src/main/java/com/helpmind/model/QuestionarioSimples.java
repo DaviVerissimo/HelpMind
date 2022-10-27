@@ -42,7 +42,8 @@ public class QuestionarioSimples {
 		float media = 0;
 		
 		for (int i = 0; i < lista.size(); i++) {
-			media = media + lista.get(i).calcularNota();
+//			media = media + lista.get(i).calcularNota();
+			media = media + lista.get(i).getNota();
 		}
 		
 		media = media / lista.size();
@@ -54,7 +55,8 @@ public class QuestionarioSimples {
 		float media = 0;
 		
 		for (int i = 0; i < lista.size(); i++) {
-			media = media + lista.get(i).calcularNota();
+//			media = media + lista.get(i).calcularNota();
+			media = media + lista.get(i).getNota();
 		}
 		
 		media = media / lista.size();
