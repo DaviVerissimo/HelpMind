@@ -54,12 +54,12 @@ export default function Login() {
         var chave = true;
 
         var currentUrl = usuario.email;
-        // if (!currentUrl.includes("academico.ifpb.edu.br")) {
-        //     chave = true;
-        // }
-        // else {
-        //     chave = false;
-        // }
+        if (!currentUrl.includes("academico.ifpb.edu.br")) {
+            chave = true;
+        }
+        else {
+            chave = false;
+        }
 
         if (chave) {
 
