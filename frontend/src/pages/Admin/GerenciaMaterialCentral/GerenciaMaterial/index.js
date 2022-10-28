@@ -79,7 +79,8 @@ export default function GerenciaMaterial() {
     }, [])
 
     const [productDialog, setProductDialog] = useState(false);
-    const [deleteMaterialDialog, setDeleteProductDialog] = useState(false);
+    const [deleteMaterialDialog, setDeleteMaterialDialog] = useState(false);
+    const [deleteAllMaterialDialog, setDeleteAllMaterialDialog] = useState(false);
     const [deleteProductsDialog, setDeleteProductsDialog] = useState(false);
     const [product, setProduct] = useState(emptyProduct);
     const [material, setMaterial] = useState(emptyMaterial);
@@ -110,7 +111,11 @@ export default function GerenciaMaterial() {
     }
 
     const hideDeleteProductDialog = () => {
-        setDeleteProductDialog(false);
+        setDeleteMaterialDialog(false);
+    }
+
+    const hideDeleteAllProductDialog = () => {
+        setDeleteAllMaterialDialog(false);
     }
 
     const hideDeleteProductsDialog = () => {
@@ -149,7 +154,7 @@ export default function GerenciaMaterial() {
 
     const confirmDeleteProduct = (product) => {
         setProduct(product);
-        setDeleteProductDialog(true);
+        setDeleteMaterialDialog(true);
     }
 
     const download = (material) => {
@@ -173,7 +178,27 @@ export default function GerenciaMaterial() {
         allMaterial();
 
         toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'O matérial ' + material.nome + ' foi deletado! RECARREGUE PARA VER MUDANÇAS.', life: 5000 });
-        setDeleteProductDialog(false);
+        setDeleteMaterialDialog(false);
+        allMaterial();
+    }
+
+    const deleteAllMaterial = () => {
+
+        const headers = {
+            'headers': {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        }
+
+        axios.get(URL.getDominio() + "/material/removerAllMaterialAllFiles/", headers)
+            .then(Response => { })
+            .catch(error => console.log(error))
+        allMaterial();
+
+        toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Todos os matériais foram deletados! RECARREGUE PARA VER MUDANÇAS.', life: 5000 });
+        setDeleteAllMaterialDialog(false);
         allMaterial();
     }
 
@@ -271,6 +296,7 @@ export default function GerenciaMaterial() {
             <React.Fragment>
                 <BotaoVoltar></BotaoVoltar>
                 <Button label="NOVO MATERIAL" icon="pi pi-plus" className="mr-2  p-ml-3" onClick={() => { history.push('/Admin/material/create') }} />
+                <Button label="APAGAR TODOS OS MATÉRIAIS" icon="pi pi-trash" className="mr-2  p-ml-3 p-button-danger " onClick={deletarAll} />
             </React.Fragment>
         )
     }
@@ -329,6 +355,13 @@ export default function GerenciaMaterial() {
             <Button label="Yes" icon="pi pi-check" className="p-button-text" onClick={deleteMaterial} />
         </React.Fragment>
     );
+
+    const deleteAllMaterialDialogFooter = (
+        <React.Fragment>
+            <Button label="No" icon="pi pi-times" className="p-button-text" onClick={hideDeleteAllProductDialog} />
+            <Button label="Yes" icon="pi pi-check" className="p-button-text" onClick={deleteAllMaterial} />
+        </React.Fragment>
+    );
     const deleteProductsDialogFooter = (
         <React.Fragment>
             <Button label="No" icon="pi pi-times" className="p-button-text" onClick={hideDeleteProductsDialog} />
@@ -354,7 +387,12 @@ export default function GerenciaMaterial() {
 
     const deletar = (material) => {
         setMaterial(material);
-        setDeleteProductDialog(true)
+        setDeleteMaterialDialog(true)
+    }
+
+    const deletarAll = () => {
+        
+        setDeleteAllMaterialDialog(true)
     }
 
     return (
@@ -430,6 +468,12 @@ export default function GerenciaMaterial() {
                                 <div className="confirmation-content">
                                     <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
                                     {<span> Deseja realmente deletar esse material: {material.nome} </span>}
+                                </div>
+                            </Dialog>
+                            <Dialog visible={deleteAllMaterialDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteAllMaterialDialogFooter}>
+                                <div className="confirmation-content">
+                                    <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
+                                    {<span> DESEJA REALMENTE DELETAR TODOS OS MATERIAIS E SEUS RESPECTIVOS ARQUIVOS? </span>}
                                 </div>
                             </Dialog>
 

@@ -13,6 +13,9 @@ public class MaterialService {
 
 	@Autowired
 	private MaterialRepository materialRepository;
+	
+//	@Autowired
+//	private StorageService storageService;
 
 	public Material salvar(Material material) {
 		materialRepository.save(material);
@@ -22,8 +25,6 @@ public class MaterialService {
 	}
 	
 	public List<Material> listarTodosMateriais(){
-		LimpezaDeArquivos limpeza = new LimpezaDeArquivos();
-		limpeza.limparArquivosOrfaos();
 		
 		return materialRepository.findAll();
 	}
@@ -31,6 +32,11 @@ public class MaterialService {
 	public void remover(Material material) {
 		
 		materialRepository.delete(material);
+	}
+	
+	public void removerAllMateriaisAndFiles() {
+		materialRepository.deleteAll();
+//		storageService.deleteAll();
 	}
 	
 	public Material PesquisarPorID(Integer ID) {
@@ -47,7 +53,7 @@ public class MaterialService {
 	}
 
 	public Material pesquisarPorNome(String nome) {
-		System.out.println(nome);
+//		System.out.println(nome);
 		Material material = new Material();
 		material.setNome(nome);
 		List<Material> lista = this.listarTodosMateriais();
@@ -58,7 +64,7 @@ public class MaterialService {
 			} 
 		}
 		
-		System.out.println(material.getNome() + "  "  + material.getCategoria() + "  " +  material.getId() );
+//		System.out.println(material.getNome() + "  "  + material.getCategoria() + "  " +  material.getId() );
 		return material;
 		
 	}

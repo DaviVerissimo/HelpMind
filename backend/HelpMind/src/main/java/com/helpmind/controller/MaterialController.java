@@ -30,7 +30,6 @@ public class MaterialController {
 	public ResponseEntity novoMaterial(@RequestBody Material material) throws URISyntaxException {
 		LocalDateTime data = LocalDateTime.now();
 		material.setDataCriacao(data);
-		//faltar linkar url do arquivo
 		
 		try {
 			materialService.salvar(material);
@@ -56,5 +55,10 @@ public class MaterialController {
 		return ResponseEntity.created(new URI("/material/" + material.getId())).body(material);
 	}
 	
+	@GetMapping("/removerAllMaterialAllFiles/")
+	public void removerAllMaterial() {
+		
+		materialService.removerAllMateriaisAndFiles();
+	}
 
 }
