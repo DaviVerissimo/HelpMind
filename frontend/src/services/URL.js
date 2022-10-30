@@ -1,5 +1,5 @@
-const DOMINIO = 'http://localhost:8080';
-// const DOMINIO = ' https://adsmt.ifpb.edu.br';
+// const DOMINIO = 'http://localhost:8080';
+const DOMINIO = ' https://adsmt.ifpb.edu.br:3100';
 
 class URL {
 
