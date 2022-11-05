@@ -1,5 +1,6 @@
 package com.helpmind.service;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,6 @@ public class MaterialService {
 
 	@Autowired
 	private MaterialRepository materialRepository;
-	
-//	@Autowired
-//	private StorageService storageService;
 
 	public Material salvar(Material material) {
 		materialRepository.save(material);
@@ -30,13 +28,36 @@ public class MaterialService {
 	}
 
 	public void remover(Material material) {
-		
+		deleteFile(material.getNomeDoArquivo());
 		materialRepository.delete(material);
 	}
 	
 	public void removerAllMateriaisAndFiles() {
 		materialRepository.deleteAll();
-//		storageService.deleteAll();
+		deleteFiles();
+	}
+	
+	public void deleteFile(String nome) {
+		File folder = new File("upload-dir");
+		if (folder.isDirectory()) {
+			File[] sun = folder.listFiles();
+			for (int i = 0; i < sun.length; i++) {
+				if (sun[i].getName().equals(nome)) {
+					sun[i].delete();
+				}
+			}
+		}
+	}
+	
+	public void deleteFiles() {
+		File folder = new File("upload-dir");
+		if (folder.isDirectory()) {
+			File[] sun = folder.listFiles();
+			for (int i = 0; i < sun.length; i++) {
+				System.out.println(sun[i].getName());
+				sun[i].delete();
+			}
+		}
 	}
 	
 	public Material PesquisarPorID(Integer ID) {
@@ -53,7 +74,6 @@ public class MaterialService {
 	}
 
 	public Material pesquisarPorNome(String nome) {
-//		System.out.println(nome);
 		Material material = new Material();
 		material.setNome(nome);
 		List<Material> lista = this.listarTodosMateriais();
@@ -64,7 +84,6 @@ public class MaterialService {
 			} 
 		}
 		
-//		System.out.println(material.getNome() + "  "  + material.getCategoria() + "  " +  material.getId() );
 		return material;
 		
 	}
