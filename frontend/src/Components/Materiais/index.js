@@ -78,24 +78,10 @@ export default function Materiais() {
 
         <div> 
 
-            <Card title="MATERIAIS DE APOIO"></Card>
-            <div>
-                <Card>
-                    <div className="datatable-crud-demo">
-                        <Toast ref={toast} />
-
-                        <div className="card">
-                            <DataTable ref={dt} value={materiais} selection={selectedMaterias} onSelectionChange={(e) => setSelectedMateriais(e.value)}
-                                dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
-                                <Column field="nome" header="Nome" sortable style={{ minWidth: '12rem' }}></Column>
-                                <Column field="categoria" header="Categoria" sortable style={{ minWidth: '12rem' }}></Column>
-
-                                <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
-                            </DataTable>
-                        </div>
-                    </div>
-
-                    <Card title='Saúde mental na escola!'
+            <Card title="MATERIAIS DE APOIO">
+            <div className="p-d-inline-flex p-flex-wrap">
+		<div className="p-col-6">
+                    <Card title='A saúde mental e a escola...  📚 😊'
                         subTitle='
         Segundo Sousa et al. (2017), os problemas percebidos no ambiente educacional constituem um importante 
         fator precipitante para o adoecimento mental e para o suicídio na infância e na adolescência. Os autores 
@@ -116,18 +102,39 @@ export default function Materiais() {
      se encontra com queixas em saúde mental até a escuta, anamnese, triagem, encaminhamento, ações e orientações.
         '
                     ></Card>
-
-                    <Card title='O acolhimento!' subTitle='Segundo o Ministério da Saúde, o acolhimento é uma das diretrizes da 
+		</div>
+		<div className="p-col-6">
+                    <Card title='É essencial se preparar para ouvir e acolher... 🗨️  🤗' subTitle={<div> Segundo o Ministério da Saúde, o acolhimento é uma das diretrizes da 
         Política Nacional de Humanização e pode ser realizada por qualquer profissional em qualquer local e hora. O acolhimento 
         é uma postura ética que consiste na escuta do usuário em seus anseios, no reconhecimento do seu protagonismo no processo 
         saúde-doença e na responsabilização pela resolução por meio da ativação de redes de compartilhamento de saberes (BRASIL, 2015).
-        Estamos juntos! 
+<p className="p-mt-3">        Estamos juntos! 
       Tendo em vista as questões de saúde trazidas para o âmbito escolar que se pensou nesta plataforma de instrução e orientação ao acolhimento
        e triagem em saúde mental. Esperamos que você possa se apropriar do mesmo tendo em vista a necessidade de uma abordagem mais efetiva e humana, 
-       norteadora de ações e de acolhimento. ' ></Card>
-                </Card>
-            </div>
+       norteadora de ações e de acolhimento.</p> </div>} />
 
+		</div>
+		<div className="p-col-12"> 
+                <Card>
+		<div className="p-col">                    
+                        <Toast ref={toast} />
+
+                        <div className="card">
+                            <DataTable ref={dt} value={materiais} selection={selectedMaterias} onSelectionChange={(e) => setSelectedMateriais(e.value)}
+                                dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
+                                <Column field="nome" header="Nome" sortable style={{ minWidth: '12rem' }}></Column>
+                                <Column field="categoria" header="Categoria" sortable style={{ minWidth: '12rem' }}></Column>
+
+                                <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
+                            </DataTable>
+                        </div>
+                    </div>
+
+                </Card>
+		</div>
+            </div>
+	
+</Card>
         </div>
 
     );

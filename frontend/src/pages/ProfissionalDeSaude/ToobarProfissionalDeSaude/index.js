@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css'
 import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
-import logoImg from './assets/favicon.ico';
+import logoImg from '../../../assets/favicon.ico';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import FotoPerfil from '../../FotoPerfil';
 import NomePerfil from '../../NomePerfil';

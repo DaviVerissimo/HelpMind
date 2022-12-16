@@ -3,7 +3,7 @@ import './styles.css'
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import logoImg from '../../assets/logo.png';
+import logoImg from '../../assets/logo.svg';
 
 export default function HomeComponente() {
 

@@ -11,16 +11,10 @@ import URL from '../../../services/URL';
 
 export default function Login() {
 
-    var configBotaoSecumdario = "p-mb-3 p-col-4 p-button-secondary";
     var configBotaoPrimario = "p-mb-3 p-col-4";
     var sizeCard = "login p-col-6";
     var altura = window.screen.height;
     var largura = window.screen.width;
-    if (largura < 640) {
-        configBotaoSecumdario = "p-mb-3 p-button-secondary "
-        configBotaoPrimario = "p-mt-3 ";
-        sizeCard = "";
-    }
 
     const toast = useRef(null);
     const showError = () => {
@@ -54,12 +48,12 @@ export default function Login() {
         var chave = true;
 
         var currentUrl = usuario.email;
-        if (!currentUrl.includes("academico.ifpb.edu.br")) {
-            chave = true;
-        }
-        else {
-            chave = false;
-        }
+        // if (!currentUrl.includes("academico.ifpb.edu.br")) {
+        //     chave = true;
+        // }
+        // else {
+        //     chave = false;
+        // }
 
         if (chave) {
 
@@ -90,7 +84,7 @@ export default function Login() {
                                                         history.push('/profissionalDeSaude/perfil');
                                                     }
                                                 })
-                                                .catch(error => console.log(error))
+                                                .catch(error => console.error(error))
 
                                             axios.post(URL.getDominio() + "/servidor/isServidorPermissaoPsicologo", usuario.googleId, headers)
                                                 .then(Response => {
@@ -104,13 +98,13 @@ export default function Login() {
                                                         history.push('/servidor/perfil');
                                                     }
                                                 })
-                                                .catch(error => console.log(error))
+                                                .catch(error => console.error(error))
                                         }
                                     })
-                                    .catch(error => console.log(error))
+                                    .catch(error => console.error(error))
 
                             })
-                            .catch(error => console.log(error))
+                            .catch(error => console.error(error))
                     }
 
                     localStorage.setItem('idServidor', Response.data.id);
@@ -135,7 +129,7 @@ export default function Login() {
                                             history.push('/profissionalDeSaude/perfil');
                                         }
                                     })
-                                    .catch(error => console.log(error))
+                                    .catch(error => console.error(error))
 
                                 axios.post(URL.getDominio() + "/servidor/isServidorPermissaoPsicologo", usuario.googleId, headers)
                                     .then(Response => {
@@ -149,13 +143,13 @@ export default function Login() {
                                             history.push('/servidor/perfil');
                                         }
                                     })
-                                    .catch(error => console.log(error))
+                                    .catch(error => console.error(error))
                             }
                         })
-                        .catch(error => console.log(error))
+                        .catch(error => console.error(error))
 
                 })
-                .catch(error => console.log(error))
+                .catch(error => console.error(error))
         }
 
         if (!chave) {
@@ -169,7 +163,7 @@ export default function Login() {
                                 localStorage.setItem('loginDiscente', true);
                                 history.push('/discente/Perfil');
                             })
-                            .catch(error => console.log(error))
+                            .catch(error => console.error(error))
                     }
                     else {
                         localStorage.setItem('id', Response.data.id);
@@ -178,13 +172,14 @@ export default function Login() {
                     }
                     localStorage.setItem('id', Response.data.id);
                 })
-                .catch(error => console.log(error))
+                .catch(error => console.error(error))
         }
 
     }
 
-    const errorLogin = () => {
+    const errorLogin = (e) => {
         showError();
+        console.error(e);
     }
 
     function infoEmail() {
@@ -192,36 +187,36 @@ export default function Login() {
 
     }
 
+    console.log("---------------------------------------->")
+
     return (
         <div>
             <ToobarPublica />
             <Toast ref={toast} />
-            <div className="login-container p-grid p-justify-center p-align-center p-mt-3" style={{ height: '100%' }} >
-
-                <div className={sizeCard} >
-                    <Card title="SEJA BEM VINDO ESTUDANTE E COMUNIDADE ACADÊMICA"
-                        subTitle="aqui opções de ajuda ao estudante, e auxilio aos profissionais de saúde " >
-
-                        <div  >
-                            <GoogleLogin
-                                clientId="1074576164125-iqmvj2ij72e3evgu6gaenjhspj3n5v46.apps.googleusercontent.com"
-                                buttonText="ENTRAR COM E-MAIL ACADEMICO"
-                                onSuccess={responseGoogle}
-                                onFailure={errorLogin}
-                            // cookiePolicy={'single_host_origin'}
-                            ></GoogleLogin>
-                            <h3>ou</h3>
-                            <Button className={configBotaoSecumdario} label="NÂO POSSUO E-MAIL ACADEMICO" onClick={infoEmail} />
-                        </div>
-
-                        <Card subTitle='Realize login para acessar todas as opções: ' ></Card>
-                        <Card subTitle=' • Inventário de Depressão de Beck (BDI)' ></Card>
-                        <Card subTitle=' • Inventário de Ansiedade de Beck (BAI)' ></Card>
-                        <Card subTitle=' • Questionário socioeconômico ' ></Card>
-                        <Card subTitle=' • Material de apoio a saúde mental. (disponível publicamente)' ></Card>
-                    </Card>
+            <Card
+                title="AUTENTIQUE-SE!"
+                subTitle={<div><b>Estudante ou profissional de saúde</b>, para ter acesso a todas as opções da plataforma HelpMind você deve entrar com a sua conta do IFPB.</div>} >
+                <div className="login-container p-d-flex p-grid p-flex-wrap p-justify-center p-align-center p-mt-6" style={{ height: '100%' }} >
+                    <div className="p-col-4 p-component">
+                        <ul>
+                            <li>Inventário de Depressão de Beck (BDI)</li>
+                            <li>Inventário de Ansiedade de Beck (BAI)</li>
+                            <li>Questionário socioeconômico</li>
+                            <li>Material de apoio a saúde mental</li>
+                        </ul>
+                    </div>
+                    <div className="=p-col-9 p-flex p-grid p-flex-column p-p-3">
+                        <GoogleLogin
+                            clientId="1074576164125-iqmvj2ij72e3evgu6gaenjhspj3n5v46.apps.googleusercontent.com"
+                            buttonText={<div><b>ENTRAR COM E-MAIL</b> @ifpb.edu.br ou @academico.ifpb.edu.br</div>}
+                            onSuccess={responseGoogle}
+                            onFailure={errorLogin}
+                        // cookiePolicy={'single_host_origin'}
+                        ></GoogleLogin>
+                        <Button className="p-mt-4" label={<div><b>NÃO POSSUO E-MAIL</b><br />ACADÊMICO OU INSTITUCIONAL</div>} onClick={infoEmail} />
+                    </div>
                 </div>
-            </div>
+            </Card>
         </div>
     );
 

@@ -72,7 +72,7 @@ export default function NomePerfil() {
             {discenteLogado()}
             {servidorLogado()}
             
-            <Card  className='p-mr-3' subTitle={nomePerfil} ></Card>
+            {(!nomePerfil)? '' :  <div className='p-component p-pr-3'>{nomePerfil}</div>}
         </div>
         
         
