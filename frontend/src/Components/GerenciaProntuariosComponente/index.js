@@ -59,7 +59,7 @@ export default function GerenciaProntuariosComponente(props) {
 
     const visualizarProntuario = (prontuario) => {
         setProntuario(prontuario);
-        history.goBack();
+//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/visualizarProntuarios/' + prontuario.id);
     }

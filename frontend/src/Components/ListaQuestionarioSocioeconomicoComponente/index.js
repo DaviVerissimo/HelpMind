@@ -48,7 +48,7 @@ export default function ListaQuestionarioSocioeconomicoComponente(props) {
     const dt = useRef(null);
 
     const visualizarQuestionario = (questionario) => {
-        history.goBack();
+//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/VisualizarSocioeconomico/' + questionario.id)
 

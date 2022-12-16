@@ -58,7 +58,7 @@ export default function ListaDeReportesDoDiscente() {
 
     const visualizarReporte = (reporte) => {
         setReporte(reporte);
-        history.goBack();
+        // history.goBack();
         history.push('/discente/visualizarReporte/' + reporte.id)
     }
 

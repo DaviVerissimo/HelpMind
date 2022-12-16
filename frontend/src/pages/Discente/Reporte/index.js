@@ -215,7 +215,7 @@ export default function Reporte() {
 
     const voltar = () => {
         history.goBack();
-        history.push('/discente/Reportes')
+//        history.push('/discente/Reportes')
     }
 
     return (

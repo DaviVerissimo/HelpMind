@@ -3,43 +3,36 @@ import './styles.css'
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import logoImg from '../../assets/logo.png';
+import logoImg from '../../assets/logo.svg';
 
 export default function Home() {
-
-    var configBotao = "p-mb-3 p-col-4";
-    var largura = window. screen. width;
-    var tamanhoImagem = '';
-    var tamanhoBemVimdo = 'p-col-4 p-mb-5';
-    
-    if (largura < 640){
-        configBotao = "p-mb-3";
-        tamanhoImagem = '180'
-        tamanhoBemVimdo = 'p-col-12 p-mb-5';
-    }
 
     const history = useHistory();
 
     return (
-
-        <div className="home-container p-grid p-justify-center p-align-center" style={{ height: '100%' }} >
-            <div className="home-ladoEsquerdo p-col-4 " >
-                <img src={logoImg} alt="logo" height={tamanhoImagem} width={tamanhoImagem} ></img>
+            
+        <div className="home-container p-d-flex p-grid p-flex-wrap p-justify-center p-align-center p-p-6" style={{margin: 0, height: '100%', padding: 0}}>
+            <div className="home-ladoEsquerdo" >
+                <img src={logoImg} alt="logo" style={{height: "20em"}} />
             </div>
 
-            <div className="home-ladoDireito p-col-8" >
-                <Card 
-                title="CONHEÇA SUA NOVA FERRAMENTA DE AUXILIO"
-                    subTitle="A SAÚDE MENTAL DOS ESTUDANTES DO IFPB" >
-                        <Card title='Bem-vindo(a)!' className={tamanhoBemVimdo}
-                        subTitle='É com muito prazer que lhe convidamos para conhecer ao software e interagir com este produto educacional' ></Card>
-                    <div className=" p-grid p-dir-col p-pl-3" >
-                        <Button className={configBotao} label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/publica/Login') }} />
-                        <Button className={configBotao} label="MATERIAIS DE APOIO ONLINE" onClick={() => { history.push('/publica/MateriaisOnline') }} />
-                        {/* <Button className={configBotao} label="SIMULAÇÃO DOS INVENTARIOS DE BECK" onClick={() => { history.push('/Publica/SimuladorDeQuestionario/EscolherQuestionarios') }} /> */}
-                        <Button className={configBotao} label="QUEM SOMOS" onClick={() => { history.push('/publica/QuemSomos') }} />
-                    </div>
-                </Card>
+            <div className="home-ladoDireito">
+                <div className="p-col p-component">
+                    Mapeamento e gestão da saúde mental estudantil do IFPB é com o HelpMind!<br/>
+                    Selecione uma das opções:
+                </div>
+                <div className="p-col">
+                    <Button className="p-col-12" label="SOU ESTUDANTE/SERVIDOR DO IFPB" onClick={() => { history.push('/publica/Login') }} />
+                </div>
+                <div className="p-col">
+                    <Button className="p-col-12" label="MATERIAIS DE APOIO ONLINE" onClick={() => { history.push('/publica/MateriaisOnline') }} />
+                </div>
+                <div className="p-col">
+                    <Button className="p-col-12" label="QUEM SOMOS" onClick={() => { history.push('/publica/QuemSomos') }} />
+                </div>
+
+                {/* <Button className={configBotao} label="SIMULAÇÃO DOS INVENTARIOS DE BECK" onClick={() => { history.push('/Publica/SimuladorDeQuestionario/EscolherQuestionarios') }} /> */}
+
             </div>
         </div>
     );

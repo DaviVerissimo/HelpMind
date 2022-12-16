@@ -54,7 +54,7 @@ export default function ListaDeReportesComponente(props) {
 
     const visualizarReporte = (reporte) => {
         setReporte(reporte);
-        history.goBack();
+//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/visualizarReporte/' + reporte.id)
     }

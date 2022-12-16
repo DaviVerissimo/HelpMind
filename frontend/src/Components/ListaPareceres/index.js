@@ -56,7 +56,7 @@ export default function ListaPareceres(props) {
 
     const visualizarPareceres = (parecer) => {
         setParecer(parecer);
-        history.goBack();
+        //history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/visualizarParescer/' + parecer.id);
     }

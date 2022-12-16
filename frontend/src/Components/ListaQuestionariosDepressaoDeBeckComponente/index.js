@@ -53,7 +53,7 @@ export default function ListaQuestionariosDepressaoDeBeckComponente(props) {
 
     const visualizarQuestionario = (questionario) => {
         setQuestionario(questionario);
-        history.goBack();
+//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/VisualizarQuestionarioDeDepresaoDeBeck/' + questionario.id)
     }

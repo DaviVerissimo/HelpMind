@@ -723,7 +723,7 @@ export default function QuestionarioSocioeconomico() {
 
     const voltar = () => {
         history.goBack();
-        history.push('/discente/EscolherQuestionariosDiscente')
+//        history.push('/discente/EscolherQuestionariosDiscente')
     }
 
     return (

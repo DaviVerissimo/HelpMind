@@ -73,7 +73,7 @@ export default function GerenciaContatos() {
     }
 
     const editar = (contato) => {
-        history.goBack();
+//        history.goBack();
         history.push('/Admin/updateContato/' + contato.id)
     }
 

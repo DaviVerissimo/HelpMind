@@ -73,7 +73,7 @@ export default function ListaDiscentesComponente(props) {
 
     const visualizarPerfil = (discente) => {
         setDiscente(discente);
-        history.goBack();
+//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/PerfilDiscenteDetalhado/' + discente.id)
     }

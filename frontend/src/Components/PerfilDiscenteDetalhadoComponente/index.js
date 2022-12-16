@@ -34,7 +34,7 @@ export default function PerfilDiscenteDetalhadoComponente(props) {
     }, [])
 
     const visualizarQuestionariosSocioeconomicos = () => {
-        history.goBack();
+//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/QuestionarioSocioeconomico/' + id)
     }
