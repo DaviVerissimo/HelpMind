@@ -1,9 +1,9 @@
 {
-    "proxy": "https://adsmt.ifpb.edu.br:3100",
     "name": "frontend",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@react-oauth/google": "^0.4.0",
         "@testing-library/jest-dom": "^5.16.1",
         "@testing-library/react": "^11.2.7",
         "@testing-library/user-event": "^12.8.3",
