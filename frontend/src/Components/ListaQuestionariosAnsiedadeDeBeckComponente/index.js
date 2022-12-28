@@ -17,7 +17,7 @@ export default function ListaQuestionariosAnsiedadeDeBeckComponente(props) {
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-user";
+        configBtnVisualizar = "p-button-rounded pi pi-file";
     }
 
     let emptyQuestionario = {

@@ -18,8 +18,6 @@ export default function EscolheGraficoComponente(props) {
     const [invalid, setInvalid] = useState('p-invalid block');
     var valido = true;
 
-
-
     useEffect(async () => { //campus
         var lista = [];
         const campus = URL.getDominio() + "/curso/listarCampus";

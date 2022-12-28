@@ -24,12 +24,10 @@ export default function AcessoRapido() {
                         <div>
                         <Button className={configBotao} label="NOVO PRONTUÁRIO" onClick={() => { history.push('/Admin/novoProntuario') }} />
                             <Button className={configBotao} label="LISTAR PRONTUÁRIOS" onClick={() => { history.push('/Admin/listarProntuarios') }} />
-                            <Button className={configBotao2} label="  LISTAR PARESCER PSIÓLOGICO" onClick={() => { history.push('/Admin/listarpareceresPsicologico') }} />
+                            <Button className={configBotao2} label="LISTAR PARESCER PSIÓLOGICO" onClick={() => { history.push('/Admin/listarpareceresPsicologico') }} />
                         </div>
                     </Card>
-
                 </Card>
-
             </div>
         </div>
     );
