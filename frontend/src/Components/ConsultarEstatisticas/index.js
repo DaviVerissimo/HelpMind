@@ -19,16 +19,26 @@ export default function ConsultarEstatisticas(props) {
         history.push('/' + logado + '/listarEstatisticas');
     }
 
+    async function submeterForEscolha() {
+        const logado = props.logado;
+        history.push('/' + logado + '/escolherGrafico');
+    }
+
     return (
         <div>
             <div >
                 <Card title="CONSULTAR ESTATÍSTICAS"></Card>
                 <Card className="" >
                     <div>
-                        <Button className={configBotaoConsultar} label="CONSULTAR" onClick={submeter} />
+                        <Button icon='pi pi-chart-bar' label="GRÁFICOS" onClick={submeterForEscolha} />
                     </div>
                 </Card>
                 <Card >
+                <Card className="" >
+                    <div>
+                        <Button icon='pi pi-chart-line' label="CONSULTAR" onClick={submeter} />
+                    </div>
+                </Card>
                     <Card subTitle='CURSO'>
                         <Cursos></Cursos>
                     </Card>
