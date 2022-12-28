@@ -4,12 +4,14 @@ import { Dropdown } from 'primereact/dropdown';
 import axios from "axios";
 import URL from '../../services/URL';
 
-export default function Campus(childToParent) {
-    // aviso: falta ressolver como será passada a validação
-
+export default function Campus(props) {
+    //validação não foi resolvida
+    const layout = props.layout;
+    const valido = props.valido;
+    const invalid = 'p-invalid block';
     const [campi, setCampi] = useState([]);
-    const [campus, setCampus] = useState([]);// singular
-    const [campusObrigatorio, setCampusObrigatorio] = useState('');
+    const [campus, setCampus] = useState();// singular
+    const [campusObrigatorio, setCampusObrigatorio] = useState(layout);
 
     useEffect(async () => { //campus
         var lista = [];
@@ -41,18 +43,17 @@ export default function Campus(childToParent) {
 
     }, [campus]);
 
-    const validar = localStorage.getItem('errorCampusComponente')
+
     useEffect(async () => {
-        if (validar != null) {
-            setCampusObrigatorio(validar)
+        if (!valido) {
+            const aux = layout + ' ' + invalid;
+            setCampusObrigatorio(aux);
         }
 
-    }, [validar]);
+
+    }, [campus]);
 
     return (
-        <div>
-            <Dropdown className={campusObrigatorio} value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
-        </div>
-
+        <Dropdown className={campusObrigatorio} value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
     );
 }

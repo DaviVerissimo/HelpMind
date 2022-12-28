@@ -6,6 +6,7 @@ export default function GraficoBarraHorizontal_4_Colunas_Componente (props) {
     const rotulos = props.rotulos;
     const identificador = props.identificador;
     const dados = props.dados;
+    const limite = props.limite;
     const [basicData] = useState({
         labels: identificador,
         datasets: [
@@ -66,7 +67,7 @@ export default function GraficoBarraHorizontal_4_Colunas_Componente (props) {
 
         let horizontalOptions = {
             indexAxis: 'y',
-            maintainAspectRatio: false,
+            maintainAspectRatio: limite,
             aspectRatio: .8,
             plugins: {
                 legend: {

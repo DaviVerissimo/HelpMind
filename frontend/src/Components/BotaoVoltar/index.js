@@ -9,10 +9,9 @@ export default function BotaoVoltar() {
     const voltar = () => {
         history.goBack();
     }
+    
     return (
-        <div>
             <Button className={configBotaoVoltar} label="VOLTAR" onClick={voltar} />
-        </div>
 
     );
 }

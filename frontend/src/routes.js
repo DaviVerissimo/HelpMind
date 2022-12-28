@@ -98,6 +98,13 @@ import VisualizarParescerPsicologo from "./pages/Psicologo/VisualizarParescerPsi
 import NovoProntuarioAdmin from "./pages/Admin/NovoProntuarioAdmin";
 import GerenciaProntuariosAdmin from "./pages/Admin/GerenciaProntuariosAdmin";
 import GerenciaPareceresAdmin from "./pages/Admin/GerenciaPareceresAdmin";
+import AdminHome2 from "./pages/Admin/AdminHome2";
+import AnsiedadeDepressaoGraficoAdmin from "./pages/Admin/AnsiedadeDepressaoGraficoAdmin";
+import AnsiedadeDepressaoGraficoProfSaude from "./pages/ProfissionalDeSaude/AnsiedadeDepressaoGraficoProfSaude";
+import AnsiedadeDepressaoGraficoPsicologo from "./pages/Psicologo/AnsiedadeDepressaoGraficoPsicologo";
+import EscolherGraficoAdmin from "./pages/Admin/EscolherGraficoAdmin";
+import EscolherGraficoProfSaude from "./pages/ProfissionalDeSaude/EscolherGraficoProfSaude";
+import EscolherGraficoPsicologo from "./pages/Psicologo/EscolherGraficoPsicologo";
 import { isAuthenticatedAdmin, isAuthenticatedDiscente, isAuthenticatedProfSaude, isAuthenticatedPsicologo } from "./auth";
 
 const PrivateRouteAdmin = ({ component: Component, ...rest }) => (
@@ -200,6 +207,8 @@ export default function Routes() {
                 <PrivateRouteProfSaude path="/profissionalDeSaude/home" component={ProfSaudeHome} />
                 <PrivateRouteProfSaude path="/profissionalDeSaude/quemSomos" component={ProfSaudeQuemSomos} />
                 <PrivateRouteProfSaude path="/profissionalDeSaude/visualizarParescer/:id" component={VisualizarParescerProfsaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/ansiedadeDepressaoGrafico" component={AnsiedadeDepressaoGraficoProfSaude} />
+                <PrivateRouteProfSaude path="/profissionalDeSaude/escolherGrafico" component={EscolherGraficoProfSaude} />
 
                 <PrivateRouteAdmin path="/Admin/perfil" component={PerfilAdmin} />
                 <PrivateRouteAdmin path="/Admin/configuracao" component={Configuracao} />
@@ -217,6 +226,9 @@ export default function Routes() {
                 <PrivateRouteAdmin path="/Admin/visualizarProntuarios/:id" component={VisualizarProntuarioAdmin} />
                 <PrivateRouteAdmin path="/Admin/materiaisOnline" component={MateriaMateriaisOnlineAdminisOnline} />
                 <PrivateRouteAdmin path="/Admin/home" component={AdminHome} />
+                {/* <PrivateRouteAdmin path="/Admin/home2" component={AdminHome2} /> */}
+                <PrivateRouteAdmin path="/Admin/ansiedadeDepressaoGrafico" component={AnsiedadeDepressaoGraficoAdmin} />
+                <PrivateRouteAdmin path="/Admin/escolherGrafico" component={EscolherGraficoAdmin} />
                 <PrivateRouteAdmin path="/Admin/quemSomos" component={AdminQuemSomos} />
                 <PrivateRouteAdmin path="/Admin/listaReportes" component={ListaDeReportesAdmin} />
                 <PrivateRouteAdmin path="/Admin/visualizarReporte/:id" component={VisualizarReporteAdmin} />
@@ -256,6 +268,8 @@ export default function Routes() {
                 <PrivateRoutePsicologo path="/psicologo/QuestionarioSocioeconomico/:id" component={ListaQuestionarioSocioeconomicoPsicologo} />
                 <PrivateRoutePsicologo path="/psicologo/VisualizarSocioeconomico/:id" component={VisualizarQuestionarioSocioeconomicoPsicologo} />
                 <PrivateRoutePsicologo path="/psicologo/visualizarParescer/:id" component={VisualizarParescerPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/ansiedadeDepressaoGrafico" component={AnsiedadeDepressaoGraficoPsicologo} />
+                <PrivateRoutePsicologo path="/psicologo/escolherGrafico" component={EscolherGraficoPsicologo} />
                 {/* <Route path="/Xpto" component={Xpto} /> */}
             </Switch>
         </BrowserRouter>
