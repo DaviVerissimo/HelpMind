@@ -131,7 +131,7 @@ export default function UpdateContato() {
 
                 <Card className="" >
                     <div>
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="CANCEL" onClick={volta}/>
+                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR" onClick={volta}/>
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>
@@ -147,6 +147,9 @@ export default function UpdateContato() {
                     <Card subTitle='EMAIL' >
                         <InputText className={''} value={email} onChange={(e) => setEmail(e.target.value)} />
                     </Card>
+                    {/* <Card subTitle='CAMPUS' >
+                        <InputText className={''} value={'Namia'} disabled={true}/>
+                    </Card> */}
                 </Card>
 
             </div>

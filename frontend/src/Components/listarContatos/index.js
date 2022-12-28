@@ -5,16 +5,15 @@ import ContatoService from '../../services/ContatoService';
 import { Toast } from 'primereact/toast';
 // import { Button } from 'primereact/button';
 import { Toolbar } from 'primereact/toolbar';
-// import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Card } from 'primereact/card';
+import Campus from '../Campus/index';
 
 import { useHistory, useParams, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ListarContatos() {
 
     const history = useHistory();
-    // const location = useLocation();
     var btnDeleteTexto = 'DELETE'
     var btnEditTexto = 'EDITAR'
     var configBtnDelete = "p-button-danger pi pi-trash";
@@ -36,10 +35,20 @@ export default function ListarContatos() {
     };
 
     const [contatos, setContatos] = useState([])
+    const campus = localStorage.getItem('campusComponente')
     const allContatos = () => {
-        ContatoService.getAllContatos().then((response) => {
-            setContatos(response.data)
-        });
+        // if (campus == null || campus == '') {
+        //     // ContatoService.getContatosByCampus(campus).then((response) => {
+        //     //     setContatos(response.data)
+        //     // });
+        //  }
+        //else {
+            ContatoService.getAllContatos().then((response) => {
+                setContatos(response.data)
+            });
+       //}
+
+
     };
     {
         contatos.map((material, key) => {
@@ -52,46 +61,10 @@ export default function ListarContatos() {
 
     }, [])
 
-    // const [deleteContatoDialog, setDeleteContatoDialog] = useState(false);
-    // const [contato, setContato] = useState(emptyContato);
     const [selectedProducts, setSelectedProducts] = useState(null);
     const [globalFilter, setGlobalFilter] = useState(null);
     const toast = useRef(null);
     const dt = useRef(null);
-
-    // const hideDeleteProductDialog = () => {
-    //     setDeleteContatoDialog(false);
-    // }
-
-    // const deleteContato = () => {
-    //     ContatoService.getDeleteContato(contato.id);
-    //     toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'O Contato ' + contato.nome + ' foi deletado! RECARREGUE PARA VER MUDANÇAS.', life: 5000 });
-    //     setDeleteContatoDialog(false);
-    //     allContatos();
-    // }
-
-    // const editar = (contato) => {
-    //     history.goBack();
-    //     history.push('/Admin/updateContato/' + contato.id)
-    // }
-
-    // const leftToolbarTemplate = () => {
-    //     return (
-    //         <React.Fragment>
-    //             <Button label="Novo Contato" icon="pi pi-plus" className="mr-2" onClick={() => { history.push('/Admin/NovoContato') }} />
-    //         </React.Fragment>
-    //     )
-    // }
-
-    // const actionBodyTemplate = (rowData) => {
-    //     return (
-    //         <React.Fragment>
-    //             <Button className={configBtnEdit} onClick={() => editar(rowData)} > {btnEditTexto} </Button>
-    //             <Button className={configBtnDelete} onClick={() => deletar(rowData)} > {btnDeleteTexto} </Button>
-
-    //         </React.Fragment>
-    //     );
-    // }
 
     const header = (
         <div className="table-header">
@@ -103,49 +76,34 @@ export default function ListarContatos() {
         </div>
     );
 
-    // const deleteMaterialDialogFooter = (
-    //     <React.Fragment>
-    //         <Button label="Não" icon="pi pi-times" className="p-button-text" onClick={hideDeleteProductDialog} />
-    //         <Button label="Sim" icon="pi pi-check" className="p-button-text" onClick={deleteContato} />
-    //     </React.Fragment>
-    // );
-
-    // const deletar = (material) => {
-    //     setContato(material);
-    //     setDeleteContatoDialog(true)
-    // }
-
     return (
 
-        <div> 
+        <div>
 
             <Card title="CONTATOS"></Card>
 
             <div>
                 <div>
                     <Card>
+                        {/* <Campus></Campus> */}
+                        {/* colocar botão filtrar, Entender a logica de giuseppe no componente Sobre */}
+                    </Card>
+                    <Card>
                         <div className="datatable-crud-demo">
                             <Toast ref={toast} />
 
                             <div className="card">
-                                <Toolbar 
-                                // className="mb-4" left={leftToolbarTemplate}
+                                <Toolbar
+
                                 ></Toolbar>
                                 <DataTable ref={dt} value={contatos} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)} dataKey="id"
                                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
                                     <Column field="nome" header="Nome" sortable style={{ minWidth: '12rem' }}></Column>
                                     <Column field="telefone" header="Telefone" sortable style={{ minWidth: '12rem' }}></Column>
                                     <Column field="email" header="Email" sortable style={{ minWidth: '12rem' }}></Column>
-                                    {/* <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column> */}
+                                    <Column field="campus" header="Campus" sortable style={{ minWidth: '12rem' }}></Column>
                                 </DataTable>
                             </div>
-
-                            {/* <Dialog visible={deleteContatoDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteMaterialDialogFooter}>
-                                <div className="confirmation-content">
-                                    <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
-                                    {<span> Deseja realmente deletar esse contato: {contato.nome}?  </span>}
-                                </div>
-                            </Dialog> */}
 
                         </div>
                     </Card>

@@ -9,6 +9,7 @@ import ToobarAdmin from '../ToobarAdmin';
 import { Toast } from 'primereact/toast';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import URL from '../../../services/URL';
+import Campus from '../../../Components/Campus';
 
 export default function NovoContato() {
     const hystory = useHistory();
@@ -29,7 +30,7 @@ export default function NovoContato() {
             life: 5000
         });
     }
-    const [telefone, setTelefone] = useState(); 
+    const [telefone, setTelefone] = useState();
     const [email, setEmail] = useState();
     const [nome, setNome] = useState();
     const [nomeObrigatorio, setNomeObrigatorio] = useState();
@@ -43,9 +44,9 @@ export default function NovoContato() {
         configBotaoSalvar = "p-mb-3 ";
     }
 
-    function volta(){
+    function volta() {
         hystory.goBack();
-      }
+    }
 
     function validar() {
         var valido = true;
@@ -96,7 +97,7 @@ export default function NovoContato() {
 
                 <Card className="" >
                     <div>
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR"  onClick={volta} />
+                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR" onClick={volta} />
                         <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>
@@ -112,6 +113,9 @@ export default function NovoContato() {
                     <Card subTitle='EMAIL' >
                         <InputText className={''} value={email} onChange={(e) => setEmail(e.target.value)} />
                     </Card>
+                    {/* <Card subTitle='CAMPUS' >
+                        <Campus></Campus>
+                    </Card> */}
                 </Card>
 
             </div>

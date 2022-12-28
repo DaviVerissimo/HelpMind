@@ -4,6 +4,7 @@ import URL from './URL';
 const API_BASE_URL_LISTAR_ALL_CONTATOS = URL.getDominio() + '/contato/listarAllContatos';
 const API_BASE_URL_DELETAR_CONTATO = URL.getDominio() + '/contato/removerContato';
 const API_BASE_URL_BUSCAR_CONTATO = URL.getDominio() + '/contato/pesquisarContato';
+const API_BASE_URL_LISTAR_CONTATOS_BY_CAMPUS = URL.getDominio() + '/contato/listarContatosByCampus';
 
 const headers = {
     'headers': {
@@ -25,6 +26,10 @@ class ContatoService {
 
     getBuscarContatoById(id) {
         return axios.post(API_BASE_URL_BUSCAR_CONTATO, id, headers);
+    }
+
+    getContatosByCampus(campus) {
+        return axios.get(API_BASE_URL_LISTAR_CONTATOS_BY_CAMPUS, campus, headers);
     }
 
 }
