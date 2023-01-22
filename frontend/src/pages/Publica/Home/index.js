@@ -1,24 +1,23 @@
 import React from 'react';
 import './styles.css'
 import { Button } from 'primereact/button';
-import { Card } from 'primereact/card'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import logoImg from '../../assets/logo.svg';
+import logoImg from '../../../assets/logo.svg';
 
 export default function Home() {
 
     const history = useHistory();
 
     return (
-            
-        <div className="home-container p-d-flex p-grid p-flex-wrap p-justify-center p-align-center p-p-6" style={{margin: 0, height: '100%', padding: 0}}>
+
+        <div className="home-container p-d-flex p-grid p-flex-wrap p-justify-center p-align-center p-p-6" style={{ margin: 0, height: '100%', padding: 0 }}>
             <div className="home-ladoEsquerdo" >
-                <img src={logoImg} alt="logo" style={{height: "20em"}} />
+                <img src={logoImg} alt="logo" style={{ height: "20em" }} />
             </div>
 
             <div className="home-ladoDireito">
                 <div className="p-col p-component">
-                    Mapeamento e gestão da saúde mental estudantil do IFPB é com o HelpMind!<br/>
+                    Mapeamento e gestão da saúde mental estudantil do IFPB é com o HelpMind!<br />
                     Selecione uma das opções:
                 </div>
                 <div className="p-col">

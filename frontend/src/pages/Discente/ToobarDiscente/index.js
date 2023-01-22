@@ -4,8 +4,8 @@ import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
 import logoImg from '../../../assets/favicon.ico';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import FotoPerfil from '../../FotoPerfil';
-import NomePerfil from '../../NomePerfil';
+import FotoPerfil from '../../../Components/FotoPerfil';
+import NomePerfil from '../../../Components/NomePerfil';
 import { Card } from 'primereact/card';
 
 export default function ToobarDiscente() {

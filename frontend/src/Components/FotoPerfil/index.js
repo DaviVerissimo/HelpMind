@@ -77,7 +77,6 @@ export default function FotoPerfil() {
             <img src={fotoPerfil} alt='' ></img>
         </div>
 
-
     );
 
 }

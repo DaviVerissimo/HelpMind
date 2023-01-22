@@ -4,8 +4,8 @@ import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
 import logoImg from '../../../assets/favicon.ico';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import FotoPerfil from '../../FotoPerfil';
-import NomePerfil from '../../NomePerfil';
+import FotoPerfil from '../../../Components/FotoPerfil';
+import NomePerfil from '../../../Components/NomePerfil';
 
 export default function ToobarAdmin() {
 
@@ -39,7 +39,7 @@ export default function ToobarAdmin() {
                 <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Contatos' onClick={() => { history.push('/Admin/Contatos') }} />
                 {/* <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Documentos' onClick={() => { history.push('/material/Crud') }} /> */}
                 <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' onClick={() => { history.push('/Admin/ListaDiscentes') }} />
-                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' onClick={() => { history.push('/Admin/listaReportes') }} />
+                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' onClick={() => { history.push('/Admin/Reportes') }} />
                 <Button icon={createIcon("pi pi-chart-line")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Estatisticas' onClick={() => { history.push('/Admin/consultarEstatisticas') }} />
                 <Button icon={createIcon("pi pi-cog")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Config' onClick={() => { history.push('/Admin/configuracao') }} />
                 <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Admin' onClick={() => { history.push('/Admin/perfil') }} />

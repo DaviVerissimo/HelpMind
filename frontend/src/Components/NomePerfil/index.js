@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Card } from 'primereact/card';
 import URL from '../../services/URL';
 
 export default function NomePerfil() {
@@ -14,7 +13,6 @@ export default function NomePerfil() {
     }
 
     const [nomePerfil, setNomePerfil] = useState("");
-    
     function buscarNomeDiscente(id) {
         axios.post(URL.getDominio() + "/discente/buscaDiscentePorID", id, headers)
             .then(Response => {
@@ -25,10 +23,10 @@ export default function NomePerfil() {
 
     function buscarNomeServidor(id) {
         axios.post(URL.getDominio() + "/servidor/buscarServidorPeloId", id, headers)
-        .then(Response => {
-            setNomePerfil(Response.data.nome);
-        })
-        .catch(error => console.log(error))
+            .then(Response => {
+                setNomePerfil(Response.data.nome);
+            })
+            .catch(error => console.log(error))
 
     }
 
@@ -52,30 +50,14 @@ export default function NomePerfil() {
         return autenticado;
     }
 
-    // if (discenteLogado()) {
-    //     console.log(1)
-    //     return <img src={fotoPerfil} alt='Foto do Perfil' ></img>
-
-    // }
-    // if (servidorLogado()) {
-    //     console.log(2)
-    //     return <img src={fotoPerfil} alt='Foto do Perfil' ></img>
-
-    // }
-    // if(!discenteLogado && !servidorLogado){
-    //     console.log(3)
-    //     return null;
-    // }
-
     return (
         <div>
             {discenteLogado()}
             {servidorLogado()}
-            
-            {(!nomePerfil)? '' :  <div className='p-component p-pr-3'>{nomePerfil}</div>}
+            {(!nomePerfil) ? '' : <div className='p-component p-pr-3'>{nomePerfil}</div>}
         </div>
-        
-        
+
+
     );
 
 }
