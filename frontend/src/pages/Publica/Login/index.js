@@ -1,5 +1,5 @@
 import { Card } from 'primereact/card';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './styles.css'
 import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
@@ -11,11 +11,6 @@ import URL from '../../../services/URL';
 
 export default function Login() {
 
-    var configBotaoPrimario = "p-mb-3 p-col-4";
-    var sizeCard = "login p-col-6";
-    var altura = window.screen.height;
-    var largura = window.screen.width;
-
     const toast = useRef(null);
     const showError = () => {
         toast.current.show({
@@ -26,6 +21,8 @@ export default function Login() {
         });
     }
     const history = useHistory();
+    const [permissionProfSaude, setPermissionProfSaude] = useState(false);
+    const [permissionPsicologo, setpermissionPsicologo] = useState(false);
     const responseGoogle = (response) => {
 
         const { profileObj: { name, email, imageUrl, googleId } } = response;
@@ -47,7 +44,7 @@ export default function Login() {
 
         var chave = true;
 
-        var currentUrl = usuario.email;
+        // var currentUrl = usuario.email;
         // if (!currentUrl.includes("academico.ifpb.edu.br")) {
         //     chave = true;
         // }
@@ -56,121 +53,106 @@ export default function Login() {
         // }
 
         if (chave) {
-
             axios.post(URL.getDominio() + "/servidor/isServidorGoogleId", usuario.googleId, headers)
                 .then(Response => {
                     if (Response.data.id == null) {
-                        axios.post(URL.getDominio() + "/servidor/salvarServidor", usuario, headers)
-                            .then(Response => {
-                                localStorage.setItem('idServidor', Response.data.id);
-                                var permissionProfSaude = false;
-                                var permissionPsicolo = false;
-
-                                axios.post(URL.getDominio() + "/servidor/isServidorPermissaoAdmin", usuario.email, headers)
-                                    .then(Response => {
-
-                                        if (Response.data) {
-                                            permissionProfSaude = true;
-                                            localStorage.setItem('loginAdmin', true);
-                                            history.push('/Admin/perfil');
-                                        }
-                                        else {
-                                            axios.post(URL.getDominio() + "/servidor/isServidorPermissaoProfSaude", usuario.googleId, headers)
-                                                .then(Response => {
-
-                                                    if (Response.data) {
-                                                        permissionProfSaude = true;
-                                                        localStorage.setItem('loginProfSaude', true);
-                                                        history.push('/profissionalDeSaude/perfil');
-                                                    }
-                                                })
-                                                .catch(error => console.error(error))
-
-                                            axios.post(URL.getDominio() + "/servidor/isServidorPermissaoPsicologo", usuario.googleId, headers)
-                                                .then(Response => {
-
-                                                    if (Response.data) {
-                                                        permissionPsicolo = true;
-                                                        localStorage.setItem('loginPsicologo', true);
-                                                        history.push('/psicologo/perfil');
-                                                    }
-                                                    else if (permissionProfSaude == false && permissionPsicolo == false) {
-                                                        history.push('/servidor/perfil');
-                                                    }
-                                                })
-                                                .catch(error => console.error(error))
-                                        }
-                                    })
-                                    .catch(error => console.error(error))
-
-                            })
-                            .catch(error => console.error(error))
+                        salvarServidor();
                     }
-
                     localStorage.setItem('idServidor', Response.data.id);
-                    var permissionProfSaude = false;
-                    var permissionPsicolo = false;
-
-                    axios.post(URL.getDominio() + "/servidor/isServidorPermissaoAdmin", usuario.email, headers)
-                        .then(Response => {
-
-                            if (Response.data) {
-                                permissionProfSaude = true;
-                                localStorage.setItem('loginAdmin', true);
-                                history.push('/Admin/perfil');
-                            }
-                            else {
-                                axios.post(URL.getDominio() + "/servidor/isServidorPermissaoProfSaude", usuario.googleId, headers)
-                                    .then(Response => {
-
-                                        if (Response.data) {
-                                            permissionProfSaude = true;
-                                            localStorage.setItem('loginProfSaude', true);
-                                            history.push('/profissionalDeSaude/perfil');
-                                        }
-                                    })
-                                    .catch(error => console.error(error))
-
-                                axios.post(URL.getDominio() + "/servidor/isServidorPermissaoPsicologo", usuario.googleId, headers)
-                                    .then(Response => {
-
-                                        if (Response.data) {
-                                            permissionPsicolo = true;
-                                            localStorage.setItem('loginPsicologo', true);
-                                            history.push('/psicologo/perfil');
-                                        }
-                                        else if (permissionProfSaude == false && permissionPsicolo == false) {
-                                            history.push('/servidor/perfil');
-                                        }
-                                    })
-                                    .catch(error => console.error(error))
-                            }
-                        })
-                        .catch(error => console.error(error))
-
+                    loginServidor();
                 })
                 .catch(error => console.error(error))
         }
 
         if (!chave) {
-
             axios.post(URL.getDominio() + "/discente/isDiscenteGoogleId", usuario.googleId, headers)
                 .then(Response => {
                     if (Response.data.id == null) {
-                        axios.post(URL.getDominio() + "/discente/salvarUserDiscente", usuario, headers)
+                        salvarDiscente();
+                    }
+                    loginDiscente();
+                })
+                .catch(error => console.error(error))
+        }
+
+        function salvarServidor() {
+            axios.post(URL.getDominio() + "/servidor/salvarServidor", usuario, headers)
+                .then(Response => {
+                    localStorage.setItem('idServidor', Response.data.id);
+                    axios.post(URL.getDominio() + "/servidor/isServidorPermissaoAdmin", usuario.email, headers)
+                        .then(Response => { })
+                        .catch(error => console.error(error))
+                })
+                .catch(error => console.error(error))
+        }
+
+        function loginServidor() {
+            axios.post(URL.getDominio() + "/servidor/isServidorPermissaoAdmin", usuario.email, headers)
+                .then(Response => {
+                    if (Response.data) {
+                        loginAdmin();
+                    }
+                    // var x = false;
+                    // if (x) { }
+                    else {
+                        axios.post(URL.getDominio() + "/servidor/isServidorPermissaoProfSaude", usuario.googleId, headers)
                             .then(Response => {
-                                localStorage.setItem('id', Response.data.id);
-                                localStorage.setItem('loginDiscente', true);
-                                history.push('/discente/Perfil');
+                                if (Response.data) {
+                                    loginProfSaude();
+                                }
+                            })
+                            .catch(error => console.error(error))
+
+                        axios.post(URL.getDominio() + "/servidor/isServidorPermissaoPsicologo", usuario.googleId, headers)
+                            .then(Response => {
+                                if (Response.data) {
+                                    loginPsicologo();
+                                }
+                                else if (permissionProfSaude == false && permissionPsicologo == false) {
+                                    loginServidorDefault();
+                                }
                             })
                             .catch(error => console.error(error))
                     }
-                    else {
-                        localStorage.setItem('id', Response.data.id);
-                        localStorage.setItem('loginDiscente', true);
-                        history.push('/discente/Perfil');
-                    }
+                })
+                .catch(error => console.error(error))
+        }
+
+        function loginAdmin() {
+            setPermissionProfSaude(true);
+            localStorage.setItem('loginAdmin', true);
+            history.push('/Admin/perfil');
+        }
+
+        function loginProfSaude() {
+            setPermissionProfSaude(true);
+            localStorage.setItem('loginProfSaude', true);
+            history.push('/profissionalDeSaude/perfil');
+        }
+
+        function loginPsicologo() {
+            setpermissionPsicologo(true)
+            localStorage.setItem('loginPsicologo', true);
+            history.push('/psicologo/perfil');
+        }
+
+        function loginServidorDefault() {
+            localStorage.setItem('loginServidor', true);
+            history.push('/servidor/perfil');
+        }
+
+        function salvarDiscente() {
+            axios.post(URL.getDominio() + "/discente/salvarUserDiscente", usuario, headers)
+                .then(Response => { })
+                .catch(error => console.error(error))
+        }
+
+        function loginDiscente() {
+            axios.post(URL.getDominio() + "/discente/isDiscenteGoogleId", usuario.googleId, headers)
+                .then(Response => {
                     localStorage.setItem('id', Response.data.id);
+                    localStorage.setItem('loginDiscente', true);
+                    history.push('/discente/Perfil');
                 })
                 .catch(error => console.error(error))
         }
@@ -186,8 +168,6 @@ export default function Login() {
         window.location.replace('https://www.ifpb.edu.br/ti/redes/servicos/e-mail-academico')
 
     }
-
-    console.log("---------------------------------------->")
 
     return (
         <div>
