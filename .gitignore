@@ -9,3 +9,14 @@ frontend/build.zip
 frontend/build.zip
 frontend/build.zip
 leia-me
+frontend/build.zip
+frontend/cert/domain.crt
+frontend/cert/domain.ext
+frontend/cert/domain.csr
+frontend/cert/domain.key
+frontend/cert/domain.p12
+frontend/build.zip
+frontend/cert/rootCA.crt
+frontend/cert/rootCA.key
+frontend/cert/rootCA.srl
+frontend/nohup.out
