@@ -2,9 +2,9 @@ import { Card } from 'primereact/card';
 import React from 'react';
 import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import ToobarPublica from '../../ToobarPublica';
+import ToobarServidorPublica from '../ToobarServidorPublico';
 
-export default function PerfilSemAcesso() {
+export default function PerfilServidor() {
 
     const id = localStorage.getItem('idServidor');
     var configBotao = "p-mb-3 p-col-3";
@@ -21,7 +21,7 @@ export default function PerfilSemAcesso() {
 
     return (
         <div>
-            <ToobarPublica></ToobarPublica>
+            <ToobarServidorPublica></ToobarServidorPublica>
             <div>
                 <Card title='MEU PERFIL '
                     subTitle="ACESSO NÃO CONCEDIDO! SOLICITE PERMISSÃO AO ADMINISTRADOR.">

@@ -1,6 +1,7 @@
 const ADMIN = 'Admin';
 const PROFISSIONAL_DE_SAUDE = 'profissionalDeSaude';
 const PSICOLOGO = 'psicologo';
+const SERVIDOR = 'servidor';
 
 class Usuario {
 
@@ -14,6 +15,10 @@ class Usuario {
 
     get_PSICOLOGO() {
         return PSICOLOGO;
+    }
+
+    get_SERVIDOR() {
+        return SERVIDOR;
     }
 
 }
