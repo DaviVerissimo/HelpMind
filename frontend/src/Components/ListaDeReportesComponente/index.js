@@ -7,6 +7,7 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import BotaoVoltar from '../BotaoVoltar';
 
 export default function ListaDeReportesComponente(props) {
 
@@ -54,7 +55,7 @@ export default function ListaDeReportesComponente(props) {
 
     const visualizarReporte = (reporte) => {
         setReporte(reporte);
-//        history.goBack();
+        //        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/visualizarReporte/' + reporte.id)
     }
@@ -81,6 +82,9 @@ export default function ListaDeReportesComponente(props) {
         <div>
             <div>
                 <Card title="REPORTES" ></Card>
+                <Card>
+                    <BotaoVoltar></BotaoVoltar>
+                </Card>
                 <Card>
                     <div>
                         <Card>

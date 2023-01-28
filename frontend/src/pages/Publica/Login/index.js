@@ -87,17 +87,20 @@ export default function Login() {
         }
 
         function loginServidor() {
+            var trava = false;
             axios.post(URL.getDominio() + "/servidor/isServidorPermissaoAdmin", usuario.email, headers)
                 .then(Response => {
                     if (Response.data) {
                         loginAdmin();
                     }
+
                     // var x = false;
                     // if (x) { }
                     else {
                         axios.post(URL.getDominio() + "/servidor/isServidorPermissaoProfSaude", usuario.googleId, headers)
                             .then(Response => {
                                 if (Response.data) {
+                                    trava = true;
                                     loginProfSaude();
                                 }
                             })
@@ -106,9 +109,10 @@ export default function Login() {
                         axios.post(URL.getDominio() + "/servidor/isServidorPermissaoPsicologo", usuario.googleId, headers)
                             .then(Response => {
                                 if (Response.data) {
+                                    trava = true;
                                     loginPsicologo();
                                 }
-                                else if (permissionProfSaude == false && permissionPsicologo == false) {
+                                else if (permissionProfSaude == false && permissionPsicologo == false && trava == false) {
                                     loginServidorDefault();
                                 }
                             })
