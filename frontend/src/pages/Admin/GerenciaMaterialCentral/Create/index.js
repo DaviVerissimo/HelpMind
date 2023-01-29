@@ -1,22 +1,18 @@
 import React from 'react';
-import './styles.css'
 import { useState, useRef } from 'react';
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { FileUpload } from 'primereact/fileupload';
 import { Button } from 'primereact/button';
-import { Toolbar } from 'primereact/toolbar';
 import axios from 'axios';
 import ToobarAdmin from '../../ToobarAdmin';
 import { Toast } from 'primereact/toast';
 import BotaoVoltar from '../../../../Components/BotaoVoltar';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import URL from '../../../../services/URL';
 
 export default function Create() {
 
-  const hystory = useHistory();
   const toast = useRef(null);
   const showSuccess = () => {
     toast.current.show({
@@ -35,6 +31,15 @@ export default function Create() {
     });
   }
 
+  const showErrorUpload = () => {
+    toast.current.show({
+      severity: 'error',
+      summary: 'Tipo de arquivo não suportado!',
+      detail: 'Apenas arquivos de Vídeo, Audio, Imagem ou com as seguintes extensões são suportados: ' + arquivosAceitos + '.',
+      life: 500000
+    });
+  }
+
   const categorias = [
     { name: 'Ansiedade' },
     { name: 'Depressão' },
@@ -44,14 +49,28 @@ export default function Create() {
   ];
   const [categoria, setCategoria] = useState('');
   const [nome, setNome] = useState('');
-  const [nomeArquivo, setNomeArquivo] = useState();
   const [invalid, setInvalid] = useState('p-invalid block');
   const [nomeObrigatorio, setNomeObrigatorio] = useState();
   const [categoriaObrigatorio, setCategoriaObrigatorio] = useState();
-  const [nomeArquivoObrigatorio, setNomeArquivoObrigatorio] = useState();
+  const [file, setFile] = useState(null);
+  const arquivosAceitos =
+    "video/*, audio/*, image/*, .pdf, .doc, .docx, .xls, .ppt, .mdb, .docx, .xlsx, .pptx, .accdb, .one, .pub, .rtf, .txt, .odt, .ods, .odp, .odg, .svg, .odf";
+  const handleUpload = async (event) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', event.files[0]);
+      setFile(formData.get('file'));
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
-  function volta(){
-    hystory.goBack();
+
+  function handleSelect(event) {
+      let extensao = event.files[0].name.split(".").pop();
+      if(!arquivosAceitos.includes(extensao) && !event.files[0].type.match('video.*') && !event.files[0].type.match('audio.*') && !event.files[0].type.match('image.*')){
+        showErrorUpload();
+      }
   }
 
   function validar() {
@@ -67,11 +86,6 @@ export default function Create() {
       valido = false;
     }
 
-    if (nomeArquivo == null || nomeArquivo == '') {
-      setNomeArquivoObrigatorio(invalid);
-      valido = false;
-    }
-
     return valido;
   }
 
@@ -82,7 +96,7 @@ export default function Create() {
       {
         "nome": nome,
         "categoria": categoria.name,
-        "nomeDoArquivo": nomeArquivo
+        "nomeDoArquivo": file.name
       }
       const headers = {
         'headers': {
@@ -103,46 +117,27 @@ export default function Create() {
 
   }
 
-  var configBotaoSalvar = "";
-  var configBotaovoltar = "p-mr-2 p-button-secondary";
-  // var configBotaoSalvar = "mr-2  p-ml-3 ";
-  const leftToolbarTemplate = () => {
-    return (
-      // alinhar botoes namesma linha com toobar
-      <React.Fragment>
-        {/* <BotaoVoltar></BotaoVoltar> */}
-        <Button className={configBotaovoltar} label="VOLTAR" onClick={volta} />
-        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
-      </React.Fragment>
-    )
-  }
-
   return (
 
-    <div> <ToobarAdmin></ToobarAdmin>
+    <div>
+      <ToobarAdmin></ToobarAdmin>
       <Toast ref={toast} />
-      <div>
-        <Card title='NOVO MATERIAL' >
-          <Card>
-            <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
-            {/* <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} /> */}
-            {/* <BotaoVoltar></BotaoVoltar> */}
-          </Card>
-          <Card subTitle='NOME' >
-            <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
-          </Card>
-          <Card subTitle='CATEGORIA' >
-            <Dropdown className={categoriaObrigatorio} optionLabel="name" value={categoria} options={categorias} onChange={(e) => setCategoria(e.value)} placeholder="escolha uma categoria" />
-          </Card>
-          <Card subTitle='ARQUIVO' >
-            <FileUpload name="file" url="/file/" ></FileUpload>
-            <Card subTitle='COPIE E COLE AQUI O NOME DO ARQUIVO SELECIONADO ACIMA COM EXTENSÃO:' >
-              <InputText className={nomeArquivoObrigatorio} value={nomeArquivo} onChange={(e) => setNomeArquivo(e.target.value)} placeholder='nome do arquivo  (ex: meu documento.pdf)' />
-            </Card>
-          </Card>
+      <Card title='NOVO MATERIAL' >
+        <Card>
+          <BotaoVoltar></BotaoVoltar>
+          <Button className={'p-ml-3'} label="SALVAR" onClick={submeter} />
         </Card>
-      </div>
-
+        <Card subTitle='NOME' >
+          <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
+        </Card>
+        <Card subTitle='CATEGORIA' >
+          <Dropdown className={categoriaObrigatorio} optionLabel="name" value={categoria} options={categorias} onChange={(e) => setCategoria(e.value)} placeholder="escolha uma categoria" />
+        </Card>
+        <Card subTitle='ARQUIVO' >
+          <FileUpload name='file' url='/file/' onUpload={handleUpload}
+            chooseLabel='PROCURAR' uploadLabel='ENVIAR' cancelLabel='CANCELAR' accept={arquivosAceitos} onSelect={handleSelect} ></FileUpload>
+        </Card>
+      </Card>
     </div>
 
   );
