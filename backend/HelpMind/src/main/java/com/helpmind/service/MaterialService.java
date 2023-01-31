@@ -54,7 +54,6 @@ public class MaterialService {
 		if (folder.isDirectory()) {
 			File[] sun = folder.listFiles();
 			for (int i = 0; i < sun.length; i++) {
-				System.out.println(sun[i].getName());
 				sun[i].delete();
 			}
 		}
