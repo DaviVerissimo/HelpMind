@@ -108,24 +108,6 @@ export default function NovoReporteComponente(props) {
 
     }, []);
 
-    // useEffect(async () => { //enviar campus para o servidor
-    //     const headers = {
-    //         'headers': {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //             'Access-Control-Allow-Origin': '*'
-    //         }
-    //     }
-
-    //     if (!nome == null) {
-    //         axios.post(URL.getDominio() + "/curso/definirCampus", campus, headers)
-    //             .then(Response => { })
-    //             .catch(error => console.log(error))
-    //     }
-
-
-    // }, [campus]);
-
     function validar() {
         var valido = true;
 

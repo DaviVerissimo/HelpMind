@@ -18,6 +18,7 @@ import com.helpmind.model.Constantes;
 import com.helpmind.model.Reporte;
 import com.helpmind.service.DiscenteService;
 import com.helpmind.service.ReporteService;
+import com.helpmind.service.ServidorService;
 
 
 @CrossOrigin(origins = Constantes.URI)
@@ -29,6 +30,9 @@ public class ReporteController {
 	
 	@Autowired
 	private DiscenteService DiscenteService;
+	
+	@Autowired
+	private ServidorService servidorService;
 	
 	@PostMapping("salvarReporte")
 	public ResponseEntity salvarReporte(@RequestBody Reporte reporte) throws URISyntaxException {
@@ -57,6 +61,12 @@ public class ReporteController {
 	public String retornaNomeDoResportante(@RequestBody String idReportante) {
 		
 		return DiscenteService.buscarNomeDoReportante(idReportante);
+	}
+	
+	@PostMapping("/nomeServidorReportante")
+	public String retornaNomeDoServidorResportante(@RequestBody String idReportante) {
+		
+		return servidorService.buscarNomeDoServidorPeloID(idReportante);
 	}
 
 }

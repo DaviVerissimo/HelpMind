@@ -110,5 +110,14 @@ public class ServidorService {
 		
 		return servidor.getPermissaoDeAcessoPsicologo();
 	}
+	
+	public String buscarNomeDoServidorPeloID(String id) {
+		String nome = null;
+		Integer ID = Integer.parseInt(id);
+		Servidor servidor = this.servidorRepository.getById(ID);
+		nome = servidor.getNome();
+		
+		return nome;
+	}
 
 }

@@ -45,10 +45,10 @@ export default function VisualizarReporteComponente() {
             }
             setSuicidio(surto);
 
-            // ReporteService.getReportanteById(reporte.idReportante).then((response) => {
-            //     setNomeReportante(response.data)
+            ReporteService.getServidorReportanteById(reporte.idReportante).then((response) => {
+                setNomeReportante(response.data)
 
-            // });
+            });
 
         }
 

@@ -109,6 +109,5 @@ public class Reporte {
 	public void setIdReportante(String idReportante) {
 		this.idReportante = idReportante;
 	}
-	
 
 }
