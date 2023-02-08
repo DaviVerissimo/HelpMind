@@ -53,6 +53,7 @@ export default function Create() {
   const [nomeObrigatorio, setNomeObrigatorio] = useState();
   const [categoriaObrigatorio, setCategoriaObrigatorio] = useState();
   const [file, setFile] = useState(null);
+  const upload = URL.getDominio() + '/file/';
   const arquivosAceitos =
     "video/*, audio/*, image/*, .pdf, .doc, .docx, .xls, .ppt, .mdb, .docx, .xlsx, .pptx, .accdb, .one, .pub, .rtf, .txt, .odt, .ods, .odp, .odg, .svg, .odf";
   const handleUpload = async (event) => {
@@ -134,7 +135,7 @@ export default function Create() {
           <Dropdown className={categoriaObrigatorio} optionLabel="name" value={categoria} options={categorias} onChange={(e) => setCategoria(e.value)} placeholder="escolha uma categoria" />
         </Card>
         <Card subTitle='ARQUIVO' >
-          <FileUpload name='file' url='/file/' onUpload={handleUpload}
+          <FileUpload name='file' url={upload} onUpload={handleUpload}
             chooseLabel='PROCURAR' uploadLabel='ENVIAR' cancelLabel='CANCELAR' accept={arquivosAceitos} onSelect={handleSelect} ></FileUpload>
         </Card>
       </Card>

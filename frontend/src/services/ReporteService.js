@@ -27,7 +27,7 @@ class ReporteService {
     getReportanteById(id) {
         return axios.post(API_BASE_URL_RETORNAR_REPORTANTE, id, headers)
     }
-
+    
     getServidorReportanteById(id) {
         return axios.post(API_BASE_URL_RETORNAR_SERVIDOR_REPORTANTE, id, headers)
     }

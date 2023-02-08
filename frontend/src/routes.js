@@ -98,7 +98,7 @@ import VisualizarParescerPsicologo from "./pages/Psicologo/VisualizarParescerPsi
 import NovoProntuarioAdmin from "./pages/Admin/NovoProntuarioAdmin";
 import GerenciaProntuariosAdmin from "./pages/Admin/GerenciaProntuariosAdmin";
 import GerenciaPareceresAdmin from "./pages/Admin/GerenciaPareceresAdmin";
-import AdminHome2 from "./pages/Admin/AdminHome2";
+import ExemploGraficos from "./pages/Admin/ExemploGraficos";
 import AnsiedadeDepressaoGraficoAdmin from "./pages/Admin/AnsiedadeDepressaoGraficoAdmin";
 import AnsiedadeDepressaoGraficoProfSaude from "./pages/ProfissionalDeSaude/AnsiedadeDepressaoGraficoProfSaude";
 import AnsiedadeDepressaoGraficoPsicologo from "./pages/Psicologo/AnsiedadeDepressaoGraficoPsicologo";

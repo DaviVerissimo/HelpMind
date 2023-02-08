@@ -18,7 +18,6 @@ import com.helpmind.model.Servidor;
 import com.helpmind.model.Usuario;
 import com.helpmind.service.ServidorService;
 
-@CrossOrigin(origins = Constantes.URI)
 @RestController
 @RequestMapping("/servidor")
 public class ServidorController {
