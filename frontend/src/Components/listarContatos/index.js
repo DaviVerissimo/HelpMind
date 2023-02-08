@@ -85,10 +85,6 @@ export default function ListarContatos() {
             <div>
                 <div>
                     <Card>
-                        {/* <Campus></Campus> */}
-                        {/* colocar botão filtrar, Entender a logica de giuseppe no componente Sobre */}
-                    </Card>
-                    <Card>
                         <div className="datatable-crud-demo">
                             <Toast ref={toast} />
 

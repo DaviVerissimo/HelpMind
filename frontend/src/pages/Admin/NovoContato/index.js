@@ -1,18 +1,17 @@
 import React, { useRef } from 'react';
 import './styles.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Card } from 'primereact/card';
 import axios from "axios";
 import { Button } from 'primereact/button';
 import ToobarAdmin from '../ToobarAdmin';
 import { Toast } from 'primereact/toast';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import URL from '../../../services/URL';
-import Campus from '../../../Components/Campus';
+import { Dropdown } from 'primereact/dropdown';
+import BotaoVoltar from './../../../Components/BotaoVoltar/index';
 
 export default function NovoContato() {
-    const hystory = useHistory();
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -33,20 +32,36 @@ export default function NovoContato() {
     const [telefone, setTelefone] = useState();
     const [email, setEmail] = useState();
     const [nome, setNome] = useState();
+    const [campi, setCampi] = useState(null);
+    const [campusDoDiscente, setCampusDoDiscente] = useState('Não informado');
     const [nomeObrigatorio, setNomeObrigatorio] = useState();
+    const [campusObrigatorio, setCampusObrigatorio] = useState();
     const [invalid, setInvalid] = useState('p-invalid block');
-    var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
-    var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
-    var espacamento = '10px';
-    var largura = window.screen.width;
-    if (largura < 640) {
-        configBotaoCancel = "p-mb-3 p-button-secondary "
-        configBotaoSalvar = "p-mb-3 ";
-    }
 
-    function volta() {
-        hystory.goBack();
-    }
+    useEffect(async () => { //campus
+        var lista = [];
+        const campus = URL.getDominio() + "/curso/listarCampus";
+        axios.get(campus)
+            .then(Response => {
+                var dataCampus = Response.data;
+                dataCampus.forEach(item => {
+                    lista.push(item);
+                });
+
+                lista = lista.map(
+                    (elementoCampus) => {
+                        return {
+                            label: elementoCampus,
+                            value: elementoCampus
+                        }
+                    }
+                ).sort((a, b) => a.label.localeCompare(b.label));
+                setCampi(lista);
+
+            })
+            .catch(error => console.log(error))
+
+    }, []);
 
     function validar() {
         var valido = true;
@@ -56,11 +71,16 @@ export default function NovoContato() {
             valido = false;
         }
 
+        if (campusDoDiscente == null || campusDoDiscente == '') {
+            setCampusObrigatorio(invalid);
+            valido = false;
+        }
+
         return valido;
     }
 
     async function submeter() {
-
+        let campusAux = campusDoDiscente;
         if (validar()) {
 
             const novoContato =
@@ -68,6 +88,7 @@ export default function NovoContato() {
                 "nome": nome,
                 "telefone": telefone,
                 "email": email,
+                "campus": campusAux,
 
             }
             const headers = {
@@ -77,7 +98,7 @@ export default function NovoContato() {
                     'Access-Control-Allow-Origin': '*'
                 }
             }
-            //criar rota para novo contato
+
             axios.post(URL.getDominio() + "/contato/salvarContato", novoContato, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
@@ -97,8 +118,8 @@ export default function NovoContato() {
 
                 <Card className="" >
                     <div>
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR" onClick={volta} />
-                        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
+                        <BotaoVoltar></BotaoVoltar>
+                        <Button className={'p-ml-3'} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>
 
@@ -113,9 +134,9 @@ export default function NovoContato() {
                     <Card subTitle='EMAIL' >
                         <InputText className={''} value={email} onChange={(e) => setEmail(e.target.value)} />
                     </Card>
-                    {/* <Card subTitle='CAMPUS' >
-                        <Campus></Campus>
-                    </Card> */}
+                    <Card subTitle='CAMPUS' >
+                        <Dropdown className={campusObrigatorio} value={campusDoDiscente} options={campi} onChange={(e) => setCampusDoDiscente(e.value)} placeholder="Escolha um campus" />
+                    </Card>
                 </Card>
 
             </div>

@@ -16,6 +16,7 @@ public class Contato {
 	private String nome;
 	private String email;
 	private String telefone;
+	private String campus;
 	
 	public Integer getId() {
 		return id;
@@ -41,6 +42,11 @@ public class Contato {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
+	public String getCampus() {
+		return campus;
+	}
+	public void setCampus(String campus) {
+		this.campus = campus;
+	}
 
 }
