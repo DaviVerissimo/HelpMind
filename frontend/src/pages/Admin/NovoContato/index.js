@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
 import './styles.css'
-import { useState, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Card } from 'primereact/card';
 import axios from "axios";
@@ -33,7 +32,7 @@ export default function NovoContato() {
     const [email, setEmail] = useState();
     const [nome, setNome] = useState();
     const [campi, setCampi] = useState(null);
-    const [campusDoDiscente, setCampusDoDiscente] = useState('Não informado');
+    const [campusDoDiscente, setCampusDoDiscente] = useState('');
     const [nomeObrigatorio, setNomeObrigatorio] = useState();
     const [campusObrigatorio, setCampusObrigatorio] = useState();
     const [invalid, setInvalid] = useState('p-invalid block');
@@ -80,7 +79,7 @@ export default function NovoContato() {
     }
 
     async function submeter() {
-        let campusAux = campusDoDiscente;
+        
         if (validar()) {
 
             const novoContato =
@@ -88,7 +87,7 @@ export default function NovoContato() {
                 "nome": nome,
                 "telefone": telefone,
                 "email": email,
-                "campus": campusAux,
+                "campus": campusDoDiscente,
 
             }
             const headers = {

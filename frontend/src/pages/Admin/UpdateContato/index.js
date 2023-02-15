@@ -8,6 +8,8 @@ import ToobarAdmin from '../ToobarAdmin';
 import { Toast } from 'primereact/toast';
 import { useParams, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import URL from '../../../services/URL';
+import { Dropdown } from 'primereact/dropdown';
+import BotaoVoltar from './../../../Components/BotaoVoltar/index';
 
 export default function UpdateContato() {
 
@@ -25,20 +27,28 @@ export default function UpdateContato() {
         toast.current.show({
             severity: 'error',
             summary: 'Não foi possivel salvar!',
-            detail: 'Todo contato deve ter ao menos um nome.',
+            detail: 'Todo contato deve ter ao menos um nome e campus.',
             life: 5000
         });
     }
-    const hystory = useHistory();
 
     const contatoAux =
     {
-        "id":"carregando",
+        "id": "carregando",
         "nome": "carregando",
         "telefone": "carregando",
         "email": "carregando",
+        "campus": "carregando",
 
     }
+    const [telefone, setTelefone] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [nome, setNome] = useState(null);
+    const [nomeObrigatorio, setNomeObrigatorio] = useState();
+    const [campi, setCampi] = useState(null);
+    const [campusDoDiscente, setCampusDoDiscente] = useState('');
+    const [campusObrigatorio, setCampusObrigatorio] = useState();
+    const [invalid, setInvalid] = useState('p-invalid block');
     const [contato, setContato] = useState(contatoAux);
     const obterContato = () => {
         ContatoService.getBuscarContatoById(id).then((response) => {
@@ -51,31 +61,44 @@ export default function UpdateContato() {
         ContatoService.getBuscarContatoById(id).then((response) => {
             setContato(response.data)
         });
-        if (contato != undefined && contato != null  && contato != contatoAux) {
-            if(nome == null && telefone == null && email == null){
-                
+        if (contato != undefined && contato != null && contato != contatoAux) {
+            if (nome == null && telefone == null && email == null) {
+
                 setTelefone(contato.telefone);
                 setNome(contato.nome);
                 setEmail(contato.email);
+                setCampusDoDiscente(contato.campus);
             }
 
         }
 
     }, [contato]);
 
-    const [telefone, setTelefone] = useState(null); 
-    const [email, setEmail] = useState(null);
-    const [nome, setNome] = useState(null);
-    const [nomeObrigatorio, setNomeObrigatorio] = useState();
-    const [invalid, setInvalid] = useState('p-invalid block');
-    var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
-    var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
-    var espacamento = '10px';
-    var largura = window.screen.width;
-    if (largura < 640) {
-        configBotaoCancel = "p-mb-3 p-button-secondary "
-        configBotaoSalvar = "p-mb-3 ";
-    }
+    useEffect(async () => { //campus
+        var lista = [];
+        const campus = URL.getDominio() + "/curso/listarCampus";
+        axios.get(campus)
+            .then(Response => {
+                var dataCampus = Response.data;
+                dataCampus.forEach(item => {
+                    lista.push(item);
+                });
+
+                lista = lista.map(
+                    (elementoCampus) => {
+                        return {
+                            label: elementoCampus,
+                            value: elementoCampus
+                        }
+                    }
+                ).sort((a, b) => a.label.localeCompare(b.label));
+                setCampi(lista);
+
+            })
+            .catch(error => console.log(error))
+
+    }, []);
+
 
     function validar() {
         var valido = true;
@@ -85,12 +108,13 @@ export default function UpdateContato() {
             valido = false;
         }
 
+        if (campusDoDiscente == null || campusDoDiscente == '') {
+            setCampusObrigatorio(invalid);
+            valido = false;
+        }
+
         return valido;
     }
-
-    function volta(){
-        hystory.goBack();
-      }
 
     async function submeter() {
 
@@ -98,10 +122,11 @@ export default function UpdateContato() {
 
             const updateContato =
             {
-                "id":contato.id,
+                "id": contato.id,
                 "nome": nome,
                 "telefone": telefone,
                 "email": email,
+                "campus": campusDoDiscente,
 
             }
             const headers = {
@@ -111,7 +136,7 @@ export default function UpdateContato() {
                     'Access-Control-Allow-Origin': '*'
                 }
             }
-            //criar rota para novo contato
+
             axios.post(URL.getDominio() + "/contato/updateContato", updateContato, headers)
                 .then(Response => { })
                 .catch(error => console.log(error))
@@ -124,35 +149,32 @@ export default function UpdateContato() {
     }
 
     return (
-        <div> <ToobarAdmin></ToobarAdmin>
+        <div>
+            <ToobarAdmin></ToobarAdmin>
             <Toast ref={toast} />
-            <div >
-                <Card title="ATUALIZAR CONTATO"></Card>
+            <Card title="ATUALIZAR CONTATO"></Card>
+            <Card>
+                <BotaoVoltar></BotaoVoltar>
+                <Button className={'p-ml-3'} label="SALVAR" onClick={submeter} />
+            </Card>
 
-                <Card className="" >
-                    <div>
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR" onClick={volta}/>
-                        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
-                    </div>
+            <Card >
+                <Card subTitle='NOME' >
+                    <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
                 </Card>
 
-                <Card >
-                    <Card subTitle='NOME' >
-                        <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
-                    </Card>
-
-                    <Card subTitle='TELEFONE' >
-                        <InputText className={''} value={telefone} onChange={(e) => setTelefone(e.target.value)} />
-                    </Card>
-                    <Card subTitle='EMAIL' >
-                        <InputText className={''} value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </Card>
-                    {/* <Card subTitle='CAMPUS' >
-                        <InputText className={''} value={'Namia'} disabled={true}/>
-                    </Card> */}
+                <Card subTitle='TELEFONE' >
+                    <InputText className={''} value={telefone} onChange={(e) => setTelefone(e.target.value)} />
                 </Card>
+                <Card subTitle='EMAIL' >
+                    <InputText className={''} value={email} onChange={(e) => setEmail(e.target.value)} />
+                </Card>
+                <Card subTitle='CAMPUS' >
+                    <Dropdown className={campusObrigatorio} value={campusDoDiscente} options={campi} onChange={(e) => setCampusDoDiscente(e.value)} placeholder="Escolha um campus" />
+                </Card>
+            </Card>
 
-            </div>
+
         </div>
 
     );
