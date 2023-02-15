@@ -31,14 +31,15 @@ public class FileUploadController {
 		boolean aceito = true;
 		//verificamdo tipo
 	    String[] arquivosAceitos = {"video/*", "audio/*", "image/*", ".pdf", ".doc", ".docx", ".xls", ".ppt", ".mdb", ".docx", ".xlsx",
-	    		".pptx", ".accdb", ".one", ".pub", ".rtf", ".txt", ".odt", ".ods", ".odp", ".odg", ".svg", ".odf"};
+	    		".pptx", ".accdb", ".one", ".pub", ".rtf", ".txt", ".odt", ".ods", ".odp", ".odg", ".svg", ".odf", "application/pdf"};
 	    String fileContentType = file.getContentType();
 	    String fileType = file.getContentType();
 		for (String tipo : arquivosAceitos) {
 		    if (!fileContentType.equals(tipo) && 
 		    		!fileType.startsWith("video/") && 
 		    		!fileType.startsWith("audio/") && 
-		    		!fileType.startsWith("image/")) {
+		    		!fileType.startsWith("image/") &&
+		    		!fileContentType.equals("application/pdf") ) {
 		        
 		        aceito = false;
 		    }
