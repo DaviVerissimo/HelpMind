@@ -132,7 +132,7 @@ export default function Create() {
           <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
         </Card>
         <Card subTitle='CATEGORIA' >
-          <Dropdown className={categoriaObrigatorio} optionLabel="name" value={categoria} options={categorias} onChange={(e) => setCategoria(e.value)} placeholder="escolha uma categoria" />
+          <Dropdown className={categoriaObrigatorio} filter optionLabel="name" value={categoria} options={categorias} onChange={(e) => setCategoria(e.value)} placeholder="escolha uma categoria" />
         </Card>
         <Card subTitle='ARQUIVO' >
           <FileUpload name='file' url={upload} onUpload={handleUpload}

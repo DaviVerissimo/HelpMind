@@ -752,19 +752,19 @@ export default function QuestionarioSocioeconomico() {
                     <InputText className={matriculaObrigatoria} value={matricula} onChange={(e) => setMatricula(e.target.value)} placeholder="Digite sua matricula" />
                 </Card>
                 <Card subTitle='CAMPUS' >
-                    <Dropdown className={campusObrigatorio} value={campusDoDiscente} options={campi} onChange={(e) => setCampusDoDiscente(e.value)} placeholder="Escolha um campus" />
+                    <Dropdown className={campusObrigatorio} filter value={campusDoDiscente} options={campi} onChange={(e) => setCampusDoDiscente(e.value)} placeholder="Escolha um campus" />
                 </Card>
                 <Card subTitle='CURSO' >
-                    <Dropdown className={cursoObrigatorio} value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
+                    <Dropdown className={cursoObrigatorio} filter value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
                 </Card>
                 <Card subTitle='PERIODO' >
-                    <Dropdown className={periodoObrigatorio} optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodo(e.target.value)} placeholder="Escolha um periodo" />
+                    <Dropdown className={periodoObrigatorio} filter optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodo(e.target.value)} placeholder="Escolha um periodo" />
                 </Card>
                 <Card subTitle='IDADE' >
-                    <Dropdown className={idadeObrigatoria} optionLabel="name" value={idade} options={idades} onChange={(e) => setIdade(e.target.value)} placeholder="Escolha uma idade" />
+                    <Dropdown className={idadeObrigatoria} filter optionLabel="name" value={idade} options={idades} onChange={(e) => setIdade(e.target.value)} placeholder="Escolha uma idade" />
                 </Card>
                 <Card subTitle='CIDADE' >
-                    <Dropdown className={cidadeObrigatoria} optionLabel="name" value={cidade} options={cidades} onChange={(e) => setCidade(e.target.value)} placeholder="Escolha uma cidade" />
+                    <Dropdown className={cidadeObrigatoria} filter optionLabel="name" value={cidade} options={cidades} onChange={(e) => setCidade(e.target.value)} placeholder="Escolha uma cidade" />
                     <Card className='p-mt-3' subTitle='Escolha a zona: ' >
                         <RadioButton className="p-ml-3" value='Zona urbana' onChange={(e) => setZonaHurbanaRural_op(e.value)} checked={zonaHurbanaRural_op === 'Zona urbana'} />
                         <label> Zona urbana</label>
@@ -773,22 +773,22 @@ export default function QuestionarioSocioeconomico() {
                     </Card>
                 </Card>
                 <Card subTitle='ESTADO CIVIL' >
-                    <Dropdown className={estadoCivilObrigatorio} optionLabel="name" value={estadoCivil} options={estadosCivis} onChange={(e) => setEstadoCivil(e.target.value)} placeholder="Escolha seu estado civil" />
+                    <Dropdown className={estadoCivilObrigatorio} filter optionLabel="name" value={estadoCivil} options={estadosCivis} onChange={(e) => setEstadoCivil(e.target.value)} placeholder="Escolha seu estado civil" />
                 </Card>
                 <Card subTitle='COM QUEM VIVE' >
-                    <Dropdown className={comQuemViveObrigatoria} optionLabel="name" value={comQuemVive} options={comQuemVives} onChange={(e) => setComQuemVive(e.target.value)} placeholder="Escolha com quem vive" />
+                    <Dropdown className={comQuemViveObrigatoria}filter optionLabel="name" value={comQuemVive} options={comQuemVives} onChange={(e) => setComQuemVive(e.target.value)} placeholder="Escolha com quem vive" />
                 </Card>
                 <Card subTitle='RENDA FAMILIAR' >
-                    <Dropdown className={rendaFamiliarObrigatoria} optionLabel="name" value={rendaFamiliar} options={rendasFamiliar} onChange={(e) => setRendaFamiliar(e.target.value)} placeholder="Escolha uma renda" />
+                    <Dropdown className={rendaFamiliarObrigatoria}filter optionLabel="name" value={rendaFamiliar} options={rendasFamiliar} onChange={(e) => setRendaFamiliar(e.target.value)} placeholder="Escolha uma renda" />
                 </Card>
                 <Card subTitle='COR' >
-                    <Dropdown className={corObrigatoria} optionLabel="name" value={cor} options={cores} onChange={(e) => setCor(e.target.value)} placeholder="Escolha sua cor" />
+                    <Dropdown className={corObrigatoria} filter optionLabel="name" value={cor} options={cores} onChange={(e) => setCor(e.target.value)} placeholder="Escolha sua cor" />
                 </Card>
                 <Card subTitle='GÊNERO' >
-                    <Dropdown className={generoObrigatoria} optionLabel="name" value={genero} options={generos} onChange={(e) => setGenero(e.target.value)} placeholder="Escolha seu gênero" />
+                    <Dropdown className={generoObrigatoria} filter optionLabel="name" value={genero} options={generos} onChange={(e) => setGenero(e.target.value)} placeholder="Escolha seu gênero" />
                 </Card>
                 <Card subTitle='OPTANTE/ INGRESSANTE POR VAGAS DE COTAS?' >
-                    <Dropdown className={ingressantePorVagaDeCotaObrigatoria} optionLabel="name" value={ingressantePorVagaDeCota} options={cotas} onChange={(e) => setIngressantePorVagaDeCota(e.target.value)} placeholder="Optou pelas cotas?" />
+                    <Dropdown className={ingressantePorVagaDeCotaObrigatoria} filter optionLabel="name" value={ingressantePorVagaDeCota} options={cotas} onChange={(e) => setIngressantePorVagaDeCota(e.target.value)} placeholder="Optou pelas cotas?" />
                     <Card className='p-mt-3' subTitle='Em caso de resposta afirmativa especifique: ' >
                         <RadioButton className="p-ml-3" value='Ensino público' onChange={(e) => setCotista_op(e.value)} checked={cotista_op === 'Ensino público'} />
                         <label> ensino público </label>
@@ -797,22 +797,22 @@ export default function QuestionarioSocioeconomico() {
                     </Card>
                 </Card>
                 <Card subTitle='É PESSOA COM DEFICIÊNCIA?'  >
-                    <Dropdown className={pessoaDeficienteObrigatoria} optionLabel="name" value={pessoaDeficiente} options={deficiencias} onChange={(e) => setPessoaDeficiente(e.target.value)} placeholder="Possui algum tipo de deficiência:" />
+                    <Dropdown className={pessoaDeficienteObrigatoria} filter optionLabel="name" value={pessoaDeficiente} options={deficiencias} onChange={(e) => setPessoaDeficiente(e.target.value)} placeholder="Possui algum tipo de deficiência:" />
                     <Card className='p-mt-3' subTitle='Em caso de resposta afirmativa especifique:' >
                         <InputText className='' value={deficiencia_op_tipo} onChange={(e) => setDeficiencia_op_tipo(e.target.value)} placeholder="Digite a deficiência" />
                     </Card>
                 </Card>
                 <Card subTitle='FAZ USO DE BEBIDA ALCOÓLICA'>
-                    <Dropdown className={usoBebidaAlcoolicaObrigatoria} optionLabel="name" value={usoBebidaAlcoolica} options={bebidasAlcoolica} onChange={(e) => setUsoBebidaAlcoolica(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={usoBebidaAlcoolicaObrigatoria} filter optionLabel="name" value={usoBebidaAlcoolica} options={bebidasAlcoolica} onChange={(e) => setUsoBebidaAlcoolica(e.target.value)} placeholder="Escolha uma opção" />
                 </Card>
                 <Card subTitle='VOCÊ JÁ SOFREU OU SOFRE BULLYING NA ESCOLA?' >
-                    <Dropdown className={bullyngObrigatoria} optionLabel="name" value={bullyng} options={bullyngs} onChange={(e) => setBullyng(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={bullyngObrigatoria} filter optionLabel="name" value={bullyng} options={bullyngs} onChange={(e) => setBullyng(e.target.value)} placeholder="Escolha uma opção" />
                 </Card>
                 <Card subTitle='ALGUÉM NA SUA RESIDÊNCIA SOFRE COM ALGUM PROBLEMA DE SAÚDE MENTAL?' >
-                    <Dropdown className={resideComPortadorDeProblemaMentalObrigatoria} optionLabel="name" value={resideComPortadorDeProblemaMental} options={residentesSofrimentoMental} onChange={(e) => setResideComPortadorDeProblemaMental(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={resideComPortadorDeProblemaMentalObrigatoria} filter optionLabel="name" value={resideComPortadorDeProblemaMental} options={residentesSofrimentoMental} onChange={(e) => setResideComPortadorDeProblemaMental(e.target.value)} placeholder="Escolha uma opção" />
                 </Card>
                 <Card subTitle='VOCÊ SOFRE DE ALGUM PROBLEMA DE SAÚDE MENTAL?' >
-                    <Dropdown className={discenteSofrimentoMentalObrigatoria} optionLabel="name" value={discenteSofrimentoMental} options={discenteSofrimentosMental} onChange={(e) => setDiscenteSofrimentoMental(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={discenteSofrimentoMentalObrigatoria} filter optionLabel="name" value={discenteSofrimentoMental} options={discenteSofrimentosMental} onChange={(e) => setDiscenteSofrimentoMental(e.target.value)} placeholder="Escolha uma opção" />
                     <Card className='p-mt-3' subTitle='Caso tenha escolhido uma opção outro expecifique. Marque o circulo caso tenha diagnóstico:' >
                         <RadioButton className="p-ml-3" value='outro' onChange={(e) => setDiaguinostico_op(e.value)} checked={diaguinostico_op === 'outro'} />
                         <label> outro(diagnóstico) </label>
@@ -820,31 +820,31 @@ export default function QuestionarioSocioeconomico() {
                     </Card>
                 </Card>
                 <Card subTitle='JÁ FEZ USO DE PSICOTRÓPICO: ANSIEDADE OU DEPRESSÃO?' >
-                    <Dropdown className={psicotropicoObrigatoria} optionLabel="name" value={psicotropico} options={psicotropicos} onChange={(e) => setPsicotropico(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={psicotropicoObrigatoria} filter optionLabel="name" value={psicotropico} options={psicotropicos} onChange={(e) => setPsicotropico(e.target.value)} placeholder="Escolha uma opção" />
                 </Card>
                 <Card subTitle='EM ALGUM MOMENTO DA VIDA MANIFESTOU INTERESSE EM PROCURAR AJUDA PSICÓLOGO?' >
-                    <Dropdown className={interesseAjudaPsicologicaObrigatoria} optionLabel="name" value={interesseAjudaPsicologica} options={interessesAjudaPsicologica} onChange={(e) => setInteresseAjudaPsicologica(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={interesseAjudaPsicologicaObrigatoria} filter optionLabel="name" value={interesseAjudaPsicologica} options={interessesAjudaPsicologica} onChange={(e) => setInteresseAjudaPsicologica(e.target.value)} placeholder="Escolha uma opção" />
                 </Card>
                 <Card subTitle='VOCÊ É BENEFICIADO COM ALGUM BOLSA OU PROGRAMA DE ASSISTÊNCIA ESTUDANTIL IFPB' >
-                    <Dropdown className={beneficioObrigatoria} optionLabel="name" value={beneficio} options={beneficios} onChange={(e) => setBeneficio(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={beneficioObrigatoria}filter optionLabel="name" value={beneficio} options={beneficios} onChange={(e) => setBeneficio(e.target.value)} placeholder="Escolha uma opção" />
                     <Card className='p-mt-3' subTitle='Caso tenha escolhido uma opção outro expecifique o beneficio:' >
                         <InputText className='entradaOutro p-mt-3' value={outroBeneficio} onChange={(e) => setOutroBeneficio(e.target.value)} placeholder="Digite o beneficio" />
                     </Card>
                 </Card>
                 <Card subTitle='O DOMICÍLIO DO GRUPO FAMILIAR É' >
-                    <Dropdown className={domicilioObrigatoria} optionLabel="name" value={domicilio} options={domicilios} onChange={(e) => setDomicilio(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={domicilioObrigatoria}filter optionLabel="name" value={domicilio} options={domicilios} onChange={(e) => setDomicilio(e.target.value)} placeholder="Escolha uma opção" />
                     <Card className='p-mt-3' subTitle='Informe a quantidade de cômodos:' >
                         <InputText className={quantidadeComodos_opObrigatoria} value={quantidadeComodos_op} onChange={(e) => setQuantidadeComodos_op(e.target.value)} placeholder="Cômodos" />
                     </Card>
                 </Card>
                 <Card subTitle='VOCÊ APRESENTA ALGUMA DOENÇA GRAVE?' >
-                    <Dropdown className={temDoencaObrigatoria} optionLabel="name" value={temDoenca} options={DiscenteDoencas} onChange={(e) => setTemDoenca(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={temDoencaObrigatoria} filter optionLabel="name" value={temDoenca} options={DiscenteDoencas} onChange={(e) => setTemDoenca(e.target.value)} placeholder="Escolha uma opção" />
                     <Card className='p-mt-3' subTitle='Em caso de resposta afirmativa, especifique:' >
                         <InputText className='' value={doencaDiscente} onChange={(e) => setDoencaDiscente(e.target.value)} placeholder="Sua doença" />
                     </Card>
                 </Card>
                 <Card subTitle='ALGUÉM DO SEU NÚCLEO FAMILIAR APRESENTA DOENÇA GRAVE?' >
-                    <Dropdown className={possuiFamiliarComDoencaGraveObrigatoria} optionLabel="name" value={possuiFamiliarComDoencaGrave} options={doencasParente} onChange={(e) => setPossuiFamiliarComDoencaGrave(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={possuiFamiliarComDoencaGraveObrigatoria} filter optionLabel="name" value={possuiFamiliarComDoencaGrave} options={doencasParente} onChange={(e) => setPossuiFamiliarComDoencaGrave(e.target.value)} placeholder="Escolha uma opção" />
                     <Card className='p-mt-3' subTitle='Em caso de resposta afirmativa, especifique:' >
                         <InputText className='p-mr-3' value={familiarDoente} onChange={(e) => setFamiliarDoente(e.target.value)} placeholder="Seu parente" />
                         <InputText className=' p-mt-3' value={doencaDoFamiliar_op} onChange={(e) => setDoencaDoFamiliar_op(e.target.value)} placeholder="A doença do seu parente" />

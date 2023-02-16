@@ -54,6 +54,6 @@ export default function Campus(props) {
     }, [campus]);
 
     return (
-        <Dropdown className={campusObrigatorio} value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
+        <Dropdown className={campusObrigatorio} filter value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
     );
 }

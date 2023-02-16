@@ -236,16 +236,16 @@ export default function Reporte() {
                         <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
                     </Card>
                     <Card subTitle='CAMPUS' >
-                        <Dropdown className={campusObrigatorio} value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
+                        <Dropdown className={campusObrigatorio} filter value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
                     </Card>
                     <Card subTitle='CURSO' >
-                        <Dropdown className={cursoObrigatorio} value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
+                        <Dropdown className={cursoObrigatorio} filter value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
                     </Card>
                     <Card subTitle='ANO / PERÍODO' >
-                        <Dropdown className={periodoObrigatorio} optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Não se aplica" />
+                        <Dropdown className={periodoObrigatorio} filter optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Não se aplica" />
                     </Card>
                     <Card subTitle='JÁ TENTOU SUICÍDIO?' >
-                        <Dropdown className={suicidioObrigatorio} optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setSuicidio(e.target.value)} placeholder="Não se aplica" />
+                        <Dropdown className={suicidioObrigatorio} filter optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setSuicidio(e.target.value)} placeholder="Não se aplica" />
                     </Card>
                     <Card subTitle='DESCRIÇÃO' >
                         <InputTextarea className={descrisaoObrigatoria} rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />

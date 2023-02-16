@@ -51,7 +51,7 @@ export default function DiscenteEmail() {
 
     return (
         <div>
-            <Dropdown className={emailObrigatorio} value={email} options={listaDeEmail} onChange={(e) => setEmail(e.value)} placeholder="Escolha um email" />
+            <Dropdown className={emailObrigatorio} filter value={email} options={listaDeEmail} onChange={(e) => setEmail(e.value)} placeholder="Escolha um email" />
         </div>
 
     );

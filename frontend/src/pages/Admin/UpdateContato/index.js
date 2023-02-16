@@ -170,7 +170,7 @@ export default function UpdateContato() {
                     <InputText className={''} value={email} onChange={(e) => setEmail(e.target.value)} />
                 </Card>
                 <Card subTitle='CAMPUS' >
-                    <Dropdown className={campusObrigatorio} value={campusDoDiscente} options={campi} onChange={(e) => setCampusDoDiscente(e.value)} placeholder="Escolha um campus" />
+                    <Dropdown className={campusObrigatorio} filter value={campusDoDiscente} options={campi} onChange={(e) => setCampusDoDiscente(e.value)} placeholder="Escolha um campus" />
                 </Card>
             </Card>
 

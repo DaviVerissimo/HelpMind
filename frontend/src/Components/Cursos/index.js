@@ -50,7 +50,7 @@ export default function Cursos() {
 
     return (
         <div>
-            <Dropdown className={cursoObrigatorio} value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
+            <Dropdown className={cursoObrigatorio} filter value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
         </div>
 
     );

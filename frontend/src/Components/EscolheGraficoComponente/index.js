@@ -77,7 +77,7 @@ export default function EscolheGraficoComponente(props) {
                 </Card>
                 <Card subTitle="ANSIEDADE E DEPRESSÃO POR CAMPUS E SEUS RESPECTIVOS CURSOS" >
                     {/* <Campus valido={valido} layout={layout}></Campus> */}
-                    <Dropdown className={campusObrigatorio} value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
+                    <Dropdown className={campusObrigatorio} filter value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
                     <Button className={aux} icon='pi pi-chart-bar' label="CONSULTAR" onClick={submeter} />
                 </Card>
             </Card>
