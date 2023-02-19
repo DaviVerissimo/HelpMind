@@ -1,5 +1,4 @@
 {
-    "proxy": "http://localhost:8080",
     "name": "frontend",
     "version": "0.1.0",
     "private": true,
@@ -10,6 +9,7 @@
         "@testing-library/user-event": "^12.8.3",
         "axios": "^0.24.0",
         "chart.js": "^3.9.1",
+        "jwt-decode": "^3.1.2",
         "primeflex": "^2.0.0",
         "primeicons": "^5.0.0",
         "primereact": "^7.1.0",
@@ -23,7 +23,7 @@
         "web-vitals": "^1.1.2"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "SSL_CRT_FILE=cert/domain.crt SSL_KEY_FILE=cert/domain.key HTTPS=true PORT=3100 react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
