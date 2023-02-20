@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
@@ -11,7 +10,7 @@ import URL from '../../services/URL';
 import BotaoVoltar from '../BotaoVoltar';
 
 export default function NovoReporteComponente(props) {
-    const history = useHistory();
+
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -194,25 +193,64 @@ export default function NovoReporteComponente(props) {
             </Card>
             <Card >
                 <Card subTitle='DISCENTE' >
-                    <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
+                    <InputText
+                        className={nomeObrigatorio}
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
+                    />
                 </Card>
                 <Card subTitle='CAMPUS' >
-                    <Dropdown className={campusObrigatorio}  filter value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
+                    <Dropdown
+                        className={campusObrigatorio}
+                        filter
+                        value={campus}
+                        options={campi}
+                        onChange={(e) => setCampus(e.value)}
+                        placeholder="Escolha um campus"
+                    />
                 </Card>
                 <Card subTitle='CURSO' >
-                    <Dropdown className={cursoObrigatorio} filter value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
+                    <Dropdown
+                        lassName={cursoObrigatorio}
+                        filter
+                        value={curso}
+                        options={cursos}
+                        onChange={(e) => setCurso(e.value)}
+                        placeholder="Escolha um curso"
+                    />
                 </Card>
                 <Card subTitle='ANO / PERÍODO' >
-                    <Dropdown className={periodoObrigatorio}filter optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Não se aplica" />
+                    <Dropdown
+                        className={periodoObrigatorio}
+                        filter
+                        optionLabel="name"
+                        value={periodo}
+                        options={periodos}
+                        onChange={(e) => setPeriodos(e.target.value)}
+                        placeholder="Não se aplica"
+                    />
                 </Card>
                 <Card subTitle='JÁ TENTOU SUICÍDIO?' >
-                    <Dropdown className={suicidioObrigatorio} filter optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setSuicidio(e.target.value)} placeholder="Não se aplica" />
+                    <Dropdown
+                        className={suicidioObrigatorio}
+                        filter
+                        optionLabel="name"
+                        value={suicidio}
+                        options={tentouSuicidio}
+                        onChange={(e) => setSuicidio(e.target.value)}
+                        placeholder="Não se aplica"
+                    />
                 </Card>
                 <Card subTitle='DESCRIÇÃO' >
-                    <InputTextarea className={descrisaoObrigatoria} rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
+                    <InputTextarea
+                        className={descrisaoObrigatoria}
+                        rows={5}
+                        cols={30}
+                        value={descrisao}
+                        onChange={(e) => setDescrisao(e.target.value)}
+                    />
                 </Card>
             </Card>
         </div>
-
     );
 }

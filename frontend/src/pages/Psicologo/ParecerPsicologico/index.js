@@ -1,22 +1,17 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { InputText } from 'primereact/inputtext';
-import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Card } from 'primereact/card';
 import axios from "axios";
 import { Button } from 'primereact/button';
 import ToobarPsicologo from '../ToobarPsicologo';
 import { Toast } from 'primereact/toast';
-import Cursos from '../../../Components/Cursos';
-import Campus from '../../../Components/Campus';
 import DiscenteEmail from '../../../Components/DiscenteEmail';
 import DiscenteNome from '../../../Components/DiscenteNome';
 import URL from '../../../services/URL';
+import BotaoVoltar from '../../../Components/BotaoVoltar';
 
 export default function ParecerPsicologico() {
 
-    const history = useHistory();
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -38,19 +33,9 @@ export default function ParecerPsicologico() {
     const [email, setEmail] = useState(null); //campus = singular, campi = plural
     const [nome, setNome] = useState();
     const [parescer, setParescer] = useState('');
-
-    var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
-    var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
-    var espacamento = '10px';
-    var largura = window.screen.width;
-    if (largura < 640) {
-        configBotaoCancel = "p-mb-3 p-button-secondary "
-        configBotaoSalvar = "p-mb-3 ";
-    }
-
+    var configBotaoSalvar = "p-ml-3";
     const [parecerObrigatoria, setDescrisaoObrigatorio] = useState();
     const [invalid, setInvalid] = useState('p-invalid block');
-
     const nomeData = localStorage.getItem('nomeComponente')
     useEffect(async () => {
         setNome(nomeData);
@@ -82,10 +67,6 @@ export default function ParecerPsicologico() {
         }
 
         return valido;
-    }
-
-    const voltar = () => {
-        history.goBack();
     }
 
     async function submeter() {
@@ -125,14 +106,11 @@ export default function ParecerPsicologico() {
             <Toast ref={toast} />
             <div >
                 <Card title="PARESCER DO PSICÓLOGO"></Card>
-
                 <Card className="" >
-                    <div>
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR" onClick={voltar} />
-                        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
-                    </div>
-                </Card>
+                    <BotaoVoltar></BotaoVoltar>
+                    <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
 
+                </Card>
                 <Card >
                     <Card subTitle='DISCENTE' >
                         <DiscenteNome></DiscenteNome>
@@ -141,13 +119,7 @@ export default function ParecerPsicologico() {
                     <Card subTitle='EMAIL' >
                         <DiscenteEmail></DiscenteEmail>
                     </Card>
-                    {/* <Card subTitle='CURSO' >
-                        <Cursos></Cursos>
-                    </Card> */}
 
-                    {/* criar componente para parescer do PSICOLOGO */}
-                    {/* corrigir bug que impede salvar novo parescer do psicologo */}
-                    {/* pergunta a val sobre campus e curso no parescer psicologico */}
                     <Card subTitle='PARESCER DO PSICOLOGO' >
                         <InputTextarea className={parecerObrigatoria} rows={5} cols={30} value={parescer} onChange={(e) => setParescer(e.target.value)} />
                     </Card>

@@ -13,16 +13,16 @@ import BotaoVoltar from '../BotaoVoltar';
 export default function GerenciaPareceresComponent(props) {
 
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "p-mr-3 pi pi-file";
+    var configBtnVisualizar = "p-mr-3 ";
     var btnDeletarTexto = 'DELETAR'
-    var configBtnDeletar = " p-button-danger pi pi-trash ";
+    var configBtnDeletar = " p-button-danger ";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-mr-3 p-button-rounded pi pi-file";
+        configBtnVisualizar = "p-mr-3 p-button-rounded ";
         btnDeletarTexto = ''
-        configBtnDeletar = "p-mr-3 p-button-rounded p-button-danger pi pi-trash ";
+        configBtnDeletar = "p-mr-3 p-button-rounded p-button-danger  ";
     }
 
     let emptyParescer = {
@@ -60,7 +60,7 @@ export default function GerenciaPareceresComponent(props) {
 
     const visualizarPareceres = (parecer) => {
         setParecer(parecer);
-//        history.goBack();
+        //        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/visualizarParescer/' + parecer.id);
     }
@@ -74,8 +74,17 @@ export default function GerenciaPareceresComponent(props) {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnVisualizar} onClick={() => visualizarPareceres(rowData)} > {btnVisualizarTexto} </Button>
-                <Button className={configBtnDeletar} onClick={() => deletarParescer(rowData)} > {btnDeletarTexto} </Button>
+                <Button className={configBtnVisualizar}
+                    label={btnVisualizarTexto}
+                    icon='pi pi-file'
+                    onClick={() => visualizarPareceres(rowData)}
+                ></Button>
+                <Button
+                    className={configBtnDeletar}
+                    label={btnDeletarTexto}
+                    icon='pi pi-trash'
+                    onClick={() => deletarParescer(rowData)}
+                ></Button>
             </React.Fragment>
         );
     }
@@ -109,9 +118,6 @@ export default function GerenciaPareceresComponent(props) {
                                         <Column field="data" header="Data" sortable ></Column>
                                         <Column field="discente" header="Discente" sortable ></Column>
                                         <Column field="email" header="Email" sortable ></Column>
-                                        {/* <Column field="periodo" header="Periodo" sortable ></Column>
-                                        <Column field="campus" header="Campus" sortable ></Column> */}
-                                        {/* <Column field="parescerPsicologico" header="Parescer do psicólogo" sortable ></Column> */}
 
                                         <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                     </DataTable>

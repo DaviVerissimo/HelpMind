@@ -9,9 +9,10 @@ import axios from "axios";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import URL from '../../services/URL';
+import BotaoVoltar from '../BotaoVoltar';
 
 export default function NovoProntuarioComponente() {
-    const history = useHistory();
+
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -29,7 +30,6 @@ export default function NovoProntuarioComponente() {
             life: 5000
         });
     }
-
     const [campus, setCampus] = useState(null); //campus = singular, campi = plural
     const [campi, setCampi] = useState();
     const [nome, setNome] = useState();
@@ -49,16 +49,6 @@ export default function NovoProntuarioComponente() {
         { name: 'Psiclogo(a) do campus' },
         { name: 'Rede externa' },
     ];
-
-    var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
-    var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
-    var espacamento = '10px';
-    var largura = window.screen.width;
-    if (largura < 640) {
-        configBotaoCancel = "p-mb-3 p-button-secondary "
-        configBotaoSalvar = "p-mb-3 ";
-    }
-
     const [nomeObrigatorio, setNomeObrigatorio] = useState();
     const [cursoObrigatorio, setCursoObrigatorio] = useState();
     const [campusObrigatorio, setCampusObrigatorio] = useState();
@@ -204,9 +194,6 @@ export default function NovoProntuarioComponente() {
         }
 
     }
-    const voltar = () => {
-        history.goBack();
-    }
 
     return (
         <div>
@@ -216,10 +203,8 @@ export default function NovoProntuarioComponente() {
 
                 <Card className="" >
                     <div>
-                        {/* transformar o conteudo dessa div em componente a usar em toda a aplicaçãp */}
-                        {/* transformar essa tela em componente e criar novo prontuario para aAdmin */}
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR" onClick={voltar} />
-                        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
+                        <BotaoVoltar></BotaoVoltar>
+                        <Button className={'p-ml-3'} label="SALVAR" onClick={submeter} />
                     </div>
                 </Card>
 
@@ -228,19 +213,19 @@ export default function NovoProntuarioComponente() {
                         <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
                     </Card>
                     <Card subTitle='CAMPUS' >
-                        <Dropdown className={campusObrigatorio} value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
+                        <Dropdown className={campusObrigatorio} filter value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
                     </Card>
                     <Card subTitle='CURSO' >
-                        <Dropdown className={cursoObrigatorio} value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
+                        <Dropdown className={cursoObrigatorio} filter value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
                     </Card>
                     <Card subTitle='ANO / PERÍODO' >
-                        <Dropdown className={periodoObrigatorio} optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Digite o parescer quanto ao discente" />
+                        <Dropdown className={periodoObrigatorio} filter optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Digite o parescer quanto ao discente" />
                     </Card>
                     <Card subTitle='PARESCER DO PROFISSIONAL DE SAÚDE' >
                         <InputTextarea className={parecerObrigatoria} rows={5} cols={30} value={parescer} onChange={(e) => setParescer(e.target.value)} />
                     </Card>
                     <Card subTitle='AÇÃO REALIZADA' >
-                        <Dropdown className={acaoRealizadaObrigatorio} optionLabel="name" value={acaoObrigatorio} options={destino} onChange={(e) => setAcaoObrigatorio(e.target.value)} placeholder="Escolha uma ação" />
+                        <Dropdown className={acaoRealizadaObrigatorio} filter optionLabel="name" value={acaoObrigatorio} options={destino} onChange={(e) => setAcaoObrigatorio(e.target.value)} placeholder="Escolha uma ação" />
                     </Card>
                 </Card>
 

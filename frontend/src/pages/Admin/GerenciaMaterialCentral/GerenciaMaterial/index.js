@@ -24,20 +24,15 @@ import URL from '../../../../services/URL';
 
 export default function GerenciaMaterial() {
 
-    var configBotao = "pi pi-plus-circle p-mb-3 p-col-3";
     var largura = window.screen.width;
-    if (largura < 640) {
-        configBotao = "pi pi-plus-circle p-mt-3 ";
-    }
-
     const history = useHistory();
     var btnDeleteTexto = 'DELETE'
-    var configBtnDelete = "p-button-danger pi pi-trash";
+    var configBtnDelete = "p-button-danger ";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnDeleteTexto = ''
-        configBtnDelete = "p-button-danger p-button-rounded pi pi-trash";
+        configBtnDelete = "p-button-danger p-button-rounded ";
 
     }
 
@@ -291,24 +286,24 @@ export default function GerenciaMaterial() {
         setProduct(_product);
     }
 
-    const leftToolbarTemplate = () => {
+    const direita = () => {
         return (
             <React.Fragment>
-                <BotaoVoltar></BotaoVoltar>
-                <Button label="NOVO MATERIAL" icon="pi pi-plus" className="mr-2  p-ml-3" onClick={() => { history.push('/Admin/material/create') }} />
-                <Button label="APAGAR TODOS OS MATÉRIAIS" icon="pi pi-trash" className="mr-2  p-ml-3 p-button-danger " onClick={deletarAll} />
+                
+                <Button label="APAGAR TODOS OS MATÉRIAIS" icon="pi pi-trash" className="  p-button-danger p-mr-3" onClick={deletarAll} />
+                <Button label="NOVO MATERIAL" icon="pi pi-plus" className="" onClick={() => { history.push('/Admin/material/create') }} />
+            </React.Fragment>
+        )
+    }
+    const esquerda = () => {
+        return (
+            <React.Fragment>
+                {/* <Button label="NOVO BOTÂO" icon="pi pi-plus" className="p-mt-1" onClick={() => { history.push('/Admin/material/create') }} /> */}
             </React.Fragment>
         )
     }
 
-    const rightToolbarTemplate = () => {
-        return (
-            <React.Fragment>
-                <FileUpload mode="basic" name="demo[]" auto url="https://primefaces.org/primereact/showcase/upload.php" accept=".csv" chooseLabel="Import" className="mr-2 inline-block" onUpload={importCSV} />
-                <Button label="Export" icon="pi pi-upload" className="p-button-help" onClick={exportCSV} />
-            </React.Fragment>
-        )
-    }
+
 
     const imageBodyTemplate = (rowData) => {
         return <img src={`images/product/${rowData.image}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={rowData.image} className="product-image" />
@@ -329,7 +324,7 @@ export default function GerenciaMaterial() {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnDelete} onClick={() => deletar(rowData)} > {btnDeleteTexto} </Button>
+                <Button className={configBtnDelete} label={btnDeleteTexto} icon='pi pi-trash' onClick={() => deletar(rowData)} ></Button>
             </React.Fragment>
         );
     }
@@ -391,7 +386,7 @@ export default function GerenciaMaterial() {
     }
 
     const deletarAll = () => {
-        
+
         setDeleteAllMaterialDialog(true)
     }
 
@@ -400,7 +395,10 @@ export default function GerenciaMaterial() {
         <div> <ToobarAdmin></ToobarAdmin>
 
             <Card title="GERENCIA DE MATERIAIS DE APOIO"></Card>
-
+            <Card>
+                <BotaoVoltar></BotaoVoltar>
+                
+            </Card>
             <div>
                 <div>
                     <Card>
@@ -408,7 +406,7 @@ export default function GerenciaMaterial() {
                             <Toast ref={toast} />
 
                             <div className="card">
-                                <Toolbar className="mb-4" left={leftToolbarTemplate}
+                                <Toolbar className="mb-2" right={direita}
                                 ></Toolbar>
                                 <DataTable ref={dt} value={materiais} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)} dataKey="id"
                                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">

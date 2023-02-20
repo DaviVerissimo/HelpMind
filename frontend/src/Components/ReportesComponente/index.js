@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ReportesComponente(props) {
 
-    var configBotao = "p-ml-3";
+    var configBotao = "p-mr-3 p-mt-3";
     const history = useHistory();
     function listarReportes() {
         const usuario = props.data;
@@ -21,7 +21,7 @@ export default function ReportesComponente(props) {
         <div>
             <Card title='REPORTES ' >
                 <Card>
-                    <Button label="NOVO REPORTE" onClick={novoReporte} />
+                    <Button className={'p-mt-3  p-mr-3'}label="NOVO REPORTE" onClick={novoReporte} />
                     <Button className={configBotao} label="LISTAR REPORTES" onClick={listarReportes} />
                 </Card>
 

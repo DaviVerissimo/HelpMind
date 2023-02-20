@@ -14,15 +14,15 @@ export default function GerenciaProntuariosComponente(props) {
 
     var btnVisualizarTexto = 'VISUALIZAR'
     var btnDeletarTexto = 'DELETAR'
-    var configBtnVisualizar = "p-mr-3 pi pi-file";
-    var configBtnDeletar = " p-button-danger pi pi-trash ";
+    var configBtnVisualizar = "p-mr-3 ";
+    var configBtnDeletar = " p-button-danger";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
         btnDeletarTexto = ''
-        configBtnVisualizar = "p-mr-3 p-button-rounded pi pi-file";
-        configBtnDeletar = "p-mr-3 p-button-rounded p-button-danger pi pi-trash ";
+        configBtnVisualizar = " p-button-rounded ";
+        configBtnDeletar = "p-ml-3 p-button-rounded p-button-danger  ";
     }
 
     let emptyProntuario = {
@@ -59,7 +59,6 @@ export default function GerenciaProntuariosComponente(props) {
 
     const visualizarProntuario = (prontuario) => {
         setProntuario(prontuario);
-//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/visualizarProntuarios/' + prontuario.id);
     }
@@ -73,8 +72,18 @@ export default function GerenciaProntuariosComponente(props) {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnVisualizar} onClick={() => visualizarProntuario(rowData)} > {btnVisualizarTexto} </Button>
-                <Button className={configBtnDeletar} onClick={() => deletarProntuario(rowData)} > {btnDeletarTexto} </Button>
+                <Button
+                    className={configBtnVisualizar}
+                    label={btnVisualizarTexto}
+                    icon="pi pi-file"
+                    onClick={() => visualizarProntuario(rowData)}
+                ></Button>
+                <Button
+                    className={configBtnDeletar}
+                    label={btnDeletarTexto}
+                    icon='pi pi-trash '
+                    onClick={() => deletarProntuario(rowData)}
+                ></Button>
             </React.Fragment>
         );
     }
@@ -93,7 +102,7 @@ export default function GerenciaProntuariosComponente(props) {
     return (
         <div>
             <div>
-                <Card title="LISTA DE PRONTUÁRIOS" ></Card>
+                <Card title="GERENCIA DE PRONTUÁRIOS" ></Card>
                 <Card>
                     <Card>
                         <BotaoVoltar></BotaoVoltar>
@@ -109,9 +118,6 @@ export default function GerenciaProntuariosComponente(props) {
                                         <Column field="discente" header="Discente" sortable ></Column>
                                         <Column field="acaoRealizada" header="Ação realizada" sortable ></Column>
                                         <Column field="curso" header="Curso" sortable ></Column>
-                                        {/* <Column field="periodo" header="Periodo" sortable ></Column> */}
-                                        {/* <Column field="campus" header="Campus" sortable ></Column> */}
-                                        {/* <Column field="parescerProfissionalSaude" header="Parescer profissional de saúde" sortable ></Column> */}
 
                                         <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                     </DataTable>

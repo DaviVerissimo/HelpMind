@@ -6,12 +6,6 @@ import ToobarDiscente from '../ToobarDiscente';
 
 export default function Reportes() {
 
-    var configBotao = "p-mb-3 p-col-3";
-    var largura = window.screen.width;
-    var espacamento = '10px';
-    if (largura < 640) {
-        configBotao = "p-mt-3 ";
-    }
     const history = useHistory();
 
     return (
@@ -20,12 +14,9 @@ export default function Reportes() {
             <div>
                 <Card title='REPORTES ' >
                     <Card className='p-col-16' >
-                        <div>
-                            <Button className={configBotao} style={{ right: espacamento }} label="NOVO REPORTE" onClick={() => { history.push('/discente/Reporte') }} />
-                            <Button className={configBotao} label="REPORTES REALIZADOS" onClick={() => { history.push('/discente/ListaReportes') }} />
-                        </div>
+                            <Button label="NOVO REPORTE" onClick={() => { history.push('/discente/Reporte') }} />
+                            <Button className={'p-ml-3'} label="REPORTES REALIZADOS" onClick={() => { history.push('/discente/ListaReportes') }} />
                     </Card>
-
                 </Card>
             </div>
         </div>

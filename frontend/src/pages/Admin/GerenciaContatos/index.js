@@ -19,15 +19,15 @@ export default function GerenciaContatos() {
     const location = useLocation();
     var btnDeleteTexto = 'DELETE'
     var btnEditTexto = 'EDITAR'
-    var configBtnDelete = "p-button-danger pi pi-trash";
-    var configBtnEdit = " p-mr-3 p-button-warning pi pi-pencil";
+    var configBtnDelete = "p-button-danger ";
+    var configBtnEdit = " p-mr-3 p-button-warning ";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnDeleteTexto = ''
-        configBtnDelete = "p-mt-3 p-button-danger p-button-rounded pi pi-trash";
+        configBtnDelete = "p-ml-3 p-button-danger p-button-rounded ";
         btnEditTexto = ''
-        configBtnEdit = "p-button-warning  p-button-rounded pi pi-pencil";
+        configBtnEdit = "p-button-warning  p-button-rounded ";
     }
 
     let emptyContato = {
@@ -46,7 +46,6 @@ export default function GerenciaContatos() {
     {
         contatos.map((material, key) => {
         })
-
     }
 
     useEffect(() => {
@@ -60,38 +59,40 @@ export default function GerenciaContatos() {
     const [globalFilter, setGlobalFilter] = useState(null);
     const toast = useRef(null);
     const dt = useRef(null);
-
     const hideDeleteProductDialog = () => {
         setDeleteContatoDialog(false);
     }
-
     const deleteContato = () => {
         ContatoService.getDeleteContato(contato.id);
         toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'O Contato ' + contato.nome + ' foi deletado! RECARREGUE PARA VER MUDANÇAS.', life: 5000 });
         setDeleteContatoDialog(false);
         allContatos();
     }
-
     const editar = (contato) => {
-//        history.goBack();
         history.push('/Admin/updateContato/' + contato.id)
     }
-
-    const leftToolbarTemplate = () => {
+    const direita = () => {
         return (
             <React.Fragment>
-                <BotaoVoltar></BotaoVoltar>
-                <Button label="NOVO CONTATO" icon="pi pi-plus" className="mr-2 p-ml-3" onClick={() => { history.push('/Admin/NovoContato') }} />
+                <Button label="NOVO CONTATO" icon="pi pi-plus" className="" onClick={() => { history.push('/Admin/NovoContato') }} />
             </React.Fragment>
         )
     }
-
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnEdit} onClick={() => editar(rowData)} > {btnEditTexto} </Button>
-                <Button className={configBtnDelete} onClick={() => deletar(rowData)} > {btnDeleteTexto} </Button>
-
+                <Button
+                    className={configBtnEdit}
+                    label={btnEditTexto}
+                    icon='pi pi-pencil'
+                    onClick={() => editar(rowData)}
+                ></Button>
+                <Button
+                    className={configBtnDelete}
+                    label={btnDeleteTexto}
+                    icon='pi pi-trash'
+                    onClick={() => deletar(rowData)}
+                ></Button>
             </React.Fragment>
         );
     }
@@ -127,12 +128,13 @@ export default function GerenciaContatos() {
             <div>
                 <div>
                     <Card>
+                        <BotaoVoltar></BotaoVoltar>
+                    </Card>
+                    <Card>
                         <div className="datatable-crud-demo">
                             <Toast ref={toast} />
-
                             <div className="card">
-
-                                <Toolbar className="mb-4" left={leftToolbarTemplate}
+                                <Toolbar className="mb-4" right={direita}
                                 ></Toolbar>
                                 <DataTable ref={dt} value={contatos} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)} dataKey="id"
                                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
@@ -154,8 +156,6 @@ export default function GerenciaContatos() {
                     </Card>
                 </div>
             </div>
-
         </div>
-
     );
 }

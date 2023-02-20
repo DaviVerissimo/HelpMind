@@ -1,8 +1,6 @@
 import { Card } from 'primereact/card';
-import React, { useRef } from 'react';
-import { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect} from 'react';
 import { Button } from 'primereact/button';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarDiscente from '../ToobarDiscente';
 import { InputText } from 'primereact/inputtext';
 import axios from 'axios';
@@ -11,9 +9,10 @@ import { RadioButton } from 'primereact/radiobutton';
 import { Checkbox } from 'primereact/checkbox';
 import { Toast } from 'primereact/toast';
 import URL from '../../../services/URL';
+import BotaoVoltar from '../../../Components/BotaoVoltar';
 
 export default function QuestionarioSocioeconomico() {
-    const history = useHistory();
+    
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -56,9 +55,8 @@ export default function QuestionarioSocioeconomico() {
         { name: 'Mais de 21 anos' },
     ];
     const [cidade, setCidade] = useState(null);
-    const cidades = [ //sugestão usar serviço de terceiro que retorne todas as cidades por estado
-        // { name: 'Monteiro' },
-        // { name: 'Outro' },
+    const cidades = [ 
+
         { name: '	Água Branca		' },
         { name: '	Aguiar		' },
         { name: '	Alagoa Grande		' },
@@ -442,16 +440,7 @@ export default function QuestionarioSocioeconomico() {
     const [invalid, setInvalid] = useState('p-invalid block');
     const id = localStorage.getItem('id');
 
-    var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
-    var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
-    var espacamento = '10px';
-    var altura = window.screen.height;
-    var largura = window.screen.width;
-
-    if (largura < 640) {
-        configBotaoCancel = "p-mb-3 p-button-secondary "
-        configBotaoSalvar = "p-mb-3"
-    }
+    var configBotaoSalvar = "p-ml-3";
 
     useEffect(async () => { //cursos
         var lista = [];
@@ -721,21 +710,14 @@ export default function QuestionarioSocioeconomico() {
 
     }
 
-    const voltar = () => {
-        history.goBack();
-//        history.push('/discente/EscolherQuestionariosDiscente')
-    }
-
     return (
         <div>
             <ToobarDiscente></ToobarDiscente>
             <div>
                 <Toast ref={toast} />
                 <Card className="" >
-                    <div className="   align-items-end "  >
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR"  onClick={voltar} />
-                        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
-                    </div>
+                    <BotaoVoltar></BotaoVoltar>
+                    <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                 </Card>
                 <Card className="" >
                     <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
@@ -776,10 +758,10 @@ export default function QuestionarioSocioeconomico() {
                     <Dropdown className={estadoCivilObrigatorio} filter optionLabel="name" value={estadoCivil} options={estadosCivis} onChange={(e) => setEstadoCivil(e.target.value)} placeholder="Escolha seu estado civil" />
                 </Card>
                 <Card subTitle='COM QUEM VIVE' >
-                    <Dropdown className={comQuemViveObrigatoria}filter optionLabel="name" value={comQuemVive} options={comQuemVives} onChange={(e) => setComQuemVive(e.target.value)} placeholder="Escolha com quem vive" />
+                    <Dropdown className={comQuemViveObrigatoria} filter optionLabel="name" value={comQuemVive} options={comQuemVives} onChange={(e) => setComQuemVive(e.target.value)} placeholder="Escolha com quem vive" />
                 </Card>
                 <Card subTitle='RENDA FAMILIAR' >
-                    <Dropdown className={rendaFamiliarObrigatoria}filter optionLabel="name" value={rendaFamiliar} options={rendasFamiliar} onChange={(e) => setRendaFamiliar(e.target.value)} placeholder="Escolha uma renda" />
+                    <Dropdown className={rendaFamiliarObrigatoria} filter optionLabel="name" value={rendaFamiliar} options={rendasFamiliar} onChange={(e) => setRendaFamiliar(e.target.value)} placeholder="Escolha uma renda" />
                 </Card>
                 <Card subTitle='COR' >
                     <Dropdown className={corObrigatoria} filter optionLabel="name" value={cor} options={cores} onChange={(e) => setCor(e.target.value)} placeholder="Escolha sua cor" />
@@ -826,13 +808,13 @@ export default function QuestionarioSocioeconomico() {
                     <Dropdown className={interesseAjudaPsicologicaObrigatoria} filter optionLabel="name" value={interesseAjudaPsicologica} options={interessesAjudaPsicologica} onChange={(e) => setInteresseAjudaPsicologica(e.target.value)} placeholder="Escolha uma opção" />
                 </Card>
                 <Card subTitle='VOCÊ É BENEFICIADO COM ALGUM BOLSA OU PROGRAMA DE ASSISTÊNCIA ESTUDANTIL IFPB' >
-                    <Dropdown className={beneficioObrigatoria}filter optionLabel="name" value={beneficio} options={beneficios} onChange={(e) => setBeneficio(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={beneficioObrigatoria} filter optionLabel="name" value={beneficio} options={beneficios} onChange={(e) => setBeneficio(e.target.value)} placeholder="Escolha uma opção" />
                     <Card className='p-mt-3' subTitle='Caso tenha escolhido uma opção outro expecifique o beneficio:' >
                         <InputText className='entradaOutro p-mt-3' value={outroBeneficio} onChange={(e) => setOutroBeneficio(e.target.value)} placeholder="Digite o beneficio" />
                     </Card>
                 </Card>
                 <Card subTitle='O DOMICÍLIO DO GRUPO FAMILIAR É' >
-                    <Dropdown className={domicilioObrigatoria}filter optionLabel="name" value={domicilio} options={domicilios} onChange={(e) => setDomicilio(e.target.value)} placeholder="Escolha uma opção" />
+                    <Dropdown className={domicilioObrigatoria} filter optionLabel="name" value={domicilio} options={domicilios} onChange={(e) => setDomicilio(e.target.value)} placeholder="Escolha uma opção" />
                     <Card className='p-mt-3' subTitle='Informe a quantidade de cômodos:' >
                         <InputText className={quantidadeComodos_opObrigatoria} value={quantidadeComodos_op} onChange={(e) => setQuantidadeComodos_op(e.target.value)} placeholder="Cômodos" />
                     </Card>

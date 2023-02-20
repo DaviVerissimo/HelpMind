@@ -14,12 +14,12 @@ import BotaoVoltar from '../../../Components/BotaoVoltar';
 export default function ListaDeReportesDoDiscente() {
 
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "pi pi-bell";
+    var configBtnVisualizar = "";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-bell";
+        configBtnVisualizar = "p-button-rounded ";
     }
 
     let emptyReporte = {
@@ -58,14 +58,13 @@ export default function ListaDeReportesDoDiscente() {
 
     const visualizarReporte = (reporte) => {
         setReporte(reporte);
-        // history.goBack();
         history.push('/discente/visualizarReporte/' + reporte.id)
     }
 
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnVisualizar} onClick={() => visualizarReporte(rowData)} > {btnVisualizarTexto} </Button>
+                <Button className={configBtnVisualizar} label={btnVisualizarTexto} icon='pi pi-bell' onClick={() => visualizarReporte(rowData)} >  </Button>
             </React.Fragment>
         );
     }

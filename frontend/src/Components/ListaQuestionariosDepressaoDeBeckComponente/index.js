@@ -11,12 +11,12 @@ import BotaoVoltar from '../BotaoVoltar';
 export default function ListaQuestionariosDepressaoDeBeckComponente(props) {
     const { id } = useParams();
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "pi pi-file";
+    var configBtnVisualizar = "";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-file";
+        configBtnVisualizar = "p-button-rounded ";
     }
 
     let emptyQuestionario = {
@@ -53,7 +53,6 @@ export default function ListaQuestionariosDepressaoDeBeckComponente(props) {
 
     const visualizarQuestionario = (questionario) => {
         setQuestionario(questionario);
-//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/VisualizarQuestionarioDeDepresaoDeBeck/' + questionario.id)
     }
@@ -61,7 +60,12 @@ export default function ListaQuestionariosDepressaoDeBeckComponente(props) {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnVisualizar} onClick={() => visualizarQuestionario(rowData)} > {btnVisualizarTexto} </Button>
+                <Button
+                    className={configBtnVisualizar}
+                    label={btnVisualizarTexto}
+                    icon='pi pi-file'
+                    onClick={() => visualizarQuestionario(rowData)} >
+                </Button>
             </React.Fragment>
         );
     }
@@ -78,7 +82,7 @@ export default function ListaQuestionariosDepressaoDeBeckComponente(props) {
 
 
     return (
-        <div> 
+        <div>
             <div>
                 <Card title="QUESTIONÁRIOS DEPRESSÃO DE BECK" ></Card>
                 <Card>

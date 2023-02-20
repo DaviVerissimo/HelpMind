@@ -12,12 +12,12 @@ export default function ListaQuestionariosAnsiedadeDeBeckComponente(props) {
 
     const { id } = useParams();
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "pi pi-file";
+    var configBtnVisualizar = "";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-file";
+        configBtnVisualizar = "p-button-rounded ";
     }
 
     let emptyQuestionario = {
@@ -54,7 +54,6 @@ export default function ListaQuestionariosAnsiedadeDeBeckComponente(props) {
 
     const visualizarQuestionario = (questionario) => {
         setQuestionario(questionario);
-//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/VisualizarQuestionarioDeAnsiedadeDeBeck/' + questionario.id)
     }
@@ -62,7 +61,11 @@ export default function ListaQuestionariosAnsiedadeDeBeckComponente(props) {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnVisualizar} onClick={() => visualizarQuestionario(rowData)} > {btnVisualizarTexto} </Button>
+                <Button
+                    className={configBtnVisualizar}
+                    label={btnVisualizarTexto}
+                    icon='pi pi-file' onClick={() => visualizarQuestionario(rowData)} >
+                </Button>
             </React.Fragment>
         );
     }
@@ -94,7 +97,6 @@ export default function ListaQuestionariosAnsiedadeDeBeckComponente(props) {
                                         <Column field="data" header="Data" sortable style={{ minWidth: '12rem' }}></Column>
                                         <Column field="status" header="Status" sortable style={{ minWidth: '12rem' }}></Column>
                                         <Column field="nota" header="Nota" sortable style={{ minWidth: '12rem' }}></Column>
-
 
                                         <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                     </DataTable>

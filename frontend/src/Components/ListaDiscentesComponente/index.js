@@ -11,13 +11,13 @@ import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.m
 export default function ListaDiscentesComponente(props) {
 
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "pi pi-user";
+    var configBtnVisualizar = "";
     var largura = window.screen.width;
     const configBotaoAcessar = "p-button-danger p-button-rounded ";
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-user";
+        configBtnVisualizar = "p-button-rounded ";
     }
 
     let emptyDiscente = {
@@ -49,19 +49,18 @@ export default function ListaDiscentesComponente(props) {
             console.log(response.data);
         });
     };
-    // const vulneravel = isAumento;
 
     useEffect(() => {
         allDiscentes()
-        
+
     }, [])
 
     useEffect(() => {
         isAumento()
-        if(aumento){
+        if (aumento) {
             showError();
         }
-        
+
     }, [aumento])
 
 
@@ -73,7 +72,6 @@ export default function ListaDiscentesComponente(props) {
 
     const visualizarPerfil = (discente) => {
         setDiscente(discente);
-//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/PerfilDiscenteDetalhado/' + discente.id)
     }
@@ -81,7 +79,12 @@ export default function ListaDiscentesComponente(props) {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnVisualizar} onClick={() => visualizarPerfil(rowData)} > {btnVisualizarTexto} </Button>
+                <Button
+                    className={configBtnVisualizar}
+                    label={btnVisualizarTexto}
+                    icon='pi pi-user'
+                    onClick={() => visualizarPerfil(rowData)} >
+                </Button>
             </React.Fragment>
         );
     }
@@ -95,11 +98,11 @@ export default function ListaDiscentesComponente(props) {
         });
     }
 
-    function verificarAumento() { 
+    function verificarAumento() {
         const usuario = props.data;
         history.push('/' + usuario + '/ListaDiscentesComAumentoVulnerabilidade')
     }
-    
+
 
 
     const header = (
@@ -113,7 +116,7 @@ export default function ListaDiscentesComponente(props) {
     );
 
     return (
-        <div> 
+        <div>
             <div>
                 <Card title="DISCENTES" ></Card>
                 <Card>

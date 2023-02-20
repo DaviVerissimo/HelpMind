@@ -12,12 +12,12 @@ import BotaoVoltar from '../BotaoVoltar';
 export default function ListaDiscentesAumentoComponente(props) {
 
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "pi pi-user";
+    var configBtnVisualizar = "";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-user";
+        configBtnVisualizar = "p-button-rounded ";
     }
 
     let emptyDiscente = {
@@ -55,7 +55,6 @@ export default function ListaDiscentesAumentoComponente(props) {
 
     const visualizarPerfil = (discente) => {
         setDiscente(discente);
-//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/PerfilDiscenteDetalhado/' + discente.id)
     }
@@ -63,7 +62,12 @@ export default function ListaDiscentesAumentoComponente(props) {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnVisualizar} onClick={() => visualizarPerfil(rowData)} > {btnVisualizarTexto} </Button>
+                <Button
+                    className={configBtnVisualizar}
+                    label={btnVisualizarTexto}
+                    icon='pi pi-user'
+                    onClick={() => visualizarPerfil(rowData)}>
+                </Button>
             </React.Fragment>
         );
     }

@@ -57,7 +57,7 @@ export default function ToobarAdmin() {
                 <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col" label='Quem Somos' onClick={() => { history.push('/Admin/quemSomos') }} />
                 <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3  p-mt-3 p-col" label='Contatos' onClick={() => { history.push('/Admin/Contatos') }} />
                 <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Discentes' onClick={() => { history.push('/Admin/ListaDiscentes') }} />
-                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Reportes' onClick={() => { history.push('/Admin/listaReportes') }} />
+                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Reportes' onClick={() => { history.push('/Admin/Reportes') }} />
                 <Button icon={createIcon("pi pi-chart-line")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Estatisticas' onClick={() => { history.push('/Admin/consultarEstatisticas') }} />
                 <Button icon={createIcon("pi pi-cog")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Config' onClick={() => { history.push('/Admin/configuracao') }} />
                 <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Admin' onClick={() => { history.push('/Admin/perfil') }} />

@@ -6,7 +6,7 @@ import ToobarPsicologo from '../ToobarPsicologo';
 
 export default function PareceresPsicologico() {
 
-    var configBotao = "p-mb-3 p-col-3";
+    var configBotao = "p-mr-3 p-mt-3";
     var largura = window.screen.width;
     var espacamento = '10px';
     if (largura < 640) {
@@ -22,7 +22,7 @@ export default function PareceresPsicologico() {
                 <Card title='PARECERES PSICOLÓGICOS ' >
                     <Card className='p-col-16' >
                         <div>
-                            <Button className={configBotao} style={{ right: espacamento }} label="NOVO PARESCER DO PSICOLOGO" onClick={() => { history.push('/psicologo/parecer') }} />
+                            <Button className={'p-mt-3  p-mr-3'} label="NOVO PARESCER DO PSICOLOGO" onClick={() => { history.push('/psicologo/parecer') }} />
                             <Button className={configBotao} label="LISTAR PARECERES PSICOLÓGICOS" onClick={() => { history.push('/psicologo/listarParecerPsicologico') }} />
                         </div>
                     </Card>

@@ -20,13 +20,6 @@ export default function GerenciaServidor() {
     var btnTextoRemoverpermissaoPsicologo = 'REMOVER PERMISSÃO PSICOLOGO'
     var estadoPositivo = '';
     var estadoNegativo = "p-button-danger";
-    var configBtnVisualizar = "pi pi-user";
-    var largura = window.screen.width;
-
-    if (largura < 640) {
-        btnTextoAddpermissaoProfSaude = ''
-        configBtnVisualizar = "p-button-rounded pi pi-user";
-    }
 
     let emptyServidores = {
         id: null,
@@ -108,7 +101,7 @@ export default function GerenciaServidor() {
 
         return (
             <React.Fragment>
-                <Button className={estado} onClick={() => definirAcessoProfSaude(rowData)} > {texto} </Button>
+                <Button className={estado} label={texto} onClick={() => definirAcessoProfSaude(rowData)} ></Button>
             </React.Fragment>
         );
     }
@@ -128,7 +121,7 @@ export default function GerenciaServidor() {
 
         return (
             <React.Fragment>
-                <Button className={estado} onClick={() => definirAcessoPsicologo(rowData)} > {texto} </Button>
+                <Button className={estado} label={texto} onClick={() => definirAcessoPsicologo(rowData)} ></Button>
             </React.Fragment>
         );
     }

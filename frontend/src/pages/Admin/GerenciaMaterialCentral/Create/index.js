@@ -68,10 +68,10 @@ export default function Create() {
 
 
   function handleSelect(event) {
-      let extensao = event.files[0].name.split(".").pop();
-      if(!arquivosAceitos.includes(extensao) && !event.files[0].type.match('video.*') && !event.files[0].type.match('audio.*') && !event.files[0].type.match('image.*')){
-        showErrorUpload();
-      }
+    let extensao = event.files[0].name.split(".").pop();
+    if (!arquivosAceitos.includes(extensao) && !event.files[0].type.match('video.*') && !event.files[0].type.match('audio.*') && !event.files[0].type.match('image.*')) {
+      showErrorUpload();
+    }
   }
 
   function validar() {
@@ -126,17 +126,41 @@ export default function Create() {
       <Card title='NOVO MATERIAL' >
         <Card>
           <BotaoVoltar></BotaoVoltar>
-          <Button className={'p-ml-3'} label="SALVAR" onClick={submeter} />
+          <Button
+            className={'p-ml-3'}
+            label="SALVAR"
+            onClick={submeter}
+          />
         </Card>
         <Card subTitle='NOME' >
-          <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
+          <InputText
+            className={nomeObrigatorio}
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
         </Card>
         <Card subTitle='CATEGORIA' >
-          <Dropdown className={categoriaObrigatorio} filter optionLabel="name" value={categoria} options={categorias} onChange={(e) => setCategoria(e.value)} placeholder="escolha uma categoria" />
+          <Dropdown
+            className={categoriaObrigatorio}
+            filter
+            optionLabel="name"
+            value={categoria}
+            options={categorias}
+            onChange={(e) => setCategoria(e.value)}
+            placeholder="escolha uma categoria"
+          />
         </Card>
         <Card subTitle='ARQUIVO' >
-          <FileUpload name='file' url={upload} onUpload={handleUpload}
-            chooseLabel='PROCURAR' uploadLabel='ENVIAR' cancelLabel='CANCELAR' accept={arquivosAceitos} onSelect={handleSelect} ></FileUpload>
+          <FileUpload
+            name='file'
+            url={upload}
+            onUpload={handleUpload}
+            chooseLabel='PROCURAR'
+            uploadLabel='ENVIAR'
+            cancelLabel='CANCELAR'
+            accept={arquivosAceitos}
+            onSelect={handleSelect}
+          ></FileUpload>
         </Card>
       </Card>
     </div>

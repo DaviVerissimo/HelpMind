@@ -10,12 +10,12 @@ import URL from '../../services/URL';
 
 export default function EscolheGraficoComponente(props) {
     const history = useHistory();
-    const aux = 'p-ml-3'
+    const aux = 'p-mb-3'
     var valido = true;
     const [campus, setCampus] = useState(null);
     const [campi, setCampi] = useState(null);
-    const [campusObrigatorio, setCampusObrigatorio] = useState();
-    const [invalid, setInvalid] = useState('p-invalid block');
+    const [campusObrigatorio, setCampusObrigatorio] = useState('p-mr-3 p-mb-3');
+    const [invalid, setInvalid] = useState('p-invalid block p-mr-3 p-mb-3');
     var valido = true;
 
     useEffect(async () => { //campus
@@ -42,7 +42,6 @@ export default function EscolheGraficoComponente(props) {
             .catch(error => console.log(error))
 
     }, []);
-    // fazer a validação
     const toast = useRef(null);
     const showError = () => {
         toast.current.show({
@@ -76,9 +75,20 @@ export default function EscolheGraficoComponente(props) {
                     <BotaoVoltar></BotaoVoltar>
                 </Card>
                 <Card subTitle="ANSIEDADE E DEPRESSÃO POR CAMPUS E SEUS RESPECTIVOS CURSOS" >
-                    {/* <Campus valido={valido} layout={layout}></Campus> */}
-                    <Dropdown className={campusObrigatorio} filter value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
-                    <Button className={aux} icon='pi pi-chart-bar' label="CONSULTAR" onClick={submeter} />
+                    <Dropdown
+                        className={campusObrigatorio}
+                        ilter
+                        value={campus}
+                        options={campi}
+                        onChange={(e) => setCampus(e.value)}
+                        placeholder="Escolha um campus"
+                    />
+                    <Button
+                        className={aux}
+                        icon='pi pi-chart-bar'
+                        label="CONSULTAR"
+                        onClick={submeter} disabled
+                    />
                 </Card>
             </Card>
         </div>

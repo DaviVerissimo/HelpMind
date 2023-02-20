@@ -11,12 +11,12 @@ import BotaoVoltar from '../BotaoVoltar';
 export default function ListaQuestionarioSocioeconomicoComponente(props) {
     const { id } = useParams();
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "pi pi-file";
+    var configBtnVisualizar = "";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-file";
+        configBtnVisualizar = "p-button-rounded ";
     }
 
     let emptyQuestionario = {
@@ -48,7 +48,6 @@ export default function ListaQuestionarioSocioeconomicoComponente(props) {
     const dt = useRef(null);
 
     const visualizarQuestionario = (questionario) => {
-//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/VisualizarSocioeconomico/' + questionario.id)
 
@@ -58,7 +57,12 @@ export default function ListaQuestionarioSocioeconomicoComponente(props) {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnVisualizar} onClick={() => visualizarQuestionario(rowData)} > {btnVisualizarTexto} </Button>
+                <Button
+                    className={configBtnVisualizar}
+                    label={btnVisualizarTexto}
+                    icon='pi pi-file'
+                    onClick={() => visualizarQuestionario(rowData)} >
+                </Button>
             </React.Fragment>
         );
     }
@@ -92,11 +96,10 @@ export default function ListaQuestionarioSocioeconomicoComponente(props) {
                                 <div className="card">
                                     <DataTable ref={dt} value={QuestionarioSocioeconomico} selection={selectedQuestionario} onSelectionChange={(e) => setSelectedQuestionario(e.value)}
                                         dataKey="id" globalFilter={globalFilter} header={header} responsiveLayout="scroll">
-                                        <Column field="id" header="ID" sortable ></Column>
+                                        <Column field="data" header="Data" sortable ></Column>
                                         <Column field="nome" header="Discente" sortable style={{ minWidth: '12rem' }}></Column>
                                         <Column field="curso" header="Curso" sortable style={{ minWidth: '12rem' }}></Column>
                                         <Column field="cidade" header="Cidade" sortable ></Column>
-                                        <Column field="data" header="Data" sortable ></Column>
 
                                         <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                     </DataTable>

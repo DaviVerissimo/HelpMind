@@ -8,6 +8,7 @@ import axios from "axios";
 import { RadioButton } from 'primereact/radiobutton';
 import { Toast } from 'primereact/toast';
 import URL from '../../../services/URL';
+import BotaoVoltar from '../../../Components/BotaoVoltar';
 
 export default function QuestionarioDeDepresaoDeBeck() {
 
@@ -53,15 +54,7 @@ export default function QuestionarioDeDepresaoDeBeck() {
     const [questao21, setQuestao21] = useState(null);
     const [dieta, setDieta] = useState(false);
 
-
-    var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
-    var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
-    var espacamento = '10px';
-    var largura = window.screen.width;
-    if (largura < 640) {
-        configBotaoCancel = "p-mb-3 p-button-secondary "
-        configBotaoSalvar = "p-mb-3"
-    }
+    var configBotaoSalvar = "p-ml-3";
 
     function validar() {
         var valido = false;
@@ -146,10 +139,6 @@ export default function QuestionarioDeDepresaoDeBeck() {
 
     }
 
-    const voltar = () => {
-        history.goBack();
-//        history.push('/discente/EscolherQuestionariosDiscente')
-    }
 
     return (
         <div> <ToobarDiscente></ToobarDiscente>
@@ -159,10 +148,8 @@ export default function QuestionarioDeDepresaoDeBeck() {
 
                 </Card>
                 <Card className="" >
-                    <div className=" align-items-end "  >
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR"  onClick={voltar}/>
-                        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
-                    </div>
+                    <BotaoVoltar></BotaoVoltar>
+                    <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                 </Card>
                 <Card className="" >
                     <Checkbox name="checagem" value="aceito" onChange={e => setChecked(e.checked)} checked={checked === true}></Checkbox>

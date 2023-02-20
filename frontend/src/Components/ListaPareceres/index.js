@@ -13,12 +13,12 @@ import BotaoVoltar from '../BotaoVoltar';
 export default function ListaPareceres(props) {
 
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "pi pi-file";
+    var configBtnVisualizar = "";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-file";
+        configBtnVisualizar = "p-button-rounded ";
     }
 
     let emptyParescer = {
@@ -56,7 +56,6 @@ export default function ListaPareceres(props) {
 
     const visualizarPareceres = (parecer) => {
         setParecer(parecer);
-        //history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/visualizarParescer/' + parecer.id);
     }
@@ -64,7 +63,11 @@ export default function ListaPareceres(props) {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnVisualizar} onClick={() => visualizarPareceres(rowData)} > {btnVisualizarTexto} </Button>
+                <Button
+                    className={configBtnVisualizar}
+                    label={btnVisualizarTexto}
+                    icon='pi pi-file' onClick={() => visualizarPareceres(rowData)} >
+                </Button>
             </React.Fragment>
         );
     }
@@ -98,9 +101,6 @@ export default function ListaPareceres(props) {
                                         <Column field="data" header="Data" sortable ></Column>
                                         <Column field="discente" header="Discente" sortable ></Column>
                                         <Column field="email" header="Email" sortable ></Column>
-                                        {/* <Column field="periodo" header="Periodo" sortable ></Column>
-                                        <Column field="campus" header="Campus" sortable ></Column> */}
-                                        {/* <Column field="parescerPsicologico" header="Parescer do psicólogo" sortable ></Column> */}
 
                                         <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                     </DataTable>

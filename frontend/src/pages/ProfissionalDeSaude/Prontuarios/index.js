@@ -6,12 +6,7 @@ import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
 
 export default function PRONTUARIOS() {
 
-    var configBotao = "p-mb-3 p-col-3";
-    var largura = window.screen.width;
-    var espacamento = '10px';
-    if (largura < 640) {
-        configBotao = "p-mt-3 ";
-    }
+    var configBotao = "p-mr-3 p-mt-3";
     const history = useHistory();
 
     return (
@@ -21,21 +16,29 @@ export default function PRONTUARIOS() {
                 <Card title='PRONTUÁRIOS ' >
                     <Card className='p-col-16' >
                         <div>
-                            <Button className={configBotao} style={{ right: espacamento }} label="NOVO PRONTUÁRIO" onClick={() => { history.push('/profissionalDeSaude/parescer') }} />
-                            <Button className={configBotao} label="LISTAR PRONTUÁRIOS" onClick={() => { history.push('/profissionalDeSaude/listaProntuarios') }} />
+                            <Button
+                                className={'p-mt-3  p-mr-3'}
+                                label="NOVO PRONTUÁRIO"
+                                onClick={() => { history.push('/profissionalDeSaude/parescer') }}
+                            />
+                            <Button
+                                className={configBotao}
+                                label="LISTAR PRONTUÁRIOS"
+                                onClick={() => { history.push('/profissionalDeSaude/listaProntuarios') }}
+                            />
                         </div>
                     </Card>
-
                 </Card>
 
                 <Card title='PARECER PSICÓLOGICO ' >
                     <Card className='p-col-16' >
                         <div>
-                            {/* <Button className={configBotao} style={{ right: espacamento }} label="NOVO PRONTUÁRIO" onClick={() => { history.push('/profissionalDeSaude/parescer') }} /> */}
-                            <Button className={configBotao} label="LISTAR PARECERES PSICÓLOGICOS" onClick={() => { history.push('/profissionalDeSaude/listarParescerPsicologico') }} />
+                            <Button
+                                label="LISTAR PARECERES PSICÓLOGICOS"
+                                onClick={() => { history.push('/profissionalDeSaude/listarParescerPsicologico') }}
+                            />
                         </div>
                     </Card>
-
                 </Card>
             </div>
         </div>

@@ -13,12 +13,12 @@ import BotaoVoltar from '../BotaoVoltar';
 export default function ListaProntuariosComponente(props) {
 
     var btnVisualizarTexto = 'VISUALIZAR'
-    var configBtnVisualizar = "pi pi-file";
+    var configBtnVisualizar = "";
     var largura = window.screen.width;
 
     if (largura < 640) {
         btnVisualizarTexto = ''
-        configBtnVisualizar = "p-button-rounded pi pi-file";
+        configBtnVisualizar = "p-button-rounded ";
     }
 
     let emptyProntuario = {
@@ -55,7 +55,6 @@ export default function ListaProntuariosComponente(props) {
 
     const visualizarProntuario = (prontuario) => {
         setProntuario(prontuario);
-//        history.goBack();
         const usuario = props.data;
         history.push('/' + usuario + '/visualizarProntuarios/' + prontuario.id);
     }
@@ -63,7 +62,12 @@ export default function ListaProntuariosComponente(props) {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button className={configBtnVisualizar} onClick={() => visualizarProntuario(rowData)} > {btnVisualizarTexto} </Button>
+                <Button
+                    className={configBtnVisualizar}
+                    label={btnVisualizarTexto}
+                    icon='pi pi-file'
+                    onClick={() => visualizarProntuario(rowData)} >
+                </Button>
             </React.Fragment>
         );
     }
@@ -98,9 +102,6 @@ export default function ListaProntuariosComponente(props) {
                                         <Column field="discente" header="Discente" sortable ></Column>
                                         <Column field="acaoRealizada" header="Ação realizada" sortable ></Column>
                                         <Column field="curso" header="Curso" sortable ></Column>
-                                        {/* <Column field="periodo" header="Periodo" sortable ></Column> */}
-                                        {/* <Column field="campus" header="Campus" sortable ></Column> */}
-                                        {/* <Column field="parescerProfissionalSaude" header="Parescer profissional de saúde" sortable ></Column> */}
 
                                         <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                     </DataTable>

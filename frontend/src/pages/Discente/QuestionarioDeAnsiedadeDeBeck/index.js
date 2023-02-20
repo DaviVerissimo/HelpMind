@@ -1,14 +1,13 @@
 import { Card } from 'primereact/card';
-import React, { useRef } from 'react';
-import { useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from 'primereact/button';
 import { Checkbox } from 'primereact/checkbox';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarDiscente from '../ToobarDiscente';
 import axios from "axios";
 import { RadioButton } from 'primereact/radiobutton';
 import { Toast } from 'primereact/toast';
 import URL from '../../../services/URL';
+import BotaoVoltar from '../../../Components/BotaoVoltar';
 
 export default function QuestionarioDeAnsiedadeDeBeck() {
 
@@ -30,7 +29,6 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
         });
     }
     const [checked, setChecked] = useState(false);
-    const history = useHistory();
     const escolha0 = '0 Absolutamente não';
     const escolha1 = '1 Levemente: Não me incomodou muito';
     const escolha2 = '2 Moderadamente: Foi muito desagradável mas pude suportar';
@@ -57,14 +55,7 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
     const [questao20, setQuestao20] = useState(null);
     const [questao21, setQuestao21] = useState(null);
 
-    var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
-    var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
-    var espacamento = '10px';
-    var largura = window.screen.width;
-    if (largura < 640) {
-        configBotaoCancel = "p-mb-3 p-button-secondary "
-        configBotaoSalvar = "p-mb-3"
-    }
+    var configBotaoSalvar = "p-ml-3";
 
     function validar() {
         var valido = false;
@@ -149,10 +140,6 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
 
     }
 
-    const voltar = () => {
-        history.goBack();
-//        history.push('/discente/EscolherQuestionariosDiscente')
-    }
 
     return (
         <div> <ToobarDiscente></ToobarDiscente>
@@ -162,10 +149,8 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
 
                 </Card>
                 <Card className="" >
-                    <div className=" align-items-end "  >
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR"  onClick={voltar} />
-                        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
-                    </div>
+                    <BotaoVoltar></BotaoVoltar>
+                    <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                 </Card>
                 <Card className="" >
                     <Checkbox name="checagem" value="aceito" onChange={e => setChecked(e.checked)} checked={checked === true}></Checkbox>

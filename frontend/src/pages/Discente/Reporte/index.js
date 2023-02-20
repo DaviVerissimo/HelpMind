@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './styles.css'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
@@ -10,9 +9,10 @@ import { Button } from 'primereact/button';
 import ToobarDiscente from "../ToobarDiscente";
 import { Toast } from 'primereact/toast';
 import URL from '../../../services/URL';
+import BotaoVoltar from '../../../Components/BotaoVoltar';
 
 export default function Reporte() {
-    const history = useHistory();
+    
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -34,7 +34,6 @@ export default function Reporte() {
     const [campus, setCampus] = useState(null); //campus = singular, campi = plural
     const [campi, setCampi] = useState();
     const [nome, setNome] = useState();
-    // const [curso, setCurso] = useState([]);
     const [curso, setCurso] = useState();
     const [cursos, setCursos] = useState([]);
     const [descrisao, setDescrisao] = useState('');
@@ -52,15 +51,8 @@ export default function Reporte() {
         { name: 'NÂO' },
     ];
 
-    var configBotaoCancel = "p-mb-3 p-col-1 p-button-secondary ";
-    var configBotaoSalvar = "p-mb-3 p-mt-3 p-col-1";
-    var espacamento = '10px';
-    var largura = window.screen.width;
-    if (largura < 640) {
-        configBotaoCancel = "p-mb-3 p-button-secondary "
-        configBotaoSalvar = "p-mb-3 ";
-    }
-
+    var configBotaoSalvar = "p-ml-3";
+    
     const [nomeObrigatorio, setNomeObrigatorio] = useState();
     const [cursoObrigatorio, setCursoObrigatorio] = useState();
     const [campusObrigatorio, setCampusObrigatorio] = useState();
@@ -140,17 +132,17 @@ export default function Reporte() {
     function validar() {
         var valido = true;
 
-        if (nome == null || nome  == '') {
+        if (nome == null || nome == '') {
             setNomeObrigatorio(invalid);
             valido = false;
         }
 
-        if (curso == null || curso  == '' ) {
+        if (curso == null || curso == '') {
             setCursoObrigatorio(invalid);
             valido = false;
         }
 
-        if (campus == null || campus  == '') {
+        if (campus == null || campus == '') {
             setCampusObrigatorio(invalid);
             valido = false;
         }
@@ -213,11 +205,6 @@ export default function Reporte() {
 
     }
 
-    const voltar = () => {
-        history.goBack();
-//        history.push('/discente/Reportes')
-    }
-
     return (
         <div> <ToobarDiscente></ToobarDiscente>
             <Toast ref={toast} />
@@ -225,10 +212,8 @@ export default function Reporte() {
                 <Card title="REPORTAR CASO DE VULNERABILIDADE MENTAL"></Card>
 
                 <Card className="" >
-                    <div>
-                        <Button className={configBotaoCancel} style={{ right: espacamento }} label="VOLTAR"  onClick={voltar} />
-                        <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
-                    </div>
+                    <BotaoVoltar></BotaoVoltar>
+                    <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                 </Card>
 
                 <Card >

@@ -10,9 +10,9 @@ export default function AcessoRapido() {
     var largura = window.screen.width;
     var espacamento = '10px';
     if (largura < 640) {
-        configBotao = "p-mt-3 p-mr-3" ;
+        configBotao = "p-mt-3 p-mr-3";
         configBotao2 = "p-mt-3 ";
-        
+
     }
     const history = useHistory();
 
@@ -22,9 +22,18 @@ export default function AcessoRapido() {
                 <Card title='ACESSO RAPIDO ' >
                     <Card className='p-col-16' >
                         <div>
-                        <Button className={configBotao} label="NOVO PRONTUÁRIO" onClick={() => { history.push('/Admin/novoProntuario') }} />
-                            <Button className={configBotao} label="LISTAR PRONTUÁRIOS" onClick={() => { history.push('/Admin/listarProntuarios') }} />
-                            <Button className={configBotao2} label="LISTAR PARESCER PSIÓLOGICO" onClick={() => { history.push('/Admin/listarpareceresPsicologico') }} />
+                            <Button className={configBotao}
+                                label="NOVO PRONTUÁRIO"
+                                onClick={() => { history.push('/Admin/novoProntuario') }}
+                            />
+                            <Button className={configBotao}
+                                label="LISTAR PRONTUÁRIOS"
+                                onClick={() => { history.push('/Admin/listarProntuarios') }}
+                            />
+                            <Button className={configBotao2}
+                                label="LISTAR PARESCER PSIÓLOGICO"
+                                onClick={() => { history.push('/Admin/listarpareceresPsicologico') }}
+                            />
                         </div>
                     </Card>
                 </Card>
