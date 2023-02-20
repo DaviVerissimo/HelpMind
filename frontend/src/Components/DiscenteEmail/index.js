@@ -43,16 +43,22 @@ export default function DiscenteEmail() {
 
     const validar = localStorage.getItem('errorEmailComponente')
     useEffect(async () => {
-        if (validar != null){
+        if (validar != null) {
             setEmailObrigatorio(validar)
         }
-        
+
     }, [validar]);
 
     return (
         <div>
-            <Dropdown className={emailObrigatorio} filter value={email} options={listaDeEmail} onChange={(e) => setEmail(e.value)} placeholder="Escolha um email" />
+            <Dropdown
+                className={emailObrigatorio}
+                filter
+                value={email}
+                options={listaDeEmail}
+                onChange={(e) => setEmail(e.value)}
+                placeholder="Escolha um email"
+            />
         </div>
-
     );
 }

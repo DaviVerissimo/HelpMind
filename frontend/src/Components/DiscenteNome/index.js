@@ -42,15 +42,22 @@ export default function DiscenteNome() {
 
     const validar = localStorage.getItem('errorNomeComponente')
     useEffect(async () => {
-        if (validar != null){
+        if (validar != null) {
             setNomeObrigatorio(validar)
         }
-        
+
     }, [validar]);
 
     return (
         <div>
-            <Dropdown className={nomeObrigatorio} value={nome} options={nomes} onChange={(e) => setNome(e.value)} placeholder="Escolha um discente" />
+            <Dropdown
+                className={nomeObrigatorio}
+                value={nome}
+                filter
+                options={nomes}
+                onChange={(e) => setNome(e.value)}
+                placeholder="Escolha um discente"
+            />
         </div>
 
     );

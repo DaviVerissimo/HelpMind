@@ -29,7 +29,14 @@ export default function Periodo() {
 
     return (
         <div>
-            <Dropdown className={periodoObrigatorio} optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodo(e.target.value)} placeholder="Escolha um periodo" />
+            <Dropdown
+                className={periodoObrigatorio}
+                optionLabel="name"
+                value={periodo}
+                options={periodos}
+                onChange={(e) => setPeriodo(e.target.value)}
+                placeholder="Escolha um periodo"
+            />
         </div>
 
     );
