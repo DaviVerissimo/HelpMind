@@ -16,14 +16,13 @@
         "react": "^17.0.2",
         "react-chartjs-2": "^4.3.1",
         "react-dom": "^17.0.2",
-        "react-google-login": "^5.2.2",
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.3",
         "react-transition-group": "^4.4.2",
         "web-vitals": "^1.1.2"
     },
     "scripts": {
-        "start": "SSL_CRT_FILE=cert/domain.crt SSL_KEY_FILE=cert/domain.key HTTPS=true PORT=3100 react-scripts start",
+        "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"

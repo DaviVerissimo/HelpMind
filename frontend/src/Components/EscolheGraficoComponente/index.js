@@ -87,7 +87,7 @@ export default function EscolheGraficoComponente(props) {
                         className={aux}
                         icon='pi pi-chart-bar'
                         label="CONSULTAR"
-                        onClick={submeter} disabled
+                        onClick={submeter} 
                     />
                 </Card>
             </Card>
