@@ -19,20 +19,22 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "questionarioDeAnsiedadeDeBeck")
-public class QuestionarioDeAnsiedadeDeBeck implements Questionario{
-	
+public class QuestionarioDeAnsiedadeDeBeck implements Questionario {
+
 	private String idDiscente;
-	
+
 	private LocalDateTime data;
-	
+
 	private int nota;
-	
+
 	private String status;
-	
+
+	private String semestre;
+
 	public QuestionarioDeAnsiedadeDeBeck() {
 		listaDeQuestoes = new ArrayList<Questao>();
 	}
-	
+
 	public LocalDateTime getData() {
 		return data;
 	}
@@ -60,38 +62,37 @@ public class QuestionarioDeAnsiedadeDeBeck implements Questionario{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	List<Questao> listaDeQuestoes;
-	
+
 	@Override
 	public int calcularNota() {
-		
+
 		if (this.listaDeQuestoes.size() == 0) {
-			
+
 			return nota;
-		}
-		else {
+		} else {
 			for (int i = 0; i < listaDeQuestoes.size(); i++) {
 				nota = nota + Integer.parseInt(listaDeQuestoes.get(i).getResporta());
 			}
-			
+
 			return nota;
 		}
 	}
-	
+
 	public void definirStatus() {
-		
+
 		if (nota >= 0 && nota <= 7) {
 			status = "01 Ansiedade mínima";
 		}
-		if(nota >= 8 && nota <= 15) {
+		if (nota >= 8 && nota <= 15) {
 			status = "02 Ansiedade leve";
 		}
-		if(nota >= 16 && nota <= 25) {
+		if (nota >= 16 && nota <= 25) {
 			status = "03 Ansiedade moderada";
 		}
-		if(nota >= 26 && nota <= 63) {
+		if (nota >= 26 && nota <= 63) {
 			status = "04 Ansiedade grave";
 		}
 	}
@@ -119,7 +120,13 @@ public class QuestionarioDeAnsiedadeDeBeck implements Questionario{
 	public void setIdDiscente(String idDiscente) {
 		this.idDiscente = idDiscente;
 	}
-	
 
+	public String getSemestre() {
+		return semestre;
+	}
+
+	public void setSemestre(String semestre) {
+		this.semestre = semestre;
+	}
 
 }

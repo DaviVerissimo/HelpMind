@@ -8,6 +8,7 @@ import { RadioButton } from 'primereact/radiobutton';
 import { Toast } from 'primereact/toast';
 import URL from '../../../services/URL';
 import BotaoVoltar from '../../../Components/BotaoVoltar';
+import Semestre from '../../../Components/Semestre';
 
 export default function QuestionarioDeAnsiedadeDeBeck() {
 
@@ -104,6 +105,7 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
             const questionarioSimples = {
                 "id": id,
                 "dieta": false,
+                "semestre": localStorage.getItem('SemestreComponente'),
                 "lista": [
 
                     questao01,
@@ -160,6 +162,9 @@ export default function QuestionarioDeAnsiedadeDeBeck() {
                         encaminhamento a rede externa de saúde mental. Lembrando que seus dados serão de proteção e sigilo dos
                         profissionais de saúde do campus e psicólogo interno e externo. </label>
 
+                </Card>
+                <Card subTitle='SEMESTRE' >
+                    <Semestre></Semestre>
                 </Card>
                 <Card subTitle='Abaixo está uma lista de sintomas comuns de ansiedade. Por favor, leia cuidadosamente cada item 
                 da lista. Identifique o quanto você tem sido incomodado por cada sintoma durante a última semana, incluindo hoje
