@@ -19,14 +19,13 @@ export default function PareceresPsicologico() {
         <div>
             <ToobarPsicologo></ToobarPsicologo>
             <div>
-                <Card title='PARECERES PSICOLÓGICOS ' >
+                <Card title='RELATÓRIOS PSICOLÓGICOS ' >
                     <Card className='p-col-16' >
                         <div>
-                            <Button className={'p-mt-3  p-mr-3'} label="NOVO PARESCER DO PSICOLOGO" onClick={() => { history.push('/psicologo/parecer') }} />
-                            <Button className={configBotao} label="LISTAR PARECERES PSICOLÓGICOS" onClick={() => { history.push('/psicologo/listarParecerPsicologico') }} />
+                            <Button className={'p-mt-3  p-mr-3'} label="NOVO RELATÓRIO DO PSICOLOGO" onClick={() => { history.push('/psicologo/parecer') }} />
+                            <Button className={configBotao} label="LISTAR RELATÓRIOS PSICOLÓGICOS" onClick={() => { history.push('/psicologo/listarParecerPsicologico') }} />
                         </div>
                     </Card>
-
                 </Card>
             </div>
         </div>

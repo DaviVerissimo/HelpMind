@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Card } from 'primereact/card';
-import { useParams} from 'react-router-dom/cjs/react-router-dom.min';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import ReporteService from '../../services/ReporteService';
 import BotaoVoltar from '../BotaoVoltar';
 
@@ -52,12 +52,12 @@ export default function VisualizarReporteComponente() {
     return (
         <div>
             <div >
-                <Card title="REPORTE CASO DE VULNERABILIDADE MENTAL"></Card>
+                <Card title="REPORTE"></Card>
                 <Card >
                     <Card>
                         <BotaoVoltar></BotaoVoltar>
                     </Card>
-                    <Card subTitle='REPORTADOR POR' >
+                    <Card subTitle='REPORTADO POR' >
                         <InputText
                             value={NomeReportante}
                             disabled
@@ -102,8 +102,7 @@ export default function VisualizarReporteComponente() {
                     </Card>
                     <Card subTitle='DESCRIÇÃO' >
                         <InputTextarea
-                            rows={5}
-                            cols={30}
+                            rows={50} cols={100}
                             value={descrisao}
                             disabled
                             onChange={(e) => setDescrisao(e.target.value)}

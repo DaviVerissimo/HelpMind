@@ -105,7 +105,7 @@ export default function ParecerPsicologico() {
         <div> <ToobarPsicologo></ToobarPsicologo>
             <Toast ref={toast} />
             <div >
-                <Card title="PARESCER DO PSICÓLOGO"></Card>
+                <Card title="RELATÓRIO DO PSICÓLOGO"></Card>
                 <Card className="" >
                     <BotaoVoltar></BotaoVoltar>
                     <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
@@ -114,14 +114,13 @@ export default function ParecerPsicologico() {
                 <Card >
                     <Card subTitle='DISCENTE' >
                         <DiscenteNome></DiscenteNome>
-
                     </Card>
                     <Card subTitle='EMAIL' >
                         <DiscenteEmail></DiscenteEmail>
                     </Card>
 
-                    <Card subTitle='PARESCER DO PSICOLOGO' >
-                        <InputTextarea className={parecerObrigatoria} rows={5} cols={30} value={parescer} onChange={(e) => setParescer(e.target.value)} />
+                    <Card subTitle='RELATÓRIO DO PSICÓLOGO' >
+                        <InputTextarea className={parecerObrigatoria} rows={50} cols={100} value={parescer} onChange={(e) => setParescer(e.target.value)} />
                     </Card>
 
                 </Card>

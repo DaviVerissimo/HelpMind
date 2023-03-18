@@ -59,7 +59,7 @@ export default function VisualizarReporteDiscente() {
     return (
         <div> <ToobarDiscente></ToobarDiscente>
             <div >
-                <Card title="REPORTE CASO DE VULNERABILIDADE MENTAL"></Card>
+                <Card title="REPORTE"></Card>
                 <Card>
                     <BotaoVoltar></BotaoVoltar>
                 </Card>

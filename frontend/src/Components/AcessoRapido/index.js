@@ -31,7 +31,7 @@ export default function AcessoRapido() {
                                 onClick={() => { history.push('/Admin/listarProntuarios') }}
                             />
                             <Button className={configBotao2}
-                                label="LISTAR PARESCER PSIÓLOGICO"
+                                label="LISTAR RELATÓRIO PSICOLÓGICO"
                                 onClick={() => { history.push('/Admin/listarpareceresPsicologico') }}
                             />
                         </div>

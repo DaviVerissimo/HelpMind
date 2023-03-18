@@ -233,7 +233,7 @@ export default function Reporte() {
                         <Dropdown className={suicidioObrigatorio} filter optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setSuicidio(e.target.value)} placeholder="Não se aplica" />
                     </Card>
                     <Card subTitle='DESCRIÇÃO' >
-                        <InputTextarea className={descrisaoObrigatoria} rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
+                        <InputTextarea className={descrisaoObrigatoria} rows={50} cols={100}value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
                     </Card>
                 </Card>
 

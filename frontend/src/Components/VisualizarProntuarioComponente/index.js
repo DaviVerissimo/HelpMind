@@ -41,9 +41,9 @@ export default function VisualizarProntuarioComponente() {
     }, [prontuario]);
 
     return (
-        <div> 
+        <div>
             <div >
-                <Card title="PRONTUARIO DO DISCENTE"></Card>
+                <Card title="PRONTUÁRIO DO DISCENTE"></Card>
                 <Card>
                     <BotaoVoltar></BotaoVoltar>
                 </Card>
@@ -60,11 +60,11 @@ export default function VisualizarProntuarioComponente() {
                     <Card subTitle='ANO / PERÍODO' >
                         <InputText value={periodo} disabled />
                     </Card>
-                    <Card subTitle='PARESCER DO PROFISSIONAL DE SAÚDE' >
-                        <InputTextarea rows={5} cols={30} value={parescer} disabled />
-                    </Card>
                     <Card subTitle='AÇÃO REALIZADA' >
                         <InputText value={acaoRealizada} disabled />
+                    </Card>
+                    <Card subTitle='PARECER DO PROFISSIONAL DE SAÚDE' >
+                        <InputTextarea rows={50} cols={100} value={parescer} disabled />
                     </Card>
                 </Card>
 

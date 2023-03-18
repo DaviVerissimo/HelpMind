@@ -46,7 +46,7 @@ export default function NovoProntuarioComponente() {
     ];
     const [acaoObrigatorio, setAcaoObrigatorio] = useState('NÂO');
     const destino = [
-        { name: 'Psiclogo(a) do campus' },
+        { name: 'Psicólogo(a) do campus' },
         { name: 'Rede externa' },
     ];
     const [nomeObrigatorio, setNomeObrigatorio] = useState();
@@ -221,12 +221,13 @@ export default function NovoProntuarioComponente() {
                     <Card subTitle='ANO / PERÍODO' >
                         <Dropdown className={periodoObrigatorio} filter optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Digite o parescer quanto ao discente" />
                     </Card>
-                    <Card subTitle='PARESCER DO PROFISSIONAL DE SAÚDE' >
-                        <InputTextarea className={parecerObrigatoria} rows={5} cols={30} value={parescer} onChange={(e) => setParescer(e.target.value)} />
-                    </Card>
                     <Card subTitle='AÇÃO REALIZADA' >
                         <Dropdown className={acaoRealizadaObrigatorio} filter optionLabel="name" value={acaoObrigatorio} options={destino} onChange={(e) => setAcaoObrigatorio(e.target.value)} placeholder="Escolha uma ação" />
                     </Card>
+                    <Card subTitle='PARECER DO PROFISSIONAL DE SAÚDE' >
+                        <InputTextarea className={parecerObrigatoria} rows={50} cols={100} value={parescer} onChange={(e) => setParescer(e.target.value)} />
+                    </Card>
+
                 </Card>
 
             </div>

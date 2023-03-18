@@ -244,8 +244,8 @@ export default function NovoReporteComponente(props) {
                 <Card subTitle='DESCRIÇÃO' >
                     <InputTextarea
                         className={descrisaoObrigatoria}
-                        rows={5}
-                        cols={30}
+                        rows={50} 
+                        cols={100}
                         value={descrisao}
                         onChange={(e) => setDescrisao(e.target.value)}
                     />

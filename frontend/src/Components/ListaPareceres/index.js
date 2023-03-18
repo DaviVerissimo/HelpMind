@@ -74,7 +74,7 @@ export default function ListaPareceres(props) {
 
     const header = (
         <div className="table-header">
-            <h5 className="mx-0 my-1">Pesquise por pareceres psicólogicos</h5>
+            <h5 className="mx-0 my-1">Pesquise por relatório psicológico</h5>
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
@@ -86,7 +86,7 @@ export default function ListaPareceres(props) {
     return (
         <div  >
             <div>
-                <Card title="LISTA DE PARECERES PSICÓLOGICOS" ></Card>
+                <Card title="LISTA DE RELATÓRIO PSICOLÓGICO" ></Card>
                 <Card>
                     <Card>
                         <BotaoVoltar></BotaoVoltar>

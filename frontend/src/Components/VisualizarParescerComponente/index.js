@@ -37,7 +37,7 @@ export default function VisualizarParescerComponente() {
     return (
         <div>
             <div >
-                <Card title="PRONTUARIO DO DISCENTE"></Card>
+                <Card title="RELATÓRIO PSICOLÓGICO DO DISCENTE"></Card>
                 <Card>
                     <BotaoVoltar></BotaoVoltar>
                 </Card>
@@ -48,8 +48,8 @@ export default function VisualizarParescerComponente() {
                     <Card subTitle='EMAIL' >
                         <InputText value={email} disabled />
                     </Card>
-                    <Card subTitle='PARESCER DO PROFISSIONAL DE SAÚDE' >
-                        <InputTextarea rows={5} cols={30} value={parescer} disabled />
+                    <Card subTitle='RELATÓRIO DO PSICÓLOGO' >
+                        <InputTextarea rows={50} cols={100} value={parescer} disabled />
                     </Card>
                 </Card>
             </div>

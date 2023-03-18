@@ -30,11 +30,11 @@ export default function PRONTUARIOS() {
                     </Card>
                 </Card>
 
-                <Card title='PARECER PSICÓLOGICO ' >
+                <Card title='RELATÓRIO PSICÓLOGICO ' >
                     <Card className='p-col-16' >
                         <div>
                             <Button
-                                label="LISTAR PARECERES PSICÓLOGICOS"
+                                label="LISTAR RELATÓRIOS PSICOLÓGICOS"
                                 onClick={() => { history.push('/profissionalDeSaude/listarParescerPsicologico') }}
                             />
                         </div>
