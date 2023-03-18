@@ -91,13 +91,16 @@ public class QuestionarioDeAnsiedadeDeBeckService {
 	public boolean verificaAumentoAnsiedade(String idDiscente) {
 		boolean aumento = false;
 		List<QuestionarioDeAnsiedadeDeBeck> lista =this.buscaQuestionariosPeloIdDoDiscente(idDiscente);
-		for (int i = 0; i < lista.size() - 1; i++) {
-			if (lista.get(i).getNota() < lista.get(i + 1).getNota()) {
-				if (lista.get(i).getNota() > 25) {
-					aumento = true;
+		if (lista != null) {
+			for (int i = 0; i < lista.size() - 1; i++) {
+				if (lista.get(i).getNota() < lista.get(i + 1).getNota()) {
+					if (lista.get(i).getNota() > 25) {
+						aumento = true;
+					}
 				}
 			}
 		}
+
 		
 		return aumento;
 	}

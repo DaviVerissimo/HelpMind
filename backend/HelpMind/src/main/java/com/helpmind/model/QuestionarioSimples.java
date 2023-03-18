@@ -41,25 +41,29 @@ public class QuestionarioSimples {
 	public static float retornaCalculoDaMediadeDosQuestionariosAnsiedade(List<QuestionarioDeAnsiedadeDeBeck> lista) {
 		float media = 0;
 		
-		for (int i = 0; i < lista.size(); i++) {
-//			media = media + lista.get(i).calcularNota();
-			media = media + lista.get(i).getNota();
+		if(lista != null) {
+			for (int i = 0; i < lista.size(); i++) {
+				media = media + lista.get(i).getNota();
+			}
+			
+			media = media / lista.size();
 		}
 		
-		media = media / lista.size();
-		
+
 		return media;
 	}
 	
 	public static float retornaCalculoDaMediadeDosQuestionariosDepressao(List<QuestionarioDeDepressaoDeBeck> lista) {
 		float media = 0;
 		
-		for (int i = 0; i < lista.size(); i++) {
-//			media = media + lista.get(i).calcularNota();
-			media = media + lista.get(i).getNota();
+		if(lista != null) {
+			for (int i = 0; i < lista.size(); i++) {
+				media = media + lista.get(i).getNota();
+			}
+			
+			media = media / lista.size();
 		}
-		
-		media = media / lista.size();
+
 
 		return media;
 	}

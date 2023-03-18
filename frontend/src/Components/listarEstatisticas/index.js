@@ -123,8 +123,8 @@ export default function ListarEstatisticas() {
                 <Card subTitle='QUANTIDADE EM DEPRESSÃO MODERADA' > <label>{quantidadeDepressaoModerada}</label> </Card>
                 <Card subTitle='QUANTIDADE EM ANSIEDADE GRAVE' > <label>{quantiddeAnsiedadeGrave}</label> </Card>
                 <Card subTitle='QUANTIDADE EM ANSIEDADE MODERADA' > <label>{quantidadeAnsiedadeModerada}</label> </Card>
-                <Card subTitle='STATUS MEDIO DE DEPRESSÃO' > <label>{statusMedioDepressao}</label> </Card>
-                <Card subTitle='STATUS MEDIO DE ANSIEDADE' > <label>{statusMedioAnsiedade}</label> </Card>
+                {/* <Card subTitle='STATUS MEDIO DE DEPRESSÃO' > <label>{statusMedioDepressao}</label> </Card>
+                <Card subTitle='STATUS MEDIO DE ANSIEDADE' > <label>{statusMedioAnsiedade}</label> </Card> */}
 
             </Card>
 

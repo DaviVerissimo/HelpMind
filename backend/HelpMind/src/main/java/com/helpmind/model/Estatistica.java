@@ -16,8 +16,12 @@ public class Estatistica {
 	private int quantidadeDiscente;
 	private int quantidadeDepressaoGrave;
 	private int quantidadeDepressaoModerada;
-	private int quantiddeAnsiedadeGrave;
+	private int quantidadeAnsiedadeGrave;
 	private int quantidadeAnsiedadeModerada;
+	private int quantidadeAnsiedadeMinima;
+	private int quantidadeAnsiedadeleve;
+	private int quantidadeDepressaoMinima;
+	private int quantidadeDepressaoLeve;
 	private String statusMedioDepressao;
 	private String statusMedioAnsiedade;
 	
@@ -46,10 +50,10 @@ public class Estatistica {
 		this.quantidadeDepressaoModerada = quantidadeDepressaoModerada;
 	}
 	public int getQuantiddeAnsiedadeGrave() {
-		return quantiddeAnsiedadeGrave;
+		return quantidadeAnsiedadeGrave;
 	}
-	public void setQuantiddeAnsiedadeGrave(int quantiddeAnsiedadeGrave) {
-		this.quantiddeAnsiedadeGrave = quantiddeAnsiedadeGrave;
+	public void setQuantideAnsiedadeGrave(int quantiddeAnsiedadeGrave) {
+		this.quantidadeAnsiedadeGrave = quantiddeAnsiedadeGrave;
 	}
 	public int getQuantidadeAnsiedadeModerada() {
 		return quantidadeAnsiedadeModerada;
@@ -68,6 +72,30 @@ public class Estatistica {
 	}
 	public void setStatusMedioAnsiedade(String statusMedioAnsiedade) {
 		this.statusMedioAnsiedade = statusMedioAnsiedade;
+	}
+	public int getQuantidadeAnsiedadeMinima() {
+		return quantidadeAnsiedadeMinima;
+	}
+	public void setQuantidadeAnsiedadeMinima(int quantidadeAnsiedadeMinima) {
+		this.quantidadeAnsiedadeMinima = quantidadeAnsiedadeMinima;
+	}
+	public int getQuantidadeAnsiedadeleve() {
+		return quantidadeAnsiedadeleve;
+	}
+	public void setQuantidadeAnsiedadeleve(int quantidadeAnsiedadeleve) {
+		this.quantidadeAnsiedadeleve = quantidadeAnsiedadeleve;
+	}
+	public int getQuantidadeDepressaoMinima() {
+		return quantidadeDepressaoMinima;
+	}
+	public void setQuantidadeDepressaoMinima(int quantidadeDepressaoMinima) {
+		this.quantidadeDepressaoMinima = quantidadeDepressaoMinima;
+	}
+	public int getQuantidadeDepressaoLeve() {
+		return quantidadeDepressaoLeve;
+	}
+	public void setQuantidadeDepressaoLeve(int quantidadeDepressaoLeve) {
+		this.quantidadeDepressaoLeve = quantidadeDepressaoLeve;
 	}
 	
 	
