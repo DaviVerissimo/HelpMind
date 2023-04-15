@@ -14,39 +14,32 @@ import com.helpmind.model.Constantes;
 @RestController
 @RequestMapping("/curso")
 public class CursoController {
-	
-	@GetMapping("/listarAllCursos")  // chamado abaixo na rota do frontend
-	public List<String> retornarListaTodosOsCursos(){
+
+	@GetMapping("/listarAllCursos")
+	public List<String> retornarListaTodosOsCursos() throws IOException {
 		FileLeitura objeto = new FileLeitura();
 		List<String> lista = null;
-		try {
-			lista = objeto.carregarCursos();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		lista = objeto.carregarCursos();
+		
 		return lista;
-		
+
 	}
-	
-	@GetMapping("/listarCampus") // rota  de campus utilizada no frontend
-	public List<String> retornarListaDeCampus(){
-		
+
+	@GetMapping("/listarCampus")
+	public List<String> retornarListaDeCampus() throws IOException {
 		FileLeitura objeto = new FileLeitura();
 		List<String> lista = null;
-		try {
-			lista = objeto.carregarCampi();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		lista = objeto.carregarCampi();
+		
 		return lista;
 	}
-	
-	@GetMapping("/listarCursosPorCampus")  // rota  de curso utilizada no frontend
-	public List<String> retornarListaDeCursosPorCampus(){
-		return this.retornarListaTodosOsCursos();
-		
+
+	@GetMapping("/listarCursosPorCampus")
+	public List<String> retornarListaDeCursosPorCampus(String campus) {
+		FileLeitura objeto = new FileLeitura();
+
+		return objeto.carregarCursosPorCampus(campus);
+
 	}
 
 }
