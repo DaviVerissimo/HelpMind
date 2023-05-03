@@ -131,5 +131,23 @@ public class ServidorController {
 		  
 		return servidorService.retornaPermissaoAdmin(email);
 	}
+	
+	@GetMapping("listarAllNomesServidores")
+	public List<String> retornaAllNomesServidores(){
+		
+		return servidorService.retornaNomesDeTodosServidores();
+	}
+	
+	@GetMapping("listarAllNomesProfissionaisDeSaude")
+	public List<String> retornaNomesDeTodosProfissionaisDeSaude(){
+		
+		return servidorService.retornaNomesDeTodosProfissionaisDeSaude();
+	}
+	
+	@GetMapping("listarAllNomesPsicologos")
+	public List<String> retornaNomesDeTodosPsicologos(){
+		
+		return servidorService.retornaNomesDeTodosPsicologos();
+	}
 
 }
