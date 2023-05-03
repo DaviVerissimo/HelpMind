@@ -30,8 +30,12 @@ public class Discente {
 	private String StatusDoDiscenteAnsiedade;
 	private float mediaDoDiscenteQuestionariosDeDepresao;
 	private String StatusDoDiscenteDepresao;
+	private int ultimaNotaAnsiedade;
+	private int ultimaNotaDepressao;
 	private String googleId;
 	private String imagemPerfilUri;
+	private String periodo;
+	private String campus;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
 	private List<QuestionarioDeAnsiedadeDeBeck> listaQuestionarioDeAnsiedadeDeBeck;
@@ -126,6 +130,30 @@ public class Discente {
 	}
 	public void setImagemPerfilUri(String imagemPerfilUri) {
 		this.imagemPerfilUri = imagemPerfilUri;
+	}
+	public String getPeriodo() {
+		return periodo;
+	}
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
+	}
+	public String getCampus() {
+		return campus;
+	}
+	public void setCampus(String campus) {
+		this.campus = campus;
+	}
+	public int getUltimaNotaAnsiedade() {
+		return ultimaNotaAnsiedade;
+	}
+	public void setUltimaNotaAnsiedade(int ultimaNotaAnsiedade) {
+		this.ultimaNotaAnsiedade = ultimaNotaAnsiedade;
+	}
+	public int getUltimaNotaDepressao() {
+		return ultimaNotaDepressao;
+	}
+	public void setUltimaNotaDepressao(int ultimaNotaDepressao) {
+		this.ultimaNotaDepressao = ultimaNotaDepressao;
 	}
 	
 }

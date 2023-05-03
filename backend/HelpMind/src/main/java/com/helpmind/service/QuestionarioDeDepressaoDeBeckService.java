@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.helpmind.model.Questao;
+import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
 import com.helpmind.model.QuestionarioDeDepressaoDeBeck;
 import com.helpmind.model.QuestionarioSimples;
 import com.helpmind.repository.QuestionarioDeDepressaoDeBeckRepository;
@@ -93,6 +94,23 @@ public class QuestionarioDeDepressaoDeBeckService {
 		return listaDoDiscente;
 	}
 
+	public QuestionarioDeDepressaoDeBeck retornarUltimoQuestionarioPeloIdDoDiscente(String ID) {
+		List<QuestionarioDeDepressaoDeBeck> lista = this.buscaQuestionariosPeloIdDoDiscente(ID);
+		QuestionarioDeDepressaoDeBeck questionario = new QuestionarioDeDepressaoDeBeck();
+		questionario.setNota(0);
+		
+		if (lista.size() > 0) {
+			questionario = lista.get(lista.size() - 1);
+		}
+
+		return questionario;
+	}
+	
+	public int retornaNotaDoUltimoQuestionario(String ID) {
+		
+		return this.retornarUltimoQuestionarioPeloIdDoDiscente(ID).getNota();
+	}
+	
 	public boolean verificaAumentoDepressao(String idDiscente) {
 		boolean aumento = false;
 		List<QuestionarioDeDepressaoDeBeck> lista = this.buscaQuestionariosPeloIdDoDiscente(idDiscente);
@@ -117,6 +135,19 @@ public class QuestionarioDeDepressaoDeBeckService {
 		}
 
 		return questionario;
+	}
+
+	public List<QuestionarioDeDepressaoDeBeck> retornaQuestionariosPorSemestre(String semestre,
+			List<QuestionarioDeDepressaoDeBeck> lista) {
+		List<QuestionarioDeDepressaoDeBeck> questionariosPorSemestre = new ArrayList<QuestionarioDeDepressaoDeBeck>();
+
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getSemestre().equals(semestre)) {
+				questionariosPorSemestre.add(lista.get(i));
+			}
+		}
+
+		return questionariosPorSemestre;
 	}
 
 }
