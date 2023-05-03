@@ -88,6 +88,25 @@ public class QuestionarioDeAnsiedadeDeBeckService {
 		return listaDoDiscente;
 	}
 
+	public QuestionarioDeAnsiedadeDeBeck retornarUltimoQuestionarioPeloIdDoDiscente(String ID) {
+		List<QuestionarioDeAnsiedadeDeBeck> lista = this.buscaQuestionariosPeloIdDoDiscente(ID);
+		//gambiarra
+		QuestionarioDeAnsiedadeDeBeck questionario = new QuestionarioDeAnsiedadeDeBeck();
+		questionario.setNota(0);
+		
+		if (lista.size() > 0) {
+			questionario = lista.get(lista.size() - 1);
+		}
+		
+		return questionario;
+
+	}
+	
+	public int retornaNotaDoUltimoQuestionario(String ID) {
+		
+		return this.retornarUltimoQuestionarioPeloIdDoDiscente(ID).getNota();
+	}
+
 	public boolean verificaAumentoAnsiedade(String idDiscente) {
 		boolean aumento = false;
 		List<QuestionarioDeAnsiedadeDeBeck> lista = this.buscaQuestionariosPeloIdDoDiscente(idDiscente);
@@ -112,6 +131,19 @@ public class QuestionarioDeAnsiedadeDeBeckService {
 		}
 
 		return questionario;
+	}
+
+	public List<QuestionarioDeAnsiedadeDeBeck> retornaQuestionariosPorSemestre(String semestre,
+			List<QuestionarioDeAnsiedadeDeBeck> lista) {
+		List<QuestionarioDeAnsiedadeDeBeck> questionariosPorSemestre = new ArrayList<QuestionarioDeAnsiedadeDeBeck>();
+
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getSemestre().equals(semestre)) {
+				questionariosPorSemestre.add(lista.get(i));
+			}
+		}
+
+		return questionariosPorSemestre;
 	}
 
 }

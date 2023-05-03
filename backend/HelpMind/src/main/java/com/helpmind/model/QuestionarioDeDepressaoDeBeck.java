@@ -61,18 +61,7 @@ public class QuestionarioDeDepressaoDeBeck implements Questionario {
 
 	public void definirStatus() {
 
-		if (nota >= 0 && nota <= 9) {
-			status = "01 Depressão mínima";
-		}
-		if (nota >= 10 && nota <= 18) {
-			status = "02 Depressão leve";
-		}
-		if (nota >= 19 && nota <= 29) {
-			status = "03 Depressão moderada";
-		}
-		if (nota >= 30 && nota <= 63) {
-			status = "04 Depressão grave";
-		}
+			status = StatusDepressao.getStatus(nota);
 	}
 
 	public Integer getId() {
