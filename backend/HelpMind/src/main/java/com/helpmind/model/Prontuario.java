@@ -2,6 +2,7 @@ package com.helpmind.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,9 +20,13 @@ public class Prontuario {
 	private String campus;
 	private String curso;
 	private String periodo;
+	@Column(name = "Parescer", length = 10000)
 	private String parescerProfissionalSaude;
 	private String acaoRealizada;
 	private LocalDateTime data;
+	private String idDiscente;
+	private String idProfissionalDeSaude;
+	private String profissionalDeSaude;
 	
 	public LocalDateTime getData() {
 		return data;
@@ -70,6 +75,24 @@ public class Prontuario {
 	}
 	public void setAcaoRealizada(String acaoRealizada) {
 		this.acaoRealizada = acaoRealizada;
+	}
+	public String getIdDiscente() {
+		return idDiscente;
+	}
+	public void setIdDiscente(String idDiscente) {
+		this.idDiscente = idDiscente;
+	}
+	public String getIdProfissionalDeSaude() {
+		return idProfissionalDeSaude;
+	}
+	public void setIdProfissionalDeSaude(String idProfissionalDeSaude) {
+		this.idProfissionalDeSaude = idProfissionalDeSaude;
+	}
+	public String getProfissionalDeSaude() {
+		return profissionalDeSaude;
+	}
+	public void setProfissionalDeSaude(String profissionalDeSaude) {
+		this.profissionalDeSaude = profissionalDeSaude;
 	}
 	
 }

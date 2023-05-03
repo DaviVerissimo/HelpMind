@@ -22,6 +22,7 @@ export default function VisualizarProntuarioComponente() {
     const [parescer, setParescer] = useState();
     const [periodo, setPeriodos] = useState();
     const [acaoRealizada, setAcaoRealizada] = useState();
+    const [profissionalDeSaude, setProfissionalDeSaude] = useState();
 
     useEffect(async () => {
         if (prontuario == null) {
@@ -35,13 +36,14 @@ export default function VisualizarProntuarioComponente() {
             setParescer(prontuario.parescerProfissionalSaude);
             setPeriodos(prontuario.periodo);
             setAcaoRealizada(prontuario.acaoRealizada);
+            setProfissionalDeSaude(prontuario.profissionalDeSaude)
 
         }
 
     }, [prontuario]);
 
     return (
-        <div> 
+        <div>
             <div >
                 <Card title="PRONTUARIO DO DISCENTE"></Card>
                 <Card>
@@ -49,22 +51,25 @@ export default function VisualizarProntuarioComponente() {
                 </Card>
                 <Card >
                     <Card subTitle='DISCENTE' >
-                        <InputText value={nome} disabled />
+                        <InputText value={nome} disabled style={{ width: '100%' }} />
                     </Card>
                     <Card subTitle='CAMPUS' >
-                        <InputText value={campus} disabled />
+                        <InputText value={campus} disabled style={{ width: '100%' }} />
                     </Card>
                     <Card subTitle='CURSO' >
-                        <InputText value={curso} disabled />
+                        <InputText value={curso} disabled style={{ width: '100%' }} />
                     </Card>
                     <Card subTitle='ANO / PERÍODO' >
-                        <InputText value={periodo} disabled />
+                        <InputText value={periodo} disabled style={{ width: '100%' }} />
+                    </Card>
+                    <Card subTitle='PROFISSIONAL DE SAÚDE' >
+                        <InputText value={profissionalDeSaude} disabled style={{ width: '100%' }} />
                     </Card>
                     <Card subTitle='PARESCER DO PROFISSIONAL DE SAÚDE' >
-                        <InputTextarea rows={5} cols={30} value={parescer} disabled />
+                        <InputTextarea value={parescer} disabled autoResize style={{ width: '100%' }} />
                     </Card>
                     <Card subTitle='AÇÃO REALIZADA' >
-                        <InputText value={acaoRealizada} disabled />
+                        <InputText value={acaoRealizada} disabled style={{ width: '100%' }} />
                     </Card>
                 </Card>
 

@@ -30,84 +30,77 @@ export default function NovoProntuarioComponente() {
             life: 5000
         });
     }
-    const [campus, setCampus] = useState(null); //campus = singular, campi = plural
-    const [campi, setCampi] = useState();
-    const [nome, setNome] = useState();
-    const [curso, setCurso] = useState();
-    const [cursos, setCursos] = useState([]);
+    
+    //campus = singular, campi = plural
+    const discenteStr = localStorage.getItem('discente');
+    const discente = JSON.parse(discenteStr);
+    const [nome, setNome] = useState(discente.nome);
+    const [idDiscente, setIdDiscente] = useState(JSON.stringify(discente.id));
+    const [idProfissionalDeSaude, setIdProfissionalDeSaude] = useState(localStorage.getItem('idServidor'));
+    const [campus, setCampus] = useState(discente.campus); 
+    const [curso, setCurso] = useState(discente.curso);
     const [parescer, setParescer] = useState('');
-    const [periodo, setPeriodos] = useState('1º');
-    const periodos = [
-        { name: '1º' },
-        { name: '2º' },
-        { name: '3º' },
-        { name: 'Outro' },
-        { name: 'Superior' },
-    ];
+    const [periodo, setPeriodos] = useState(discente.periodo);
     const [acaoObrigatorio, setAcaoObrigatorio] = useState('NÂO');
     const destino = [
         { name: 'Psiclogo(a) do campus' },
         { name: 'Rede externa' },
     ];
-    const [nomeObrigatorio, setNomeObrigatorio] = useState();
-    const [cursoObrigatorio, setCursoObrigatorio] = useState();
-    const [campusObrigatorio, setCampusObrigatorio] = useState();
-    const [periodoObrigatorio, setPeriodoObrigatorio] = useState();
     const [acaoRealizadaObrigatorio, setSuicidioObrigatorio] = useState();
     const [parecerObrigatoria, setDescrisaoObrigatorio] = useState();
     const [invalid, setInvalid] = useState('p-invalid block');
 
-    useEffect(async () => { //cursos
-        var lista = [];
-        const cursosIFPB = URL.getDominio() + "/curso/listarCursosPorCampus";
-        axios.get(cursosIFPB)
-            .then(Response => {
-                var dataCurso = Response.data;
-                dataCurso.forEach(item => {
-                    lista.push(item);
-                });
+    // useEffect(async () => { //cursos
+    //     var lista = [];
+    //     const cursosIFPB = URL.getDominio() + "/curso/listarAllCursos";
+    //     axios.get(cursosIFPB)
+    //         .then(Response => {
+    //             var dataCurso = Response.data;
+    //             dataCurso.forEach(item => {
+    //                 lista.push(item);
+    //             });
 
-                lista = lista.map(
-                    (elementoCurso) => {
-                        return {
-                            label: elementoCurso,
-                            value: elementoCurso
-                        }
-                    }
-                ).sort((a, b) => a.label.localeCompare(b.label));
+    //             lista = lista.map(
+    //                 (elementoCurso) => {
+    //                     return {
+    //                         label: elementoCurso,
+    //                         value: elementoCurso
+    //                     }
+    //                 }
+    //             ).sort((a, b) => a.label.localeCompare(b.label));
 
-                setCursos(lista);
-            })
-            .catch(error => console.log(error))
+    //             setCursos(lista);
+    //         })
+    //         .catch(error => console.log(error))
 
-    }, [campus]);
+    // }, [campus]);
 
-    useEffect(async () => { //campus
-        var lista = [];
-        const campus = URL.getDominio() + "/curso/listarCampus";
-        axios.get(campus)
-            .then(Response => {
-                var dataCampus = Response.data;
-                dataCampus.forEach(item => {
-                    lista.push(item);
-                });
+    // useEffect(async () => {
+    //     var lista = [];
+    //     const campus = URL.getDominio() + "/curso/listarCampus";
+    //     axios.get(campus)
+    //         .then(Response => {
+    //             var dataCampus = Response.data;
+    //             dataCampus.forEach(item => {
+    //                 lista.push(item);
+    //             });
 
-                lista = lista.map(
-                    (elementoCampus) => {
-                        return {
-                            label: elementoCampus,
-                            value: elementoCampus
-                        }
-                    }
-                ).sort((a, b) => a.label.localeCompare(b.label));
-                setCampi(lista);
+    //             lista = lista.map(
+    //                 (elementoCampus) => {
+    //                     return {
+    //                         label: elementoCampus,
+    //                         value: elementoCampus
+    //                     }
+    //                 }
+    //             ).sort((a, b) => a.label.localeCompare(b.label));
+    //             setCampi(lista);
 
-            })
-            .catch(error => console.log(error))
+    //         })
+    //         .catch(error => console.log(error))
 
-    }, []);
+    // }, []);
 
-    useEffect(async () => { //enviar campus para o servidor
+    useEffect(async () => {
         const headers = {
             'headers': {
                 'Accept': 'application/json',
@@ -128,26 +121,6 @@ export default function NovoProntuarioComponente() {
     function validar() {
         var valido = true;
 
-        if (nome == null || nome == '') {
-            setNomeObrigatorio(invalid);
-            valido = false;
-        }
-
-        if (curso == null || curso == '') {
-            setCursoObrigatorio(invalid);
-            valido = false;
-        }
-
-        if (campus == null || campus == '') {
-            setCampusObrigatorio(invalid);
-            valido = false;
-        }
-
-        if (periodo.name == null) {
-            setPeriodoObrigatorio(invalid);
-            valido = false;
-        }
-
         if (acaoObrigatorio.name == null) {
             setSuicidioObrigatorio(invalid);
             valido = false;
@@ -164,16 +137,16 @@ export default function NovoProntuarioComponente() {
     async function submeter() {
 
         if (validar()) {
-            // const idReportante = localStorage.getItem('id');
             const novoProntuario =
             {
                 "discente": nome,
                 "curso": curso,
                 "campus": campus,
-                "periodo": periodo.name,
+                "periodo": periodo,
                 "parescerProfissionalSaude": parescer,
                 "acaoRealizada": acaoObrigatorio.name,
-                // "idReportante": idReportante
+                "idDiscente": idDiscente,
+                "idProfissionalDeSaude": idProfissionalDeSaude
 
             }
             const headers = {
@@ -210,25 +183,56 @@ export default function NovoProntuarioComponente() {
 
                 <Card >
                     <Card subTitle='DISCENTE' >
-                        <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
+                        <InputText
+                            value={nome}
+                            style={{ width: '100%' }}
+                            disabled
+                        />
                     </Card>
                     <Card subTitle='CAMPUS' >
-                        <Dropdown className={campusObrigatorio} filter value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
+                        <InputText
+                            value={campus}
+                            style={{ width: '100%' }}
+                            disabled
+                        />
                     </Card>
                     <Card subTitle='CURSO' >
-                        <Dropdown className={cursoObrigatorio} filter value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
+                        <InputText
+                            value={curso}
+                            disabled
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                     <Card subTitle='ANO / PERÍODO' >
-                        <Dropdown className={periodoObrigatorio} filter optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Digite o parescer quanto ao discente" />
+                        <InputText
+                            value={periodo}
+                            disabled
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                     <Card subTitle='PARESCER DO PROFISSIONAL DE SAÚDE' >
-                        <InputTextarea className={parecerObrigatoria} rows={5} cols={30} value={parescer} onChange={(e) => setParescer(e.target.value)} />
+                        <InputTextarea
+                            className={parecerObrigatoria}
+                            value={parescer}
+                            onChange={(e) => setParescer(e.target.value)}
+                            placeholder="Digite o parescer quanto ao discente"
+                            autoResize
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                     <Card subTitle='AÇÃO REALIZADA' >
-                        <Dropdown className={acaoRealizadaObrigatorio} filter optionLabel="name" value={acaoObrigatorio} options={destino} onChange={(e) => setAcaoObrigatorio(e.target.value)} placeholder="Escolha uma ação" />
+                        <Dropdown
+                            className={acaoRealizadaObrigatorio}
+                            filter
+                            optionLabel="name"
+                            value={acaoObrigatorio}
+                            options={destino}
+                            onChange={(e) => setAcaoObrigatorio(e.target.value)}
+                            placeholder="Escolha uma ação"
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                 </Card>
-
             </div>
         </div>
 
