@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.helpmind.model.Constantes;
 import com.helpmind.model.Prontuario;
 import com.helpmind.service.ProntuarioService;
+import com.helpmind.service.ServidorService;
 
 
 @CrossOrigin(origins = Constantes.URI)
@@ -27,10 +28,15 @@ public class ProntuarioController {
 	@Autowired
 	private ProntuarioService prontuarioService;
 	
+	@Autowired
+	private ServidorService servidorService;
+	
 	@PostMapping("salvarProntuario")
 	public ResponseEntity salvarProntuario(@RequestBody Prontuario prontuario) throws URISyntaxException {
 		LocalDateTime data = LocalDateTime.now();
 		prontuario.setData(data);
+		String nomeProfSaude = servidorService.buscarNomeDoServidorPeloID(prontuario.getIdProfissionalDeSaude());
+		prontuario.setProfissionalDeSaude(nomeProfSaude);
 		try {
 			prontuarioService.salvar(prontuario);
 			} catch(Exception e){}
@@ -39,7 +45,7 @@ public class ProntuarioController {
 	}
 	
 	@GetMapping("listarAllProntuarios")
-	public List<Prontuario> retornaAllContatos(){
+	public List<Prontuario> retornaAllProntuarios(){
 		
 		return prontuarioService.retornaAllProntuarios();
 	}
@@ -72,6 +78,12 @@ public class ProntuarioController {
 			} catch(Exception e){}
 	
 		return ResponseEntity.created(new URI("/prontuario/" + prontuario.getId())).body(prontuario);
+	}
+	
+	@PostMapping("retornaProntuariosPeloIdDiscente")
+	public List<Prontuario> retornaProntuariosPeloIdDiscente(@RequestBody String ID){
+		
+		return prontuarioService.retornaProntuariosPeloIdDiscente(ID);
 	}
 	
 }
