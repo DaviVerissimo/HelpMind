@@ -34,14 +34,50 @@ export default function ToobarProfissionalDeSaude() {
                     <img src={logoImg} alt="logo" style={{ height: '3.75em', width: 'auto' }} />
 
                 </div>
-                <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3  p-col" label='Materiais' onClick={() => { history.push('/profissionalDeSaude/materiaisOnline') }} />
+                <Button
+                    icon={createIcon("pi pi-box")}
+                    className="p-button-outlined p-button-lg  p-mr-3  p-col"
+                    label='Materiais'
+                    onClick={() => { history.push('/profissionalDeSaude/materiaisOnline') }}
+                />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
-                <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Contatos' onClick={() => { history.push('/profissionalDeSaude/Contatos') }} />
-                <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' onClick={() => { history.push('/profissionalDeSaude/ListaDiscentes') }} />
-                <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-mr-3 p-col" label='Prontuarios P. Psicólogico' onClick={() => { history.push('/profissionalDeSaude/prontuarios') }} />
-                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' onClick={() => { history.push('/profissionalDeSaude/Reportes') }} />
-                <Button icon={createIcon("pi pi-chart-line")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Estatísticas' onClick={() => { history.push('/profissionalDeSaude/consultarEstatisticas') }}/>
-                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Prof de saúde' onClick={() => { history.push('/profissionalDeSaude/perfil') }} />
+                <Button
+                    icon={createIcon("pi pi-comments")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    label='Contatos'
+                    onClick={() => { history.push('/profissionalDeSaude/Contatos') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-users")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    style={{ height: '4.00em', width: 'auto' }}
+                    label='Discentes'
+                    onClick={() => { history.push('/profissionalDeSaude/ListaDiscentes') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-file")}
+                    className="p-button-outlined p-mr-3 p-col"
+                    label='Prontuarios P. Psicólogico'
+                    onClick={() => { history.push('/profissionalDeSaude/prontuarios') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-bell")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    label='Reportes'
+                    onClick={() => { history.push('/profissionalDeSaude/Reportes') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-chart-line")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    label='Estatísticas'
+                    onClick={() => { history.push('/profissionalDeSaude/consultarEstatisticas') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-user")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    label='Prof de saúde'
+                    onClick={() => { history.push('/profissionalDeSaude/perfil') }}
+                />
             </div>
         </React.Fragment>
     );
@@ -50,16 +86,70 @@ export default function ToobarProfissionalDeSaude() {
         <React.Fragment>
             <div className='' style={{ padding: '1em' }}>
 
-                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Home' onClick={() => { history.push('/profissionalDeSaude/home') }} />
-                <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col" label='Materiais online' onClick={() => { history.push('/profissionalDeSaude/materiaisOnline') }} />
+                <Button
+                    icon={createIcon("pi pi-home")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Home'
+                    onClick={() => { history.push('/profissionalDeSaude/home') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-box")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col"
+                    label='Materiais online'
+                    onClick={() => { history.push('/profissionalDeSaude/materiaisOnline') }}
+                />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
-                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col" label='Quem Somos' onClick={() => { history.push('/profissionalDeSaude/quemSomos') }} />
-                <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3  p-mt-3 p-col" label='Contatos' onClick={() => { history.push('/profissionalDeSaude/Contatos') }} />
-                <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Discentes' onClick={() => { history.push('/profissionalDeSaude/ListaDiscentes') }} />
-                <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Prontuarios e Parescer psicólogico' onClick={() => { history.push('/profissionalDeSaude/prontuarios') }} />
-                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Reportes' onClick={() => { history.push('/profissionalDeSaude/Reportes') }} />
-                <Button icon={createIcon("pi pi-chart-line")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Estatísticas' onClick={() => { history.push('/profissionalDeSaude/consultarEstatisticas') }}/>
-                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Prof de saúde' onClick={() => { history.push('/profissionalDeSaude/perfil') }} />
+                <Button
+                    icon={createIcon("pi pi-info-circle")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col"
+                    label='Quem Somos'
+                    onClick={() => { history.push('/profissionalDeSaude/quemSomos') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-comments")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3  p-mt-3 p-col"
+                    label='Contatos'
+                    onClick={() => { history.push('/profissionalDeSaude/Contatos') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-users")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Discentes'
+                    onClick={() => { history.push('/profissionalDeSaude/ListaDiscentes') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-file")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Prontuarios e Parescer psicólogico'
+                    onClick={() => { history.push('/profissionalDeSaude/prontuarios') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-bell")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Reportes'
+                    onClick={() => { history.push('/profissionalDeSaude/Reportes') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-chart-line")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Estatísticas'
+                    onClick={() => { history.push('/profissionalDeSaude/consultarEstatisticas') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-user")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col p-mb-3"
+                    label='Prof de saúde'
+                    onClick={() => { history.push('/profissionalDeSaude/perfil') }}
+                />
                 <FotoPerfil></FotoPerfil>
                 <NomePerfil></NomePerfil>
             </div>
@@ -69,27 +159,23 @@ export default function ToobarProfissionalDeSaude() {
     const rightContentsMobile = (
         <React.Fragment>
             <div style={{}} className='p-col-1 p-mr-3'  >
-                <img src={logoImg} alt="logo" style={{ height: '10.75em', width: 'auto' }} />
+                <img src={logoImg} alt="logo" style={{ height: '8.05em', width: 'auto' }} />
             </div>
         </React.Fragment>
     );
 
     if (largura < 640) {
         return (
-
             <div className=''>
                 <Toolbar right={leftContentsMobile} left={rightContentsMobile} />
             </div>
-
         );
     }
     else {
         return (
-
             <div className='p-flex'>
                 <Toolbar left={leftContents} right={rightContents} />
             </div>
-
         );
     }
 
