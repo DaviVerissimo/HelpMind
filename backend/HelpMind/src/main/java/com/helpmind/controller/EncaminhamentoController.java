@@ -72,9 +72,28 @@ public class EncaminhamentoController {
 
 	@PostMapping("retornaEncaminhamentosPorIDdoPsicologoResponsavel")
 	public List<Encaminhamento> retornaEncaminhamentosPorIDdoPsicologoResponsavel(@RequestBody String id) {
-		System.out.println(id);
 
 		return encaminhamentoService.retornaEncaminhamentosPorIDdoPsicologoResponsavel(id);
+	}
+
+	@PostMapping("definirStatusParaFinalizadoEncaminhamentoPorID")
+	public ResponseEntity<Encaminhamento> mudarStatusParaFinalizadoNoEncaminhamentoPorID(@RequestBody Integer ID)
+			throws URISyntaxException {
+		Encaminhamento encaminhamento = encaminhamentoService.retornaEncaminhamentoPorID(ID);
+		encaminhamento.setStatus(StatusEncaminhamento.FINALIZADO);
+		encaminhamentoService.salvar(encaminhamento);
+
+		return ResponseEntity.created(new URI("/Encaminhamento/" + encaminhamento.getId())).body(encaminhamento);
+	}
+
+	@PostMapping("definirStatusParaComRelatorioEncaminhamentoPorID")
+	public ResponseEntity<Encaminhamento> definirStatusParaComRelatorioEncaminhamentoPorID(@RequestBody Integer ID)
+			throws URISyntaxException {
+		Encaminhamento encaminhamento = encaminhamentoService.retornaEncaminhamentoPorID(ID);
+		encaminhamento.setStatus(StatusEncaminhamento.RECEBEU_RELATORIO_DO_PSICOLOGO);
+		encaminhamentoService.salvar(encaminhamento);
+
+		return ResponseEntity.created(new URI("/Encaminhamento/" + encaminhamento.getId())).body(encaminhamento);
 	}
 
 }

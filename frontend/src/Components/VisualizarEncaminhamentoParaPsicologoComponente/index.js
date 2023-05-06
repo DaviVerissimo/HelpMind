@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
@@ -6,8 +6,19 @@ import { Card } from 'primereact/card';
 import BotaoVoltar from '../BotaoVoltar';
 import EncaminhamentoService from '../../services/EncaminhamentoService';
 import { Button } from 'primereact/button';
+import { Toast } from 'primereact/toast';
 
 export default function VisualizarEncaminhamentoParaPsicologoComponente() {
+
+    const toast = useRef(null);
+    const showSuccess = () => {
+        toast.current.show({
+            severity: 'success',
+            summary: 'Encaminhamento Finalizado com Sucesso!',
+            detail: 'Recarregue para ver mudanças.',
+            life: 5000
+        });
+    }
 
     const { id } = useParams();
     const [encaminhamento, setEncaminhamento] = useState();
@@ -39,25 +50,34 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
 
     }, [encaminhamento]);
 
+    function finalizar() {
+        EncaminhamentoService.finalizarEncaminhamento(id).then((response) => {
+            showSuccess();
+        });
+    }
+
     return (
         <div>
+            <Toast ref={toast} />
             <div >
                 <Card title="VISUALIZAR ENCAMINHAMENTO DE DISCENTE"></Card>
                 <Card className="" >
                     <div>
                         <BotaoVoltar></BotaoVoltar>
                         <Button
-                            label='VISUALIZAR RELATÓRIO PSICOLÓGICO'
-                            disabled
+                            label='FINALIZAR'
+                            // disabled
                             className='p-mt-3 p-ml-3 p-mr-3 '
                             icon='pi pi-file'
+                            onClick={finalizar}
                         >
                         </Button>
                         <Button
-                            label='FINALIZAR'
+
                             disabled
                             className='p-mt-3'
                             icon='pi pi-heart-fill'
+                            label='VISUALIZAR RELATÓRIO PSICOLÓGICO'
                         >
                         </Button>
                     </div>
