@@ -4,13 +4,11 @@ import { Dropdown } from 'primereact/dropdown';
 import axios from "axios";
 import URL from '../../services/URL';
 
-export default function DiscenteNome() {
+export default function DiscenteNome(props) {
 
     const [nomes, setNomes] = useState([]);
     const [nome, setNome] = useState([]);
-    const [nomeObrigatorio, setNomeObrigatorio] = useState('');
-
-    useEffect(async () => { //nome discente
+    useEffect(async () => {
         var lista = [];
         const discentesIFPB = URL.getDominio() + "/discente/listarAllNomesDiscentes";
         axios.get(discentesIFPB)
@@ -19,46 +17,31 @@ export default function DiscenteNome() {
                 dataNomeDiscente.forEach(item => {
                     lista.push(item);
                 });
-
                 lista = lista.map(
-                    (elementoCurso) => {
+                    (elemento) => {
                         return {
-                            label: elementoCurso,
-                            value: elementoCurso
+                            label: elemento,
+                            value: elemento
                         }
                     }
                 ).sort((a, b) => a.label.localeCompare(b.label));
-
                 setNomes(lista);
             })
             .catch(error => console.log(error))
-
     }, []);
-
-    useEffect(async () => {
-        localStorage.setItem('nomeComponente', nome);
-
-    }, [nome]);
-
-    const validar = localStorage.getItem('errorNomeComponente')
-    useEffect(async () => {
-        if (validar != null) {
-            setNomeObrigatorio(validar)
-        }
-
-    }, [validar]);
 
     return (
         <div>
             <Dropdown
-                className={nomeObrigatorio}
+                className={props.preenchimentoObrigatorio}
                 value={nome}
                 filter
                 options={nomes}
                 onChange={(e) => setNome(e.value)}
+                onBlur={props.nomeDiscente(nome)}
                 placeholder="Escolha um discente"
+                style={{ width: '100%' }}
             />
         </div>
-
     );
 }
