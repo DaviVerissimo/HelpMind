@@ -19,7 +19,7 @@ export default function Periodo() {
 
     }, [periodo]);
 
-    const validar = localStorage.getItem('errorCampusComponente')
+    const validar = localStorage.getItem('periodoComponente')
     useEffect(async () => {
         if (validar != null) {
             setCampusObrigatorio(validar)
