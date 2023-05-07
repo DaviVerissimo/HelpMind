@@ -444,7 +444,7 @@ export default function QuestionarioSocioeconomico() {
 
     useEffect(async () => { //cursos
         var lista = [];
-        const cursosIFPB = URL.getDominio() + "/curso/listarCursosPorCampus";
+        const cursosIFPB = URL.getDominio() + "/curso/listarAllCursos";
         axios.get(cursosIFPB)
             .then(Response => {
                 var dataCurso = Response.data;
