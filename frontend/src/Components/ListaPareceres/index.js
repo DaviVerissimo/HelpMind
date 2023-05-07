@@ -60,6 +60,11 @@ export default function ListaPareceres(props) {
         history.push('/' + usuario + '/visualizarParescer/' + parecer.id);
     }
 
+    function submeter(){
+        const usuario = props.data;
+        history.push('/' + usuario + '/acompanhamento')
+    }
+
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
@@ -90,6 +95,11 @@ export default function ListaPareceres(props) {
                 <Card>
                     <Card>
                         <BotaoVoltar></BotaoVoltar>
+                        <Button
+                            icon={"pi pi-heart-fill"}
+                            className="p-ml-3 p-mt-3"
+                            label='ACOMPANHAMENTO E COMUNICAÇÃO COM PSICÓLOGO'
+                            onClick={submeter} />
                     </Card>
                     <div>
                         <Card>

@@ -34,7 +34,7 @@ export default function PerfilDiscenteDetalhadoComponente(props) {
     useEffect(() => {
         requisitarDiscente()
 
-    }, [])
+    }, [discente])
 
     useEffect(() => {
         const discenteStr = JSON.stringify(discente);
@@ -80,6 +80,22 @@ export default function PerfilDiscenteDetalhadoComponente(props) {
         const usuario = props.data;
         history.push('/' + usuario + '/listarProntuariosDoDiscente')
     }
+
+    const [acessoPsicologo, setAcessoPsicologo] = useState(false);
+    const [broquearAcessoAoBotao, setBroquearAcessoAoBotao] = useState(false);
+    const mudarAcessoParaPsicologo = () =>  {
+        if (localStorage.getItem('loginPsicologo')) {
+            setAcessoPsicologo(localStorage.getItem('loginPsicologo'));
+        }
+        if (JSON.parse(acessoPsicologo)) {
+            setBroquearAcessoAoBotao(true);
+        }
+    }
+
+    useEffect(() => {
+        mudarAcessoParaPsicologo()
+
+    }, [acessoPsicologo, broquearAcessoAoBotao])
 
     return (
         <div
@@ -292,6 +308,7 @@ export default function PerfilDiscenteDetalhadoComponente(props) {
                                     label="ENCAMINHAR DISCENTE"
                                     icon='pi pi-heart-fill'
                                     onClick={() => { encaminharDiscente() }}
+                                    disabled={broquearAcessoAoBotao}
                                 />
                             </div>
                             <div>
@@ -314,6 +331,7 @@ export default function PerfilDiscenteDetalhadoComponente(props) {
                                     label="CONVERSAR COM PSICÓLOGO SOBRE ESTE DISCENTE"
                                     icon='pi pi-comment'
                                     onClick={() => { conversarComPsicologoSobreDiscente() }}
+                                    disabled={broquearAcessoAoBotao}
                                 />
                             </div>
                             {/* <div>
@@ -337,6 +355,7 @@ export default function PerfilDiscenteDetalhadoComponente(props) {
                                     label="NOVO PRONTUARIO"
                                     icon='pi pi-file'
                                     onClick={() => { novoProntuario() }}
+                                    disabled={broquearAcessoAoBotao}
                                 />
                             </div>
                             <div>
@@ -344,7 +363,8 @@ export default function PerfilDiscenteDetalhadoComponente(props) {
                                     className={configBotao}
                                     label="LISTAR PRONTUARIOS DO DISCENTE"
                                     icon='pi pi-file'
-                                onClick={() => { listarProntuariosDoDiscente() }}
+                                    onClick={() => { listarProntuariosDoDiscente() }}
+                                    disabled={broquearAcessoAoBotao}
                                 />
                             </div>
                         </Card>

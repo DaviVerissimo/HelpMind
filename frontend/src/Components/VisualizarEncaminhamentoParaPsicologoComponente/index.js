@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Card } from 'primereact/card';
@@ -21,6 +21,7 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
     }
 
     const { id } = useParams();
+    const history = useHistory();
     const [encaminhamento, setEncaminhamento] = useState();
     const obterEncaminhamento = () => {
         EncaminhamentoService.getEncaminhamentoById(id).then((response) => {
@@ -34,6 +35,7 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
     const [profissionalDeSaude, setProfissionalDeSaude] = useState();
     const [descrisao, setDescrisao] = useState('');
     const [psicologo, setPsicologo] = useState();
+    const [nomeBtn1, setNomeBtn1] = useState('FINALIZAR');
 
     useEffect(async () => {
         if (encaminhamento == null) {
@@ -56,6 +58,36 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
         });
     }
 
+    function novoRelatorio() {
+        history.push('/psicologo/novoRelatorio/' + id);
+
+    }
+
+    function decidirEvento() {
+        if (acessoPsicologo) {
+            novoRelatorio();
+        }
+        else {
+            finalizar();
+        }
+    }
+
+    const [acessoPsicologo, setAcessoPsicologo] = useState(false);
+    const [broquearAcessoAoBotao, setBroquearAcessoAoBotao] = useState(false);
+    const mudarAcessoParaPsicologo = () => {
+        if (localStorage.getItem('loginPsicologo')) {
+            setAcessoPsicologo(localStorage.getItem('loginPsicologo'));
+        }
+        if (JSON.parse(acessoPsicologo)) {
+            setNomeBtn1('NOVO RELATÓRIO');
+        }
+    }
+
+    useEffect(() => {
+        mudarAcessoParaPsicologo()
+
+    }, [acessoPsicologo, broquearAcessoAoBotao])
+
     return (
         <div>
             <Toast ref={toast} />
@@ -65,11 +97,11 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
                     <div>
                         <BotaoVoltar></BotaoVoltar>
                         <Button
-                            label='FINALIZAR'
-                            // disabled
+                            label={nomeBtn1}
+                            disabled={broquearAcessoAoBotao}
                             className='p-mt-3 p-ml-3 p-mr-3 '
                             icon='pi pi-file'
-                            onClick={finalizar}
+                            onClick={decidirEvento}
                         >
                         </Button>
                         <Button
