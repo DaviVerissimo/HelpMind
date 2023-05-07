@@ -26,6 +26,7 @@ public class Encaminhamento {
 	private String descrisao;
 	private LocalDateTime data;
 	private String status;
+	private String idRelatorio = "";
 	
 	public Integer getId() {
 		return id;
@@ -86,6 +87,12 @@ public class Encaminhamento {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getIdRelatorio() {
+		return idRelatorio;
+	}
+	public void setIdRelatorio(String idRelatorio) {
+		this.idRelatorio = idRelatorio;
 	}
 	
 }

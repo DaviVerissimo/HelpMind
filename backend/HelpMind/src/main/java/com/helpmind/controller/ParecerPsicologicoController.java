@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.helpmind.model.Constantes;
+import com.helpmind.model.Encaminhamento;
 import com.helpmind.model.ParescerPsicologico;
+import com.helpmind.service.EncaminhamentoService;
 import com.helpmind.service.ParescerPsicologicoService;
 
 @CrossOrigin(origins = Constantes.URI)
@@ -26,12 +28,18 @@ public class ParecerPsicologicoController {
 	@Autowired
 	private ParescerPsicologicoService parescerPsicologicoService;
 	
+	@Autowired
+	private EncaminhamentoService encaminhamentoService;
+	
 	@PostMapping("salvarParecerPsicologico")
 	public ResponseEntity salvarParecerPsicologico(@RequestBody ParescerPsicologico parecerPsicologico) throws URISyntaxException {
 		LocalDateTime data = LocalDateTime.now();
 		parecerPsicologico.setData(data);
 		try {
 			parescerPsicologicoService.salvar(parecerPsicologico);
+			Integer ID = Integer.parseInt(parecerPsicologico.getIdEncaminhamento());
+			Encaminhamento encaminhamento = encaminhamentoService.retornaEncaminhamentoPorID(ID);
+			encaminhamentoService.salvar(encaminhamento);
 			} catch(Exception e){}
 	
 		return ResponseEntity.created(new URI("/parecerPsicologico/" + parecerPsicologico.getId())).body(parecerPsicologico);
