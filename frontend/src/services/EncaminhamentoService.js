@@ -14,6 +14,8 @@ const API_BASE_URL_RETORNAR_ENCAMINHAMENTO_BY_ID = URL.getDominio() + '/Encaminh
 const API_BASE_URL_RETORNAR_LISTA_ENCAMINHAMETOS_DISCENTE = URL.getDominio() + '/Encaminhamento/retornaEncaminhamentosPorIDdoDiscente';
 const API_BASE_URL_RETORNAR_LISTA_ENCAMINHAMENTOS_PSICOLOGO = URL.getDominio() + '/Encaminhamento/retornaEncaminhamentosPorIDdoPsicologoResponsavel';
 const API_BASE_URL_SALVAR_ENCAMINHAMENTO = URL.getDominio() + '/Encaminhamento/salvar';
+const API_BASE_URL_FINALIZAR_ENCAMINHAMENTO = URL.getDominio() + '/Encaminhamento/definirStatusParaFinalizadoEncaminhamentoPorID';
+const API_BASE_URL_ENCAMINHAMENTO_COM_RELATORIO = URL.getDominio() + '/Encaminhamento/definirStatusParaComRelatorioEncaminhamentoPorID';
 
 class EncaminhamentoService {
 
@@ -31,6 +33,14 @@ class EncaminhamentoService {
     
     getEncaminhamentosByIdPsicologo(id) {
         return axios.post(API_BASE_URL_RETORNAR_LISTA_ENCAMINHAMENTOS_PSICOLOGO, id, headers)
+    }
+
+    finalizarEncaminhamento(id) {
+        return axios.post(API_BASE_URL_FINALIZAR_ENCAMINHAMENTO, id, headers)
+    }
+
+    mudarStatusDoEncaminhamentoParaComRelatorio(id) {
+        return axios.post(API_BASE_URL_ENCAMINHAMENTO_COM_RELATORIO, id, headers)
     }
 
     // salvarEncaminhamento(encaminhamento) {

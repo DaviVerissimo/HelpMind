@@ -7,6 +7,7 @@ import BotaoVoltar from '../BotaoVoltar';
 import EncaminhamentoService from '../../services/EncaminhamentoService';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
+import Usuario from '../../services/Usuario';
 
 export default function VisualizarEncaminhamentoParaPsicologoComponente() {
 
@@ -16,6 +17,15 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
             severity: 'success',
             summary: 'Encaminhamento Finalizado com Sucesso!',
             detail: 'Recarregue para ver mudanças.',
+            life: 5000
+        });
+    }
+
+    const showWan = () => {
+        toast.current.show({
+            severity: 'warn',
+            summary: 'Ainda não existe relatório associado a este encaminhamento!',
+            detail: 'Aguarde ate que o psicólogo envie.',
             life: 5000
         });
     }
@@ -35,6 +45,7 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
     const [profissionalDeSaude, setProfissionalDeSaude] = useState();
     const [descrisao, setDescrisao] = useState('');
     const [psicologo, setPsicologo] = useState();
+    const [idRelatorio, setIdRelatorio] = useState();
     const [nomeBtn1, setNomeBtn1] = useState('FINALIZAR');
 
     useEffect(async () => {
@@ -48,6 +59,7 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
             setProfissionalDeSaude(encaminhamento.profSaude);
             setDescrisao(encaminhamento.descrisao);
             setPsicologo(encaminhamento.psicologo);
+            setIdRelatorio(encaminhamento.idRelatorio);
         }
 
     }, [encaminhamento]);
@@ -69,6 +81,25 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
         }
         else {
             finalizar();
+        }
+    }
+
+    function submeter() {
+        if (status != 'Aguardando resultado') {
+            var usuario;
+            if(localStorage.getItem('loginPsicologo')){
+                usuario = Usuario.get_PSICOLOGO();
+            }
+            if(localStorage.getItem('loginAdmin')){
+                usuario = Usuario.get_ADMIN();
+            }
+            if(localStorage.getItem('loginProfSaude')){
+                usuario = Usuario.get_PROFISSIONAL_DE_SAUDE();
+            }
+            history.push('/' + usuario + '/visualizarParescer/' + idRelatorio);
+        }
+        else {
+            showWan()
         }
     }
 
@@ -105,11 +136,10 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
                         >
                         </Button>
                         <Button
-
-                            disabled
                             className='p-mt-3'
                             icon='pi pi-heart-fill'
                             label='VISUALIZAR RELATÓRIO PSICOLÓGICO'
+                            onClick={submeter}
                         >
                         </Button>
                     </div>

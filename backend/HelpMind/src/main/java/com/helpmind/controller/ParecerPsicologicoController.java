@@ -39,6 +39,7 @@ public class ParecerPsicologicoController {
 			parescerPsicologicoService.salvar(parecerPsicologico);
 			Integer ID = Integer.parseInt(parecerPsicologico.getIdEncaminhamento());
 			Encaminhamento encaminhamento = encaminhamentoService.retornaEncaminhamentoPorID(ID);
+			encaminhamento.setIdRelatorio(parecerPsicologico.getId().toString());
 			encaminhamentoService.salvar(encaminhamento);
 			} catch(Exception e){}
 	

@@ -26,7 +26,7 @@ public class Encaminhamento {
 	private String descrisao;
 	private LocalDateTime data;
 	private String status;
-	private String idRelatorio = "";
+	private String idRelatorio;
 	
 	public Integer getId() {
 		return id;

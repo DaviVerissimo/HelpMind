@@ -37,7 +37,7 @@ export default function VisualizarParescerComponente() {
     return (
         <div>
             <div >
-                <Card title="PRONTUARIO DO DISCENTE"></Card>
+                <Card title="RELATÓRIO DO PSICÓLOGO"></Card>
                 <Card>
                     <BotaoVoltar></BotaoVoltar>
                 </Card>
