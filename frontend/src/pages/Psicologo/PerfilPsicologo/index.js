@@ -1,13 +1,14 @@
 import { Card } from 'primereact/card';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarPsicologo from '../ToobarPsicologo';
 import BarraPessoalProfSaude from '../../ProfissionalDeSaude/BarraPessoalProfSaude';
+import ServidorService from '../../../services/ServidorService';
 
 export default function PerfilPsicologo() {
 
-    const id = localStorage.getItem('idServidor');// criar um idPsicologo talvez
+    const id = localStorage.getItem('idServidor');
     var configBotao = "p-mb-3 p-col-3";
     var largura = window.screen.width;
     if (largura < 640) {
@@ -19,6 +20,23 @@ export default function PerfilPsicologo() {
         localStorage.clear();
         history.push('/');
     }
+
+    const [servidor, setServidor] = useState([])
+    const requisitarServidor = () => {
+        ServidorService.getServidorById(id).then((response) => {
+            setServidor(response.data)
+        });
+    };
+
+    useEffect(() => {
+        requisitarServidor()
+
+    }, [servidor])
+
+    useEffect(() => {
+        const profissionaldeSaudeStr = JSON.stringify(servidor);
+        localStorage.setItem('metadataPsicologo', profissionaldeSaudeStr);
+    }, [servidor])
 
     return (
         <div>

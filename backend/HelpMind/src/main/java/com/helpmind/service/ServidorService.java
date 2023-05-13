@@ -43,7 +43,7 @@ public class ServidorService {
 		return adminPermission;
 	}
 
-	public Servidor pesquisar(Integer ID) {
+	public Servidor retornaServidorByID(Integer ID) {
 		Servidor servidor = new Servidor();
 		List<Servidor> lista = this.listaAllServidores();
 		for (int i = 0; i < lista.size(); i++) {
@@ -55,7 +55,7 @@ public class ServidorService {
 	}
 
 	public Servidor concederAcessoComoProfissionalDeSaude(Integer iD) {
-		Servidor servidor = this.pesquisar(iD);
+		Servidor servidor = this.retornaServidorByID(iD);
 		servidor.setPermissaoDeAcessoProfissionalDeSaude(true);
 		servidorRepository.save(servidor);
 
@@ -63,7 +63,7 @@ public class ServidorService {
 	}
 
 	public Servidor concederAcessoComoPsicologo(Integer iD) {
-		Servidor servidor = this.pesquisar(iD);
+		Servidor servidor = this.retornaServidorByID(iD);
 		servidor.setPermissaoDeAcessoPsicologo(true);
 		servidorRepository.save(servidor);
 
@@ -71,7 +71,7 @@ public class ServidorService {
 	}
 
 	public Servidor removerAcessoComoProfissionalDeSaude(Integer iD) {
-		Servidor servidor = this.pesquisar(iD);
+		Servidor servidor = this.retornaServidorByID(iD);
 		servidor.setPermissaoDeAcessoProfissionalDeSaude(false);
 		servidorRepository.save(servidor);
 
@@ -79,7 +79,7 @@ public class ServidorService {
 	}
 
 	public Servidor removerAcessoComoPsicologo(Integer iD) {
-		Servidor servidor = this.pesquisar(iD);
+		Servidor servidor = this.retornaServidorByID(iD);
 		servidor.setPermissaoDeAcessoPsicologo(false);
 		servidorRepository.save(servidor);
 

@@ -22,132 +22,146 @@ import com.helpmind.service.ServidorService;
 @RestController
 @RequestMapping("/servidor")
 public class ServidorController {
-	
+
 	@Autowired
 	private ServidorService servidorService;
-	
+
 	@PostMapping("salvarServidor")
 	public ResponseEntity salvarServidor(@RequestBody Usuario usuario) throws URISyntaxException {
-		
 		Servidor servidor = null;
 		try {
 			servidor = servidorService.salvar(usuario);
-			} catch(Exception e){}
-	
+		} catch (Exception e) {
+		}
+
 		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
 	}
-	
+
 	@GetMapping("listarAllServidores")
-	public List<Servidor> retornaAllServidores(){
-		
+	public List<Servidor> retornaAllServidores() {
+
 		return servidorService.listaAllServidores();
 	}
-	
+
 	@PostMapping("updateServidor")
 	public ResponseEntity concederAcessoComoProfissionalDeSaude(@RequestBody String id) throws URISyntaxException {
-
 		Integer ID = Integer.parseInt(id);
 		Servidor servidor = null;
 		try {
 			servidor = servidorService.concederAcessoComoProfissionalDeSaude(ID);
-			} catch(Exception e){}
-	
+		} catch (Exception e) {
+		}
+
 		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
 	}
-	
+
 	@PostMapping("updateServidorForPsicologo")
 	public ResponseEntity concederAcessoComoPsicologo(@RequestBody String id) throws URISyntaxException {
-
 		Integer ID = Integer.parseInt(id);
 		Servidor servidor = null;
 		try {
 			servidor = servidorService.concederAcessoComoPsicologo(ID);
-			} catch(Exception e){}
-	
+		} catch (Exception e) {
+		}
+
 		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
 	}
-	
+
 	@PostMapping("removerAcessoComoProfissionalDeSaude")
 	public ResponseEntity removerAcessoComoProfissionalDeSaude(@RequestBody String id) throws URISyntaxException {
-
 		Integer ID = Integer.parseInt(id);
 		Servidor servidor = null;
 		try {
 			servidor = servidorService.removerAcessoComoProfissionalDeSaude(ID);
-			} catch(Exception e){}
-	
+		} catch (Exception e) {
+		}
+
 		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
 	}
-	
+
 	@PostMapping("removerAcessoComoPsicologo")
 	public ResponseEntity removerAcessoComoPsicologo(@RequestBody String id) throws URISyntaxException {
-
 		Integer ID = Integer.parseInt(id);
 		Servidor servidor = null;
 		try {
 			servidor = servidorService.removerAcessoComoPsicologo(ID);
-			} catch(Exception e){}
-	
+		} catch (Exception e) {
+		}
+
 		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
 	}
-	
+
 	@PostMapping("/buscarServidorPeloId")
 	public ResponseEntity retornaServidorPeloId(@RequestBody String id) throws URISyntaxException {
-		
 		Servidor servidor = null;
 		Integer ID = Integer.parseInt(id);
 		try {
-			servidor = servidorService.pesquisar(ID);
-			} catch(Exception e){}
-	
+			servidor = servidorService.retornaServidorByID(ID);
+		} catch (Exception e) {
+		}
+
 		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
 	}
-	
+
 	@PostMapping("/isServidorGoogleId")
 	public ResponseEntity<Servidor> isExiste(@RequestBody String googleId) throws URISyntaxException {
 		Servidor servidor = new Servidor();
 		try {
 			servidor = servidorService.retornarServidorPeloGoogleId(googleId);
-			} catch(Exception e){}
-		
+		} catch (Exception e) {
+		}
+
 		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
 	}
-	
+
 	@PostMapping("/isServidorPermissaoProfSaude")
-	public boolean retornaPermissaoProfSaude(@RequestBody String googleId){
-		
+	public boolean retornaPermissaoProfSaude(@RequestBody String googleId) {
+
 		return servidorService.retornaPermissaoProfSaude(googleId);
 	}
-	
+
 	@PostMapping("/isServidorPermissaoPsicologo")
-	public boolean retornaPermissaoPsicologo(@RequestBody String googleId){
-		
+	public boolean retornaPermissaoPsicologo(@RequestBody String googleId) {
+
 		return servidorService.retornaPermissaoPsicologo(googleId);
 	}
-	
+
 	@PostMapping("/isServidorPermissaoAdmin")
-	public boolean retornaPermissaoAdmin(@RequestBody String email){
+	public boolean retornaPermissaoAdmin(@RequestBody String email) {
 		email = email.substring(1, email.length() - 1);
-		  
+
 		return servidorService.retornaPermissaoAdmin(email);
 	}
-	
+
 	@GetMapping("listarAllNomesServidores")
-	public List<String> retornaAllNomesServidores(){
-		
+	public List<String> retornaAllNomesServidores() {
+
 		return servidorService.retornaNomesDeTodosServidores();
 	}
-	
+
 	@GetMapping("listarAllNomesProfissionaisDeSaude")
-	public List<String> retornaNomesDeTodosProfissionaisDeSaude(){
-		
+	public List<String> retornaNomesDeTodosProfissionaisDeSaude() {
+
 		return servidorService.retornaNomesDeTodosProfissionaisDeSaude();
 	}
-	
+
 	@GetMapping("listarAllNomesPsicologos")
-	public List<String> retornaNomesDeTodosPsicologos(){
-		
+	public List<String> retornaNomesDeTodosPsicologos() {
+
 		return servidorService.retornaNomesDeTodosPsicologos();
 	}
 
+	@PostMapping("/retornaIdServidorByNome")
+	public String retornaIdServidorByNome(@RequestBody String nome) {
+		nome = nome.substring(1, nome.length() - 1);
+
+		return servidorService.buscarIdDoServidorPeloNome(nome);
+	}
+
+	@PostMapping("/retornaServidorByID")
+	public ResponseEntity retornaServidorByID(@RequestBody Integer ID) throws URISyntaxException {
+		Servidor servidor = servidorService.retornaServidorByID(ID);
+
+		return ResponseEntity.created(new URI("/servidor/" + servidor.getId())).body(servidor);
+	}
 }

@@ -1,10 +1,11 @@
 import { Card } from 'primereact/card';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarAdmin from '../ToobarAdmin';
 import BarraPessoalAdmin from '../BarraPessoalAdmin';
 import AcessoRapido from '../../../Components/AcessoRapido';
+import ServidorService from '../../../services/ServidorService';
 
 export default function PerfilAdmin() {
 
@@ -22,9 +23,22 @@ export default function PerfilAdmin() {
         history.push('/');
     }
 
-    function verificarAumento() {
-        history.push('/profissionalDeSaude/ListaDiscentesComAumentoVulnerabilidade')
-    }
+    const [servidor, setServidor] = useState([])
+    const requisitarServidor = () => {
+        ServidorService.getServidorById(id).then((response) => {
+            setServidor(response.data)
+        });
+    };
+
+    useEffect(() => {
+        requisitarServidor()
+
+    }, [servidor])
+
+    useEffect(() => {
+        const profissionaldeSaudeStr = JSON.stringify(servidor);
+        localStorage.setItem('metadataAdmin', profissionaldeSaudeStr);
+    }, [servidor])
 
     return (
         <div>
@@ -39,11 +53,6 @@ export default function PerfilAdmin() {
                         </div>
                     </Card>
                     <AcessoRapido></AcessoRapido>
-                    {/* <Card>
-                        <div>
-                            <Button className={configBotaoAcessar} label=" ACESSAR CONFIGURAÇÃO" onClick={verificarAumento} />
-                        </div>
-                    </Card> */}
 
                     <Card title='INSTRUÇÕES AO ESTUDANTE: ' >
                         <Card subTitle='Em primeiro lugar, você deve classificar os itens com base em sua condição durante as últimas duas semanas, além do dia em que o teste é administrado.' ></Card>
