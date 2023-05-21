@@ -55,6 +55,7 @@ export default function Campus(props) {
 
     return (
         <Dropdown className={campusObrigatorio}
+            style={{ width: '100%' }}
             filter
             value={campus}
             options={campi}

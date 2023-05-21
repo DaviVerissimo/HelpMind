@@ -9,12 +9,12 @@ export default function HomeComponente() {
 
     var configBotao = "p-mb-3 p-col-4";
     var largura = window. screen. width;
-    var tamanhoImagem = '';
+    var tamanhoImagem = '50%';
     var tamanhoBemVimdo = 'p-col-4 p-mb-5';
     
     if (largura < 640){
         configBotao = "p-mb-3";
-        tamanhoImagem = '180'
+        tamanhoImagem = '100%'
         tamanhoBemVimdo = 'p-col-12 p-mb-5';
     }
 
@@ -24,7 +24,7 @@ export default function HomeComponente() {
 
         <div className="home-container p-grid p-justify-center p-align-center p-mt-6" style={{ height: '100%' }} >
             <div className="home-ladoEsquerdo p-col-4 " >
-                <img src={logoImg} alt="logo" height={tamanhoImagem} width={tamanhoImagem} ></img>
+                <img src={logoImg} alt="logo" height={tamanhoImagem} width={tamanhoImagem}   ></img>
             </div>
 
             <div className="home-ladoDireito p-col-8" >

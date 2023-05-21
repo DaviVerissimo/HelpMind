@@ -52,6 +52,7 @@ export default function Cursos() {
         <div>
             <Dropdown
                 className={cursoObrigatorio}
+                style={{ width: '100%' }}
                 filter
                 value={curso}
                 options={cursos}

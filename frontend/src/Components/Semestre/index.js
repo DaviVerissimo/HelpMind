@@ -27,6 +27,7 @@ export default function Semestre() {
         <div>
             <Dropdown
                 className={semestreObrigatorio}
+                style={{ width: '100%' }}
                 optionLabel="name"
                 value={semestre}
                 options={semestres}

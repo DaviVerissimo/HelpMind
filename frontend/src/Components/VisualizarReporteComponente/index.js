@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Card } from 'primereact/card';
-import { useParams} from 'react-router-dom/cjs/react-router-dom.min';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import ReporteService from '../../services/ReporteService';
 import BotaoVoltar from '../BotaoVoltar';
 
@@ -60,6 +60,7 @@ export default function VisualizarReporteComponente() {
                     <Card subTitle='REPORTADOR POR' >
                         <InputText
                             value={NomeReportante}
+                            style={{ width: '100%' }}
                             disabled
                             onChange={(e) => setNomeReportante(e.target.value)}
                         />
@@ -67,6 +68,8 @@ export default function VisualizarReporteComponente() {
                     <Card subTitle='DISCENTE' >
                         <InputText
                             value={nome}
+                            autoResize
+                            style={{ width: '100%' }}
                             disabled
                             onChange={(e) => setNome(e.target.value)}
                         />
@@ -74,6 +77,7 @@ export default function VisualizarReporteComponente() {
                     <Card subTitle='CAMPUS' >
                         <InputText
                             value={campus}
+                            style={{ width: '100%' }}
                             disabled
                             onChange={(e) => setCampus(e.value)}
                         />
@@ -81,6 +85,7 @@ export default function VisualizarReporteComponente() {
                     <Card subTitle='CURSO' >
                         <InputText
                             value={curso}
+                            style={{ width: '100%' }}
                             disabled
                             onChange={(e) => setCurso(e.value)}
                         />
@@ -88,6 +93,7 @@ export default function VisualizarReporteComponente() {
                     <Card subTitle='ANO / PERÍODO' >
                         <InputText
                             value={periodo}
+                            style={{ width: '100%' }}
                             disabled
                             onChange={(e) => setPeriodos(e.target.value)}
                         />
@@ -95,6 +101,7 @@ export default function VisualizarReporteComponente() {
                     <Card subTitle='JÁ TENTOU SUICÍDIO?' >
                         <InputText
                             optionLabel="name"
+                            style={{ width: '100%' }}
                             value={suicidio}
                             disabled
                             onChange={(e) => setSuicidio(e.target.value)}
@@ -102,10 +109,10 @@ export default function VisualizarReporteComponente() {
                     </Card>
                     <Card subTitle='DESCRIÇÃO' >
                         <InputTextarea
-                            rows={5}
-                            cols={30}
                             value={descrisao}
                             disabled
+                            autoResize
+                            style={{ width: '100%' }}
                             onChange={(e) => setDescrisao(e.target.value)}
                         />
                     </Card>

@@ -31,6 +31,7 @@ export default function Periodo() {
         <div>
             <Dropdown
                 className={periodoObrigatorio}
+                style={{ width: '100%' }}
                 optionLabel="name"
                 value={periodo}
                 options={periodos}

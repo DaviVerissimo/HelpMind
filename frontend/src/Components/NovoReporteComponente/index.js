@@ -195,6 +195,7 @@ export default function NovoReporteComponente(props) {
                 <Card subTitle='DISCENTE' >
                     <InputText
                         className={nomeObrigatorio}
+                        style={{ width: '100%' }}
                         value={nome}
                         onChange={(e) => setNome(e.target.value)}
                     />
@@ -202,6 +203,7 @@ export default function NovoReporteComponente(props) {
                 <Card subTitle='CAMPUS' >
                     <Dropdown
                         className={campusObrigatorio}
+                        style={{ width: '100%' }}
                         filter
                         value={campus}
                         options={campi}
@@ -212,6 +214,7 @@ export default function NovoReporteComponente(props) {
                 <Card subTitle='CURSO' >
                     <Dropdown
                         lassName={cursoObrigatorio}
+                        style={{ width: '100%' }}
                         filter
                         value={curso}
                         options={cursos}
@@ -222,6 +225,7 @@ export default function NovoReporteComponente(props) {
                 <Card subTitle='ANO / PERÍODO' >
                     <Dropdown
                         className={periodoObrigatorio}
+                        style={{ width: '100%' }}
                         filter
                         optionLabel="name"
                         value={periodo}
@@ -233,6 +237,7 @@ export default function NovoReporteComponente(props) {
                 <Card subTitle='JÁ TENTOU SUICÍDIO?' >
                     <Dropdown
                         className={suicidioObrigatorio}
+                        style={{ width: '100%' }}
                         filter
                         optionLabel="name"
                         value={suicidio}
@@ -244,8 +249,8 @@ export default function NovoReporteComponente(props) {
                 <Card subTitle='DESCRIÇÃO' >
                     <InputTextarea
                         className={descrisaoObrigatoria}
-                        rows={5}
-                        cols={30}
+                        autoResize
+                        style={{ width: '100%' }}
                         value={descrisao}
                         onChange={(e) => setDescrisao(e.target.value)}
                     />

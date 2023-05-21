@@ -120,8 +120,8 @@ export default function ToobarDiscente() {
                     onClick={() => { history.push('/discente/EscolherQuestionariosDiscente') }}
                 />
                 <Button
-                    icon={createIcon("pi pi-bell")} s
-                    tyle={{ width: '100%' }}
+                    icon={createIcon("pi pi-bell")} 
+                    style={{ width: '100%' }}
                     className="p-button-outlined p-button-lg p-mr-3 p-mt-3 "
                     label='Reportes'
                     onClick={() => { history.push('/discente/Reportes') }}

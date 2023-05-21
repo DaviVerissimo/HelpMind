@@ -53,6 +53,7 @@ export default function DiscenteEmail() {
         <div>
             <Dropdown
                 className={emailObrigatorio}
+                style={{ width: '100%' }}
                 filter
                 value={email}
                 options={listaDeEmail}
