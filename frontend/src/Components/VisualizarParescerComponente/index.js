@@ -43,13 +43,27 @@ export default function VisualizarParescerComponente() {
                 </Card>
                 <Card >
                     <Card subTitle='DISCENTE' >
-                        <InputText value={nome} disabled />
+                        <InputText
+                            value={nome}
+                            disabled
+                            style={{ width: '100%' }}
+                        />
                     </Card>
-                    <Card subTitle='EMAIL' >
-                        <InputText value={email} disabled />
+                    <Card
+                        subTitle='EMAIL' >
+                        <InputText
+                            alue={email}
+                            disabled
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                     <Card subTitle='PARESCER DO PROFISSIONAL DE SAÚDE' >
-                        <InputTextarea rows={5} cols={30} value={parescer} disabled />
+                        <InputTextarea
+                            value={parescer}
+                            disabled
+                            autoResize
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                 </Card>
             </div>

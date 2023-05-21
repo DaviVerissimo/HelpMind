@@ -12,7 +12,7 @@ import URL from '../../../services/URL';
 import BotaoVoltar from '../../../Components/BotaoVoltar';
 
 export default function Reporte() {
-    
+
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -52,7 +52,7 @@ export default function Reporte() {
     ];
 
     var configBotaoSalvar = "p-ml-3";
-    
+
     const [nomeObrigatorio, setNomeObrigatorio] = useState();
     const [cursoObrigatorio, setCursoObrigatorio] = useState();
     const [campusObrigatorio, setCampusObrigatorio] = useState();
@@ -218,25 +218,69 @@ export default function Reporte() {
 
                 <Card >
                     <Card subTitle='DISCENTE' >
-                        <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
+                        <InputText
+                            className={nomeObrigatorio}
+                            value={nome}
+                            onChange={(e) => setNome(e.target.value)}
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                     <Card subTitle='CAMPUS' >
-                        <Dropdown className={campusObrigatorio} filter value={campus} options={campi} onChange={(e) => setCampus(e.value)} placeholder="Escolha um campus" />
+                        <Dropdown
+                            className={campusObrigatorio}
+                            filter
+                            value={campus}
+                            options={campi}
+                            onChange={(e) => setCampus(e.value)}
+                            placeholder="Escolha um campus"
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                     <Card subTitle='CURSO' >
-                        <Dropdown className={cursoObrigatorio} filter value={curso} options={cursos} onChange={(e) => setCurso(e.value)} placeholder="Escolha um curso" />
+                        <Dropdown
+                            className={cursoObrigatorio}
+                            filter
+                            value={curso}
+                            options={cursos}
+                            onChange={(e) => setCurso(e.value)}
+                            placeholder="Escolha um curso"
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                     <Card subTitle='ANO / PERÍODO' >
-                        <Dropdown className={periodoObrigatorio} filter optionLabel="name" value={periodo} options={periodos} onChange={(e) => setPeriodos(e.target.value)} placeholder="Não se aplica" />
+                        <Dropdown
+                            className={periodoObrigatorio}
+                            filter
+                            optionLabel="name"
+                            value={periodo}
+                            options={periodos}
+                            onChange={(e) => setPeriodos(e.target.value)}
+                            placeholder="Não se aplica"
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                     <Card subTitle='JÁ TENTOU SUICÍDIO?' >
-                        <Dropdown className={suicidioObrigatorio} filter optionLabel="name" value={suicidio} options={tentouSuicidio} onChange={(e) => setSuicidio(e.target.value)} placeholder="Não se aplica" />
+                        <Dropdown
+                            className={suicidioObrigatorio}
+                            filter
+                            optionLabel="name"
+                            value={suicidio}
+                            options={tentouSuicidio}
+                            onChange={(e) => setSuicidio(e.target.value)}
+                            placeholder="Não se aplica"
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                     <Card subTitle='DESCRIÇÃO' >
-                        <InputTextarea className={descrisaoObrigatoria} rows={5} cols={30} value={descrisao} onChange={(e) => setDescrisao(e.target.value)} />
+                        <InputTextarea
+                            className={descrisaoObrigatoria}
+                            autoResize
+                            value={descrisao}
+                            onChange={(e) => setDescrisao(e.target.value)}
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                 </Card>
-
             </div>
         </div>
 

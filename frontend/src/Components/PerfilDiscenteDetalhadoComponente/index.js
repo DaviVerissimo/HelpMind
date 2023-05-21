@@ -68,7 +68,7 @@ export default function PerfilDiscenteDetalhadoComponente(props) {
 
     const conversarComPsicologoSobreDiscente = () => {
         const usuario = props.data;
-        history.push('/' + usuario + '/conversa')
+        history.push('/' + usuario + '/iniciarConversaComPsicologo')
     }
 
     const novoProntuario = () => {

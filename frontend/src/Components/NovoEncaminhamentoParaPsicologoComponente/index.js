@@ -9,6 +9,7 @@ import BotaoVoltar from '../BotaoVoltar';
 import DiscenteNome from '../DiscenteNome';
 import PsicologoNomeComponente from '../PsicologoNomeComponente';
 import { InputText } from 'primereact/inputtext';
+import ListarConversasComponente from '../ListarConversasComponente';
 
 export default function NovoEncaminhamentoParaPsicologoComponente() {
 
@@ -115,10 +116,7 @@ export default function NovoEncaminhamentoParaPsicologoComponente() {
                         ></PsicologoNomeComponente>
                     </Card>
                     <Card subTitle='DISCENTE ENCAMINHADO'>
-                        {/* <DiscenteNome
-                            nomeDiscente={retornaNomeDoDiscente}
-                            preenchimentoObrigatorio={discenteNomeObrigatorio}
-                        ></DiscenteNome> */}
+
                         <InputText
                             value={discenteNome}
                             style={{ width: '100%' }}
@@ -131,10 +129,12 @@ export default function NovoEncaminhamentoParaPsicologoComponente() {
                             value={descrisao}
                             onChange={(e) => setDescrisao(e.target.value)}
                             autoResize
-                            style={{ width: '100%' }} />
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                 </Card>
             </div>
+            {/* <ListarConversasComponente></ListarConversasComponente> */}
         </div>
 
     );

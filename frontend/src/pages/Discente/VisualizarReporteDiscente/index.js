@@ -83,7 +83,12 @@ export default function VisualizarReporteDiscente() {
                         <InputText optionLabel="name" value={suicidio} disabled onChange={(e) => setSuicidio(e.target.value)} />
                     </Card>
                     <Card subTitle='DESCRIÇÃO' >
-                        <InputTextarea rows={5} cols={30} value={descrisao} disabled onChange={(e) => setDescrisao(e.target.value)} />)
+                        <InputTextarea
+                            value={descrisao}
+                            disabled
+                            onChange={(e) => setDescrisao(e.target.value)}
+                            autoResize
+                        />)
                     </Card>
                 </Card>
 
