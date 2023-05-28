@@ -20,7 +20,7 @@ export default function ToobarProfissionalDeSaude() {
         <React.Fragment>
 
             <div className='p-grid p-col' style={{ padding: 'em' }} >
-                <NomePerfil></NomePerfil>
+                {/* <NomePerfil></NomePerfil> */}
                 <FotoPerfil></FotoPerfil>
             </div>
         </React.Fragment>
@@ -55,10 +55,10 @@ export default function ToobarProfissionalDeSaude() {
                     onClick={() => { history.push('/profissionalDeSaude/ListaDiscentes') }}
                 />
                 <Button
-                    icon={createIcon("pi pi-file")}
-                    className="p-button-outlined p-mr-3 p-col"
-                    label='Prontuarios P. Psicólogico'
-                    onClick={() => { history.push('/profissionalDeSaude/prontuarios') }}
+                    icon={createIcon("pi pi-envelope")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    label='Mensagens'
+                    onClick={() => { history.push('/profissionalDeSaude/listaConversas') }}
                 />
                 <Button
                     icon={createIcon("pi pi-bell")}
@@ -123,11 +123,11 @@ export default function ToobarProfissionalDeSaude() {
                     onClick={() => { history.push('/profissionalDeSaude/ListaDiscentes') }}
                 />
                 <Button
-                    icon={createIcon("pi pi-file")}
+                    icon={createIcon("pi pi-envelope")}
                     style={{ width: '100%' }}
                     className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
-                    label='Prontuarios e Parescer psicólogico'
-                    onClick={() => { history.push('/profissionalDeSaude/prontuarios') }}
+                    label='Mensagens'
+                    onClick={() => { history.push('/profissionalDeSaude/listaConversas') }}
                 />
                 <Button
                     icon={createIcon("pi pi-bell")}

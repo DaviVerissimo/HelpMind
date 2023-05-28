@@ -19,7 +19,7 @@ export default function ToobarAdmin() {
     const rightContents = (
         <React.Fragment>
             <div className='p-grid p-col' style={{ padding: 'em' }} >
-                <NomePerfil></NomePerfil>
+                {/* <NomePerfil></NomePerfil> */}
                 <FotoPerfil></FotoPerfil>
             </div>
         </React.Fragment>
@@ -52,6 +52,12 @@ export default function ToobarAdmin() {
                     style={{ height: '4.00em', width: 'auto' }}
                     label='Discentes'
                     onClick={() => { history.push('/Admin/ListaDiscentes') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-envelope")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    label='Mensagens'
+                    onClick={() => { history.push('/Admin/listaConversasPrivadas') }}
                 />
                 <Button
                     icon={createIcon("pi pi-bell")}
@@ -120,6 +126,13 @@ export default function ToobarAdmin() {
                     className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
                     label='Discentes'
                     onClick={() => { history.push('/Admin/ListaDiscentes') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-envelope")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Mensagens'
+                    onClick={() => { history.push('/Admin/listaConversasPrivadas') }}
                 />
                 <Button
                     icon={createIcon("pi pi-bell")}

@@ -1,8 +1,9 @@
 import { Card } from 'primereact/card';
-import React, { useState,} from 'react';
+import React, { useState, } from 'react';
 import './style.css';
 import axios from 'axios';
 import URL from '../../../services/URL';
+import { Divider } from 'primereact/divider';
 
 export default function BarraPessoalDiscente({ idDiscente }) {
 
@@ -25,8 +26,15 @@ export default function BarraPessoalDiscente({ idDiscente }) {
 
     return (
         <div>
-            <Card title={name} ></Card>
-            <Card className='p-mt-3' title={email} ></Card>
+            <Card
+                title={name}
+            ></Card>
+            <Divider></Divider>
+            <Card
+                className='p-mt-3'
+                title={email}
+            ></Card>
+            <Divider></Divider>
         </div>
     );
 }

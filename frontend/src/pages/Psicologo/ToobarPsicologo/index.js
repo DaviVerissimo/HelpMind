@@ -19,7 +19,7 @@ export default function ToobarPsicologo() {
     const rightContents = (
         <React.Fragment>
             <div className='p-grid p-col' style={{ padding: 'em' }} >
-                <NomePerfil></NomePerfil>
+                {/* <NomePerfil></NomePerfil> */}
                 <FotoPerfil></FotoPerfil>
             </div>
         </React.Fragment>
@@ -54,11 +54,18 @@ export default function ToobarPsicologo() {
                     label='Discentes'
                     onClick={() => { history.push('/psicologo/ListaDiscentes') }}
                 />
+
+                <Button
+                    icon={createIcon("pi pi-envelope")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    label='Mensagens'
+                    onClick={() => { history.push('/psicologo/listaConversas') }}
+                />
                 <Button
                     icon={createIcon("pi pi-file")}
                     className="p-button-outlined p-button-lg p-mr-3 p-col"
-                    label='Parescer psicológico'
-                    onClick={() => { history.push('/psicologo/parecereres') }}
+                    label='Relatórios'
+                    onClick={() => { history.push('/psicologo/listarRelatoriosPsicologico') }}
                 />
                 <Button
                     icon={createIcon("pi pi-bell")}
@@ -121,11 +128,19 @@ export default function ToobarPsicologo() {
                     label='Discentes'
                     onClick={() => { history.push('/psicologo/ListaDiscentes') }}
                 />
+
+                <Button
+                    icon={createIcon("pi pi-envelope")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Mensagens'
+                    onClick={() => { history.push('/psicologo/listaConversas') }}
+                />
                 <Button
                     icon={createIcon("pi pi-file")}
                     style={{ width: '100%' }}
                     className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
-                    label='Parescer psicológico'
+                    label='Relatórios'
                     onClick={() => { history.push('/psicologo/parecereres') }}
                 />
                 <Button
@@ -145,7 +160,7 @@ export default function ToobarPsicologo() {
                 <Button
                     icon={createIcon("pi pi-user")}
                     style={{ width: '100%' }}
-                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-mb-2 p-col"
                     label='Psicólogo'
                     onClick={() => { history.push('/psicologo/perfil') }}
                 />

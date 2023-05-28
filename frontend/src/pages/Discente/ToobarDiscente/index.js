@@ -19,7 +19,7 @@ export default function ToobarDiscente() {
     const rightContents = (
         <React.Fragment>
             <div className='p-grid p-col' style={{ padding: '0em' }} >
-                <NomePerfil></NomePerfil>
+                {/* <NomePerfil></NomePerfil> */}
                 <FotoPerfil></FotoPerfil>
             </div>
         </React.Fragment>
@@ -65,7 +65,7 @@ export default function ToobarDiscente() {
                     onClick={() => { history.push('/discente/EscolherQuestionariosDiscente') }}
                 />
                 <Button
-                    con={createIcon("pi pi-bell")}
+                    icon={createIcon("pi pi-bell")}
                     className="p-button-outlined p-button-lg p-mr-3 p-col"
                     label='Reportes'
                     onClick={() => { history.push('/discente/Reportes') }}
