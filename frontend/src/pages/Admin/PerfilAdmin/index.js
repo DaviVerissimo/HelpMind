@@ -6,6 +6,7 @@ import ToobarAdmin from '../ToobarAdmin';
 import BarraPessoalAdmin from '../BarraPessoalAdmin';
 import AcessoRapido from '../../../Components/AcessoRapido';
 import ServidorService from '../../../services/ServidorService';
+import NotificacaoComponente from '../../../Components/NotificacaoComponente';
 
 export default function PerfilAdmin() {
 
@@ -43,6 +44,8 @@ export default function PerfilAdmin() {
     return (
         <div>
             <ToobarAdmin></ToobarAdmin>
+            <AcessoRapido></AcessoRapido>
+            <NotificacaoComponente></NotificacaoComponente>
             <div>
                 <Card title='MEU PERFIL ' >
 
@@ -52,7 +55,7 @@ export default function PerfilAdmin() {
                             <Button className={configBotao} label="SAIR" onClick={encerrarSessao} />
                         </div>
                     </Card>
-                    <AcessoRapido></AcessoRapido>
+                    
 
                     <Card title='INSTRUÇÕES AO ESTUDANTE: ' >
                         <Card subTitle='Em primeiro lugar, você deve classificar os itens com base em sua condição durante as últimas duas semanas, além do dia em que o teste é administrado.' ></Card>

@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
 import BarraPessoalProfSaude from '../BarraPessoalProfSaude';
 import ServidorService from '../../../services/ServidorService';
+import AcessoRapidoProfSaude from '../../../Components/AcessoRapidoProfSaude';
+import NotificacaoComponente from '../../../Components/NotificacaoComponente';
 
 export default function PerfilProfissionalDeSaude() {
 
@@ -41,6 +43,8 @@ export default function PerfilProfissionalDeSaude() {
     return (
         <div>
             <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+            <AcessoRapidoProfSaude></AcessoRapidoProfSaude>
+            <NotificacaoComponente></NotificacaoComponente>
             <div>
                 <Card title='MEU PERFIL ' >
                     

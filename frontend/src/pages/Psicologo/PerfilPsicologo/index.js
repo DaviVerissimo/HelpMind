@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarPsicologo from '../ToobarPsicologo';
 import BarraPessoalProfSaude from '../../ProfissionalDeSaude/BarraPessoalProfSaude';
 import ServidorService from '../../../services/ServidorService';
+import NotificacaoComponente from '../../../Components/NotificacaoComponente';
 
 export default function PerfilPsicologo() {
 
@@ -45,6 +46,7 @@ export default function PerfilPsicologo() {
                 <Card title='MEU PERFIL ' >
 
                     <BarraPessoalProfSaude idDiscente={id} ></BarraPessoalProfSaude>
+                    <NotificacaoComponente></NotificacaoComponente>
                     <Card className='p-col-16' >
                         <div>
                             <Button className={configBotao} label="SAIR" onClick={encerrarSessao} />

@@ -328,8 +328,8 @@ export default function PerfilDiscenteDetalhadoComponente(props) {
                             <div>
                                 <Button
                                     className={configBotao}
-                                    label="CONVERSAR COM PSICÓLOGO SOBRE ESTE DISCENTE"
-                                    icon='pi pi-comment'
+                                    label="FALAR COM PSICÓLOGO SOBRE ESTE DISCENTE"
+                                    icon='pi pi-envelope'
                                     onClick={() => { conversarComPsicologoSobreDiscente() }}
                                     disabled={broquearAcessoAoBotao}
                                 />
