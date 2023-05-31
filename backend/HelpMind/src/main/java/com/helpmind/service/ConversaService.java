@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.helpmind.model.Conversa;
 import com.helpmind.model.Mensagem;
@@ -72,7 +73,7 @@ public class ConversaService {
 		return conversa;
 	}
 
-	public synchronized Conversa addMensagemNaConversa(Mensagem mensagem, Integer ID) {
+	public Conversa addMensagemNaConversa(Mensagem mensagem, Integer ID) {
 		Conversa conversa = this.retornaConversaByID(ID);
 		List<Mensagem> mensagens = conversa.getMensagens();
 		LocalDateTime data = LocalDateTime.now();
@@ -80,7 +81,6 @@ public class ConversaService {
 		mensagens.add(mensagem);
 		mensagens = this.ordenaMensagensPorData(mensagens);
 		conversa.setMensagens(mensagens);
-
 		conversaRepository.save(conversa);
 
 		return conversa;
@@ -157,103 +157,104 @@ public class ConversaService {
 
 		return mensagensOrdenadas;
 	}
-	private void notificar () {
-		// o front realiza uma requisição booleana para saber pelo id se aquele servidor tem mensagens não vistas
-		// caso tenha o front realiza uma requisição enviando o id do servidor e pedindo o id da conversa
-		// no backend 
-		//na lista de todas as conversas passar o id do servidor
-		//se esse servidor tiver em alguma conversa mensagens não visualizadas retornar o id da conversa
-		// no fronte em pérfil aparesce um toast com um botao que leva para a conversa.
-		//passo x: sempre que uma conversa for visualizada mandar requisição com id da conversa  e id da mensagem mudando status booleano da mensagem caso serja false
-	}
 
 	public boolean verificaIsMensagensNaoVisualizadasProfSaude(String id) {
 		if (retornaIdConversaNaoVisualizadasProfSaude(id) > 0) {
-			
+
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	public boolean verificaIsMensagensNaoVisualizadasPsicologo(String id) {
 		if (retornaIdConversasNaoVisualizadasPsicologo(id) > 0) {
-			
+
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	public int retornaIdConversaNaoVisualizadasProfSaude(String id) {
+		int idConversa = -1;
 		List<Conversa> lista = this.retornaAllConversaByIdProfSaude(id);
-		for (int i = 0; i < lista.size() - 1; i++) {
-			if(lista.get(i).getMensagens().size() > 0) {
-				List<Mensagem> mensagens = lista.get(i).getMensagens();
-				if (!mensagens.get(i).isVisualizadoPeloProfSaude()) {//error aqui
-					return lista.get(i).getId();
+		try {
+			for (int i = 0; i < lista.size(); i++) {
+				if (lista.get(i).getMensagens().size() > 0) {
+					List<Mensagem> mensagens = lista.get(i).getMensagens();
+					if (!mensagens.get(i).isVisualizadoPeloProfSaude()) {
+						idConversa = lista.get(i).getId();
+					}
 				}
 			}
+		} catch (Exception e) {
+
+			return idConversa;
 		}
-		
-		return -1;
+
+		return idConversa;
 	}
-	
+
 	public int retornaIdConversasNaoVisualizadasPsicologo(String id) {
-		List<Conversa> lista = this.retornaAllConversaByIdProfSaude(id);
-//		for (int i = 0; i < lista.size(); i++) {
-//			List<Mensagem> mensagens = lista.get(i).getMensagens();
-//			if (!mensagens.get(i).isVisualizadoPeloPsicologo()) {
-//				return lista.get(i).getId();
-//			}
-//		}
-		for (int i = 0; i < lista.size() - 1; i++) {
-			if(lista.get(i).getMensagens().size() > 0) {
-				List<Mensagem> mensagens = lista.get(i).getMensagens();
-				if (!mensagens.get(i).isVisualizadoPeloPsicologo()) {//error aqui
-					return lista.get(i).getId();
+		int idConversa = -1;
+		List<Conversa> lista = this.retornaAllConversaByIdPsicologo(id);
+		try {
+			for (int i = 0; i < lista.size(); i++) {
+				if (lista.get(i).getMensagens().size() > 0) {
+					List<Mensagem> mensagens = lista.get(i).getMensagens();
+					if (!mensagens.get(i).isVisualizadoPeloPsicologo()) {
+						idConversa = lista.get(i).getId();
+					}
 				}
 			}
-		}	
-		
-		return -1;
+		} catch (Exception e) {
+
+			return idConversa;
+		}
+
+		return idConversa;
 	}
 
 	public Conversa conversaVisualizadaPeloPsicologo(String id) {
 		Integer ID = Integer.parseInt(id);
 		Conversa conversa = this.retornaConversaByID(ID);
-		conversa = this.marcaMensagensComoLidaPeloPsicologo(conversa);
-		this.salvar(conversa);
+		conversa = this.definirVisualizadoPeloPsicologoParaConversa(conversa);
+
 		return conversa;
 	}
-	
+
 	public Conversa conversaVisualizadaPeloProfSaude(String id) {
 		Integer ID = Integer.parseInt(id);
 		Conversa conversa = this.retornaConversaByID(ID);
-		conversa = this.marcaMensagensComoLidaPeloProfSaude(conversa);
-		this.salvar(conversa);
+		conversa = this.definirVisualizadoPeloProfSaudeParaConversa(conversa);
+
 		return conversa;
 	}
-	
-	public Conversa marcaMensagensComoLidaPeloPsicologo(Conversa conversa) {
+
+	@Transactional
+	public Conversa definirVisualizadoPeloProfSaudeParaConversa(Conversa conversa) {
+		List<Mensagem> mensagens = conversa.getMensagens();
+		for (int i = 0; i < mensagens.size(); i++) {
+			mensagens.get(i).setVisualizadoPeloProfSaude(true);
+		}
+		conversa.setMensagens(mensagens);
+		conversaRepository.save(conversa);
+
+		return conversa;
+
+	}
+
+	@Transactional
+	public Conversa definirVisualizadoPeloPsicologoParaConversa(Conversa conversa) {
 		List<Mensagem> mensagens = conversa.getMensagens();
 		for (int i = 0; i < mensagens.size(); i++) {
 			mensagens.get(i).setVisualizadoPeloPsicologo(true);
 		}
 		conversa.setMensagens(mensagens);
-		
+		conversaRepository.save(conversa);
+
 		return conversa;
-		
 	}
-	
-	public Conversa marcaMensagensComoLidaPeloProfSaude(Conversa conversa) {
-		List<Mensagem> mensagens = conversa.getMensagens();
-		for (int i = 0; i < mensagens.size(); i++) {
-			mensagens.get(i).setVisualizadoPeloPsicologo(true);
-		}
-		conversa.setMensagens(mensagens);
-		
-		return conversa;
-		
-	}
+
 }

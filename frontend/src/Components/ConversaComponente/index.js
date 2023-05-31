@@ -19,7 +19,7 @@ export default function ConversaComponente(props) {
         <Card>
           <BotaoVoltar />
         </Card>
-        <ConversaExibirMensagens idConversa={id} ></ConversaExibirMensagens>
+        <ConversaExibirMensagens idConversa={id} isPsicologo={isPsicologo} ></ConversaExibirMensagens>
         <ConversaEnviarMensagemComponente
           idConversa={id}
           visualizadoPeloProfSaude={visualizadoPeloProfSaude}

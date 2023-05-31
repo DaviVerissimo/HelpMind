@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.helpmind.model.Mensagem;
 
 @Repository
-public interface MensagemRepository extends JpaRepository<Mensagem, Integer>{
+public interface MensagemRepository extends JpaRepository<Mensagem, Integer> {	
 
 }
