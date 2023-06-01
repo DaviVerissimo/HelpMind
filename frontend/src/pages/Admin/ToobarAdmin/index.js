@@ -48,14 +48,14 @@ export default function ToobarAdmin() {
                 {/* <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Documentos' onClick={() => { history.push('/material/Crud') }} /> */}
                 <Button
                     icon={createIcon("pi pi-users")}
-                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    className="p-button-outlined p-button-lg p-mr-3 "
                     style={{ height: '4.00em', width: 'auto' }}
                     label='Discentes'
                     onClick={() => { history.push('/Admin/ListaDiscentes') }}
                 />
                 <Button
                     icon={createIcon("pi pi-envelope")}
-                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    className="p-button-outlined p-button-lg p-mr-3 "
                     label='Mensagens'
                     onClick={() => { history.push('/Admin/listaConversasPrivadas') }}
                 />
@@ -67,8 +67,8 @@ export default function ToobarAdmin() {
                 />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Apoio' /> */}
                 <Button
-                    icon={createIcon("pi pi-chart-line")}
-                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    icon={createIcon("pi pi-chart-bar")}
+                    className="p-button-outlined p-button-lg p-mr-3 "
                     label='Estatisticas'
                     onClick={() => { history.push('/Admin/consultarEstatisticas') }}
                 />
@@ -142,7 +142,7 @@ export default function ToobarAdmin() {
                     onClick={() => { history.push('/Admin/Reportes') }}
                 />
                 <Button
-                    icon={createIcon("pi pi-chart-line")}
+                    icon={createIcon("pi pi-chart-bar")}
                     style={{ width: '100%' }}
                     className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
                     label='Estatisticas'

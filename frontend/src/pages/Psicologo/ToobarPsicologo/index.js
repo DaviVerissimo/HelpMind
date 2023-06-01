@@ -49,7 +49,7 @@ export default function ToobarPsicologo() {
                 />
                 <Button
                     icon={createIcon("pi pi-users")}
-                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    className="p-button-outlined p-button-lg p-mr-3 "
                     style={{ height: '4.00em', width: 'auto' }}
                     label='Discentes'
                     onClick={() => { history.push('/psicologo/ListaDiscentes') }}
@@ -57,13 +57,13 @@ export default function ToobarPsicologo() {
 
                 <Button
                     icon={createIcon("pi pi-envelope")}
-                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    className="p-button-outlined p-button-lg p-mr-3"
                     label='Mensagens'
                     onClick={() => { history.push('/psicologo/listaConversas') }}
                 />
                 <Button
                     icon={createIcon("pi pi-file")}
-                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    className="p-button-outlined p-button-lg p-mr-3 "
                     label='Relatórios'
                     onClick={() => { history.push('/psicologo/listarRelatoriosPsicologico') }}
                 />
@@ -74,8 +74,8 @@ export default function ToobarPsicologo() {
                     onClick={() => { history.push('/psicologo/Reportes') }}
                 />
                 <Button
-                    icon={createIcon("pi pi-chart-line")}
-                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    icon={createIcon("pi pi-chart-bar")}
+                    className="p-button-outlined p-button-lg p-mr-3 "
                     label='Estatísticas'
                     onClick={() => { history.push('/psicologo/consultarEstatisticas') }}
                 />
