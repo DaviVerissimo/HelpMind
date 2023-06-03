@@ -4,6 +4,8 @@ import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarDiscente from '../ToobarDiscente';
 import BarraPessoalDiscente from '../BarraPessoalDiscente';
+import axios from 'axios';
+import RotinaQuestionarioSocioeconomicoService from '../../../services/RotinaQuestionarioSocioeconomicoService';
 
 export default function PerfilDiscente() {
 
@@ -15,7 +17,13 @@ export default function PerfilDiscente() {
         configBotao = "p-mt-3 ";
     }
     const history = useHistory();
-
+    RotinaQuestionarioSocioeconomicoService.isRedirecionarQuestionarioSocioeconomico(id)
+    .then(Response => {
+        if (Response.data) {
+            history.push('/discente/QuestionarioSocioeconomico')
+        };
+    })
+    .catch(error => console.error(error))
     const encerrarSessao = () => {
                 localStorage.clear();
                 history.push('/');

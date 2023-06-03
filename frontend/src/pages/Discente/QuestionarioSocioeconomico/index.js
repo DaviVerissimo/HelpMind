@@ -715,7 +715,7 @@ export default function QuestionarioSocioeconomico() {
             <ToobarDiscente></ToobarDiscente>
             <div>
                 <Toast ref={toast} />
-                <Card className="QUESTIONÁRIO SOCIOECONÓMICO" >
+                <Card title={'QUESTIONÁRIO SOCIOECONÔMICO'} >
                     <BotaoVoltar></BotaoVoltar>
                     <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
                 </Card>

@@ -1,5 +1,6 @@
 package com.helpmind.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.helpmind.model.Discente;
 import com.helpmind.model.QuestionarioSocioeconomico;
+import com.helpmind.model.RotinaQuestionarioSocioeconomico;
 import com.helpmind.repository.DiscenteRepository;
 import com.helpmind.repository.QuestionarioSocioeconomicoRepository;
 
@@ -20,6 +22,9 @@ public class QuestionarioSocioeconomicoService {
 	@Autowired
 	private QuestionarioSocioeconomicoRepository questionarioSocioeconomicoRepository;
 
+	@Autowired
+	private RotinaQuestionarioSocioeconomicoService rotinaQuestionarioSocioeconomicoService;
+
 	public void salvar(QuestionarioSocioeconomico questionarioSocioeconomico) {
 		Integer ID = Integer.parseInt(questionarioSocioeconomico.getIdDiscente());
 		Discente discente = new Discente();
@@ -31,6 +36,19 @@ public class QuestionarioSocioeconomicoService {
 		discente.setPeriodo(questionarioSocioeconomico.getPeriodo());
 		discente.setCampus(questionarioSocioeconomico.getCampusDoDiscente());
 		questionarioSocioeconomicoRepository.save(questionarioSocioeconomico);
+		atualizaRotinaSocioeconomica(questionarioSocioeconomico.getIdDiscente());
+	}
+
+	private void atualizaRotinaSocioeconomica(String idDiscente) {
+		RotinaQuestionarioSocioeconomico rotina = rotinaQuestionarioSocioeconomicoService
+				.buscarRotinaByIdDiscente(idDiscente);
+		if (rotina.isPrimeiroAcesso()) {
+			rotina.setPrimeiroAcesso(false);
+		}
+		LocalDateTime data = LocalDateTime.now();
+		LocalDateTime proximaData = rotinaQuestionarioSocioeconomicoService.calcularProximaDataDoQuestionario(data);
+		rotina.setDataProximoQuestionario(proximaData);
+		rotinaQuestionarioSocioeconomicoService.salvar(rotina);
 	}
 
 	public List<QuestionarioSocioeconomico> retornarListaAllQuestionarioSocioeconomico() {
