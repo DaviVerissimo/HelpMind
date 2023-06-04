@@ -6,209 +6,281 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.helpmind.controller.FileLeitura;
+import com.helpmind.model.ConsultaEstatistica;
+import com.helpmind.model.ContadorDeNotas;
 import com.helpmind.model.Discente;
 import com.helpmind.model.Estatistica;
-import com.helpmind.model.QuestionarioSocioeconomico;
+import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
+import com.helpmind.model.QuestionarioDeDepressaoDeBeck;
+import com.helpmind.model.StatusAnsiedade;
+import com.helpmind.model.StatusDepressao;
 
 @Service
 public class EstatisticaService {
-	
+
+	private FileLeitura leitura = new FileLeitura();
+
 	@Autowired
 	private DiscenteService discenteService;
-	@Autowired
-	private QuestionarioSocioeconomicoService questionarioSocioeconomicoService;
-	
-	public Estatistica retornaEstatisticaAllDiscente() {
+
+	public List<Estatistica> retornaEstatisticasAnsiedade(ConsultaEstatistica consultaEstatistica) {
 		List<Discente> lista = discenteService.retornaAllDiscentes();
-		
-		return this.gerarEstatistica(lista);
-		
-	}
-	
-	public Estatistica retornaEstatisticaByCurso(String curso) {
-		List<Discente> lista = discenteService.retornaDiscenteByCurso(curso);
-		
-		return this.gerarEstatistica(lista);
-		
-	}
-	
-	public Estatistica retornaEstatisticaByPeriodo(String periodo) {
-		periodo = periodo.substring(1, periodo.length() - 1);
-		List<Integer> IDs = retornaIdPorPeriodo(periodo);
-		List<Discente> lista = retornaDiscentesPorIDs(IDs);
-		
-		return this.gerarEstatistica(lista);
-		
-	}
-	
-	public Estatistica retornaEstatisticaByCursoAndPeriodo(String curso ,String periodo) {
-		List<Integer> IDs = retornaIdPorPeriodoAndCurso(periodo, curso);
-		List<Discente> lista = retornaDiscentesPorIDs(IDs);
-		
-		return this.gerarEstatistica(lista);
-		
-	}
-	
-	public int retornaQuantidadeDiscente(List<Discente> lista) {
-		return lista.size();
-		
-	}
-	
-	public int retornaQuantidadeDepressaoGrave(List<Discente> lista) {
-		int contador = 0;
-		for (int i = 0; i < lista.size(); i++) {
-			if(lista.get(i).getStatusDoDiscenteDepresao() != null ) {
-				if (lista.get(i).getStatusDoDiscenteDepresao().equals("04 Depressão grave")) {
-					contador++;
-				}
-			}
-
-		}
-		return contador;
-		
-	}
-	
-	public int retornaQuantidadeDepressaoModerada(List<Discente> lista) {
-		int contador = 0;
-		for (int i = 0; i < lista.size(); i++) {
-			if(lista.get(i).getStatusDoDiscenteDepresao() != null ) {
-				if (lista.get(i).getStatusDoDiscenteDepresao().equals("03 Depressão moderada")) {
-					contador++;
-				}
-			}
-
-		}
-		return contador;
-		
-	}
-	
-	public int retornaQuantiddeAnsiedadeGrave(List<Discente> lista) {
-		int contador = 0;
-		for (int i = 0; i < lista.size(); i++) {
-			if(lista.get(i).getStatusDoDiscenteAnsiedade() != null ) {
-				if (lista.get(i).getStatusDoDiscenteAnsiedade().equals("04 Ansiedade grave")) {
-					contador++;
-				}
-			}
-
-		}
-		return contador;
-		
-	}
-	
-	public int retornaQuantidadeAnsiedadeModerada(List<Discente> lista) {
-		int contador = 0;
-		for (int i = 0; i < lista.size(); i++) {
-			if(lista.get(i).getStatusDoDiscenteAnsiedade() != null ) {
-				if (lista.get(i).getStatusDoDiscenteAnsiedade().equals("03 Ansiedade moderada")) {
-					contador++;
-				}
-			}
-
-		}
-		return contador;
-		
-	}
-	
-	public String retornaStatusMedioDepressao(List<Discente> lista) {
-		float nota = 0;
-		for (int i = 0; i < lista.size(); i++) {
-			nota += lista.get(i).getMediaDoDiscenteQuestionariosDeDepresao();
-		}
-		if (nota > 0) {
-			nota = nota / (lista.size());
-		}
-		
-		String status = "01 Depressão mínima (Alguém faltou preencher)";
-		if (discenteService.calcularDepressaoMedia(nota) != null) {
-			status = discenteService.calcularDepressaoMedia(nota);
-		}
-		
-		return status;
-		
-	}
-
-	public String retornaStatusMedioAnsiedade(List<Discente> lista) {
-		float nota = 0;
-		for (int i = 0; i < lista.size(); i++) {
-			nota += lista.get(i).getMediaDoDiscenteQuestionariosDeAnsiedade();
-		}
-		if (nota > 0) {
-			nota = nota / (lista.size());
-		}
-		String status = "01 Ansiedade mínima (Alguém faltou preencher)";
-		if (discenteService.calcularAnsiedadeMedia(nota) != null) {
-			status = discenteService.calcularAnsiedadeMedia(nota);
-		}
-		
-		return status;
-		
-	}
-	
-	public Estatistica gerarEstatistica(List<Discente> lista) {
+//		lista = discenteService.preparaDiscentesParaConsulta(lista, "Ansiedade", consultaEstatistica);
+		lista = this.filtrarDiscentes(lista, consultaEstatistica.getCampus(), consultaEstatistica.getCurso(),
+				consultaEstatistica.getPeriodo(), consultaEstatistica.getSemestre() );
+		List<Estatistica> estatisticas = new ArrayList<Estatistica>();
 		Estatistica estatistica = new Estatistica();
-		lista = discenteService.definirMediasDeAnsiedade_depressao_e_status(lista);
-		estatistica.setQuantidadeDiscente(this.retornaQuantidadeDiscente(lista));
-		estatistica.setQuantidadeDepressaoGrave(this.retornaQuantidadeDepressaoGrave(lista));
-		estatistica.setQuantidadeDepressaoModerada(this.retornaQuantidadeDepressaoModerada(lista));
-		estatistica.setQuantiddeAnsiedadeGrave(this.retornaQuantiddeAnsiedadeGrave(lista));
-		estatistica.setQuantidadeAnsiedadeModerada(this.retornaQuantidadeAnsiedadeModerada(lista));
-		estatistica.setStatusMedioDepressao(this.retornaStatusMedioDepressao(lista));
-		estatistica.setStatusMedioAnsiedade(this.retornaStatusMedioAnsiedade(lista));
-		
-		return estatistica;
-		
-	}
-	
-	public List<Integer> retornaIdPorPeriodo(String periodo){
-		List<String> lista_id_discente = new ArrayList<String>();
-		List<QuestionarioSocioeconomico> listaQuestionarioSocioeconomico = questionarioSocioeconomicoService
-				.retornarListaAllQuestionarioSocioeconomico();
-		List<Integer>listaID = new ArrayList<Integer>();
-		for (int i = 0; i < listaQuestionarioSocioeconomico.size(); i++) {
-			if (listaQuestionarioSocioeconomico.get(i).getPeriodo().equals(periodo)) {
-				lista_id_discente.add(listaQuestionarioSocioeconomico.get(i).getIdDiscente());
-			}
+		List<String> cursos = configurarCursos(consultaEstatistica);
+
+		for (int i = 0; i < cursos.size(); i++) {
+			String curso = cursos.get(i);
+			estatistica = this.gerarEstatisticasAnsiedade(lista, curso);
+			estatisticas.add(estatistica);
 		}
-		
-		for (int i = 0; i < lista_id_discente.size(); i++) {
-			Integer ID = Integer.parseInt(lista_id_discente.get(i));
-			listaID.add(ID);
-		}
-		
-		return listaID;
+
+		return estatisticas;
 
 	}
-	
-	public List<Integer> retornaIdPorPeriodoAndCurso(String periodo, String curso){
-		List<String> lista_id_discente = new ArrayList<String>();
-		List<QuestionarioSocioeconomico> listaQuestionarioSocioeconomico = questionarioSocioeconomicoService
-				.retornarListaAllQuestionarioSocioeconomico();
-		List<Integer>listaID = new ArrayList<Integer>();
-		for (int i = 0; i < listaQuestionarioSocioeconomico.size(); i++) {
-			if (listaQuestionarioSocioeconomico.get(i).getPeriodo().equals(periodo) 
-					&& listaQuestionarioSocioeconomico.get(i).getCurso().equals(curso)) {
-							lista_id_discente.add(listaQuestionarioSocioeconomico.get(i).getIdDiscente());
-			}
+
+	public List<Estatistica> retornaEstatisticasDepressao(ConsultaEstatistica consultaEstatistica) {
+
+		List<Discente> lista = discenteService.retornaAllDiscentes();
+//		lista = discenteService.preparaDiscentesParaConsulta(lista, "Ansiedade", consultaEstatistica);
+		lista = this.filtrarDiscentes(lista, consultaEstatistica.getCampus(), consultaEstatistica.getCurso(),
+				consultaEstatistica.getPeriodo(), consultaEstatistica.getSemestre() );
+		List<Estatistica> estatisticas = new ArrayList<Estatistica>();
+		Estatistica estatistica = new Estatistica();
+		List<String> cursos = configurarCursos(consultaEstatistica);
+
+		for (int i = 0; i < cursos.size(); i++) {
+			String curso = cursos.get(i);
+			estatistica = this.gerarEstatisticasDepressao(lista, curso);
+			estatisticas.add(estatistica);
 		}
-		
-		for (int i = 0; i < lista_id_discente.size(); i++) {
-			Integer ID = Integer.parseInt(lista_id_discente.get(i));
-			listaID.add(ID);
-		}
-		
-		return listaID;
+
+		return estatisticas;
 
 	}
-	
-	public List<Discente> retornaDiscentesPorIDs(List<Integer> IDs){
+
+	public List<String> configurarCursos(ConsultaEstatistica consultaEstatistica) {
+		List<String> cursos = new ArrayList<String>();
+		List<String> campusLista = new ArrayList<String>();
+		if (consultaEstatistica.getCampus().equals("All")) {
+			campusLista = leitura.carregarCampi();
+			if (consultaEstatistica.getCurso().equals("All")) {
+				cursos = leitura.carregarCursos();
+			} else {
+				cursos = leitura.carregarCursosPorCampus(consultaEstatistica.getCampus());
+			}
+		} else {
+			String campus = consultaEstatistica.getCampus();
+			if (consultaEstatistica.getCurso().equals("All")) {
+				cursos = leitura.carregarCursosPorCampus(campus);
+			} else {
+				cursos.add(consultaEstatistica.getCurso());
+			}
+		}
+		return cursos;
+	}
+
+	public boolean isContemEstatisticaDoCurso(List<Estatistica> lista, Estatistica estatistica, String curso) {
+
+		for (int i = 0; i < lista.size(); i++) {
+			if (estatistica.getCurso().equals(lista.get(i).getCurso())) {
+
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public List<Discente> filtrarDiscentes(List<Discente> discentes, String campus, String curso, String periodo,
+			String semestre) {
+		List<Discente> resultado = new ArrayList<>();
+
+		for (Discente discente : discentes) {
+			boolean atendeCampus = campus.equalsIgnoreCase("All") || discente.getCampus().equalsIgnoreCase(campus);
+			boolean atendeCurso = curso.equalsIgnoreCase("All") || discente.getCurso().equalsIgnoreCase(curso);
+			boolean atendePeriodo = periodo.equalsIgnoreCase("All") || discente.getPeriodo().equalsIgnoreCase(periodo);
+
+			if (atendeCampus && atendeCurso && atendePeriodo) {
+				resultado.add(discente);
+			}
+		}
+//		resultado = this.filtraDiscentePorSemestre(discentes, semestre);
+
+		return resultado;
+	}
+
+	public List<Discente> filtraDiscentePorSemestre(List<Discente> discentes, String semestreFiltrado) {
+		List<Discente> discentesFiltrados = new ArrayList<>();
+		for (Discente discente : discentes) {
+			if (discente.getListaQuestionarioDeAnsiedadeDeBeck() != null) {
+				for (QuestionarioDeAnsiedadeDeBeck questionario : discente.getListaQuestionarioDeAnsiedadeDeBeck()) {
+					if (questionario.getSemestre().equals(semestreFiltrado) || semestreFiltrado.equals("All")) {
+						discentesFiltrados.add(discente);
+						// Sai do loop interno para evitar adicionar o mesmo discente várias vezes
+						break;
+					}
+				}
+			}
+
+			if (discente.getListaQuestionarioDeDepresaoDeBeck() != null) {
+				for (QuestionarioDeDepressaoDeBeck questionario : discente.getListaQuestionarioDeDepresaoDeBeck()) {
+					if (questionario.getSemestre().equals(semestreFiltrado) || semestreFiltrado.equals("All")) {
+						discentesFiltrados.add(discente);
+						// Sai do loop interno para evitar adicionar o mesmo discente várias vezes
+						break;
+					}
+				}
+			}
+		}
+		return discentesFiltrados;
+	}
+
+	public int retornaQuantidadeDiscentesPorCurso(List<Discente> lista, String curso) {
+		int quantidade = 0;
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getCurso().equals(curso)) {
+				quantidade++;
+			}
+		}
+
+		return quantidade;
+
+	}
+
+	public ContadorDeNotas contadorAnsiedadePorCurso(List<Discente> lista, String curso) {
+		ContadorDeNotas notas = new ContadorDeNotas();
+		for (int i = 0; i < lista.size(); i++) {
+			float media = lista.get(i).getMediaDoDiscenteQuestionariosDeAnsiedade();
+
+			if (lista.get(i).getCurso().equals(curso)) {
+				if (StatusAnsiedade.getStatus(media).equals(StatusAnsiedade.MINIMA)) {
+					notas.quantidadeMinima++;
+				}
+
+				if (StatusAnsiedade.getStatus(media).equals(StatusAnsiedade.LEVE)) {
+					notas.quantidadeLeve++;
+				}
+
+				if (StatusAnsiedade.getStatus(media).equals(StatusAnsiedade.MODERADA)) {
+					notas.quantidadeModerada++;
+				}
+
+				if (StatusAnsiedade.getStatus(media).equals(StatusAnsiedade.GRAVE)) {
+					notas.quantidadeGrave++;
+				}
+			}
+		}
+
+		return notas;
+	}
+
+	public ContadorDeNotas contadorDepressao(List<Discente> lista, String curso) {
+		ContadorDeNotas notas = new ContadorDeNotas();
+		for (int i = 0; i < lista.size(); i++) {
+			float media = lista.get(i).getMediaDoDiscenteQuestionariosDeDepresao();
+			if (lista.get(i).getCurso().equals(curso)) {
+				if (StatusDepressao.getStatus(media).equals(StatusDepressao.MINIMA)) {
+					notas.quantidadeMinima++;
+				}
+
+				if (StatusDepressao.getStatus(media).equals(StatusDepressao.LEVE)) {
+					notas.quantidadeLeve++;
+				}
+
+				if (StatusDepressao.getStatus(media).equals(StatusDepressao.MODERADA)) {
+					notas.quantidadeModerada++;
+				}
+
+				if (StatusDepressao.getStatus(media).equals(StatusDepressao.GRAVE)) {
+					notas.quantidadeGrave++;
+				}
+			}
+		}
+
+		return notas;
+	}
+
+	public List<Discente> retornaDiscentesPorIDs(List<Integer> IDs) {
 		List<Discente> lista = new ArrayList<Discente>();
 		for (int i = 0; i < IDs.size(); i++) {
 			Discente discente = discenteService.buscaDiscentePorID(IDs.get(i));
 			lista.add(discente);
 		}
 		return lista;
-		
+
+	}
+
+	public float retornaMediaDoCursoAnsiedade(List<Discente> lista, String curso) {
+		float media = 0;
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(lista.get(i).getCurso() + " " + curso);
+			if (lista.get(i).getCurso().equals(curso)) {
+				media += lista.get(i).getMediaDoDiscenteQuestionariosDeAnsiedade();
+			}
+
+		}
+		if (media > 0) {
+			media = media / (lista.size());
+		}
+
+		return media;
+	}
+
+	public float retornaMediaDoCursoDepressao(List<Discente> lista, String curso) {
+		float media = 0;
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getCurso().equals(curso)) {
+				media += lista.get(i).getMediaDoDiscenteQuestionariosDeDepresao();
+			}
+
+		}
+		if (media > 0) {
+			media = media / (lista.size());
+		}
+
+		return media;
+	}
+
+	public Estatistica gerarEstatisticasAnsiedade(List<Discente> lista, String curso) {
+
+		Estatistica estatistica = new Estatistica();
+		lista = discenteService.gerar_discentes_completo_com_questionarios_media_status(lista);
+		estatistica.setQuantidadeTotal(this.retornaQuantidadeDiscentesPorCurso(lista, curso));
+		ContadorDeNotas contador = contadorAnsiedadePorCurso(lista, curso);
+		float media = this.retornaMediaDoCursoAnsiedade(lista, curso);
+		estatistica.setMedia(media);
+		estatistica.setQuantidadeGrave(contador.quantidadeGrave);
+		estatistica.setQuantidadeModerada(contador.quantidadeModerada);
+		estatistica.setQuantidadeLeve(contador.quantidadeLeve);
+		estatistica.setQuantidadeMinima(contador.quantidadeMinima);
+		estatistica.setStatusMedio(StatusAnsiedade.getStatus(media));
+		estatistica.setCurso(curso);
+
+		return estatistica;
+
+	}
+
+	public Estatistica gerarEstatisticasDepressao(List<Discente> lista, String curso) {
+		Estatistica estatistica = new Estatistica();
+		lista = discenteService.gerar_discentes_completo_com_questionarios_media_status(lista);
+		estatistica.setQuantidadeTotal(this.retornaQuantidadeDiscentesPorCurso(lista, curso));
+		ContadorDeNotas contador = contadorDepressao(lista, curso);
+		float media = this.retornaMediaDoCursoDepressao(lista, curso);
+		estatistica.setMedia(media);
+		estatistica.setQuantidadeGrave(contador.quantidadeGrave);
+		estatistica.setQuantidadeModerada(contador.quantidadeModerada);
+		estatistica.setQuantidadeLeve(contador.quantidadeLeve);
+		estatistica.setQuantidadeMinima(contador.quantidadeMinima);
+		estatistica.setStatusMedio(StatusDepressao.getStatus(media));
+		estatistica.setCurso(curso);
+
+		return estatistica;
+
 	}
 
 }

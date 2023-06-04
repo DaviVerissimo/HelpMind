@@ -13,63 +13,139 @@ public class Estatistica {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private int quantidadeDiscente;
-	private int quantidadeDepressaoGrave;
-	private int quantidadeDepressaoModerada;
-	private int quantiddeAnsiedadeGrave;
-	private int quantidadeAnsiedadeModerada;
-	private String statusMedioDepressao;
-	private String statusMedioAnsiedade;
-	
+	private String curso;
+	private int quantidadeMinima;
+	private int quantidadeLeve;
+	private int quantidadeModerada;
+	private int quantidadeGrave;
+	private int quantidadeTotal;
+	private float media;
+	private String statusMedio;
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getQuantidadeDiscente() {
-		return quantidadeDiscente;
+	public String getCurso() {
+		return curso;
 	}
-	public void setQuantidadeDiscente(int quantidadeDiscente) {
-		this.quantidadeDiscente = quantidadeDiscente;
+	public void setCurso(String curso) {
+		this.curso = curso;
 	}
-	public int getQuantidadeDepressaoGrave() {
-		return quantidadeDepressaoGrave;
+	public int getQuantidadeMinima() {
+		return quantidadeMinima;
 	}
-	public void setQuantidadeDepressaoGrave(int quantidadeDepressaoGrave) {
-		this.quantidadeDepressaoGrave = quantidadeDepressaoGrave;
+	public void setQuantidadeMinima(int quantidadeMinima) {
+		this.quantidadeMinima = quantidadeMinima;
 	}
-	public int getQuantidadeDepressaoModerada() {
-		return quantidadeDepressaoModerada;
+	public int getQuantidadeLeve() {
+		return quantidadeLeve;
 	}
-	public void setQuantidadeDepressaoModerada(int quantidadeDepressaoModerada) {
-		this.quantidadeDepressaoModerada = quantidadeDepressaoModerada;
+	public void setQuantidadeLeve(int quantidadeLeve) {
+		this.quantidadeLeve = quantidadeLeve;
 	}
-	public int getQuantiddeAnsiedadeGrave() {
-		return quantiddeAnsiedadeGrave;
+	public int getQuantidadeModerada() {
+		return quantidadeModerada;
 	}
-	public void setQuantiddeAnsiedadeGrave(int quantiddeAnsiedadeGrave) {
-		this.quantiddeAnsiedadeGrave = quantiddeAnsiedadeGrave;
+	public void setQuantidadeModerada(int quantidadeModerada) {
+		this.quantidadeModerada = quantidadeModerada;
 	}
-	public int getQuantidadeAnsiedadeModerada() {
-		return quantidadeAnsiedadeModerada;
+	public int getQuantidadeGrave() {
+		return quantidadeGrave;
 	}
-	public void setQuantidadeAnsiedadeModerada(int quantidadeAnsiedadeModerada) {
-		this.quantidadeAnsiedadeModerada = quantidadeAnsiedadeModerada;
+	public void setQuantidadeGrave(int quantidadeGrave) {
+		this.quantidadeGrave = quantidadeGrave;
 	}
-	public String getStatusMedioDepressao() {
-		return statusMedioDepressao;
+	public int getQuantidadeTotal() {
+		return quantidadeTotal;
 	}
-	public void setStatusMedioDepressao(String statusMedioDepressao) {
-		this.statusMedioDepressao = statusMedioDepressao;
+	public void setQuantidadeTotal(int quantidadeTotal) {
+		this.quantidadeTotal = quantidadeTotal;
 	}
-	public String getStatusMedioAnsiedade() {
-		return statusMedioAnsiedade;
+	public float getMedia() {
+		return media;
 	}
-	public void setStatusMedioAnsiedade(String statusMedioAnsiedade) {
-		this.statusMedioAnsiedade = statusMedioAnsiedade;
+	public void setMedia(float media) {
+		this.media = media;
+	}
+	public String getStatusMedio() {
+		return statusMedio;
+	}
+	public void setStatusMedio(String statusMedio) {
+		this.statusMedio = statusMedio;
 	}
 	
 	
+	
+	
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private Integer id;
+//	private String curso;
+//	private int quantidadeDiscente;
+//	private int quantidadeDepressaoGrave;
+//	private int quantidadeDepressaoModerada;
+//	private int quantiddeAnsiedadeGrave;
+//	private int quantidadeAnsiedadeModerada;
+//	private String statusMedioDepressao;
+//	private String statusMedioAnsiedade;
+	
+//	public Integer getId() {
+//		return id;
+//	}
+//	public void setId(Integer id) {
+//		this.id = id;
+//	}
+//	public int getQuantidadeDiscente() {
+//		return quantidadeDiscente;
+//	}
+//	public void setQuantidadeDiscente(int quantidadeDiscente) {
+//		this.quantidadeDiscente = quantidadeDiscente;
+//	}
+//	public int getQuantidadeDepressaoGrave() {
+//		return quantidadeDepressaoGrave;
+//	}
+//	public void setQuantidadeDepressaoGrave(int quantidadeDepressaoGrave) {
+//		this.quantidadeDepressaoGrave = quantidadeDepressaoGrave;
+//	}
+//	public int getQuantidadeDepressaoModerada() {
+//		return quantidadeDepressaoModerada;
+//	}
+//	public void setQuantidadeDepressaoModerada(int quantidadeDepressaoModerada) {
+//		this.quantidadeDepressaoModerada = quantidadeDepressaoModerada;
+//	}
+//	public int getQuantiddeAnsiedadeGrave() {
+//		return quantiddeAnsiedadeGrave;
+//	}
+//	public void setQuantiddeAnsiedadeGrave(int quantiddeAnsiedadeGrave) {
+//		this.quantiddeAnsiedadeGrave = quantiddeAnsiedadeGrave;
+//	}
+//	public int getQuantidadeAnsiedadeModerada() {
+//		return quantidadeAnsiedadeModerada;
+//	}
+//	public void setQuantidadeAnsiedadeModerada(int quantidadeAnsiedadeModerada) {
+//		this.quantidadeAnsiedadeModerada = quantidadeAnsiedadeModerada;
+//	}
+//	public String getStatusMedioDepressao() {
+//		return statusMedioDepressao;
+//	}
+//	public void setStatusMedioDepressao(String statusMedioDepressao) {
+//		this.statusMedioDepressao = statusMedioDepressao;
+//	}
+//	public String getStatusMedioAnsiedade() {
+//		return statusMedioAnsiedade;
+//	}
+//	public void setStatusMedioAnsiedade(String statusMedioAnsiedade) {
+//		this.statusMedioAnsiedade = statusMedioAnsiedade;
+//	}
+//	public String getCurso() {
+//		return curso;
+//	}
+//	public void setCurso(String curso) {
+//		this.curso = curso;
+//	}
+//	
+//	
 
 }
