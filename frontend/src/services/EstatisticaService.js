@@ -1,10 +1,8 @@
 import axios from 'axios';
 import URL from './URL';
 
-const API_BASE_URL_ESTATISTICAS_TODOS_DISCENTE = URL.getDominio() + '/estatistica/all';
-const API_BASE_URL_ESTATISTICAS_CURSO = URL.getDominio() + '/estatistica/byCurso';
-const API_BASE_URL_ESTATISTICAS_PERIODO = URL.getDominio() + '/estatistica/byPeriodo';
-const API_BASE_URL_ESTATISTICAS_CURSO_PERIODO = URL.getDominio() + '/estatistica/byCursoAndPeriodo';
+const API_BASE_URL_ESTATISTICAS_ANSIEDADE = URL.getDominio() + '/estatistica/byAnsiedade';
+const API_BASE_URL_ESTATISTICAS_DEPRESSAO = URL.getDominio() + '/estatistica/byDepressao';
 
 const headers = {
     'headers': {
@@ -16,21 +14,14 @@ const headers = {
 
 class EstatisticaService {
 
-    getAllEstatistica() {
-        return axios.get(API_BASE_URL_ESTATISTICAS_TODOS_DISCENTE);
+    getByAnsiedade(consulta) {
+        return axios.post(API_BASE_URL_ESTATISTICAS_ANSIEDADE, consulta, headers);
     }
 
-    getByCurso(curso) {
-        return axios.post(API_BASE_URL_ESTATISTICAS_CURSO, curso, headers);
+    getByDepressao(consulta) {
+        return axios.post(API_BASE_URL_ESTATISTICAS_DEPRESSAO, consulta, headers);
     }
 
-    getByPeriodo(periodo) {
-        return axios.post(API_BASE_URL_ESTATISTICAS_PERIODO, periodo, headers);
-    }
-
-    getByCursoPeriodo(consulta) {
-        return axios.post(API_BASE_URL_ESTATISTICAS_CURSO_PERIODO, consulta, headers);
-    }
 }
 
 export default new EstatisticaService();
