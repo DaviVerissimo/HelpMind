@@ -12,7 +12,7 @@ const StatusDepressaoComponente = ({ estatisticas }) => {
           corTexto = 'green'; // Mínima - cor verde
           status = 'Depressão Mínima';
         } else if (estatistica.media >= 14 && estatistica.media <= 19) {
-          corTexto = 'yellow'; // Leve - cor amarela
+          corTexto = '#FFEB3B'; // Leve - cor amarela
           status = 'Depressão Leve';
         } else if (estatistica.media >= 20 && estatistica.media <= 28) {
           corTexto = 'orange'; // Moderada - cor laranja

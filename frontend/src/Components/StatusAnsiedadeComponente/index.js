@@ -12,7 +12,7 @@ const StatusAnsiedadeComponente = ({ estatisticas }) => {
           corTexto = 'green'; // Mínima - cor verde
           status = 'Ansiedade Mínima';
         } else if (estatistica.media >= 8 && estatistica.media <= 15) {
-          corTexto = 'yellow'; // Leve - cor amarela
+          corTexto = '#FFEB3B'; // Leve - cor amarela
           status = 'Ansiedade Leve';
         } else if (estatistica.media >= 16 && estatistica.media <= 25) {
           corTexto = 'orange'; // Moderada - cor laranja
