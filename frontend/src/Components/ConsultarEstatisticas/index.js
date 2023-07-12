@@ -8,6 +8,7 @@ import Semestre from '../Semestre';
 import Campus from '../Campus';
 import { Toast } from 'primereact/toast';
 import EstatisticaService from '../../services/EstatisticaService';
+import { TabView, TabPanel } from 'primereact/tabview';
 
 export default function ConsultarEstatisticas(props) {
 
@@ -16,6 +17,9 @@ export default function ConsultarEstatisticas(props) {
     const [carregamentoCompleto, setCarregamentoCompleto] = useState(false);
     const [carregamentoAnsiedade, setCarregamentoAnsiedade] = useState(false);
     const [carregamentoDepressao, setCarregamentoDepressao] = useState(false);
+    const [carregamentoR, setCarregamentoR] = useState(false);
+    const [carregamentoReporte, setCarregamentoReporte] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
 
     const showInfo = () => {
         toast.current.show({
@@ -100,32 +104,20 @@ export default function ConsultarEstatisticas(props) {
         }
     };
 
-    const submeterParaListagem = async () => {
-        localStorage.setItem('rota', '/listarEstatisticas')
+    const submeterReportes = async () => {
+        localStorage.setItem('rota', '/reportesGrafico')
         showInfo();
-        const consultaEstatistica = prepararConsulta();
+        const consulta = prepararConsulta();
+        console.log(consulta);
 
         try {
-            const responseAnsiedade = await EstatisticaService.getByAnsiedade(consultaEstatistica);
-            var estatisticaAnsiedade = responseAnsiedade.data;
-            var estatisticaAnsiedadeStr = JSON.stringify(estatisticaAnsiedade);
-            localStorage.setItem("estatisticaAnsiedade", estatisticaAnsiedadeStr);
+            const responseReportes = await EstatisticaService.getByReportes(consulta);
+            var estatisticaReporte = responseReportes.data;
+            var estatisticaReporteStr = JSON.stringify(estatisticaReporte);
+            localStorage.setItem("estatisticaReporte", estatisticaReporteStr);
 
-            if (responseAnsiedade.status >= 200 && responseAnsiedade.status < 300) {
-                setCarregamentoAnsiedade(true);
-            }
-        } catch (error) {
-            showError()
-        }
-
-        try {
-            const responseDepressao = await EstatisticaService.getByDepressao(consultaEstatistica);
-            var estatisticaDepressao = responseDepressao.data;
-            var estatisticaDepressaoStr = JSON.stringify(estatisticaDepressao);
-            localStorage.setItem("estatisticaDepressao", estatisticaDepressaoStr);
-
-            if (responseDepressao.status >= 200 && responseDepressao.status < 300) {
-                setCarregamentoDepressao(true);
+            if (responseReportes.status >= 200 && responseReportes.status < 300) {
+                setCarregamentoR(true);
             }
         } catch (error) {
             showError()
@@ -139,45 +131,90 @@ export default function ConsultarEstatisticas(props) {
     }, [carregamentoAnsiedade, carregamentoDepressao]);
 
     useEffect(() => {
+        if (carregamentoR) {
+            setCarregamentoReporte(true);
+        }
+    }, [carregamentoR]);
+
+    useEffect(() => {
         if (carregamentoCompleto) {
             const logado = props.logado;
             const rota = localStorage.getItem('rota');
             history.push('/' + logado + rota);
         }
     }, [carregamentoCompleto]);
+
+    useEffect(() => {
+        if (carregamentoReporte) {
+            const logado = props.logado;
+            const rota = localStorage.getItem('rota');
+            history.push('/' + logado + rota);
+        }
+    }, [carregamentoReporte]);
+
     return (
         <div>
-            <div >
-                <Card title="CONSULTAR ESTATÍSTICAS"></Card>
-                <Toast ref={toast} />
-                <Card>
-                    <Button
-                        icon='pi pi-chart-bar'
-                        label="ACESSAR GRÁFICOS"
-                        onClick={submeter}
-                    />
-                    <Button
-                        className='p-mt-3 p-ml-3'
-                        icon='pi pi-chart-line'
-                        label="LISTAR ESTÁTISTICAS"
-                        onClick={submeterParaListagem}
-                    />
-                </Card>
-                <Card >
-                    <Card subTitle='SEMESTRE'>
-                        <Semestre></Semestre>
-                    </Card>
-                    <Card subTitle='CAMPUS'>
-                        <Campus valido={true} ></Campus>
-                    </Card>
-                    <Card subTitle='CURSO'>
-                        <Cursos></Cursos>
-                    </Card>
-                    <Card subTitle='PERIODO'>
-                        <Periodo></Periodo>
-                    </Card>
+            <Toast ref={toast} />
+            <Card title="ESTATÍSTICAS">
+                <div>
+                    <TabView activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)}>
+                        <TabPanel header="ANSIEDADE E DEPRESSÃO">
+                            <Card>
+                                <Button
+                                    icon='pi pi-chart-bar'
+                                    label="CONSULTAR"
+                                    onClick={submeter}
+                                />
+                            </Card>
+                            <Card >
+                                <Card subTitle='SEMESTRE'>
+                                    <Semestre></Semestre>
+                                </Card>
+                                <Card subTitle='CAMPUS'>
+                                    <Campus valido={true} ></Campus>
+                                </Card>
+                                <Card subTitle='CURSO'>
+                                    <Cursos></Cursos>
+                                </Card>
+                                <Card subTitle='PERIODO'>
+                                    <Periodo></Periodo>
+                                </Card>
+                            </Card>
+                        </TabPanel>
+                        <TabPanel header="REPORTES">
+                            <Card>
+                                <Button
+                                    icon='pi pi-bell'
+                                    label="CONSULTAR"
+                                    onClick={submeterReportes}
+                                />
+                            </Card>
+                            <Card subTitle='CAMPUS'>
+                                <Campus valido={true} ></Campus>
+                            </Card>
+                            <Card subTitle='CURSO'>
+                                <Cursos></Cursos>
+                            </Card>
+                        </TabPanel>
+                        {/* <TabPanel header="Guia 3">
+                            <Card title="Conteúdo Guia 3">
+                                
+                            </Card>
+                        </TabPanel> */}
+                    </TabView>
+                </div>
+            </Card>
 
-                </Card>
+            <div>
+
+
+
+
+
+
+
+
+
             </div>
         </div>
 
