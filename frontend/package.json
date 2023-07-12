@@ -22,7 +22,7 @@
         "web-vitals": "^1.1.2"
     },
     "scripts": {
-        "start": "SSL_CRT_FILE=cert/domain.crt SSL_KEY_FILE=cert/domain.key HTTPS=true PORT=3100 react-scripts start",
+        "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
