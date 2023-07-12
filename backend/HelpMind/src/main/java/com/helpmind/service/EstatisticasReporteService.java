@@ -33,8 +33,6 @@ public class EstatisticasReporteService {
 	}
 
 	public List<EstatisticaReporte> retornaEstatisticasReporteByCampus(ConsultaEstatistica consultaEstatistica) {
-		System.out.println(consultaEstatistica.getCampus());
-		System.out.println(consultaEstatistica.getCurso());
 		String campus = consultaEstatistica.getCampus();
 		if (campus.equals("All") && consultaEstatistica.getCurso().equals("All")) {
 			return this.retornaEstatisticasReporte();
