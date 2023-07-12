@@ -35,7 +35,6 @@ export default function VisualizarReporteDiscente() {
         }
 
         if (reporte != undefined) {
-
             setCampus(reporte.campus);
             setNome(reporte.discente);
             setCurso(reporte.curso);
@@ -46,12 +45,10 @@ export default function VisualizarReporteDiscente() {
                 surto = 'SIM'
             }
             setSuicidio(surto);
-
             ReporteService.getReportanteById(reporte.idReportante).then((response) => {
                 setNomeReportante(response.data)
 
             });
-
         }
 
     }, [reporte]);
@@ -65,35 +62,65 @@ export default function VisualizarReporteDiscente() {
                 </Card>
                 <Card >
                     <Card subTitle='REPORTADOR POR' >
-                        <InputText value={NomeReportante} disabled onChange={(e) => setNome(e.target.value)} />
+                        <InputText
+                            value={NomeReportante}
+                            disabled
+                            style={{ width: '100%' }}
+                            onChange={(e) => setNome(e.target.value)}
+                        />
                     </Card>
                     <Card subTitle='DISCENTE' >
-                        <InputText value={nome} disabled onChange={(e) => setNome(e.target.value)} />
+                        <InputText
+                            value={nome}
+                            disabled
+                            style={{ width: '100%' }}
+                            onChange={(e) => setNome(e.target.value)}
+                        />
                     </Card>
                     <Card subTitle='CAMPUS' >
-                        <InputText value={campus} disabled onChange={(e) => setCampus(e.value)} />
+                        <InputText
+                            value={campus}
+                            disabled
+                            style={{ width: '100%' }}
+                            onChange={(e) => setCampus(e.value)}
+                        />
                     </Card>
                     <Card subTitle='CURSO' >
-                        <InputText value={curso} disabled onChange={(e) => setCurso(e.value)} />
+                        <InputText
+                            value={curso}
+                            disabled
+                            style={{ width: '100%' }}
+                            onChange={(e) => setCurso(e.value)}
+                        />
                     </Card>
                     <Card subTitle='ANO / PERÍODO' >
-                        <InputText value={periodo} disabled onChange={(e) => setPeriodos(e.target.value)} />
+                        <InputText
+                            value={periodo}
+                            disabled
+                            style={{ width: '100%' }}
+                            onChange={(e) => setPeriodos(e.target.value)}
+                        />
                     </Card>
                     <Card subTitle='JÁ TENTOU SUICÍDIO?' >
-                        <InputText optionLabel="name" value={suicidio} disabled onChange={(e) => setSuicidio(e.target.value)} />
+                        <InputText
+                            optionLabel="name"
+                            value={suicidio}
+                            disabled
+                            style={{ width: '100%' }}
+                            onChange={(e) => setSuicidio(e.target.value)}
+                        />
                     </Card>
                     <Card subTitle='DESCRIÇÃO' >
                         <InputTextarea
                             value={descrisao}
                             disabled
                             onChange={(e) => setDescrisao(e.target.value)}
+                            style={{ width: '100%' }}
                             autoResize
-                        />)
+                        />
                     </Card>
                 </Card>
-
             </div>
         </div>
-
     );
 }
