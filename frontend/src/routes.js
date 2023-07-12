@@ -135,6 +135,8 @@ import ListaConversasPsicologo from "./pages/Psicologo/ListaConversasPsicologo";
 import ConversaPsicologo from "./pages/Psicologo/ConversaPsicologo";
 import ListaConversasAdminPrivada from "./pages/Admin/ListaConversasAdminPrivada";
 import ReportesGraficosAdmin from "./pages/Admin/ReportesGraficosAdmin";
+import ReportesGraficosProfSaude from "./pages/ProfissionalDeSaude/ReportesGraficosProfSaude";
+import ReportesGraficosPsicologo from "./pages/Psicologo/ReportesGraficosPsicologo";
 
 import { isAuthenticatedAdmin, isAuthenticatedDiscente, isAuthenticatedProfSaude, isAuthenticatedPsicologo, isAuthenticatedServidor } from "./auth";
 
@@ -270,6 +272,7 @@ export default function Routes() {
         <PrivateRouteProfSaude path="/profissionalDeSaude/conversa/:id" component={ConversaProfsaude} />
         <PrivateRouteProfSaude path="/profissionalDeSaude/conversa/" component={ConversaProfsaude} />
         <PrivateRouteProfSaude path="/profissionalDeSaude/listaConversas" component={ListaConversasProfSaude} />
+        <PrivateRouteProfSaude path="/profissionalDeSaude/reportesGrafico" component={ReportesGraficosProfSaude} />
 
         <PrivateRouteAdmin path="/Admin/perfil" component={PerfilAdmin} />
         <PrivateRouteAdmin path="/Admin/configuracao" component={Configuracao} />
@@ -347,6 +350,7 @@ export default function Routes() {
         <PrivateRoutePsicologo path="/psicologo/visualizarEncaminhamento/:id" component={VisualizarEncaminhamentoParaPsicologoPsicologo} />
         <PrivateRoutePsicologo path="/psicologo/listaConversas" component={ListaConversasPsicologo} />
         <PrivateRoutePsicologo path="/psicologo/conversa/:id" component={ConversaPsicologo} />
+        <PrivateRoutePsicologo path="/psicologo/reportesGrafico" component={ReportesGraficosPsicologo} />
         {/* <Route path="/Xpto" component={Xpto} /> */}
       </Switch>
     </BrowserRouter>
