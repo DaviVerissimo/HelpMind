@@ -42,12 +42,9 @@ import ContatosProfissional from "./pages/ProfissionalDeSaude/ContatosProfission
 import ContatosDiscente from "./pages/Discente/ContatosDiscente";
 import ParecerPsicologico from "./pages/Psicologo/ParecerPsicologico";
 import ConsultarEstatisticasProfSaude from "./pages/ProfissionalDeSaude/ConsultarEstatisticasProfSaude";
-import ListarEstatisticasProfSaude from "./pages/ProfissionalDeSaude/ListarEstatisticasProfSaude";
 import PerfilPsicologo from "./pages/Psicologo/PerfilPsicologo";
 import ConsultarEstatisticasPsicologo from "./pages/Psicologo/ConsultarEstatisticasPsicologo";
 import ContatosPsicologo from "./pages/Psicologo/ContatosPsicologo";
-import ListarEstatisticasPsicologo from "./pages/Psicologo/ListarEstatisticasPsicologo";
-import ListarEstatisticasAdmin from "./pages/Admin/ListarEstatisticasAdmin";
 import ConsultarEstatisticasAdmin from "./pages/Admin/ConsultarEstatisticasAdmin";
 import ListarPareceresPsicologicorPisicologo from "./pages/Psicologo/ListarPareceresPsicologicorPisicologo";
 import ListarPareceresPsicologicorProfSaude from "./pages/ProfissionalDeSaude/ListarPareceresPsicologicorProfSaude";
@@ -137,6 +134,7 @@ import ListaConversasProfSaude from "./pages/ProfissionalDeSaude/ListaConversasP
 import ListaConversasPsicologo from "./pages/Psicologo/ListaConversasPsicologo";
 import ConversaPsicologo from "./pages/Psicologo/ConversaPsicologo";
 import ListaConversasAdminPrivada from "./pages/Admin/ListaConversasAdminPrivada";
+import ReportesGraficosAdmin from "./pages/Admin/ReportesGraficosAdmin";
 
 import { isAuthenticatedAdmin, isAuthenticatedDiscente, isAuthenticatedProfSaude, isAuthenticatedPsicologo, isAuthenticatedServidor } from "./auth";
 
@@ -254,7 +252,6 @@ export default function Routes() {
         <PrivateRouteProfSaude path="/profissionalDeSaude/listarProntuariosDoDiscente" component={ListarProntuariosDoDiscenteProfSaude} />
         <PrivateRouteProfSaude path="/profissionalDeSaude/visualizarProntuarios/:id" component={VisualizarProntuarioProfSaude} />
         <PrivateRouteProfSaude path="/profissionalDeSaude/consultarEstatisticas" component={ConsultarEstatisticasProfSaude} />
-        <PrivateRouteProfSaude path="/profissionalDeSaude/listarEstatisticas" component={ListarEstatisticasProfSaude} />
         <PrivateRouteProfSaude path="/profissionalDeSaude/Contatos" component={ContatosProfissional} />
         <PrivateRouteProfSaude path="/profissionalDeSaude/listarRelatoriosPsicologico" component={ListarPareceresPsicologicorProfSaude} />
         <PrivateRouteProfSaude path="/profissionalDeSaude/materiaisOnline" component={MateriaisOnlineProfSaude} />
@@ -283,7 +280,6 @@ export default function Routes() {
         <PrivateRouteAdmin path="/Admin/NovoContato" component={NovoContato} />
         <PrivateRouteAdmin path="/Admin/updateContato/:id" component={UpdateContato} />
         <PrivateRouteAdmin path="/Admin/Contatos" component={ContatosAdmin} />
-        <PrivateRouteAdmin path="/Admin/listarEstatisticas" component={ListarEstatisticasAdmin} />
         <PrivateRouteAdmin path="/Admin/consultarEstatisticas" component={ConsultarEstatisticasAdmin} />
         <PrivateRouteAdmin path="/Admin/listarRelatoriosPsicologico" component={ListarPareceresPsicologicoraAdmin} />
         <PrivateRouteAdmin path="/Admin/listarProntuarios" component={ListaProntuariosAdmin} />
@@ -291,7 +287,7 @@ export default function Routes() {
         <PrivateRouteAdmin path="/Admin/visualizarProntuarios/:id" component={VisualizarProntuarioAdmin} />
         <PrivateRouteAdmin path="/Admin/materiaisOnline" component={MateriaMateriaisOnlineAdminisOnline} />
         <PrivateRouteAdmin path="/Admin/home" component={AdminHome} />
-        {/* <PrivateRouteAdmin path="/Admin/home2" component={AdminHome2} /> */}
+        {/* <PrivateRouteAdmin path="/Admin/home2" component={ExemploGraficos} /> */}
         <PrivateRouteAdmin path="/Admin/ansiedadeDepressaoGrafico" component={AnsiedadeDepressaoGraficoAdmin} />
         <PrivateRouteAdmin path="/Admin/escolherGrafico" component={EscolherGraficoAdmin} />
         <PrivateRouteAdmin path="/Admin/quemSomos" component={AdminQuemSomos} />
@@ -321,12 +317,12 @@ export default function Routes() {
         <PrivateRouteAdmin path="/Admin/iniciarConversaComPsicologo" component={IniciarConversaAdmin} />
         <PrivateRouteAdmin path="/Admin/listaConversas" component={ListaConversasAdmin} />
         <PrivateRouteAdmin path="/Admin/listaConversasPrivadas" component={ListaConversasAdminPrivada} />
+        <PrivateRouteAdmin path="/Admin/reportesGrafico" component={ReportesGraficosAdmin} />
 
         <PrivateRoutePsicologo path="/psicologo/perfil" component={PerfilPsicologo} />
         <PrivateRoutePsicologo path="/psicologo/novoRelatorio/:id" component={ParecerPsicologico} />
         <PrivateRoutePsicologo path="/psicologo/consultarEstatisticas" component={ConsultarEstatisticasPsicologo} />
         <PrivateRoutePsicologo path="/psicologo/Contatos" component={ContatosPsicologo} />
-        <PrivateRoutePsicologo path="/psicologo/listarEstatisticas" component={ListarEstatisticasPsicologo} />
         <PrivateRoutePsicologo path="/psicologo/listarRelatoriosPsicologico" component={ListarPareceresPsicologicorPisicologo} />
         <PrivateRoutePsicologo path="/psicologo/materiaisOnline" component={MateriaisOnlinePsicologo} />
         <PrivateRoutePsicologo path="/psicologo/home" component={PsicologoHome} />
