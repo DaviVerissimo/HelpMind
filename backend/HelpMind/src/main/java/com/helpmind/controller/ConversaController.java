@@ -2,7 +2,6 @@ package com.helpmind.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.helpmind.model.Constantes;
 import com.helpmind.model.Conversa;
-import com.helpmind.model.Discente;
 import com.helpmind.model.Envelope;
 import com.helpmind.model.Mensagem;
-import com.helpmind.model.StatusServidor;
-import com.helpmind.model.Usuario;
 import com.helpmind.service.ConversaService;
 
 @CrossOrigin(origins = Constantes.URI)
