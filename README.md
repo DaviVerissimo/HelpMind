@@ -66,6 +66,10 @@ FUNCIONALIDADES DO SERVIDOR – ENQUANTO PROFISSIONAL DE SAÚDE
 
     • Listar e visualizar todos os Questionários Socioeconomismos preenchidos pelos discentes.
 
+    • Trocar mensagens com outros servidores
+
+    • Visualizar gráficos e relatorios sobre ansiedade e depressão e reportes.
+
     • Criar prontuários para discente: Prontuários são informações  que o profissional de saúde  julgar relevantes para o acompanhamento do discente. Pode incluir nome, campus, curso, período, parecer do profissional de saúde e ação realizada que indica se o discente foi intruido a procurar o psicólogo do campus ou a rede externa.
     
     • Listar e visualizar todos os prontuários já criados.
@@ -79,6 +83,7 @@ FUNCIONALIDADES DO SERVIDOR – ENQUANTO PSICÓLOGO
     • As mesmas de profissional de saúde excerto criar, listar e visualizar prontuários.
 
     • Criar parecer psicológico:Pareceres psicológicos são feedbacks que o psicologo dá após fazer uma consulta com o discente.
+
     • Pode incluir  nome, e-mail e parecer do psicologo.
     
 FUNCIONALIDADES DO SERVIDOR – ENQUANTO ADMIN  
