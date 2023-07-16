@@ -42,7 +42,6 @@ FUNCIONALIDADES DO DISCENTE
     • Cria novo Questionário de Depressão de Beck: Um discente pode criar um novo  Questionário de Depressão de Beck, isto é, Consiste em um grupo de 21 questões preenchidas e enviadas pelo discente, que medem o nível de Depressão do discente. O resultado só é visível para profissionais de saúde.
 
     • Cria novo Questionário Socioeconômico: Um discente pode criar um novo  Questionário Socioeconômico, isto é, Consiste em um grupo de questões sobre diversos temas, preenchidas e enviadas pelo discente, O resultado só é visível para profissionais de saúde.
-    
     • Consultar contatos de servidores: Lista para contato de alguns servidores. Pode incluir nome, e-mail, telefone e campus do servidor.
 
 FUNCIONALIDADES DO SERVIDOR
@@ -67,6 +66,10 @@ FUNCIONALIDADES DO SERVIDOR – ENQUANTO PROFISSIONAL DE SAÚDE
 
     • Listar e visualizar todos os Questionários Socioeconomismos preenchidos pelos discentes.
 
+    • Trocar mensagens com outros servidores
+
+    • Visualizar gráficos e relatorios sobre ansiedade e depressão e reportes.
+
     • Criar prontuários para discente: Prontuários são informações  que o profissional de saúde  julgar relevantes para o acompanhamento do discente. Pode incluir nome, campus, curso, período, parecer do profissional de saúde e ação realizada que indica se o discente foi intruido a procurar o psicólogo do campus ou a rede externa.
     
     • Listar e visualizar todos os prontuários já criados.
@@ -80,7 +83,7 @@ FUNCIONALIDADES DO SERVIDOR – ENQUANTO PSICÓLOGO
     • As mesmas de profissional de saúde excerto criar, listar e visualizar prontuários.
 
     • Criar parecer psicológico:Pareceres psicológicos são feedbacks que o psicologo dá após fazer uma consulta com o discente.
-    
+
     • Pode incluir  nome, e-mail e parecer do psicologo.
     
 FUNCIONALIDADES DO SERVIDOR – ENQUANTO ADMIN  
