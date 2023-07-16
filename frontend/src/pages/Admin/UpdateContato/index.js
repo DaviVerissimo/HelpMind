@@ -155,22 +155,47 @@ export default function UpdateContato() {
             <Card title="ATUALIZAR CONTATO"></Card>
             <Card>
                 <BotaoVoltar></BotaoVoltar>
-                <Button className={'p-ml-3'} label="SALVAR" onClick={submeter} />
+                <Button
+                    className={'p-ml-3'}
+                    label="SALVAR"
+                    onClick={submeter}
+                />
             </Card>
-
             <Card >
                 <Card subTitle='NOME' >
-                    <InputText className={nomeObrigatorio} value={nome} onChange={(e) => setNome(e.target.value)} />
+                    <InputText
+                        className={nomeObrigatorio}
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
+                        style={{ width: '100%' }}
+                    />
                 </Card>
-
                 <Card subTitle='TELEFONE' >
-                    <InputText className={''} value={telefone} onChange={(e) => setTelefone(e.target.value)} />
+                    <InputText
+                        className={''}
+                        value={telefone}
+                        onChange={(e) => setTelefone(e.target.value)}
+                        style={{ width: '100%' }}
+                    />
                 </Card>
                 <Card subTitle='EMAIL' >
-                    <InputText className={''} value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <InputText
+                        className={''}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        style={{ width: '100%' }}
+                    />
                 </Card>
                 <Card subTitle='CAMPUS' >
-                    <Dropdown className={campusObrigatorio} filter value={campusDoDiscente} options={campi} onChange={(e) => setCampusDoDiscente(e.value)} placeholder="Escolha um campus" />
+                    <Dropdown
+                        className={campusObrigatorio}
+                        filter
+                        value={campusDoDiscente}
+                        options={campi}
+                        onChange={(e) => setCampusDoDiscente(e.value)}
+                        placeholder="Escolha um campus"
+                        style={{ width: '100%' }}
+                    />
                 </Card>
             </Card>
 

@@ -6,6 +6,8 @@ const API_BASE_URL_CONCEDER_ACESSO_PROF_SAUDE = URL.getDominio() + '/servidor/up
 const API_BASE_URL_REMOVER_ACESSO_PROF_SAUDE = URL.getDominio() + '/servidor/removerAcessoComoProfissionalDeSaude';
 const API_BASE_URL_CONCEDER_ACESSO_PSICOLOGO = URL.getDominio() + '/servidor/updateServidorForPsicologo';
 const API_BASE_URL_REMOVER_ACESSO_PSICOLOGO = URL.getDominio() + '/servidor/removerAcessoComoPsicologo';
+const API_BASE_URL_ID_BY_NOME = URL.getDominio() + '/servidor/retornaIdServidorByNome';
+const API_BASE_URL_RETORNA_SERVIDOR_BY_ID = URL.getDominio() + '/servidor/retornaServidorByID';
 
 const headers = {
     'headers': {
@@ -35,6 +37,14 @@ class ServidorService {
 
     getRemoverAcessoPsicologo(id) {
         return axios.post(API_BASE_URL_REMOVER_ACESSO_PSICOLOGO, id, headers);
+    }
+
+    getIdByNome(id) {
+        return axios.post(API_BASE_URL_ID_BY_NOME, id, headers);
+    }
+
+    getServidorById(id) {
+        return axios.post(API_BASE_URL_RETORNA_SERVIDOR_BY_ID, id, headers);
     }
 
 }

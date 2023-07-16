@@ -8,6 +8,7 @@ import { Toast } from 'primereact/toast';
 import axios from 'axios';
 import URL from '../../../services/URL';
 import jwt_decode from "jwt-decode";
+import RotinaQuestionarioSocioeconomicoService from '../../../services/RotinaQuestionarioSocioeconomicoService';
 
 export default function Login() {
 
@@ -41,7 +42,7 @@ export default function Login() {
 
     function handleCallbackResponse(response) {
 
-        if (response == null || response == undefined){
+        if (response == null || response == undefined) {
             errorLogin();
         }
         var token = response.credential;
@@ -68,13 +69,13 @@ export default function Login() {
 
         var chave = true;
 
-        // var currentUrl = usuario.email;
-        // if (!currentUrl.includes("academico.ifpb.edu.br")) {
-        //     chave = true;
-        // }
-        // else {
-        //     chave = false;
-        // }
+        var currentUrl = usuario.email;
+        if (!currentUrl.includes("academico.ifpb.edu.br")) {
+            chave = true;
+        }
+        else {
+            chave = false;
+        }
 
         if (chave) {
             axios.post(URL.getDominio() + "/servidor/isServidorGoogleId", usuario.googleId, headers)
@@ -91,10 +92,12 @@ export default function Login() {
         if (!chave) {
             axios.post(URL.getDominio() + "/discente/isDiscenteGoogleId", usuario.googleId, headers)
                 .then(Response => {
+                    var isPrimeiroAcesso = false;
                     if (Response.data.id == null) {
+                        isPrimeiroAcesso = true;
                         salvarDiscente();
                     }
-                    loginDiscente();
+                    loginDiscente(isPrimeiroAcesso);
                 })
                 .catch(error => console.error(error))
         }
@@ -171,16 +174,31 @@ export default function Login() {
 
         function salvarDiscente() {
             axios.post(URL.getDominio() + "/discente/salvarUserDiscente", usuario, headers)
-                .then(Response => { })
+                .then(Response => {
+                    const idDiscente = Response.data.id;
+                    // fazer requisição para criar rotina pelo id do discente
+                    const rotina = {
+                        'idDiscente': idDiscente,
+                        'primeiroAcesso': true
+
+                    }
+                    RotinaQuestionarioSocioeconomicoService.salvarRotina(rotina);
+                })
                 .catch(error => console.error(error))
         }
 
-        function loginDiscente() {
+        function loginDiscente(isPrimeiroAcesso) {
             axios.post(URL.getDominio() + "/discente/isDiscenteGoogleId", usuario.googleId, headers)
                 .then(Response => {
                     localStorage.setItem('id', Response.data.id);
                     localStorage.setItem('loginDiscente', true);
-                    history.push('/discente/Perfil');
+                    if (isPrimeiroAcesso) {
+                        history.push('/discente/QuestionarioSocioeconomico')
+                    }
+                    else {
+                        history.push('/discente/Perfil');
+                    }
+
                 })
                 .catch(error => console.error(error))
         }

@@ -7,5 +7,7 @@ import com.helpmind.model.Servidor;
 
 @Repository
 public interface ServidorRepository extends JpaRepository<Servidor, Integer>{
+	
+	public Servidor findByNome(String nome);
 
 }

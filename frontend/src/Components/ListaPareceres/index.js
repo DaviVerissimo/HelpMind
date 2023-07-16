@@ -60,6 +60,11 @@ export default function ListaPareceres(props) {
         history.push('/' + usuario + '/visualizarParescer/' + parecer.id);
     }
 
+    function submeter(){
+        const usuario = props.data;
+        history.push('/' + usuario + '/acompanhamento')
+    }
+
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
@@ -74,7 +79,7 @@ export default function ListaPareceres(props) {
 
     const header = (
         <div className="table-header">
-            <h5 className="mx-0 my-1">Pesquise por pareceres psicólogicos</h5>
+            <h5 className="mx-0 my-1">Pesquise por relatório psicologico</h5>
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
@@ -82,11 +87,10 @@ export default function ListaPareceres(props) {
         </div>
     );
 
-
     return (
         <div  >
             <div>
-                <Card title="LISTA DE PARECERES PSICÓLOGICOS" ></Card>
+                <Card title="LISTA DE RELATÓRIO PSICOLOGICO" ></Card>
                 <Card>
                     <Card>
                         <BotaoVoltar></BotaoVoltar>

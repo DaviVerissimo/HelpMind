@@ -13,7 +13,7 @@ export default function ExemploGraficos() {
     const rotulos = ['A', 'B', 'C', 'Damares', 'fabio', 'Eliana', 'geogia', 'helus', 'ivo',
         'jaminho', 'kamilo', 'Laura', 'margarida'];
     const dados = [300, 50, 100, 70, 15, 17, 12, 14, 13, 25, 5, 10, 15];
-    const coresMulticolor = Cores.get_Multicolor();
+    const coresMulticolor = Cores.get_RandonColor();
     const coresEscala = Cores.get_escala_minima_leve_moderada_grave();
     const discentesAnsiedade = [17, 12, 14, 13, 25, 5, 10, 15];
     const ansiedade = ['Ansiedade Minima', 'Ansiedde leve', 'Ansiedade modelada', 'Ansiedade grave']

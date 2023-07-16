@@ -19,7 +19,7 @@ export default function Periodo() {
 
     }, [periodo]);
 
-    const validar = localStorage.getItem('errorCampusComponente')
+    const validar = localStorage.getItem('periodoComponente')
     useEffect(async () => {
         if (validar != null) {
             setCampusObrigatorio(validar)
@@ -31,6 +31,7 @@ export default function Periodo() {
         <div>
             <Dropdown
                 className={periodoObrigatorio}
+                style={{ width: '100%' }}
                 optionLabel="name"
                 value={periodo}
                 options={periodos}

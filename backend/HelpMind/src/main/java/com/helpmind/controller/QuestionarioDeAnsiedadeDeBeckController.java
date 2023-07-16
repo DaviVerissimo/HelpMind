@@ -38,6 +38,7 @@ public class QuestionarioDeAnsiedadeDeBeckController {
 			questionario = questionarioDeAnsiedadeDeBeckService.preencherQuestionarioComResporta(questionarioSimples.getLista());
 			questionario.setData(data);
 			questionario.setIdDiscente(questionarioSimples.getId());
+			questionario.setSemestre(questionarioSimples.getSemestre());
 			questionario.calcularNota();
 			questionario.definirStatus();
 			questionarioDeAnsiedadeDeBeckService.salvar(questionario);

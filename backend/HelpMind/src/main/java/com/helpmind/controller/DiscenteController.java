@@ -26,43 +26,46 @@ import com.helpmind.service.DiscenteService;
 @RestController
 @RequestMapping("/discente")
 public class DiscenteController {
-	
+
 	@Autowired
 	private DiscenteService discenteService;
-	
+
 	@GetMapping("/allDiscentes")
 	public List<Discente> retornaTodosDiscentes() {
-		
+
 		return discenteService.retornaAllDiscentes();
+
 	}
-	
+
 	@PostMapping("/salvarUserDiscente")
 	public ResponseEntity<Discente> criarDiscente(@RequestBody Usuario usuario) throws URISyntaxException {
 		Discente discente = new Discente();
 
 		try {
 			discente = discenteService.criarDiscente(usuario);
-			} catch(Exception e){}
-		
+		} catch (Exception e) {
+		}
+
 		return ResponseEntity.created(new URI("/discente/" + discente.getId())).body(discente);
 	}
-	
+
 	@PostMapping("/isDiscenteGoogleId")
 	public ResponseEntity<Discente> isExiste(@RequestBody String googleId) throws URISyntaxException {
 		Discente discente = new Discente();
 		try {
 			discente = discenteService.retornarDiscentePeloGoogleId(googleId);
-			} catch(Exception e){}
-		
+		} catch (Exception e) {
+		}
+
 		return ResponseEntity.created(new URI("/discente/" + discente.getId())).body(discente);
 	}
-	
+
 	@GetMapping("/isDiscente")
-	public boolean isDiscenteComCadrasto(String email) { 
+	public boolean isDiscenteComCadrasto(String email) {
 
 		return discenteService.isDiscente(email);
 	}
-	
+
 	@PostMapping("/buscaDiscentePorID")
 	public Discente retornaDiscentePeloID(@RequestBody String id) {
 		Integer ID = Integer.parseInt(id);
@@ -70,32 +73,32 @@ public class DiscenteController {
 		discente = discenteService.buscaDiscentePorID(ID);
 		return discente;
 	}
-	
+
 	@GetMapping("/discenteComAumentoVulnerabilidadeEmocional")
 	public List<Discente> retornaDiscenteComAumentoVulnerabilidadeEmocional() {
-		
+
 		return discenteService.verificarAumentoVulnerabilidadeEmocional();
 	}
-	
+
 	@GetMapping("/isAumento")
 	public boolean isAumento() {
 		boolean aumento = false;
-		if(discenteService.verificarAumentoVulnerabilidadeEmocional().get(0) != null) {
+		if (discenteService.verificarAumentoVulnerabilidadeEmocional().get(0) != null) {
 			aumento = true;
 		}
-		
+
 		return aumento;
 	}
-	
+
 	@GetMapping("/listarAllNomesDiscentes")
 	public List<String> retornaTodosNomesDiscentes() {
-		
+
 		return discenteService.retornaAllNomesDiscentes();
 	}
-	
+
 	@GetMapping("/listarAllEmailDiscentes")
 	public List<String> retornaTodosEmailDiscentes() {
-		
+
 		return discenteService.retornaAllEmailDiscentes();
 	}
 

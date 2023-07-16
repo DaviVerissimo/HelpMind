@@ -1,5 +1,7 @@
 package com.helpmind.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,39 +23,22 @@ import com.helpmind.service.EstatisticaService;
 @RestController
 @RequestMapping("/estatistica")
 public class EstatisticaController {
-	
+
 	@Autowired
 	private EstatisticaService estatisticaService;
-	
-	@GetMapping("/all")
-	public Estatistica retornaEstatisticaByTodosDiscentes() {
-		
-		return estatisticaService.retornaEstatisticaAllDiscente();
+
+	@PostMapping("/byAnsiedade")
+	public List<Estatistica> retornaEstatisticasByAnsiedade(@RequestBody ConsultaEstatistica consultaEstatistica) {
+		List<Estatistica> estatisticas = estatisticaService.retornaEstatisticasAnsiedade(consultaEstatistica);
+
+		return estatisticas;
 	}
-	
-	@PostMapping("/byCurso")
-	public Estatistica retornaEstatisticaByCurso(@RequestBody String curso) {
-		Estatistica estatistica = null;
-		estatistica = estatisticaService.retornaEstatisticaByCurso(curso);
-		
-		return estatistica;
-	}
-	
-	@PostMapping("/byPeriodo")
-	public Estatistica retornaEstatisticaByPeriodo(@RequestBody String periodo) {
-		Estatistica estatistica = null;
-		estatistica = estatisticaService.retornaEstatisticaByPeriodo(periodo);
-		
-		return estatistica;
-	}
-	
-	@PostMapping("/byCursoAndPeriodo")
-	public Estatistica retornaEstatisticaByCursoAndPeriodo(@RequestBody ConsultaEstatistica consultaEstatistica) {
-		Estatistica estatistica = null;
-		estatistica = estatisticaService
-				.retornaEstatisticaByCursoAndPeriodo(consultaEstatistica.getCurso(), consultaEstatistica.getPeriodo());
-		
-		return estatistica;
+
+	@PostMapping("/byDepressao")
+	public List<Estatistica> retornaEstatisticasByDepresao(@RequestBody ConsultaEstatistica consultaEstatistica) {
+		List<Estatistica> estatisticas = estatisticaService.retornaEstatisticasDepressao(consultaEstatistica);
+
+		return estatisticas;
 	}
 
 }

@@ -46,6 +46,25 @@ class Cores {
         return MULTICOLOR;
     }
 
+    get_RandonColor() {
+        function generateRandomColor() {
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            return "#" + r.toString(16).padStart(2, '0') + g.toString(16).padStart(2, '0') + b.toString(16).padStart(2, '0');
+        }
+
+        var cores = [];
+        while (cores.length < 250) {
+            var cor = generateRandomColor();
+            if (!cores.includes(cor)) {
+                cores.push(cor);
+            }
+        }
+
+        return cores;
+    }
+
     get_escala_minima_leve_moderada_grave() {
         return ESCALA_MINIMA_LEVE_MODERADA_GRAVE;
     }

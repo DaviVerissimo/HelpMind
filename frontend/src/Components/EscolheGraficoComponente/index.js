@@ -77,7 +77,8 @@ export default function EscolheGraficoComponente(props) {
                 <Card subTitle="ANSIEDADE E DEPRESSÃO POR CAMPUS E SEUS RESPECTIVOS CURSOS" >
                     <Dropdown
                         className={campusObrigatorio}
-                        ilter
+                        style={{ width: '90%' }}
+                        filter
                         value={campus}
                         options={campi}
                         onChange={(e) => setCampus(e.value)}

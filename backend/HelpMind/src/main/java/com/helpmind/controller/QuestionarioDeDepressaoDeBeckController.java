@@ -44,6 +44,7 @@ public class QuestionarioDeDepressaoDeBeckController {
 			questionario = questionarioDeDepressaoDeBeckService.preencherQuestionarioComResporta(questionarioSimples.getLista());
 			questionario.setData(data);
 			questionario.setIdDiscente(questionarioSimples.getId());
+			questionario.setSemestre(questionarioSimples.getSemestre());
 			questionario.calcularNota();
 			questionario.definirStatus();
 			questionario.setDieta(questionarioSimples.isDieta());

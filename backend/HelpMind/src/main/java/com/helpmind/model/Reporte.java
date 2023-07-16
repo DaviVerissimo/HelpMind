@@ -2,6 +2,7 @@ package com.helpmind.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +32,7 @@ public class Reporte {
 	
 	private boolean tentativaDeSuicidio;
 	
+	@Column(name = "descrisao", length = 10000)
 	private String descrisao;
 	
 	private LocalDateTime data;

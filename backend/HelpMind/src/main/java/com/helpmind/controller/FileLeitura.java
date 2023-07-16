@@ -5,9 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileLeitura {
-	
-	public List<String> carregarCursos() throws IOException {
-		
+
+	public List<String> carregarCursos() {
+		// criar metodo que retorna os cursos por campos
+		// depois disto ainda falta ressolover semestre
+		// depois disso falta fazer alteraçoes nos graficos conforme necessario para o
+		// novo tipo de estatisticas.
+
 		List<String> lista = new ArrayList<String>();
 //		BufferedReader buffRead = new BufferedReader(new FileReader("cursos.txt"));
 //		String linha = "";
@@ -27,7 +31,7 @@ public class FileLeitura {
 //		for (int i = 0; i < lista.size();i++) {
 //			System.out.println("lista.add(" + "\"" +lista.get(i)+ "\"" + ");");
 //	}
-		
+
 		lista.add("Tecnologia em Design Gráfico - Cabedelo");
 		lista.add("Técnico em Transporte Aquaviário Subsequente - Cabedelo Centro");
 		lista.add("Especialização em Gestão dos Recursos Ambientais do Semiárido - Campus Picuí");
@@ -187,22 +191,27 @@ public class FileLeitura {
 		lista.add("Formação Inicial e Continuada Tecnologias Educativas - Soledade");
 		lista.add("Formação Inicial e Continuada de Informática Básica para Terceira Idade  - Itaporanga");
 		lista.add("Formação Inicial e Continuada de Operador de Computador - Itaporanga");
-		lista.add("Formação Inicial e Continuada em Redes de Computadores – CCNA Routing & Switching: Módulos I e II - Patos");
+		lista.add(
+				"Formação Inicial e Continuada em Redes de Computadores – CCNA Routing & Switching: Módulos I e II - Patos");
 		lista.add("Técnico em Serviços Jurídicos Integrado - Campus Cabedelo Centro");
 		lista.add("Técnico em Informática Integrado - Campus João Pessoa");
 		lista.add("Técnico em Meio Ambiente Integrado - Princesa Isabel");
 		lista.add("Técnico em Informática Subsequente -  Princesa Isabel");
-		lista.add("Formação Inicial e Continuada em configuração e desenvolvimento de soluções de VoIP e IoT com Asterisk - Módulo I - João Pessoa");
-		lista.add("Formação Inicial e Continuada em Desenvolvimento de Aplicativos para Dispositivos Móveis - Campus Soledade");
+		lista.add(
+				"Formação Inicial e Continuada em configuração e desenvolvimento de soluções de VoIP e IoT com Asterisk - Módulo I - João Pessoa");
+		lista.add(
+				"Formação Inicial e Continuada em Desenvolvimento de Aplicativos para Dispositivos Móveis - Campus Soledade");
 		lista.add("Formação Inicial e Continuada  de Competências básicas para o ENEM - Esperança");
 		lista.add("Formação Inicial e Continuada de Organizador de Eventos - Areia");
 		lista.add("Pro ENEM em Matemática - João Pessoa");
 		lista.add("Curso de Formação Inicial e Continuada de Extensão de Fotografia Artística - Módulo II");
 		lista.add("Mestrado Profissional em Educação Profissional e Tecnológica - ProfEPT - João Pessoa");
 		lista.add("Formação Inicial e Continuada de Libras Básico - Campus Itaporanga");
-		lista.add("Mestrado Profissional em Propriedade Intelectual e Transferência de Tecnologia para Inovação - PROFNIT - Campus Campina Grande");
+		lista.add(
+				"Mestrado Profissional em Propriedade Intelectual e Transferência de Tecnologia para Inovação - PROFNIT - Campus Campina Grande");
 		lista.add("Formação Inicial e Continuada em Inglês Básico - Campus Itaporanga");
-		lista.add("Formação Inicial e Continuada em configuração e desenvolvimento de soluções de VoIP e IoT com Asterisk (2018.1) - Módulo II - João Pessoa");
+		lista.add(
+				"Formação Inicial e Continuada em configuração e desenvolvimento de soluções de VoIP e IoT com Asterisk (2018.1) - Módulo II - João Pessoa");
 		lista.add("Formação Inicial e Continuada em Tecnologias Educativas");
 		lista.add("Formação Inicial e Continuada em Arduino e suas Tecnologias");
 		lista.add("Licenciatura em Ciências Biológicas - Campus Princesa Isabel");
@@ -227,13 +236,15 @@ public class FileLeitura {
 		lista.add("Formação Inicial e Continuada em Língua Estrangeira – Inglês");
 		lista.add("Formação Inicial e Continuada em Operador de Computadores - Pedras de Fogo");
 		lista.add("Formação Inicial e Continuada em Introdução à Robótica - Picuí");
-		lista.add("Formação Inicial e Continuada em Língua Brasileira de Sinais – LIBRAS Modalidade Básico  - Campus Picuí");
+		lista.add(
+				"Formação Inicial e Continuada em Língua Brasileira de Sinais – LIBRAS Modalidade Básico  - Campus Picuí");
 		lista.add("Especialização em Ensino em Matemática - Campina Grande");
 		lista.add("Formação Inicial e Continuada Condução Ambiental em Unidades de Conservação  -  Campus Areia");
 		lista.add("Formação Inicial e Continuada em História da Arte - Campus Areia");
 		lista.add("Curso Livre de Extensão de Costureiro - Pedras de Fogo");
 		lista.add("Superior de Bacharelado em Engenharia Mecânica - Campus João Pessoa");
-		lista.add("Formação Inicial e Continuada em Língua Brasileira de Sinais – LIBRAS Modalidade Básico - Campus Itaporanga");
+		lista.add(
+				"Formação Inicial e Continuada em Língua Brasileira de Sinais – LIBRAS Modalidade Básico - Campus Itaporanga");
 		lista.add("Formação Inicial e Continuada em Música - Campus Itaporanga");
 		lista.add("Formação Inicial e Continuada em Eletricista Instalador de Painéis Fotovoltaicos");
 		lista.add("Formação Inicial e Continuada em Educação para as Relações Étnico-Raciais - Campus Esperança");
@@ -245,12 +256,12 @@ public class FileLeitura {
 		lista.add("Formação Inicial e Continuada em Operador de Computadores III - Pedras de Fogo");
 		lista.add("Formação Inicial e Continuada em Produção Textual Interdisciplinar para a Formação Cidadã Integral");
 		lista.add("Formação Inicial e Continuada em Inglês Intermediário");
-		
-        return lista;
+
+		return lista;
 	}
-	
-	public List<String> carregarCampi() throws IOException {
-		
+
+	public List<String> carregarCampi() {
+
 		List<String> lista = new ArrayList<String>();
 //		BufferedReader buffRead = new BufferedReader(new FileReader("campus.txt"));
 //		String linha = "";
@@ -270,40 +281,65 @@ public class FileLeitura {
 //		}
 //		
 //		buffRead.close();
-		
-		lista.add("DIRETOIA GERAL  DO CAMPUS CABEDELO");
-		lista.add("DIRETORIA DO CAMPUS AVANÇADO CABEDELO CENTRO - REITORIA");
+
+		lista.add("DIRETOIA GERAL - CAMPUS CABEDELO");
+		lista.add("DIRETORIA DO CAMPUS AVANÇADO REITORIA - CABEDELO CENTRO");
 		lista.add("DIREÇÃO GERAL - CAMPUS PICUÍ");
-		lista.add("Coordenação do Curso de Licenciatura em Letras EAD");
-		lista.add("DES -JP DEPARTAMENTO DE ENSINO SUPERIOR");
-		lista.add("DIREÇÃO GERAL DO CAMPUS CAJAZEIRAS");
-		lista.add("DIRECAO GERAL DO CAMPUS SOUSA");
+		lista.add("Coordenação do Curso de Licenciatura em Letras - EAD");
+		lista.add("DES - JP DEPARTAMENTO DE ENSINO SUPERIOR");
+		lista.add("DIREÇÃO GERAL - CAMPUS CAJAZEIRAS");
+		lista.add("DIRECAO GERAL - CAMPUS SOUSA");
 		lista.add("COORDENAÇÃO DE EDUCAÇÃO À DISTANCIA - CAMPUS CAJAZEIRAS");
 		lista.add("COORDENAÇÃO DE EAD-CAMPUS SOUSA");
 		lista.add("DIRETORIA GERAL - CAMPUS MONTEIRO");
 		lista.add("DIRETORIA GERAL - CAMPUS PRINCESA ISABEL");
 		lista.add("DIREÇÃO GERAL - CAMPUS PATOS");
 		lista.add("DEPARTAMENTO DE EDUCAÇÃO PROFISSIONAL");
-		lista.add("DIREÇÃO GERAL DO CAMPUS CAMPINA GRANDE");
-		lista.add("DIRETORIA GERAL  DO CAMPUS CABEDELO");
-		lista.add("DIREÇÃO GERAL DO CAMPUS GUARABIRA");
+		lista.add("DIREÇÃO GERAL - CAMPUS CAMPINA GRANDE");
+		lista.add("DIRETORIA GERAL - CAMPUS CABEDELO");
+		lista.add("DIREÇÃO GERAL - CAMPUS GUARABIRA");
 		lista.add("DIRETORIA GERAL - CAMPUS CATOLÉ DO ROCHA");
 		lista.add("DIREÇÃO GERAL - CAMPUS ESPERANÇA");
 		lista.add("DIRETORIA GERAL - CAMPUS ITAPORANGA");
 		lista.add("DIRETORIA GERAL - CAMPUS ITABAIANA");
 		lista.add("DIREÇÃO GERAL - CAMPUS SANTA RITA");
-		lista.add("CENTRO DE REFERENCIA DE MANGABEIRA - REITORIA");
+		lista.add("CENTRO DE REFERENCIA REITORIA - MANGABEIRA");
 		lista.add("DIRETORIA DE EDUCAÇÃO A DISTÂNCIA - REITORIA");
-		lista.add("DIRETORIA DO  CAMPUS IMPLANTAÇÃO AREIA - REITORIA");
-		lista.add("DIRETORIA DO CAMPUS AVANÇADO SOLEDADE - REITORIA");
-		lista.add("DIREÇÃO GERAL DO CAMPUS SANTA LUZIA");
-		lista.add("COORDENAÇÃO DE EDUCAÇÃO À DISTANCIA  -  CAMPUS CABEDELO");
+		lista.add("DIRETORIA DO  CAMPUS IMPLANTAÇÃO REITORIA - AREIA");
+		lista.add("DIRETORIA DO CAMPUS AVANÇADO REITORIA - SOLEDADE");
+		lista.add("DIREÇÃO GERAL - CAMPUS SANTA LUZIA");
+		lista.add("COORDENAÇÃO DE EDUCAÇÃO À DISTANCIA - CAMPUS CABEDELO");
 		lista.add("ENSINO A DISTANCIA - CAMPUS CAMPINA GRANDE");
 		lista.add("POLO DE EDUCAÇÃO A DISTÂNCIA - PEDRAS DE FOGO");
 
-        return lista;
+		return lista;
 	}
-	
+
+	public List<String> carregarCursosPorCampus(String campus) {
+		String campusAux = campus; // tratar caracteres da web
+//		String aux = " \"" + listaAll.get(i).getCurso() + "\" ";
+		String conteudo = campus.substring(campus.indexOf("-") + 1).trim();
+		conteudo = filtroDePalavras(conteudo);
+		List<String> allCursos = this.carregarCursos();
+		List<String> cursosPorCampus = new ArrayList<String>();
+		for (int i = 0; i < allCursos.size(); i++) {
+			if (allCursos.get(i).toLowerCase().contains(conteudo.toLowerCase())) {
+				cursosPorCampus.add(allCursos.get(i));
+			}
+		}
+
+		return cursosPorCampus;
+	}
+
+	private String filtroDePalavras(String conteudo) {
+		String campus = "campus ";
+		if (conteudo.toLowerCase().contains(campus.toLowerCase())) {
+			conteudo = conteudo.toLowerCase().replace(campus.toLowerCase(), "");
+		}
+
+		return conteudo;
+	}
+
 //	private boolean isExistCampus(String campus, List<String> lista) {
 //		boolean existe = false;
 //		for (int i = 0; i < lista.size(); i++) {

@@ -1,9 +1,12 @@
 import { Card } from 'primereact/card';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
 import BarraPessoalProfSaude from '../BarraPessoalProfSaude';
+import ServidorService from '../../../services/ServidorService';
+import AcessoRapidoProfSaude from '../../../Components/AcessoRapidoProfSaude';
+import NotificacaoComponente from '../../../Components/NotificacaoComponente';
 
 export default function PerfilProfissionalDeSaude() {
 
@@ -20,9 +23,28 @@ export default function PerfilProfissionalDeSaude() {
         history.push('/');
     }
 
+    const [servidor, setServidor] = useState([])
+    const requisitarServidor = () => {
+        ServidorService.getServidorById(id).then((response) => {
+            setServidor(response.data)
+        });
+    };
+
+    useEffect(() => {
+        requisitarServidor()
+
+    }, [servidor])
+
+    useEffect(() => {
+        const profissionaldeSaudeStr = JSON.stringify(servidor);
+        localStorage.setItem('metadataProfissionaldeSaude', profissionaldeSaudeStr);
+    }, [servidor])
+
     return (
         <div>
             <ToobarProfissionalDeSaude></ToobarProfissionalDeSaude>
+            <AcessoRapidoProfSaude></AcessoRapidoProfSaude>
+            <NotificacaoComponente></NotificacaoComponente>
             <div>
                 <Card title='MEU PERFIL ' >
                     

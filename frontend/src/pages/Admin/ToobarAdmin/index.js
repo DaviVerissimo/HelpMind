@@ -18,9 +18,8 @@ export default function ToobarAdmin() {
 
     const rightContents = (
         <React.Fragment>
-
             <div className='p-grid p-col' style={{ padding: 'em' }} >
-                <NomePerfil></NomePerfil>
+                {/* <NomePerfil></NomePerfil> */}
                 <FotoPerfil></FotoPerfil>
             </div>
         </React.Fragment>
@@ -34,15 +33,57 @@ export default function ToobarAdmin() {
                     <img src={logoImg} alt="logo" style={{ height: '3.75em', width: 'auto' }} />
 
                 </div>
-                <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-col" label='Materiais online' onClick={() => { history.push('/Admin/materiaisOnline') }} />
-                {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
-                <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Contatos' onClick={() => { history.push('/Admin/Contatos') }} />
+                <Button
+                    icon={createIcon("pi pi-box")}
+                    className="p-button-outlined p-button-lg  p-mr-3 p-col"
+                    label='Materiais online'
+                    onClick={() => { history.push('/Admin/materiaisOnline') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-comments")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    label='Contatos'
+                    onClick={() => { history.push('/Admin/Contatos') }}
+                />
                 {/* <Button icon={createIcon("pi pi-file")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Documentos' onClick={() => { history.push('/material/Crud') }} /> */}
-                <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-col" style={{ height: '4.00em', width: 'auto' }} label='Discentes' onClick={() => { history.push('/Admin/ListaDiscentes') }} />
-                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Reportes' onClick={() => { history.push('/Admin/Reportes') }} />
-                <Button icon={createIcon("pi pi-chart-line")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Estatisticas' onClick={() => { history.push('/Admin/consultarEstatisticas') }} />
-                <Button icon={createIcon("pi pi-cog")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Config' onClick={() => { history.push('/Admin/configuracao') }} />
-                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Admin' onClick={() => { history.push('/Admin/perfil') }} />
+                <Button
+                    icon={createIcon("pi pi-users")}
+                    className="p-button-outlined p-button-lg p-mr-3 "
+                    style={{ height: '4.00em', width: 'auto' }}
+                    label='Discentes'
+                    onClick={() => { history.push('/Admin/ListaDiscentes') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-envelope")}
+                    className="p-button-outlined p-button-lg p-mr-3 "
+                    label='Mensagens'
+                    onClick={() => { history.push('/Admin/listaConversasPrivadas') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-bell")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    label='Reportes'
+                    onClick={() => { history.push('/Admin/Reportes') }}
+                />
+                {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Apoio' /> */}
+                <Button
+                    icon={createIcon("pi pi-chart-bar")}
+                    className="p-button-outlined p-button-lg p-mr-3 "
+                    label='Estatisticas'
+                    onClick={() => { history.push('/Admin/consultarEstatisticas') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-cog")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    label='Config'
+                    onClick={() => { history.push('/Admin/configuracao') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-user")}
+                    className="p-button-outlined p-button-lg p-mr-3 p-col"
+                    label='Admin'
+                    onClick={() => { history.push('/Admin/perfil') }}
+                />
             </div>
         </React.Fragment>
     );
@@ -50,17 +91,77 @@ export default function ToobarAdmin() {
     const leftContentsMobile = (
         <React.Fragment>
             <div className='' style={{ padding: '1em' }}>
-
-                <Button icon={createIcon("pi pi-home")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Home' onClick={() => { history.push('/Admin/home') }} />
-                <Button icon={createIcon("pi pi-box")} className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col" label='Materiais online' onClick={() => { history.push('/Admin/materiaisOnline') }} />
+                <Button
+                    icon={createIcon("pi pi-home")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Home'
+                    onClick={() => { history.push('/Admin/home') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-box")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col"
+                    label='Materiais online'
+                    onClick={() => { history.push('/Admin/materiaisOnline') }}
+                />
                 {/* <Button icon={createIcon("pi pi-heart-fill")} className="p-button-outlined p-button-lg p-mr-3 p-col" label='Simular Questionario' /> */}
-                <Button icon={createIcon("pi pi-info-circle")} className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col" label='Quem Somos' onClick={() => { history.push('/Admin/quemSomos') }} />
-                <Button icon={createIcon("pi pi-comments")} className="p-button-outlined p-button-lg p-mr-3  p-mt-3 p-col" label='Contatos' onClick={() => { history.push('/Admin/Contatos') }} />
-                <Button icon={createIcon("pi pi-users")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Discentes' onClick={() => { history.push('/Admin/ListaDiscentes') }} />
-                <Button icon={createIcon("pi pi-bell")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Reportes' onClick={() => { history.push('/Admin/Reportes') }} />
-                <Button icon={createIcon("pi pi-chart-line")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Estatisticas' onClick={() => { history.push('/Admin/consultarEstatisticas') }} />
-                <Button icon={createIcon("pi pi-cog")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Config' onClick={() => { history.push('/Admin/configuracao') }} />
-                <Button icon={createIcon("pi pi-user")} className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col" label='Admin' onClick={() => { history.push('/Admin/perfil') }} />
+                <Button
+                    icon={createIcon("pi pi-info-circle")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg  p-mr-3 p-mt-3 p-col"
+                    label='Quem Somos'
+                    onClick={() => { history.push('/Admin/quemSomos') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-comments")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3  p-mt-3 p-col"
+                    label='Contatos'
+                    onClick={() => { history.push('/Admin/Contatos') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-users")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Discentes'
+                    onClick={() => { history.push('/Admin/ListaDiscentes') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-envelope")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Mensagens'
+                    onClick={() => { history.push('/Admin/listaConversasPrivadas') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-bell")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Reportes'
+                    onClick={() => { history.push('/Admin/Reportes') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-chart-bar")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Estatisticas'
+                    onClick={() => { history.push('/Admin/consultarEstatisticas') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-cog")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col"
+                    label='Config'
+                    onClick={() => { history.push('/Admin/configuracao') }}
+                />
+                <Button
+                    icon={createIcon("pi pi-user")}
+                    style={{ width: '100%' }}
+                    className="p-button-outlined p-button-lg p-mr-3 p-mt-3 p-col p-mb-2"
+                    label='Admin'
+                    onClick={() => { history.push('/Admin/perfil') }}
+                />
                 <FotoPerfil></FotoPerfil>
                 <NomePerfil></NomePerfil>
             </div>
@@ -70,7 +171,7 @@ export default function ToobarAdmin() {
     const rightContentsMobile = (
         <React.Fragment>
             <div style={{}} className='p-col-1 p-mr-3'  >
-                <img src={logoImg} alt="logo" style={{ height: '10.75em', width: 'auto' }} />
+                <img src={logoImg} alt="logo" style={{ height: '8.05em', width: 'auto' }} />
             </div>
         </React.Fragment>
     );

@@ -4,9 +4,9 @@ import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function AcessoRapido() {
-
-    var configBotao = "p-mb-3 p-col-3 p-mr-3 ";
-    var configBotao2 = "p-mb-3 p-col-3 ";
+//acesso rapido do Admin
+    var configBotao = "p-mb-3 p-mr-3 ";
+    var configBotao2 = "p-mb-3 ";
     var largura = window.screen.width;
     var espacamento = '10px';
     if (largura < 640) {
@@ -19,24 +19,25 @@ export default function AcessoRapido() {
     return (
         <div>
             <div>
-                <Card title='ACESSO RAPIDO ' >
-                    <Card className='p-col-16' >
+                    <Card className='' >
                         <div>
                             <Button className={configBotao}
-                                label="NOVO PRONTUÁRIO"
-                                onClick={() => { history.push('/Admin/novoProntuario') }}
+                                label="ACESSAR TODAS AS MENSAGENS"
+                                icon='pi pi-envelope'
+                                onClick={() => { history.push('/Admin/listaConversas') }}
                             />
                             <Button className={configBotao}
-                                label="LISTAR PRONTUÁRIOS"
+                                label="LISTAR TODOS OS PRONTUÁRIOS"
+                                icon='pi pi-file'
                                 onClick={() => { history.push('/Admin/listarProntuarios') }}
                             />
                             <Button className={configBotao2}
-                                label="LISTAR PARESCER PSIÓLOGICO"
-                                onClick={() => { history.push('/Admin/listarpareceresPsicologico') }}
+                                label="LISTAR TODOS OS RELATÓRIOS PSIÓLOGICO"
+                                icon='pi pi-file'
+                                onClick={() => { history.push('/Admin/listarRelatoriosPsicologico') }}
                             />
                         </div>
                     </Card>
-                </Card>
             </div>
         </div>
     );

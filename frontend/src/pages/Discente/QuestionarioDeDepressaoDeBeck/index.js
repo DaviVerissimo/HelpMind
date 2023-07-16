@@ -9,6 +9,7 @@ import { RadioButton } from 'primereact/radiobutton';
 import { Toast } from 'primereact/toast';
 import URL from '../../../services/URL';
 import BotaoVoltar from '../../../Components/BotaoVoltar';
+import Semestre from '../../../Components/Semestre';
 
 export default function QuestionarioDeDepresaoDeBeck() {
 
@@ -95,6 +96,7 @@ export default function QuestionarioDeDepresaoDeBeck() {
             const questionarioSimples = {
                 "id": id,
                 "dieta": dieta,
+                "semestre": localStorage.getItem('SemestreComponente'),
                 "lista": [
 
                     questao01,
@@ -164,6 +166,9 @@ export default function QuestionarioDeDepresaoDeBeck() {
                 Marque a afirmação que descreve melhor a maneira que você tem se 
                 sentido na última semana, incluindo hoje. Tome cuidado
                  de ler todas as afirmações, em cada grupo, antes de fazer sua escolha.' >
+                </Card>
+                <Card subTitle='SEMESTRE' >
+                    <Semestre></Semestre>
                 </Card>
                 <Card subTitle='QUESTÂO 01' >
                     <Card>

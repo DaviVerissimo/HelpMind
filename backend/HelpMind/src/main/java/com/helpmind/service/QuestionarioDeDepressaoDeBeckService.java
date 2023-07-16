@@ -7,26 +7,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.helpmind.model.Questao;
+import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
 import com.helpmind.model.QuestionarioDeDepressaoDeBeck;
 import com.helpmind.model.QuestionarioSimples;
 import com.helpmind.repository.QuestionarioDeDepressaoDeBeckRepository;
 
 @Service
 public class QuestionarioDeDepressaoDeBeckService {
-	
+
 	@Autowired
 	private QuestionarioDeDepressaoDeBeckRepository questionarioDeDepressaoDeBeckRepository;
-	
+
 	public QuestionarioDeDepressaoDeBeck retornaQuestionarios() {
 		QuestionarioDeDepressaoDeBeck questionario = new QuestionarioDeDepressaoDeBeck();
 
 		return questionario;
 	}
 
-	//atualizar este metodo
+	// atualizar este metodo
 	public QuestionarioDeDepressaoDeBeck preencherQuestionarioComQuestao(List<Questao> questoes) {
 		QuestionarioDeDepressaoDeBeck questionario = new QuestionarioDeDepressaoDeBeck();
-		//verifica que não existem questões nulas
+		// verifica que não existem questões nulas
 		for (int i = 0; i < questoes.size() - 1; i++) {
 			if (questoes.get(i).getResporta().equals(null)) {
 				return null;
@@ -34,18 +35,17 @@ public class QuestionarioDeDepressaoDeBeckService {
 		}
 		questionario.setListaDeQuestoes(questoes);
 		return questionario;
-		
+
 	}
-	
+
 	public QuestionarioDeDepressaoDeBeck preencherQuestionarioComResporta(List<String> questoesResportas) {
 		QuestionarioDeDepressaoDeBeck questionario = new QuestionarioDeDepressaoDeBeck();
-		List<Questao> lista = new  ArrayList<Questao>();
-		//verifica que não existem questões nulas
+		List<Questao> lista = new ArrayList<Questao>();
+		// verifica que não existem questões nulas
 		for (int i = 0; i < questoesResportas.size(); i++) {
 			if (questoesResportas.get(i).equals(null)) {
 				return null;
-			}
-			else {
+			} else {
 				Questao questao = new Questao();
 				questao.setResporta(questoesResportas.get(i));
 				lista.add(questao);
@@ -53,49 +53,67 @@ public class QuestionarioDeDepressaoDeBeckService {
 		}
 		questionario.setListaDeQuestoes(lista);
 		return questionario;
-		
+
 	}
 
 	public QuestionarioDeDepressaoDeBeck salvar(QuestionarioDeDepressaoDeBeck questionario) {
-		
-		if(questionario == null) {
+
+		if (questionario == null) {
 			return null;
-		}
-		else {
+		} else {
 			return questionarioDeDepressaoDeBeckRepository.save(questionario);
 		}
 	}
-	
+
 	public List<QuestionarioDeDepressaoDeBeck> retornarListaQuestionarioDeDepressaoDeBeck() {
 		List<QuestionarioDeDepressaoDeBeck> lista = questionarioDeDepressaoDeBeckRepository.findAll();
-		
+
 		return lista;
 	}
-	
-	public float calcularMediaDeDepressao(String ID){
-		
+
+	public float calcularMediaDeDepressao(String ID) {
+		float media = 0;
 		List<QuestionarioDeDepressaoDeBeck> listaDoDiscente = this.buscaQuestionariosPeloIdDoDiscente(ID);
-		float media = QuestionarioSimples.retornaCalculoDaMediadeDosQuestionariosDepressao(listaDoDiscente);
-		
+		if (!listaDoDiscente.equals(null) && listaDoDiscente.size() > 0) {
+			media = QuestionarioSimples.retornaCalculoDaMediadeDosQuestionariosDepressao(listaDoDiscente);
+		}
+
 		return media;
 	}
-	
-	public List<QuestionarioDeDepressaoDeBeck> buscaQuestionariosPeloIdDoDiscente(String ID){
+
+	public List<QuestionarioDeDepressaoDeBeck> buscaQuestionariosPeloIdDoDiscente(String ID) {
 		List<QuestionarioDeDepressaoDeBeck> lista = retornarListaQuestionarioDeDepressaoDeBeck();
 		List<QuestionarioDeDepressaoDeBeck> listaDoDiscente = new ArrayList<QuestionarioDeDepressaoDeBeck>();
-		
+
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getIdDiscente().equals(ID)) {
 				listaDoDiscente.add(lista.get(i));
 			}
 		}
-		
+
 		return listaDoDiscente;
+	}
+
+	public QuestionarioDeDepressaoDeBeck retornarUltimoQuestionarioPeloIdDoDiscente(String ID) {
+		List<QuestionarioDeDepressaoDeBeck> lista = this.buscaQuestionariosPeloIdDoDiscente(ID);
+		QuestionarioDeDepressaoDeBeck questionario = new QuestionarioDeDepressaoDeBeck();
+		questionario.setNota(0);
+		
+		if (lista.size() > 0) {
+			questionario = lista.get(lista.size() - 1);
+		}
+
+		return questionario;
+	}
+	
+	public int retornaNotaDoUltimoQuestionario(String ID) {
+		
+		return this.retornarUltimoQuestionarioPeloIdDoDiscente(ID).getNota();
 	}
 	
 	public boolean verificaAumentoDepressao(String idDiscente) {
 		boolean aumento = false;
-		List<QuestionarioDeDepressaoDeBeck> lista =this.buscaQuestionariosPeloIdDoDiscente(idDiscente);
+		List<QuestionarioDeDepressaoDeBeck> lista = this.buscaQuestionariosPeloIdDoDiscente(idDiscente);
 		for (int i = 0; i < lista.size() - 1; i++) {
 			if (lista.get(i).getNota() < lista.get(i + 1).getNota()) {
 				if (lista.get(i).getNota() > 29) {
@@ -103,10 +121,10 @@ public class QuestionarioDeDepressaoDeBeckService {
 				}
 			}
 		}
-		
+
 		return aumento;
 	}
-	
+
 	public QuestionarioDeDepressaoDeBeck retornaQuestionarioPeloID(Integer ID_QUESTIONARIO) {
 		List<QuestionarioDeDepressaoDeBeck> lista = questionarioDeDepressaoDeBeckRepository.findAll();
 		QuestionarioDeDepressaoDeBeck questionario = null;
@@ -115,8 +133,21 @@ public class QuestionarioDeDepressaoDeBeckService {
 				questionario = lista.get(i);
 			}
 		}
-		
+
 		return questionario;
+	}
+
+	public List<QuestionarioDeDepressaoDeBeck> retornaQuestionariosPorSemestre(String semestre,
+			List<QuestionarioDeDepressaoDeBeck> lista) {
+		List<QuestionarioDeDepressaoDeBeck> questionariosPorSemestre = new ArrayList<QuestionarioDeDepressaoDeBeck>();
+
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getSemestre().equals(semestre)) {
+				questionariosPorSemestre.add(lista.get(i));
+			}
+		}
+
+		return questionariosPorSemestre;
 	}
 
 }

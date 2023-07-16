@@ -213,124 +213,126 @@ export default function VisualizarQuestionarioSocioeconomicoComponente() {
 
     return (
         <div>
-            <div>
-                <Card>
-                    <BotaoVoltar></BotaoVoltar>
-                </Card>
-                <Card className="" >
-                    <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={true}></Checkbox>
-                    <label > Declaro estar ciente e concordo com o inteiro teor da aplicação deste inventário, inclusive
-                        tendo conhecimento que haverá o acesso aos resultados, interpretação e ações de promoção, prevenção e
-                        encaminhamentos pelos  profissionais de saúde do campus de origem  aos dados e diante da necessidade
-                        encaminhamento a rede externa de saúde mental. Lembrando que seus dados serão de proteção e sigilo dos
-                        profissionais de saúde do campus e psicólogo interno e externo. </label>
-                </Card>
-                <Card subTitle='NOME' >
-                    <InputText className='' value={nome} disabled />
-                </Card>
-                <Card subTitle='MATRICULA' >
-                    <InputText className='' value={matricula} disabled />
-                </Card>
-                <Card subTitle='CAMPUS' >
-                    <InputText className='' value={campusDoDiscente} disabled />
-                </Card>
-                <Card subTitle='CURSO' >
-                    <InputText className='' value={curso} disabled />
-                </Card>
-                <Card subTitle='PERIODO' >
-                    <InputText className='' value={periodo} disabled />
-                </Card>
-                <Card subTitle='IDADE' >
-                    <InputText className='' value={idade} disabled />
-                </Card>
-                <Card subTitle='CIDADE' >
-                    <InputText className='' value={cidade} disabled />
-                    <Card subTitle='Escolha a zona: ' >
-                        <RadioButton className="p-ml-3" value='Zona urbana' onChange={(e) => setZonaHurbanaRural_op(e.value)} checked={zonaHurbanaRural_op === 'Zona urbana'} />
-                        <label> Zona urbana</label>
-                        <RadioButton className="p-ml-3" value='' name="city" onChange={(e) => setZonaHurbanaRural_op(e.value)} checked={zonaHurbanaRural_op === 'Zona rural'} />
-                        <label> Zona rural</label>
+            <Card title={'QUESTIONÁRIO SOCIOECONÔMICO'} >
+                <div>
+                    <Card>
+                        <BotaoVoltar></BotaoVoltar>
                     </Card>
-                </Card>
-                <Card subTitle='ESTADO CIVIL' >
-                    <InputText className='' value={estadoCivil} disabled />
-                </Card>
-                <Card subTitle='COM QUEM VIVE' >
-                    <InputText className='' value={comQuemVive} disabled />
-                </Card>
-                <Card subTitle='RENDA FAMILIAR' >
-                    <InputText className='' value={rendaFamiliar} disabled />
-                </Card>
-                <Card subTitle='COR' >
-                    <InputText className='' value={cor} disabled />
-                </Card>
-                <Card subTitle='GÊNERO' >
-                    <InputText className='' value={genero} disabled />
-                </Card>
-                <Card subTitle='OPTANTE/ INGRESSANTE POR VAGAS DE COTAS?' >
-                    <InputText className='' value={ingressantePorVagaDeCota} disabled />
-                    <Card subTitle='Em caso de resposta afirmativa especifique: ' >
-                        <RadioButton className="p-ml-3" value='Ensino público' onChange={(e) => setCotista_op(e.value)} checked={cotista_op === 'Ensino público'} />
-                        <label> ensino público </label>
-                        <RadioButton className="p-ml-3" value='Cotas raciais' onChange={(e) => setCotista_op(e.value)} checked={cotista_op === 'Cotas raciais'} />
-                        <label> cotas raciais </label>
+                    <Card className="" >
+                        <Checkbox name="city" value="Chicago" onChange={e => setChecked(e.checked)} checked={true}></Checkbox>
+                        <label > Declaro estar ciente e concordo com o inteiro teor da aplicação deste inventário, inclusive
+                            tendo conhecimento que haverá o acesso aos resultados, interpretação e ações de promoção, prevenção e
+                            encaminhamentos pelos  profissionais de saúde do campus de origem  aos dados e diante da necessidade
+                            encaminhamento a rede externa de saúde mental. Lembrando que seus dados serão de proteção e sigilo dos
+                            profissionais de saúde do campus e psicólogo interno e externo. </label>
                     </Card>
-                </Card>
-                <Card subTitle='É PESSOA COM DEFICIÊNCIA?'  >
-                    <InputText className='' value={pessoaDeficiente} disabled />
-                    <Card subTitle='Em caso de resposta afirmativa especifique:' >
-                        <InputText className='' value={deficiencia_op_tipo} disabled />
+                    <Card subTitle='NOME' >
+                        <InputText className='' value={nome} disabled style={{ width: '100%' }} />
                     </Card>
-                </Card>
-                <Card subTitle='FAZ USO DE BEBIDA ALCOÓLICA'>
-                    <InputText className='' value={usoBebidaAlcoolica} disabled />
-                </Card>
-                <Card subTitle='VOCÊ JÁ SOFREU OU SOFRE BULLYING NA ESCOLA?' >
-                    <InputText className='' value={bullyng} disabled />
-                </Card>
-                <Card subTitle='ALGUÉM NA SUA RESIDÊNCIA SOFRE COM ALGUM PROBLEMA DE SAÚDE MENTAL?' >
-                    <InputText className='' value={resideComPortadorDeProblemaMental} disabled />
-                </Card>
-                <Card subTitle='VOCÊ SOFRE DE ALGUM PROBLEMA DE SAÚDE MENTAL?' >
-                    <InputText className='' value={discenteSofrimentoMental} disabled />
-                    <Card subTitle='Caso tenha escolhido uma opção outro expecifique. Marque o circulo caso tenha diagnóstico:' >
-                        <RadioButton className="p-ml-3" value='outro' onChange={(e) => setDiaguinostico_op(e.value)} checked={diaguinostico_op === 'outro'} />
-                        <label> outro(diagnóstico) </label>
-                        <InputText className='' value={problemaPsifico_op} disabled />
+                    <Card subTitle='MATRICULA' >
+                        <InputText className='' value={matricula} disabled style={{ width: '100%' }} />
                     </Card>
-                </Card>
-                <Card subTitle='JÁ FEZ USO DE PSICOTRÓPICO: ANSIEDADE OU DEPRESSÃO?' >
-                    <InputText className='' value={psicotropico} disabled />
-                </Card>
-                <Card subTitle='EM ALGUM MOMENTO DA VIDA MANIFESTOU INTERESSE EM PROCURAR AJUDA PSICÓLOGO?' >
-                    <InputText className='' value={interesseAjudaPsicologica} disabled />
-                </Card>
-                <Card subTitle='VOCÊ É BENEFICIADO COM ALGUM BOLSA OU PROGRAMA DE ASSISTÊNCIA ESTUDANTIL IFPB' >
-                    <InputText className='' value={beneficio} disabled />
-                    <Card subTitle='Caso tenha escolhido uma opção outro expecifique o beneficio:' >
-                        <InputText className='entradaOutro p-mt-3' value={outroBeneficio} disabled />
+                    <Card subTitle='CAMPUS' >
+                        <InputText className='' value={campusDoDiscente} disabled style={{ width: '100%' }} />
                     </Card>
-                </Card>
-                <Card subTitle='O DOMICÍLIO DO GRUPO FAMILIAR É' >
-                    <InputText className='entradaOutro p-mt-3' value={domicilio} disabled />
-                    <Card subTitle='Informe a quantidade de cômodos:' >
-                        <InputText className='' value={quantidadeComodos_op} disabled />
+                    <Card subTitle='CURSO' >
+                        <InputText className='' value={curso} disabled style={{ width: '100%' }} />
                     </Card>
-                </Card>
-                <Card subTitle='VOCÊ APRESENTA ALGUMA DOENÇA GRAVE?' >
-                    <InputText className='' value={temDoenca} disabled />
-                    <Card subTitle='Em caso de resposta afirmativa, especifique:' >
-                        <InputText className='' value={doencaDiscente} disabled />
+                    <Card subTitle='PERIODO' >
+                        <InputText className='' value={periodo} disabled style={{ width: '100%' }} />
                     </Card>
-                </Card>
-                <Card subTitle='ALGUÉM DO SEU NÚCLEO FAMILIAR APRESENTA DOENÇA GRAVE?' >
-                    <InputText className='' value={possuiFamiliarComDoencaGrave} disabled />
-                    <Card subTitle='Em caso de resposta afirmativa, especifique:' >
-                        <InputText className='p-mr-3' value={familiarDoente} disabled />
-                        <InputText className=' p-mt-3' value={doencaDoFamiliar_op} disabled />
+                    <Card subTitle='IDADE' >
+                        <InputText className='' value={idade} disabled style={{ width: '100%' }} />
                     </Card>
-                </Card>
-            </div>
+                    <Card subTitle='CIDADE' >
+                        <InputText className='' value={cidade} disabled style={{ width: '100%' }} />
+                        <Card subTitle='Escolha a zona: ' >
+                            <RadioButton className="p-ml-3" value='Zona urbana' onChange={(e) => setZonaHurbanaRural_op(e.value)} checked={zonaHurbanaRural_op === 'Zona urbana'} />
+                            <label> Zona urbana</label>
+                            <RadioButton className="p-ml-3" value='' name="city" onChange={(e) => setZonaHurbanaRural_op(e.value)} checked={zonaHurbanaRural_op === 'Zona rural'} />
+                            <label> Zona rural</label>
+                        </Card>
+                    </Card>
+                    <Card subTitle='ESTADO CIVIL' >
+                        <InputText className='' value={estadoCivil} disabled style={{ width: '100%' }} />
+                    </Card>
+                    <Card subTitle='COM QUEM VIVE' >
+                        <InputText className='' value={comQuemVive} disabled style={{ width: '100%' }} />
+                    </Card>
+                    <Card subTitle='RENDA FAMILIAR' >
+                        <InputText className='' value={rendaFamiliar} disabled style={{ width: '100%' }} />
+                    </Card>
+                    <Card subTitle='COR' >
+                        <InputText className='' value={cor} disabled style={{ width: '100%' }} />
+                    </Card>
+                    <Card subTitle='GÊNERO' >
+                        <InputText className='' value={genero} disabled style={{ width: '100%' }} />
+                    </Card>
+                    <Card subTitle='OPTANTE/ INGRESSANTE POR VAGAS DE COTAS?' >
+                        <InputText className='' value={ingressantePorVagaDeCota} disabled style={{ width: '100%' }} />
+                        <Card subTitle='Em caso de resposta afirmativa especifique: ' >
+                            <RadioButton className="p-ml-3" value='Ensino público' onChange={(e) => setCotista_op(e.value)} checked={cotista_op === 'Ensino público'} />
+                            <label> ensino público </label>
+                            <RadioButton className="p-ml-3" value='Cotas raciais' onChange={(e) => setCotista_op(e.value)} checked={cotista_op === 'Cotas raciais'} />
+                            <label> cotas raciais </label>
+                        </Card>
+                    </Card>
+                    <Card subTitle='É PESSOA COM DEFICIÊNCIA?'  >
+                        <InputText className='' value={pessoaDeficiente} disabled style={{ width: '100%' }} />
+                        <Card subTitle='Em caso de resposta afirmativa especifique:' >
+                            <InputText className='' value={deficiencia_op_tipo} disabled style={{ width: '100%' }} />
+                        </Card>
+                    </Card>
+                    <Card subTitle='FAZ USO DE BEBIDA ALCOÓLICA'>
+                        <InputText className='' value={usoBebidaAlcoolica} disabled style={{ width: '100%' }} />
+                    </Card>
+                    <Card subTitle='VOCÊ JÁ SOFREU OU SOFRE BULLYING NA ESCOLA?' >
+                        <InputText className='' value={bullyng} disabled style={{ width: '100%' }} />
+                    </Card>
+                    <Card subTitle='ALGUÉM NA SUA RESIDÊNCIA SOFRE COM ALGUM PROBLEMA DE SAÚDE MENTAL?' >
+                        <InputText className='' value={resideComPortadorDeProblemaMental} disabled style={{ width: '100%' }} />
+                    </Card>
+                    <Card subTitle='VOCÊ SOFRE DE ALGUM PROBLEMA DE SAÚDE MENTAL?' >
+                        <InputText className='' value={discenteSofrimentoMental} disabled style={{ width: '100%' }} />
+                        <Card subTitle='Caso tenha escolhido uma opção outro expecifique. Marque o circulo caso tenha diagnóstico:' >
+                            <RadioButton className="p-ml-3" value='outro' onChange={(e) => setDiaguinostico_op(e.value)} checked={diaguinostico_op === 'outro'} />
+                            <label> outro(diagnóstico) </label>
+                            <InputText className='' value={problemaPsifico_op} disabled style={{ width: '100%' }} />
+                        </Card>
+                    </Card>
+                    <Card subTitle='JÁ FEZ USO DE PSICOTRÓPICO: ANSIEDADE OU DEPRESSÃO?' >
+                        <InputText className='' value={psicotropico} disabled style={{ width: '100%' }} />
+                    </Card>
+                    <Card subTitle='EM ALGUM MOMENTO DA VIDA MANIFESTOU INTERESSE EM PROCURAR AJUDA PSICÓLOGO?' >
+                        <InputText className='' value={interesseAjudaPsicologica} disabled style={{ width: '100%' }} />
+                    </Card>
+                    <Card subTitle='VOCÊ É BENEFICIADO COM ALGUM BOLSA OU PROGRAMA DE ASSISTÊNCIA ESTUDANTIL IFPB' >
+                        <InputText className='' value={beneficio} disabled style={{ width: '100%' }} />
+                        <Card subTitle='Caso tenha escolhido uma opção outro expecifique o beneficio:' >
+                            <InputText className='entradaOutro p-mt-3' value={outroBeneficio} disabled style={{ width: '100%' }} />
+                        </Card>
+                    </Card>
+                    <Card subTitle='O DOMICÍLIO DO GRUPO FAMILIAR É' >
+                        <InputText className='entradaOutro p-mt-3' value={domicilio} disabled style={{ width: '100%' }} />
+                        <Card subTitle='Informe a quantidade de cômodos:' >
+                            <InputText className='' value={quantidadeComodos_op} disabled style={{ width: '100%' }} />
+                        </Card>
+                    </Card>
+                    <Card subTitle='VOCÊ APRESENTA ALGUMA DOENÇA GRAVE?' >
+                        <InputText className='' value={temDoenca} disabled style={{ width: '100%' }} />
+                        <Card subTitle='Em caso de resposta afirmativa, especifique:' >
+                            <InputText className='' value={doencaDiscente} disabled style={{ width: '100%' }} />
+                        </Card>
+                    </Card>
+                    <Card subTitle='ALGUÉM DO SEU NÚCLEO FAMILIAR APRESENTA DOENÇA GRAVE?' >
+                        <InputText className='' value={possuiFamiliarComDoencaGrave} disabled style={{ width: '100%' }} />
+                        <Card subTitle='Em caso de resposta afirmativa, especifique:' >
+                            <InputText className='p-mr-3' value={familiarDoente} disabled style={{ width: '100%' }} />
+                            <InputText className=' p-mt-3' value={doencaDoFamiliar_op} disabled style={{ width: '100%' }} />
+                        </Card>
+                    </Card>
+                </div>
+            </Card>
         </div>
     );
 }

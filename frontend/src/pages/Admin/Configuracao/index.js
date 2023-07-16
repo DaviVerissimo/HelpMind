@@ -13,30 +13,60 @@ export default function Configuracao() {
         configBotao = "p-mt-3 ";
     }
     const history = useHistory();
+    const createIcon = (className) => {
+        return <i className={className} style={{ 'fontSize': '5em' }}></i>
+    }
 
     return (
         <div>
             <ToobarAdmin></ToobarAdmin>
             <div>
                 <Card title='CONFIGURAÇÃO ' >
-                    <Card className='p-col-16' >
+                    <Card className='' >
                         <div>
-                            <Button className={configBotao} label=" GERÊNCIA DE MATERIAIS" onClick={() => { history.push('/Admin/material/Crud') }} />
+                            <Button
+                                className={configBotao}
+                                icon={'pi pi-box'}
+                                label=" GERÊNCIA DE MATERIAIS"
+                                onClick={() => { history.push('/Admin/material/Crud') }}
+                            />
                         </div>
                         <div>
-                            <Button className={configBotao} label=" GERÊNCIA DE SERVIDORES" onClick={() => { history.push('/Admin/GerenciaServidor') }} />
+                            <Button
+                                className={configBotao}
+                                icon={'pi pi-user-plus'}
+                                label=" GERÊNCIA DE SERVIDORES"
+                                onClick={() => { history.push('/Admin/GerenciaServidor') }}
+                            />
                         </div>
                         <div>
-                            <Button className={configBotao} label=" GERÊNCIA DE CONTATOS" onClick={() => { history.push('/Admin/GerenciaContato') }} />
+                            <Button
+                                icon={'pi pi-comments'}
+                                className={configBotao}
+                                label=" GERÊNCIA DE CONTATOS"
+                                onClick={() => { history.push('/Admin/GerenciaContato') }}
+                            />
                         </div>
                         <div>
-                            <Button className={configBotao} label=" GERÊNCIA DE PRONTUARIOS" onClick={() => { history.push('/Admin/gerenciaProntuario') }} />
+                            <Button
+                                className={configBotao}
+                                icon={'pi pi-file'}
+                                label=" GERÊNCIA DE PRONTUARIOS"
+                                onClick={() => { history.push('/Admin/gerenciaProntuario') }}
+                            />
                         </div>
                         <div>
-                            <Button className={configBotao} label=" GERÊNCIA DE PARESCER PSICÓLOGICO" onClick={() => { history.push('/Admin/gerenciaParescerPsicologico') }} />
+                            <Button
+                                className={configBotao}
+                                icon={'pi pi-file'}
+                                label=" GERÊNCIA DE PARESCER PSICÓLOGICO"
+                                onClick={() => { history.push('/Admin/gerenciaParescerPsicologico') }}
+                            />
                         </div>
                     </Card>
-
+                    <Card icon={createIcon("pi pi-cog")} >
+                        {createIcon("pi pi-cog")}
+                    </Card>
                 </Card>
             </div>
         </div>

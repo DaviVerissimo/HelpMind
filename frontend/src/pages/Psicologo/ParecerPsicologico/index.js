@@ -5,13 +5,15 @@ import axios from "axios";
 import { Button } from 'primereact/button';
 import ToobarPsicologo from '../ToobarPsicologo';
 import { Toast } from 'primereact/toast';
-import DiscenteEmail from '../../../Components/DiscenteEmail';
-import DiscenteNome from '../../../Components/DiscenteNome';
 import URL from '../../../services/URL';
 import BotaoVoltar from '../../../Components/BotaoVoltar';
+import { InputText } from 'primereact/inputtext';
+import EncaminhamentoService from '../../../services/EncaminhamentoService';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ParecerPsicologico() {
 
+    const { id } = useParams();
     const toast = useRef(null);
     const showSuccess = () => {
         toast.current.show({
@@ -30,37 +32,15 @@ export default function ParecerPsicologico() {
         });
     }
 
-    const [email, setEmail] = useState(null); //campus = singular, campi = plural
-    const [nome, setNome] = useState();
+    const discenteStr = localStorage.getItem('discente');
+    const discente = JSON.parse(discenteStr);
     const [parescer, setParescer] = useState('');
     var configBotaoSalvar = "p-ml-3";
     const [parecerObrigatoria, setDescrisaoObrigatorio] = useState();
     const [invalid, setInvalid] = useState('p-invalid block');
-    const nomeData = localStorage.getItem('nomeComponente')
-    useEffect(async () => {
-        setNome(nomeData);
-
-    }, [nomeData]);
-
-    const emailData = localStorage.getItem('emailComponente')
-    useEffect(async () => {
-        setEmail(emailData);
-
-    }, [emailData]);
 
     function validar() {
         var valido = true;
-
-        if (nome == null || nome == '') {
-            localStorage.setItem('errorNomeComponente', invalid);
-            valido = false;
-        }
-
-        if (email == null || email == '') {
-            localStorage.setItem('errorEmailComponente', invalid);
-            valido = false;
-        }
-
         if (parescer == '') {
             setDescrisaoObrigatorio(invalid);
             valido = false;
@@ -70,13 +50,13 @@ export default function ParecerPsicologico() {
     }
 
     async function submeter() {
-
         if (validar()) {
             const novoParecerPsicologico =
             {
-                "discente": nome,
-                "email": email,
+                "discente": discente.nome,
+                "email": discente.email,
                 "parescerPsicologico": parescer,
+                "idEncaminhamento": id
 
             }
             const headers = {
@@ -91,41 +71,58 @@ export default function ParecerPsicologico() {
                 .then(Response => { })
                 .catch(error => console.log(error))
             showSuccess();
-            localStorage.removeItem("errorNomeComponente");
-            localStorage.removeItem("errorEmailComponente");
+            EncaminhamentoService.mudarStatusDoEncaminhamentoParaComRelatorio(id);
         }
-
         else {
             showError();
         }
 
     }
+    // pegar discente do localStorage- lembrar que usar hooks
+    // refatorar codigo
+    // ajuste de designer no style como emm novo encaminhamento
+    // olhar no git branch dev2 correção de portugues entre outros detalhes que podem ser necessarios
+    // renomear tudo que for parescer para relatorio. componentes titulos rotulos de botao e rotas
+    // setar  relatorios com seus respectivos encaminhamentos
 
     return (
         <div> <ToobarPsicologo></ToobarPsicologo>
             <Toast ref={toast} />
             <div >
-                <Card title="PARESCER DO PSICÓLOGO"></Card>
+                <Card title="NOVO RELÁTORIO DO PSICÓLOGO"></Card>
                 <Card className="" >
                     <BotaoVoltar></BotaoVoltar>
-                    <Button className={configBotaoSalvar} label="SALVAR" onClick={submeter} />
-
+                    <Button
+                        className={configBotaoSalvar}
+                        label="SALVAR"
+                        onClick={submeter}
+                    />
                 </Card>
                 <Card >
                     <Card subTitle='DISCENTE' >
-                        <DiscenteNome></DiscenteNome>
-
+                        <InputText
+                            value={discente.nome}
+                            disabled
+                            style={{ width: '100%' }}
+                        />
                     </Card>
                     <Card subTitle='EMAIL' >
-                        <DiscenteEmail></DiscenteEmail>
+                        <InputText
+                            value={discente.email}
+                            disabled
+                            style={{ width: '100%' }}
+                        />
                     </Card>
-
                     <Card subTitle='PARESCER DO PSICOLOGO' >
-                        <InputTextarea className={parecerObrigatoria} rows={5} cols={30} value={parescer} onChange={(e) => setParescer(e.target.value)} />
+                        <InputTextarea
+                            className={parecerObrigatoria}
+                            value={parescer}
+                            onChange={(e) => setParescer(e.target.value)}
+                            autoResize
+                            style={{ width: '100%' }}
+                        />
                     </Card>
-
                 </Card>
-
             </div>
         </div>
 

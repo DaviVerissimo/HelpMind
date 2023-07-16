@@ -1,34 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
 
 export default function GraficoBarraHorizontal_4_Colunas_Componente (props) {
     
-    const rotulos = props.rotulos;
+    const [rotulos, setRotulos] = useState('carregando');
     const identificador = props.identificador;
-    const dados = props.dados;
+    const coluna1 = props.coluna1;
+    const coluna2 = props.coluna2;
+    const coluna3 = props.coluna3;
+    const coluna4 = props.coluna4;
     const limite = props.limite;
+
+    useEffect(() => {
+      setRotulos(props.rotulos);
+    
+    }, [rotulos]);
+
     const [basicData] = useState({
         labels: identificador,
         datasets: [
             {
                 label: rotulos[0],
                 backgroundColor: '#30db2e',
-                data: dados[0]
+                data: coluna1
             },
             {
                 label: rotulos[1],
                 backgroundColor: '#e6ed0c',
-                data: dados[1]
+                data: coluna2
             },
             {
                 label: rotulos[2],
                 backgroundColor: '#ed7d0c',
-                data: dados[2]
+                data: coluna3
             },
             {
                 label: rotulos[3],
                 backgroundColor: '#ed0c0c',
-                data: dados[3]
+                data: coluna4
             },
         ]
     });
@@ -95,8 +104,6 @@ export default function GraficoBarraHorizontal_4_Colunas_Componente (props) {
                 }
             }
         };
-
-
 
         return {
             horizontalOptions

@@ -7,12 +7,19 @@ import logoImg from '../../../assets/logo.svg';
 export default function Home() {
 
     const history = useHistory();
+    var altura = window.screen.height;
+    var largura = window.screen.width;
+    var estiloImg = { height: "20em" };
+
+    if (largura < 640) {
+        estiloImg = { height: "14em" };
+    }
 
     return (
 
         <div className="home-container p-d-flex p-grid p-flex-wrap p-justify-center p-align-center p-p-6" style={{ margin: 0, height: '100%', padding: 0 }}>
             <div className="home-ladoEsquerdo" >
-                <img src={logoImg} alt="logo" style={{ height: "20em" }} />
+                <img src={logoImg} alt="logo" style={estiloImg} />
             </div>
 
             <div className="home-ladoDireito">

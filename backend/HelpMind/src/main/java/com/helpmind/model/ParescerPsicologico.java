@@ -19,6 +19,7 @@ public class ParescerPsicologico {
 	private String email;
 	private String parescerPsicologico;
 	private LocalDateTime data;
+	private String idEncaminhamento;
 	
 	public Integer getId() {
 		return id;
@@ -38,6 +39,12 @@ public class ParescerPsicologico {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getIdEncaminhamento() {
+		return idEncaminhamento;
+	}
+	public void setIdEncaminhamento(String idEncaminhamento) {
+		this.idEncaminhamento = idEncaminhamento;
+	}
 	public String getParescerPsicologico() {
 		return parescerPsicologico;
 	}
@@ -50,6 +57,5 @@ public class ParescerPsicologico {
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
-	
 	
 }

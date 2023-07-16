@@ -19,59 +19,49 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "questionarioDeDepresaoDeBeck")
-public class QuestionarioDeDepressaoDeBeck implements Questionario{
-	
+public class QuestionarioDeDepressaoDeBeck implements Questionario {
+
 	private String idDiscente;
-	
+
 	private LocalDateTime data;
-	
+
 	private int nota;
-	
+
 	private String status;
-	
+
 	private boolean dieta = false;
-	
+
+	private String semestre;
+
 	public QuestionarioDeDepressaoDeBeck() {
 		listaDeQuestoes = new ArrayList<Questao>();
 	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	List<Questao> listaDeQuestoes;
-	
+
 	@Override
 	public int calcularNota() {
-		
+
 		if (this.listaDeQuestoes.size() == 0) {
-			
+
 			return nota;
-		}
-		else {
+		} else {
 			for (int i = 0; i < listaDeQuestoes.size(); i++) {
 				nota = nota + Integer.parseInt(listaDeQuestoes.get(i).getResporta());
 			}
-			
+
 			return nota;
 		}
 	}
-	
+
 	public void definirStatus() {
-		
-		if (nota >= 0 && nota <= 9) {
-			status = "01 Depressão mínima";
-		}
-		if(nota >= 10 && nota <= 18) {
-			status = "02 Depressão leve";
-		}
-		if(nota >= 19 && nota <= 29) {
-			status = "03 Depressão moderada";
-		}
-		if(nota >= 30 && nota <= 63) {
-			status = "04 Depressão grave";
-		}
+
+			status = StatusDepressao.getStatus(nota);
 	}
 
 	public Integer getId() {
@@ -129,7 +119,13 @@ public class QuestionarioDeDepressaoDeBeck implements Questionario{
 	public void setDieta(boolean dieta) {
 		this.dieta = dieta;
 	}
-	
-	
-	
+
+	public String getSemestre() {
+		return semestre;
+	}
+
+	public void setSemestre(String semestre) {
+		this.semestre = semestre;
+	}
+
 }
