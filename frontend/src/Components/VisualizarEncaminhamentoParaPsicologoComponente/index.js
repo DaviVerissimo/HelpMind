@@ -17,7 +17,7 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
             severity: 'success',
             summary: 'Encaminhamento Finalizado com Sucesso!',
             detail: 'Recarregue para ver mudanças.',
-            life: 5000
+            life: 5500
         });
     }
 
@@ -26,7 +26,16 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
             severity: 'warn',
             summary: 'Ainda não existe relatório associado a este encaminhamento!',
             detail: 'Aguarde ate que o psicólogo envie.',
-            life: 5000
+            life: 5500
+        });
+    }
+
+    const showInfo = () => {
+        toast.current.show({
+            severity: 'info',
+            summary: 'Este encaminhamento foi finalizado sem um relatório associado!',
+            detail: 'O discente associado pode ter sido encaminhado a rede externa.',
+            life: 5500
         });
     }
 
@@ -84,21 +93,35 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
         }
     }
 
-    function submeter() {
-        if (status != 'Aguardando resultado') {
-            var usuario;
-            if(localStorage.getItem('loginPsicologo')){
-                usuario = Usuario.get_PSICOLOGO();
-            }
-            if(localStorage.getItem('loginAdmin')){
-                usuario = Usuario.get_ADMIN();
-            }
-            if(localStorage.getItem('loginProfSaude')){
-                usuario = Usuario.get_PROFISSIONAL_DE_SAUDE();
-            }
-            history.push('/' + usuario + '/visualizarParescer/' + idRelatorio);
+    function retornaUsuario() {
+        var usuario;
+
+        if (localStorage.getItem('loginPsicologo')) {
+            usuario = Usuario.get_PSICOLOGO();
         }
-        else {
+        if (localStorage.getItem('loginAdmin')) {
+            usuario = Usuario.get_ADMIN();
+        }
+        if (localStorage.getItem('loginProfSaude')) {
+            usuario = Usuario.get_PROFISSIONAL_DE_SAUDE();
+        }
+
+        return usuario;
+    }
+
+    function submeter() {
+        var usuario = retornaUsuario();
+
+        if (status == 'Finalizado' || status == 'Recebeu relátorio do psicólogo') {
+            if (idRelatorio != '' && idRelatorio != null && idRelatorio != undefined) {
+                history.push('/' + usuario + '/visualizarParescer/' + idRelatorio);
+            }
+            else {
+                showInfo();
+            }
+        }
+
+        if (status == 'Aguardando resultado') {
             showWan()
         }
     }
