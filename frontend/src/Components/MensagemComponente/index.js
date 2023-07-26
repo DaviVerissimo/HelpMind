@@ -23,7 +23,7 @@ export default function MensagemComponente(props) {
 
     const legendTemplate = (
         <div style={estilo1} className="flex align-items-center text-primary">
-            <img src='https://lh3.googleusercontent.com/ogw/AOLn63EFFNfSZzsgUtLVKIsB5sVm02JrQhvdHMhFAlKN6w=s32-c-mo'></img>
+            <img src={props.imagem} width="40" ></img>
             <span className="font-bold text-lg"> - {mensagem.data}</span>
             <span className="font-bold text-lg"> - {mensagem.nomeUsuario}</span>
             <span className="font-bold text-lg"> - {mensagem.profissao}</span>

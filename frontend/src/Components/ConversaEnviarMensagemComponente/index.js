@@ -100,6 +100,7 @@ export default function ConversaEnviarMensagemComponente(props) {
                         data={'Agora mesmo'}
                         nomeUsuario={nomeUsuario}
                         profissao={profissao}
+                        imagem={servidor.imagemPerfilUri}
                     />
                 ))}
                 <Card>
