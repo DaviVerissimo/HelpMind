@@ -137,6 +137,7 @@ export default function Create() {
             className={nomeObrigatorio}
             value={nome}
             onChange={(e) => setNome(e.target.value)}
+            style={{ width: '100%' }}
           />
         </Card>
         <Card subTitle='CATEGORIA' >
@@ -148,6 +149,7 @@ export default function Create() {
             options={categorias}
             onChange={(e) => setCategoria(e.value)}
             placeholder="escolha uma categoria"
+            style={{ width: '100%' }}
           />
         </Card>
         <Card subTitle='ARQUIVO' >
