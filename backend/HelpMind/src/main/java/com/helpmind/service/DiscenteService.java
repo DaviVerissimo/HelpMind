@@ -121,6 +121,9 @@ public class DiscenteService {
 	public List<Discente> definirStatusDeAnsiedadeDoDiscente(List<Discente> lista) {
 		float nota = 0;
 		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getMediaDoDiscenteQuestionariosDeAnsiedade() > 0) {
+				nota = lista.get(i).getMediaDoDiscenteQuestionariosDeAnsiedade();
+			}
 			lista.get(i).setStatusDoDiscenteAnsiedade(retornaStatusAnsiedadeMedia(nota));
 		}
 
@@ -135,8 +138,8 @@ public class DiscenteService {
 	public List<Discente> definirStatusDeDepressaoDoDiscente(List<Discente> lista) {
 		float nota = 0;
 		for (int i = 0; i < lista.size(); i++) {
-			if (lista.get(i).getMediaDoDiscenteQuestionariosDeAnsiedade() > 0) {
-				nota = lista.get(i).getMediaDoDiscenteQuestionariosDeAnsiedade();
+			if (lista.get(i).getMediaDoDiscenteQuestionariosDeDepresao() > 0) {
+				nota = lista.get(i).getMediaDoDiscenteQuestionariosDeDepresao();
 			}
 			lista.get(i).setStatusDoDiscenteDepresao(retornaStatusDepressaoMedia(nota));
 		}
