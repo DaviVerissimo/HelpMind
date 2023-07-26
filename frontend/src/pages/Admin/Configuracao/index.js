@@ -59,7 +59,7 @@ export default function Configuracao() {
                             <Button
                                 className={configBotao}
                                 icon={'pi pi-file'}
-                                label=" GERÊNCIA DE PARESCER PSICÓLOGICO"
+                                label=" GERÊNCIA DE RELATÓRIO PSICOLÓGICO"
                                 onClick={() => { history.push('/Admin/gerenciaParescerPsicologico') }}
                             />
                         </div>
