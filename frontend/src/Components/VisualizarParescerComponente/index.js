@@ -57,7 +57,7 @@ export default function VisualizarParescerComponente() {
                             style={{ width: '100%' }}
                         />
                     </Card>
-                    <Card subTitle='PARESCER DO PROFISSIONAL DE SAÚDE' >
+                    <Card subTitle='PARESCER DO PROFISSIONAL PSICÓLOGO' >
                         <InputTextarea
                             value={parescer}
                             disabled
