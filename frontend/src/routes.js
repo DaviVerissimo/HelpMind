@@ -137,6 +137,8 @@ import ListaConversasAdminPrivada from "./pages/Admin/ListaConversasAdminPrivada
 import ReportesGraficosAdmin from "./pages/Admin/ReportesGraficosAdmin";
 import ReportesGraficosProfSaude from "./pages/ProfissionalDeSaude/ReportesGraficosProfSaude";
 import ReportesGraficosPsicologo from "./pages/Psicologo/ReportesGraficosPsicologo";
+import PerfilServidorConfig from "./pages/Admin/PerfilServidorConfig";
+import NovoProntuarioProfSaude from "./pages/ProfissionalDeSaude/NovoProntuarioProfSaude";
 
 import { isAuthenticatedAdmin, isAuthenticatedDiscente, isAuthenticatedProfSaude, isAuthenticatedPsicologo, isAuthenticatedServidor } from "./auth";
 
@@ -273,6 +275,7 @@ export default function Routes() {
         <PrivateRouteProfSaude path="/profissionalDeSaude/conversa/" component={ConversaProfsaude} />
         <PrivateRouteProfSaude path="/profissionalDeSaude/listaConversas" component={ListaConversasProfSaude} />
         <PrivateRouteProfSaude path="/profissionalDeSaude/reportesGrafico" component={ReportesGraficosProfSaude} />
+        <PrivateRouteProfSaude path="/profissionalDeSaude/novoProntuario" component={NovoProntuarioProfSaude} />
 
         <PrivateRouteAdmin path="/Admin/perfil" component={PerfilAdmin} />
         <PrivateRouteAdmin path="/Admin/configuracao" component={Configuracao} />
@@ -290,7 +293,7 @@ export default function Routes() {
         <PrivateRouteAdmin path="/Admin/visualizarProntuarios/:id" component={VisualizarProntuarioAdmin} />
         <PrivateRouteAdmin path="/Admin/materiaisOnline" component={MateriaMateriaisOnlineAdminisOnline} />
         <PrivateRouteAdmin path="/Admin/home" component={AdminHome} />
-        {/* <PrivateRouteAdmin path="/Admin/home2" component={ExemploGraficos} /> */}
+        //<PrivateRouteAdmin path="/Admin/home2" component={ExemploGraficos} />
         <PrivateRouteAdmin path="/Admin/ansiedadeDepressaoGrafico" component={AnsiedadeDepressaoGraficoAdmin} />
         <PrivateRouteAdmin path="/Admin/escolherGrafico" component={EscolherGraficoAdmin} />
         <PrivateRouteAdmin path="/Admin/quemSomos" component={AdminQuemSomos} />
@@ -321,6 +324,7 @@ export default function Routes() {
         <PrivateRouteAdmin path="/Admin/listaConversas" component={ListaConversasAdmin} />
         <PrivateRouteAdmin path="/Admin/listaConversasPrivadas" component={ListaConversasAdminPrivada} />
         <PrivateRouteAdmin path="/Admin/reportesGrafico" component={ReportesGraficosAdmin} />
+        <PrivateRouteAdmin path="/Admin/perfilServidor" component={PerfilServidorConfig} />
 
         <PrivateRoutePsicologo path="/psicologo/perfil" component={PerfilPsicologo} />
         <PrivateRoutePsicologo path="/psicologo/novoRelatorio/:id" component={ParecerPsicologico} />
@@ -356,3 +360,4 @@ export default function Routes() {
     </BrowserRouter>
   );
 }
+

@@ -39,6 +39,9 @@ const RelatorioDepressaoComponente = ({ estatisticas }) => {
               <Card subTitle={'MÉDIA'} style={{ ...cardStyle, flex: '30%' }}>
                 <h1>{estatistica.media}</h1>
               </Card>
+              <Card subTitle={'Discentes'} style={{ ...cardStyle, flex: '30%' }}>
+                <h1>{estatistica.quantidadeTotal}</h1>
+              </Card>
             </div>
             {/* </Card> */}
           </div>

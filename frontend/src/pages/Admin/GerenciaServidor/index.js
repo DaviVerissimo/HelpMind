@@ -59,6 +59,12 @@ export default function GerenciaServidor() {
         }
     }
 
+    const acessarPerfilServidor = (servidor) => {
+        const servidorStr = JSON.stringify(servidor);
+        localStorage.setItem('servidorPerfilEdit', servidorStr)
+        history.push('/Admin/perfilServidor')
+    }
+
     const definirAcessoPsicologo = (servidor) => {
         setServidor(servidor);
 
@@ -107,6 +113,25 @@ export default function GerenciaServidor() {
         return (
             <React.Fragment>
                 <Button className={estado} label={texto} onClick={() => definirAcessoPsicologo(rowData)} />
+            </React.Fragment>
+        );
+    }
+
+    const actionBodyTemplate3 = (rowData) => {
+        // let estado;
+        // let texto;
+
+        // if (rowData.permissaoDeAcessoProfissionalDeSaude) {
+        //     estado = estadoNegativo;
+        //     texto = btnTextoRemoverpermissaoProfSaude;
+        // } else {
+        //     estado = estadoPositivo;
+        //     texto = btnTextoAddpermissaoProfSaude;
+        // }
+
+        return (
+            <React.Fragment>
+                <Button label={'ACESSAR'} icon={'pi pi-user-plus'} onClick={() => acessarPerfilServidor(rowData)} />
             </React.Fragment>
         );
     }
@@ -174,7 +199,7 @@ export default function GerenciaServidor() {
                                     >
                                         <Column field="nome" header="Servidor" sortable style={{ minWidth: '12rem' }}></Column>
                                         <Column field="email" header="Email" sortable style={{ minWidth: '12rem' }}></Column>
-                                        <Column
+                                        {/* <Column
                                             body={actionBodyTemplate1}
                                             exportable={false}
                                             header="Profissional de saúde"
@@ -186,6 +211,12 @@ export default function GerenciaServidor() {
                                             exportable={false}
                                             header="Psicólogo"
                                             sortable
+                                            style={{ minWidth: '8rem' }}
+                                        ></Column> */}
+                                        <Column
+                                            body={actionBodyTemplate3}
+                                            exportable={false}
+                                            header=""
                                             style={{ minWidth: '8rem' }}
                                         ></Column>
                                     </DataTable>

@@ -11,7 +11,6 @@ export default function ConversaExibirMensagens(props) {
   }
 
   const [mensagens, setMensagens] = useState([]);
-  // const idConversa = localStorage.getItem('idConversa');
   const [idConversa, setIdConversa] = useState(props.idConversa);
 
   useEffect(() => {
@@ -47,12 +46,14 @@ export default function ConversaExibirMensagens(props) {
       <Card>
         {Array.isArray(mensagens) ? (
           mensagens.map((mensagemObj, index) => (
+            
             <MensagemComponente
               key={index}
               mensagem={mensagemObj.mensagem}
               data={mensagemObj.data}
               nomeUsuario={mensagemObj.usuario}
               profissao={mensagemObj.tipoServidor}
+              imagem={mensagemObj.urlImagemPerfil}
             />
           ))
         ) : (
