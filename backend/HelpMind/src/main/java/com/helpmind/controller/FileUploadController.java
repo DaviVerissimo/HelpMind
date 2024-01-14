@@ -1,11 +1,9 @@
 package com.helpmind.controller;
 
 import java.io.File;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import javax.servlet.http.Part;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
