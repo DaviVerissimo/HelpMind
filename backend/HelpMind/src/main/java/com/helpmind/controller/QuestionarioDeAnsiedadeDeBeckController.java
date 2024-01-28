@@ -8,20 +8,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.helpmind.model.Constantes;
 import com.helpmind.model.Questao;
 import com.helpmind.model.QuestionarioDeAnsiedadeDeBeck;
 import com.helpmind.model.QuestionarioSimples;
 import com.helpmind.service.QuestionarioDeAnsiedadeDeBeckService;
 
-@CrossOrigin(origins = Constantes.URI)
 @RestController
 @RequestMapping("/QuestionarioDeAnsiedadeDeBeck")
 public class QuestionarioDeAnsiedadeDeBeckController {

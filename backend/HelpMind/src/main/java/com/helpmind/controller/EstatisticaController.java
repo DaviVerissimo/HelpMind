@@ -3,14 +3,11 @@ package com.helpmind.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.helpmind.model.Constantes;
 import com.helpmind.model.ConsultaEstatistica;
 import com.helpmind.model.Estatistica;
 import com.helpmind.service.EstatisticaService;
@@ -19,7 +16,6 @@ import com.helpmind.service.EstatisticaService;
  * @author davi
  *
  */
-@CrossOrigin(origins = Constantes.URI)
 @RestController
 @RequestMapping("/estatistica")
 public class EstatisticaController {

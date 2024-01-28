@@ -3,14 +3,10 @@ package com.helpmind.controller;
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.helpmind.model.Constantes;
-
-@CrossOrigin(origins = Constantes.URI)
 @RestController
 @RequestMapping("/curso")
 public class CursoController {
