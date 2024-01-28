@@ -12,9 +12,8 @@ export default function BarraPessoalProfSaude({ idDiscente }) {
 
     const headers = {
         'headers': {
-            'Accept': 'application/json',
+           'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
         }
     }
     axios.post(URL.getDominio() + "/servidor/buscarServidorPeloId", idDiscente, headers)

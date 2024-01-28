@@ -17,9 +17,8 @@ const API_BASE_URL_MARCA_CONVERSA_COMO_LIDA_PROF_SAUDE = URL.getDominio() + '/co
 
 const headers = {
     'headers': {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
+        'Content-Type': 'application/json'
     }
 }
 

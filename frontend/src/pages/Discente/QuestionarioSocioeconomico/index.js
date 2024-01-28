@@ -495,9 +495,8 @@ export default function QuestionarioSocioeconomico() {
     useEffect(async () => { //buscando email
         const headers = {
             'headers': {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+                'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
+                'Content-Type': 'application/json'
             }
         }
         axios.post(URL.getDominio() + "/discente/buscaDiscentePorID", id, headers)
@@ -694,9 +693,8 @@ export default function QuestionarioSocioeconomico() {
 
             const headers = {
                 'headers': {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
+                    'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
+                    'Content-Type': 'application/json'
                 }
             }
 

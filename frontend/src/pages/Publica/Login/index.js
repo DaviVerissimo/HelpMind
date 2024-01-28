@@ -9,9 +9,11 @@ import axios from 'axios';
 import URL from '../../../services/URL';
 import jwt_decode from "jwt-decode";
 import RotinaQuestionarioSocioeconomicoService from '../../../services/RotinaQuestionarioSocioeconomicoService';
+import GoogleLoginButton from '../../../Components/GoogleLoginButton';
 
 export default function Login() {
 
+    const [accessToken, setAccessToken] = useState();
     const toast = useRef(null);
     const showError = () => {
         toast.current.show({
@@ -45,7 +47,9 @@ export default function Login() {
         if (response == null || response == undefined) {
             errorLogin();
         }
+        console.log(response);
         var token = response.credential;
+        localStorage.setItem('token', token);
         var decoded = jwt_decode(token);
         const name = decoded.name;
         const email = decoded.email;
@@ -61,9 +65,8 @@ export default function Login() {
         }
         const headers = {
             'headers': {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
             }
         }
 
@@ -233,6 +236,7 @@ export default function Login() {
                     </div>
                     <div className="=p-col-9 p-flex p-grid p-flex-column p-p-3">
                         <div className="p-mb-5 p-component" id="singnInDiv"></div>
+                        <GoogleLoginButton></GoogleLoginButton>
                         <Button className="p-mt-4 p-mb-6" label={<div><b>NÃO POSSUO E-MAIL</b><br />ACADÊMICO OU INSTITUCIONAL</div>} onClick={infoEmail} />
                     </div>
                 </div>

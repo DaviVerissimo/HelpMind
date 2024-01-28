@@ -114,9 +114,8 @@ export default function Reporte() {
     useEffect(async () => { //enviar campus para o servidor
         const headers = {
             'headers': {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+                'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
+                'Content-Type': 'application/json'
             }
         }
 
@@ -188,9 +187,8 @@ export default function Reporte() {
             }
             const headers = {
                 'headers': {
-                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
                 }
             }
 

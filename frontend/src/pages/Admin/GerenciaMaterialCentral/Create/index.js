@@ -101,7 +101,7 @@ export default function Create() {
       }
       const headers = {
         'headers': {
-          'Accept': 'application/json',
+	'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*'
         }

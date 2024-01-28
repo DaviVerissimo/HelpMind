@@ -8,9 +8,8 @@ const API_BASE_URL_BUSCAR_PRONTUARIO_ID_DISCENTE = URL.getDominio() + '/prontuar
 
 const headers = {
     'headers': {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
+        'Content-Type': 'application/json'
     }
 }
 

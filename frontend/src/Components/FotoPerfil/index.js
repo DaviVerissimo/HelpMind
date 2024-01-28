@@ -6,16 +6,15 @@ export default function FotoPerfil() {
 
     const headers = {
         'headers': {
-            'Accept': 'application/json',
+            'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
         }
     }
     const headers2 = {
         'headers': {
+        'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
             'Accept': 'image/avif,image/webp,*/*',
             'Content-Type': 'image/jpeg',
-            'Access-Control-Allow-Origin': '*'
         }
     }
 

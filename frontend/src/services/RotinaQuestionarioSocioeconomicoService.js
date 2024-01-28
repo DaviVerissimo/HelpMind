@@ -6,9 +6,8 @@ const API_BASE_URL_REDIRECIONAMENTO_NECESSARIO = URL.getDominio() + '/RotinaQues
 
 const headers = {
     'headers': {
-        'Accept': 'application/json',
+        'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
     }
 }
 

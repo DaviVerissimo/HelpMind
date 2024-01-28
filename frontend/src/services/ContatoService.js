@@ -8,9 +8,8 @@ const API_BASE_URL_LISTAR_CONTATOS_BY_CAMPUS = URL.getDominio() + '/contato/list
 
 const headers = {
     'headers': {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
+        'Content-Type': 'application/json'
     }
 }
 
