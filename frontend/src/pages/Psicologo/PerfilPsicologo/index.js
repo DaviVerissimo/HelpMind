@@ -31,13 +31,21 @@ export default function PerfilPsicologo() {
 
     useEffect(() => {
         requisitarServidor()
+    }, [])
 
-    }, [servidor])
-
-    useEffect(() => {
+    if (servidor != undefined && servidor != null) {
         const profissionaldeSaudeStr = JSON.stringify(servidor);
         localStorage.setItem('metadataPsicologo', profissionaldeSaudeStr);
-    }, [servidor])
+    }
+
+    //ate achar uma solução melhor
+    useEffect(() => {
+        if (localStorage.getItem("recarregarPerfilProfS") === 'recarregarPerfilProfS') { }
+        else {
+            localStorage.setItem('recarregarPerfilProfS', 'recarregarPerfilProfS');
+            window.location.reload();
+        }
+    }, []);
 
     return (
         <div>

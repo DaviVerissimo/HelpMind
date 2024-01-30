@@ -33,13 +33,21 @@ export default function PerfilAdmin() {
 
     useEffect(() => {
         requisitarServidor()
+    }, [])
 
-    }, [servidor])
-
-    useEffect(() => {
+    if (servidor != undefined && servidor != null) {
         const profissionaldeSaudeStr = JSON.stringify(servidor);
         localStorage.setItem('metadataAdmin', profissionaldeSaudeStr);
-    }, [servidor])
+    }
+    //ate achar uma solução melhor
+    useEffect(() => {
+        if (localStorage.getItem("recarregarPerfilAdmin") === 'carregadoPerfilAdmin') {}
+        else {
+            localStorage.setItem('recarregarPerfilAdmin', 'carregadoPerfilAdmin');
+            window.location.reload();
+        }
+    }, []);
+
 
     return (
         <div>
@@ -55,7 +63,7 @@ export default function PerfilAdmin() {
                             <Button className={configBotao} label="SAIR" onClick={encerrarSessao} />
                         </div>
                     </Card>
-                    
+
 
                     <Card title='INSTRUÇÕES AO ESTUDANTE: ' >
                         <Card subTitle='Em primeiro lugar, você deve classificar os itens com base em sua condição durante as últimas duas semanas, além do dia em que o teste é administrado.' ></Card>

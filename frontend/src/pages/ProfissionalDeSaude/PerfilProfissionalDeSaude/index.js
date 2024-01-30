@@ -1,5 +1,5 @@
 import { Card } from 'primereact/card';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ToobarProfissionalDeSaude from '../ToobarProfissionalDeSaude';
@@ -32,13 +32,21 @@ export default function PerfilProfissionalDeSaude() {
 
     useEffect(() => {
         requisitarServidor()
+    }, [])
 
-    }, [servidor])
-
-    useEffect(() => {
+    if (servidor != undefined && servidor != null) {
         const profissionaldeSaudeStr = JSON.stringify(servidor);
         localStorage.setItem('metadataProfissionaldeSaude', profissionaldeSaudeStr);
-    }, [servidor])
+    }
+    
+    //ate achar uma solução melhor
+    useEffect(() => {
+        if (localStorage.getItem("recarregarPerfilProfS") === 'recarregarPerfilProfS') { }
+        else {
+            localStorage.setItem('recarregarPerfilProfS', 'recarregarPerfilProfS');
+            window.location.reload();
+        }
+    }, []);
 
     return (
         <div>
@@ -47,7 +55,7 @@ export default function PerfilProfissionalDeSaude() {
             <NotificacaoComponente></NotificacaoComponente>
             <div>
                 <Card title='MEU PERFIL ' >
-                    
+
                     <BarraPessoalProfSaude idDiscente={id} ></BarraPessoalProfSaude>
                     <Card className='p-col-16' >
                         <div>

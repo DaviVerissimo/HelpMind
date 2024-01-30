@@ -33,13 +33,12 @@ export default function PerfilDiscenteDetalhadoComponente(props) {
 
     useEffect(() => {
         requisitarDiscente()
+    }, [])
 
-    }, [discente])
-
-    useEffect(() => {
+    if (discente != undefined && discente != null) {
         const discenteStr = JSON.stringify(discente);
         localStorage.setItem('discente', discenteStr);
-    }, [discente])
+    }
 
     const visualizarQuestionariosSocioeconomicos = () => {
         const usuario = props.data;
@@ -83,7 +82,7 @@ export default function PerfilDiscenteDetalhadoComponente(props) {
 
     const [acessoPsicologo, setAcessoPsicologo] = useState(false);
     const [broquearAcessoAoBotao, setBroquearAcessoAoBotao] = useState(false);
-    const mudarAcessoParaPsicologo = () =>  {
+    const mudarAcessoParaPsicologo = () => {
         if (localStorage.getItem('loginPsicologo')) {
             setAcessoPsicologo(localStorage.getItem('loginPsicologo'));
         }
