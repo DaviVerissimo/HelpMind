@@ -47,7 +47,6 @@ export default function Login() {
         if (response == null || response == undefined) {
             errorLogin();
         }
-        console.log(response);
         var token = response.credential;
         localStorage.setItem('token', token);
         var decoded = jwt_decode(token);
@@ -236,7 +235,7 @@ export default function Login() {
                     </div>
                     <div className="=p-col-9 p-flex p-grid p-flex-column p-p-3">
                         <div className="p-mb-5 p-component" id="singnInDiv"></div>
-                        <GoogleLoginButton></GoogleLoginButton>
+                        {/* <GoogleLoginButton></GoogleLoginButton> */}
                         <Button className="p-mt-4 p-mb-6" label={<div><b>NÃO POSSUO E-MAIL</b><br />ACADÊMICO OU INSTITUCIONAL</div>} onClick={infoEmail} />
                     </div>
                 </div>
