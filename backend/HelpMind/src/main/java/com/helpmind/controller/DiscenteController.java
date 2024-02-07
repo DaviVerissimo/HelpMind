@@ -80,7 +80,7 @@ public class DiscenteController {
 	@GetMapping("/isAumento")
 	public boolean isAumento() {
 		boolean aumento = false;
-		if (discenteService.verificarAumentoVulnerabilidadeEmocional().get(0) != null) {
+		if (discenteService.verificarAumentoVulnerabilidadeEmocional().size() > 0) {
 			aumento = true;
 		}
 
