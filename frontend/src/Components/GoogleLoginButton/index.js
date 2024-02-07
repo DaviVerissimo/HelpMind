@@ -1,124 +1,70 @@
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from 'primereact/button';
 import { FaGoogle } from 'react-icons/fa';
-import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import { Toast } from 'primereact/toast';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import URL from '../../services/URL';
-
+import axios from 'axios';
 
 const GoogleLoginButton = () => {
-
     const history = useHistory();
     const toast = useRef(null);
+
     const showError = () => {
         toast.current.show({
             severity: 'error',
-            summary: 'Não foi possivel realizar login!',
+            summary: 'Não foi possível realizar login!',
             detail: 'Deve-se utilizar uma conta acadêmica/institucional do IFPB.',
             life: 5000
         });
-    }
-    const errorLogin = (e) => {
-        showError();
-        console.error(e);
-    }
-    const [redirectUri, setRedirectUri] = useState('');
-
-    const buttonStyles = {
-        background: '#4285F4',
-        color: '#FFFFFF',
-        borderColor: '#4285F4',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
     };
 
-    const iconStyles = {
-        fontSize: '1.2em',
+    useEffect(() => {
+        const fragmentString = window.location.hash.substring(1);
+
+        // Parse query string to see if page request is coming from OAuth 2.0 server.
+        const params = new URLSearchParams(fragmentString);
+        const accessToken = params.get('access_token');
+        console.log('Access Token:', accessToken);
+        if (accessToken) {
+            // Aqui você pode salvar o token de acesso em localStorage ou em algum estado do componente, se desejar.
+            // Depois, você pode enviar este token para o backend para autenticação.
+            localStorage.setItem("token", accessToken);
+
+            // Após obter o token de acesso, você pode redirecionar o usuário para a página desejada.
+            history.push('/pagina-desejada');
+        } else {
+            console.log('Token de acesso não encontrado na URL.');
+        }
+    }, [history]);
+
+    const handleLoginClick = () => {
+        // Configurações para autenticação OAuth com o Google
+        const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+        const clientID = URL.getClientId();// defini em uri
+        const redirectURI = URL.getRedirectUri();
+        const scope = 'profile email';
+        const state = 'oauth2_state';
+
+        // Construção da URL de autenticação
+        const authUrl = `${oauth2Endpoint}?client_id=${clientID}&redirect_uri=${redirectURI}&scope=${scope}&state=${state}&response_type=token`;
+
+        // Redirecionar o usuário para a página de login do Google
+        window.location.href = authUrl;
     };
-
-    // const headers = {
-    //     'headers': {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json',
-    //         'Access-Control-Allow-Origin': '*'
-    //     }
-    // }
-
-    const headers = {
-        'headers': {
-            'Authorization': 'Bearer ' +  localStorage.getItem('token') ,
-            'Content-Type': 'application/json'
-        }
-    }
-
-    const handleGoogleLoginClick = async () => {
-        //window.location.href = 'http://localhost:8080/authetication/login';                
-        try {
-            // const response = await axios.get('http://localhost:8080/authetication/login', { withCredentials: true });
-            const response = await axios.get('http://localhost:8080/authetication/login', headers);
-    
-            if (response.status === 200) {
-                const uri = response.data;
-                console.log(uri)
-
-                // const headers2 = {
-                //     'headers': {
-                //         'Authorization': 'Bearer ' + accessToken, // Substitua 'accessToken' pelo seu token real
-                //         'Content-Type': 'application/json'
-                //     }
-                // }
-
-                // const autenticado = await axios.get('http://localhost:8080/authetication/perfil', headers2);
-                // if (autenticado.status === 200 && autenticado.data !== "error") {
-                //     setRedirectUri(URL.getDominio() + uri);
-                //     console.log("uri" + redirectUri)
-                //     permitirAcessoComo(uri);
-                //     history.push(uri);
-                // }
-            } else {
-                errorLogin();
-            }
-        } catch (error) {
-            console.error('Erro durante a solicitação:', error);
-            errorLogin();
-        }
-    };
-
-    function permitirAcessoComo(uri) {
-        if (uri.includes("Admin")) {
-            localStorage.setItem('loginAdmin', true);
-        }
-        if (uri.includes("profissionalDeSaude")) {
-            localStorage.setItem('loginProfSaude', true);
-        }
-        if (uri.includes("psicologo")) {
-            localStorage.setItem('loginPsicologo', true);
-        }
-        if (uri.includes("servidor")) {
-            localStorage.setItem('loginServidor', true);
-        }
-        if (uri.includes("Admin")) {
-            console.log("A variável contém a string 'exemplo'");
-            //resolver discente
-            // falta ver o idservidor
-        }
-    }
 
     return (
         <div>
             <Toast ref={toast} />
             <Button
-                onClick={handleGoogleLoginClick}
+                onClick={handleLoginClick}
                 className="p-button-outlined p-button-rounded p-button-text"
-                style={buttonStyles}
+                style={{ background: '#4285F4', color: '#FFFFFF', borderColor: '#4285F4', display: 'flex', alignItems: 'center', gap: '8px' }}
             >
-                <FaGoogle style={iconStyles} />
+                <FaGoogle style={{ fontSize: '1.2em' }} />
                 <span>Fazer login com o Google</span>
             </Button>
         </div>
-
     );
 };
 
