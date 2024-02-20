@@ -14,26 +14,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.helpmind.model.Encaminhamento;
-import com.helpmind.model.ParescerPsicologico;
+import com.helpmind.model.RelatorioPsicologico;
 import com.helpmind.service.EncaminhamentoService;
 import com.helpmind.service.ParescerPsicologicoService;
 
 @RestController
 @RequestMapping("/parecerPsicologico")
-public class ParecerPsicologicoController {
+public class RelatorioPsicologicoController {
 	
 	@Autowired
-	private ParescerPsicologicoService parescerPsicologicoService;
+	private ParescerPsicologicoService relatorioPsicologicoService;
 	
 	@Autowired
 	private EncaminhamentoService encaminhamentoService;
 	
 	@PostMapping("salvarParecerPsicologico")
-	public ResponseEntity salvarParecerPsicologico(@RequestBody ParescerPsicologico parecerPsicologico) throws URISyntaxException {
+	public ResponseEntity salvarParecerPsicologico(@RequestBody RelatorioPsicologico parecerPsicologico) throws URISyntaxException {
 		LocalDateTime data = LocalDateTime.now();
 		parecerPsicologico.setData(data);
 		try {
-			parescerPsicologicoService.salvar(parecerPsicologico);
+			relatorioPsicologicoService.salvar(parecerPsicologico);
 			Integer ID = Integer.parseInt(parecerPsicologico.getIdEncaminhamento());
 			Encaminhamento encaminhamento = encaminhamentoService.retornaEncaminhamentoPorID(ID);
 			encaminhamento.setIdRelatorio(parecerPsicologico.getId().toString());
@@ -44,26 +44,26 @@ public class ParecerPsicologicoController {
 	}
 	
 	@GetMapping("listarAllParescerPsicologico")
-	public List<ParescerPsicologico> retornaAllPareceres(){
+	public List<RelatorioPsicologico> retornaAllPareceres(){
 		
-		return parescerPsicologicoService.retornaAllProntuarios();
+		return relatorioPsicologicoService.retornaAllProntuarios();
 	}
 	
 	@PostMapping("removerParescerPsicologico")
 	public ResponseEntity removerParecer(@RequestBody Integer ID) throws URISyntaxException {
-		ParescerPsicologico parescerPsicologico = null;
+		RelatorioPsicologico parescerPsicologico = null;
 		try {
-			parescerPsicologico = parescerPsicologicoService.remover(ID);
+			parescerPsicologico = relatorioPsicologicoService.remover(ID);
 			} catch(Exception e){}
 	
 		return ResponseEntity.created(new URI("/parescerPsicologico/" + parescerPsicologico.getId())).body(parescerPsicologico);
 	}
 	
 	@PostMapping("updateParescerPsicologico")
-	public ResponseEntity updateParescer(@RequestBody ParescerPsicologico parescerPsicologico) throws URISyntaxException {
+	public ResponseEntity updateParescer(@RequestBody RelatorioPsicologico parescerPsicologico) throws URISyntaxException {
 		
 		try {
-			parescerPsicologicoService.update(parescerPsicologico);
+			relatorioPsicologicoService.update(parescerPsicologico);
 			} catch(Exception e){}
 	
 		return ResponseEntity.created(new URI("/parescerPsicologico/" + parescerPsicologico.getId())).body(parescerPsicologico);
@@ -71,9 +71,9 @@ public class ParecerPsicologicoController {
 	
 	@PostMapping("pesquisarParescerPsicologico")
 	public ResponseEntity pesquisarParecer(@RequestBody Integer ID) throws URISyntaxException {
-		ParescerPsicologico parescerPsicologico = null;
+		RelatorioPsicologico parescerPsicologico = null;
 		try {
-			parescerPsicologico = parescerPsicologicoService.pesquisar(ID);
+			parescerPsicologico = relatorioPsicologicoService.pesquisar(ID);
 			} catch(Exception e){}
 	
 		return ResponseEntity.created(new URI("/parescerPsicologico/" + parescerPsicologico.getId())).body(parescerPsicologico);

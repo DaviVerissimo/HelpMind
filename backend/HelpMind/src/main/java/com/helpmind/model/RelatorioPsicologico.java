@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "parescerPsicologico")
-public class ParescerPsicologico {
+public class RelatorioPsicologico {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

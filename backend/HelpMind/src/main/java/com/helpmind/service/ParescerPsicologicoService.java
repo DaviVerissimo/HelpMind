@@ -5,49 +5,49 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.helpmind.model.ParescerPsicologico;
-import com.helpmind.repository.ParecerPsicologicoRepository;
+import com.helpmind.model.RelatorioPsicologico;
+import com.helpmind.repository.RelatorioPsicologicoRepository;
 
 @Service
 public class ParescerPsicologicoService {
 	
 	@Autowired
-	private ParecerPsicologicoRepository parecerPsicologicoRepository;
+	private RelatorioPsicologicoRepository relatorioPsicologicoRepository;
 	
-	public void salvar(ParescerPsicologico parescerPsicologico) {
+	public void salvar(RelatorioPsicologico relatorioPsicologico) {
 		
-		parecerPsicologicoRepository.save(parescerPsicologico);
+		relatorioPsicologicoRepository.save(relatorioPsicologico);
 	}
 	
-	public List<ParescerPsicologico> retornaAllProntuarios(){
+	public List<RelatorioPsicologico> retornaAllProntuarios(){
 		
-		return parecerPsicologicoRepository.findAll();
+		return relatorioPsicologicoRepository.findAll();
 	}
 	
-	public ParescerPsicologico pesquisar(Integer id){
-		ParescerPsicologico parecerPsicologico = new ParescerPsicologico();
-		List<ParescerPsicologico> lista = this.retornaAllProntuarios();
+	public RelatorioPsicologico pesquisar(Integer id){
+		RelatorioPsicologico relatorioPsicologico = new RelatorioPsicologico();
+		List<RelatorioPsicologico> lista = this.retornaAllProntuarios();
 		
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getId().equals(id)) {
-				parecerPsicologico = lista.get(i);
+				relatorioPsicologico = lista.get(i);
 			}
 		}
 		
-		return parecerPsicologico;
+		return relatorioPsicologico;
 	}
 	
-	public ParescerPsicologico remover(Integer id) {
-		ParescerPsicologico parecerPsicologico = new ParescerPsicologico();
-		parecerPsicologico = this.pesquisar(id);
-		parecerPsicologicoRepository.delete(parecerPsicologico);
+	public RelatorioPsicologico remover(Integer id) {
+		RelatorioPsicologico relatorioPsicologico = new RelatorioPsicologico();
+		relatorioPsicologico = this.pesquisar(id);
+		relatorioPsicologicoRepository.delete(relatorioPsicologico);
 		
-		return parecerPsicologico;
+		return relatorioPsicologico;
 	}
 	
-	public void update(ParescerPsicologico parecerPsicologico) {
+	public void update(RelatorioPsicologico relatorioPsicologico) {
 		
-		parecerPsicologicoRepository.save(parecerPsicologico);
+		relatorioPsicologicoRepository.save(relatorioPsicologico);
 		
 		}
 
