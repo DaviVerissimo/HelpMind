@@ -122,7 +122,7 @@ export default function NovoEncaminhamentoParaPsicologoComponente() {
                             disabled
                         ></InputText>
                     </Card>
-                    <Card subTitle='DESCRISÃO' >
+                    <Card subTitle='DESCRIÇÃO' >
                         <InputTextarea
                             className={descrisaoObrigatorio}
                             value={descrisao}

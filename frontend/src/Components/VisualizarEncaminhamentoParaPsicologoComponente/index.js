@@ -197,7 +197,7 @@ export default function VisualizarEncaminhamentoParaPsicologoComponente() {
                             disabled
                         />
                     </Card>
-                    <Card subTitle='DESCRISÃO' >
+                    <Card subTitle='DESCRIÇÃO' >
                         <InputTextarea disabled
                             value={descrisao}
                             autoResize

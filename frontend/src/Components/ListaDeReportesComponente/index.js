@@ -100,7 +100,7 @@ export default function ListaDeReportesComponente(props) {
                                         <Column field="discente" header="Discente" sortable ></Column>
                                         <Column field="curso" header="Curso" sortable ></Column>
                                         <Column field="periodo" header="Periodo" sortable ></Column>
-                                        <Column field="descrisao" header="Descrisão" sortable ></Column>
+                                        <Column field="descrisao" header="Descrição" sortable ></Column>
 
                                         <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
                                     </DataTable>
