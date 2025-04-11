@@ -235,6 +235,9 @@ Passos para instalar o projeto localmente.
     ```
 
 
+### Versão do node utilizada
+12.22.9
+
 ### Configuração do Login
 Para configurar o ID do cliente do Google no seu código React, você precisa substituir o valor client_id pelo seu próprio client_id obtido no Google Cloud Console no arquivo frontend/src/pages/Publica/Login/index.js
 
